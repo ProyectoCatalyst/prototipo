@@ -1,0 +1,15 @@
+{   
+    "explorer.confirmDelete": true,
+    "editor.wordWrap": "on",
+    "window.zoomLevel": 0,
+    "editor.tabSize": 2,
+    "workbench.iconTheme": "material-icon-theme",
+    "material-icon-theme.activeIconPack": "angular",
+    "material-icon-theme.files.associations": {
+        "*.controller.js": "angular-component",
+        "route.js": "angular-routing",
+        "app.js": "angular"
+    },
+    "git.ignoreMissingGitWarning": true,
+    "team.showWelcomeMessage": false
+}
