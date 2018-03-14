@@ -14,6 +14,21 @@
         data: {
           pageTitle: 'Landing Page | Inicio'
         }
+      })
+      
+      .state('registrarRapartidor', {
+        url: '/registerDeliveryMan',
+        templateUrl: './components/registrarRepartidor/registrarRepartidor.view.html',
+        data: {
+          pageTitle: 'Registrar repartidor | Correos CR'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/registrarRepartidor/registrarRepartidor.controller.js')
+          }]
+        },
+        controller: 'controladorRegistrarRepartidor',
+        controllerAs: 'vm'
       });
 
       // .state('', {
