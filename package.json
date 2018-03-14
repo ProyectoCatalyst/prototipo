@@ -1,0 +1,43 @@
+{
+  "name": "prototipo",
+  "version": "1.0.0",
+  "description": "Prototipo de proyecto web 1",
+  "main": "./public/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "MEAN",
+    "ANGULARJS",
+    "BOOTSTRAP4",
+    "JQUERY",
+    "NODEJS"
+  ],
+  "author": "Catalyst",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.23.6",
+    "gulp": "^3.9.1",
+    "gulp-connect": "^5.2.0",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-todo": "^5.4.0"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.4",
+    "@uirouter/angularjs": "^1.0.15",
+    "angular": "^1.6.9",
+    "angular-messages": "^1.6.9",
+    "angular-password": "^1.0.3",
+    "angular-scroll": "^1.0.2",
+    "angularjs-datepicker": "^2.1.23",
+    "bootstrap": "^4.0.0",
+    "jquery": "^3.3.1",
+    "oclazyload": "^1.1.0",
+    "popper.js": "^1.12.9",
+    "sweetalert": "^2.1.0",
+    "ui-router-page-title": "^1.0.4"
+  }
+}
