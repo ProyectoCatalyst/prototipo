@@ -5,18 +5,22 @@
   .module('prototipo', ['ngMessages'])
   .controller('controladorRegistrarLicencia', controladorRegistrarLicencia)
 
-  controladorRegistrarLicencia.$inject =['$stateParams', '$state', 'servicioRegistroRepartidor']
-  function controladorRegistrarLicencia($stateParams, $state, servicioRegistroRepartidor){
+  controladorRegistrarLicencia.$inject =['$stateParams', '$state', 'servicioRepartidor']
+  function controladorRegistrarLicencia($stateParams, $state, servicioRepartidor){
     if(!$stateParams.datos){
       $state.go('registrarRapartidor');
     }
     
-    let vm = this,
-        datosRepartidor = JSON.parse($stateParams.datos); // cedula, sucursal
+    let vm = this;
+
+    let datosRepartidor = JSON.parse($stateParams.datos); // cedula, sucursal, nombre
     
     vm.nombreRepartidor = datosRepartidor[2];
     vm.registrarLicencia = (pnuevoRegistro) => {
-      let objLicencia = new Licencia(pnuevoRegistro.codigo, pnuevoRegistro.fechaVencimiento, pnuevoRegistro.tipoLicencia),
+      if(!pnuevoRegistro.estado){
+        pnuevoRegistro.estado = true;
+      }
+      let objLicencia = new Licencia(pnuevoRegistro.codigo, pnuevoRegistro.fechaVencimiento, pnuevoRegistro.tipoLicencia, pnuevoRegistro.estado),
           existente = verificarLicencia(objLicencia),
           datosAgregar = [objLicencia, datosRepartidor[0], datosRepartidor[1]];
 
@@ -34,14 +38,16 @@
               icon: 'success',
               button: 'Aceptar'
             });
-            servicioRegistroRepartidor.registrarLicencia(datosAgregar);
+            servicioRepartidor.registrarLicencia(datosAgregar);
+
+            $state.go('listarLicencias', {datos: JSON.stringify(datosRepartidor)});
           }
     }
 
     // __________funciones internas__________
 
     function verificarLicencia(pobjLicencia){
-      let licenciasLS = servicioRegistroRepartidor.retornarTodasLicencias(),
+      let licenciasLS = servicioRepartidor.retornarTodasLicencias(),
           existente = false;
 
       for (let i=0; i<licenciasLS.length; i++){

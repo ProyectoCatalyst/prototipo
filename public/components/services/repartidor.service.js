@@ -3,10 +3,10 @@
 
     angular
     .module('prototipo')
-    .service('servicioRegistroRepartidor', servicioRegistroRepartidor)
+    .service('servicioRepartidor', servicioRepartidor)
 
-    servicioRegistroRepartidor.$inject = ['$q', '$http', '$log']
-    function servicioRegistroRepartidor($q, $http, $log){
+    servicioRepartidor.$inject = ['$q', '$http', '$log']
+    function servicioRepartidor($q, $http, $log){
         let publicAPI = {
             retornarRepartidores: _retornarRepartidores,
             agregarRepartidor: _agregarRepartidor,
@@ -25,14 +25,14 @@
                     return repartidoresTemp
                 }else{
                     repartidoresLS.forEach(objRepartidorTemp => {
-                        let repartidores = new Repartidor(objRepartidorTemp.cedula, objRepartidorTemp.foto, objRepartidorTemp.nombre, objRepartidorTemp.segundoNombre, objRepartidorTemp.primerApellido, objRepartidorTemp.segundoApellido, objRepartidorTemp.correo, objRepartidorTemp.telefono, objRepartidorTemp.telefonoAdicional, objRepartidorTemp.sucursal, objRepartidorTemp.genero, objRepartidorTemp.nacimiento, objRepartidorTemp.contrasena);
+                        let repartidores = new Repartidor(objRepartidorTemp.cedula, objRepartidorTemp.foto, objRepartidorTemp.nombre, objRepartidorTemp.segundoNombre, objRepartidorTemp.primerApellido, objRepartidorTemp.segundoApellido, objRepartidorTemp.correo, objRepartidorTemp.telefono, objRepartidorTemp.telefonoAdicional, objRepartidorTemp.sucursal, objRepartidorTemp.genero, objRepartidorTemp.nacimiento, objRepartidorTemp.contrasena, objRepartidorTemp.estado);
 
                         // objRepartidorTemp.paqueteAsignado.forEach(objPaqueteAsignadoTemp => {
                         //     let paqueteAsignado = new Paquete(objPaqueteAsignadoTem)
                         // });
 
                         objRepartidorTemp.licencia.forEach(objLicenciaTemp => {
-                             let objLicencia = new Licencia(objLicenciaTemp.codigo, objLicenciaTemp.fechaVencimiento, objLicenciaTemp.tipo);
+                             let objLicencia = new Licencia(objLicenciaTemp.codigo, objLicenciaTemp.fechaVencimiento, objLicenciaTemp.tipo, objLicenciaTemp.estado);
 
                              repartidores.setLicencia(objLicencia);
                         });
@@ -58,7 +58,7 @@
                     return todosLosRepartidores;
                 }else{
                     repartidoresLS.forEach(objRepartidorTemp => {
-                        let objRepartidor = new Repartidor (objRepartidorTemp.cedula, objRepartidorTemp.foto, objRepartidorTemp.nombre, objRepartidorTemp.segundoNombre, objRepartidorTemp.primerApellido, objRepartidorTemp.segundoApellido, objRepartidorTemp.correo, objRepartidorTemp.telefono, objRepartidorTemp.telefonoAdicional, objRepartidorTemp.sucursal, objRepartidorTemp.genero, objRepartidorTemp.fechaNacimiento, objRepartidorTemp.contrasenna, objRepartidorTemp.confirmarContrasenna);
+                        let objRepartidor = new Repartidor (objRepartidorTemp.cedula, objRepartidorTemp.foto, objRepartidorTemp.nombre, objRepartidorTemp.segundoNombre, objRepartidorTemp.primerApellido, objRepartidorTemp.segundoApellido, objRepartidorTemp.correo, objRepartidorTemp.telefono, objRepartidorTemp.telefonoAdicional, objRepartidorTemp.sucursal, objRepartidorTemp.genero, objRepartidorTemp.fechaNacimiento, objRepartidorTemp.contrasenna, objRepartidorTemp.confirmarContrasenna, objRepartidorTemp.estado);
 
                         objRepartidorTemp.licencia.forEach(objLicenciaTemp => {
                             let objLicencia = new Licencia(objLicenciaTemp.codigo, objLicenciaTemp.fechaVencimiento, objLicenciaTemp.tipo);
@@ -79,7 +79,7 @@
                 licenciaAct = todosLosRepartidores[i].getLicencias(); // obtener todas las licencias del repartidor 'i'
 
                 licenciaAct.forEach(objLicenciaTem => {
-                    let licencia = new Licencia(objLicenciaTem.codigo, objLicenciaTem.fechaVencimiento, objLicenciaTem.tipo);
+                    let licencia = new Licencia(objLicenciaTem.codigo, objLicenciaTem.fechaVencimiento, objLicenciaTem.tipo, objLicenciaTem.estado);
 
                     todasLasLicencias.push(licencia);
                 });
@@ -98,7 +98,7 @@
                     repartidoresLS[i].setLicencia(objLicenciaRegistrar);
                 }
             }
-            console.log(repartidoresLS)
+            console.log(repartidoresLS);
             actualizarLS(repartidoresLS);
         }
         //______funciones del service_______

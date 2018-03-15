@@ -1,5 +1,5 @@
 class Repartidor{
-  constructor(pcedula, pfoto, pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcorreo, ptelefono, ptelefonoAdicional, psucursal, pgenero, pnacimiento, pcontrasena){
+  constructor(pcedula, pfoto, pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcorreo, ptelefono, ptelefonoAdicional, psucursal, pgenero, pnacimiento, pcontrasena, pestado){
     this.cedula = pcedula;
     this.foto = pfoto;
     this.nombre = pnombre;
@@ -15,6 +15,7 @@ class Repartidor{
     this.contrasena = pcontrasena;
     this.paqueteAsignado = [];
     this.licencia =[];
+    this.estado = pestado;
   }
   getLicencias(){
     return this.licencia
@@ -28,10 +29,11 @@ class Repartidor{
 }
 
 class Licencia{
-  constructor(pcodigo, pfechaVencimiento, ptipo){
+  constructor(pcodigo, pfechaVencimiento, ptipo, pestado){
     this.codigo = pcodigo;
     this.fechaVencimiento = pfechaVencimiento;
     this.tipo = ptipo;
+    this.estado = pestado;
   }
   getCodigo(){
     return this.codigo

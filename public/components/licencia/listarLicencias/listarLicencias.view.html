@@ -1,0 +1,33 @@
+<main class="container-fluid">
+  <section class="row">
+    <div class="col-md-12">
+      <h1 class="text-center my-5">Lista de licencias de {{vm.nombreRepartidor}}</h1>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="thead">Código</th>
+            <th scope="thead">Fecha de vencimiento</th>
+            <th scope="thead">Tipo de licencia</th>
+            <th scope="thead">Modificar</th>
+            <th scope="thead">Desactivar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="licencias in vm.listarLicencias">
+            <td>{{licencias.codigo}}</td>
+            <td>{{licencias.fechaVencimiento | date: 'dd-MM-yyyy'}}</td>
+            <td>{{licencias.tipo}}</td>
+            <td>
+              <button type="button" class="btn btn-primary">Modificar</button>
+            </td>
+            <td>
+              <button type="button" class="btn btn-danger">Desactivar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="button" ng-click="vm.agregarLicencia()" class="btn btn-success">Agregar licencia</button>
+    </div>
+  </section>
+</main>

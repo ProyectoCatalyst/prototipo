@@ -47,6 +47,24 @@
         },
         controller: 'controladorRegistrarLicencia',
         controllerAs: 'vm'
+      })
+      
+      .state('listarLicencias', {
+        url: '/listLicenses',
+        templateUrl: './components/licencia/listarLicencias/listarLicencias.view.html',
+        data: {
+          pageTitle: 'Listar licencias | Correos CR'
+        },
+        params: {
+          datos: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/licencia/listarLicencias/listarLicencias.controller.js')
+          }]
+        },
+        controller: 'controladorListarLicencias',
+        controllerAs: 'vm'
       });
 
       // .state('', {

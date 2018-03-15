@@ -4,8 +4,8 @@
     .module('prototipo')
     .controller('controladorRegistrarRepartidor', controladorRegistrarRepartidor);
 
-    controladorRegistrarRepartidor.$inject = ['$stateParams', '$state', 'servicioRegistroRepartidor'];
-    function controladorRegistrarRepartidor($stateParams, $state, servicioRegistroRepartidor){
+    controladorRegistrarRepartidor.$inject = ['$stateParams', '$state', 'servicioRepartidor'];
+    function controladorRegistrarRepartidor($stateParams, $state, servicioRepartidor){
         let vm = this;
 
         vm.registrarRepartidor = (pnuevoRegistro) => {
@@ -17,7 +17,10 @@
                     button: "Aceptar"
                 });
             }else{
-                let objNuevoRegistro = new Repartidor(pnuevoRegistro.cedula, pnuevoRegistro.foto, pnuevoRegistro.nombre, pnuevoRegistro.segundoNombre, pnuevoRegistro.primerApellido, pnuevoRegistro.segundoApellido, pnuevoRegistro.correo, pnuevoRegistro.telefono, pnuevoRegistro.telefonoAdicional, pnuevoRegistro.sucursal, pnuevoRegistro.genero, pnuevoRegistro.fechaNacimiento, pnuevoRegistro.contrasenna),
+                if(!pnuevoRegistro.estado){
+                    pnuevoRegistro.estado = true;
+                }
+                let objNuevoRegistro = new Repartidor(pnuevoRegistro.cedula, pnuevoRegistro.foto, pnuevoRegistro.nombre, pnuevoRegistro.segundoNombre, pnuevoRegistro.primerApellido, pnuevoRegistro.segundoApellido, pnuevoRegistro.correo, pnuevoRegistro.telefono, pnuevoRegistro.telefonoAdicional, pnuevoRegistro.sucursal, pnuevoRegistro.genero, pnuevoRegistro.fechaNacimiento, pnuevoRegistro.contrasenna, pnuevoRegistro.estado),
                 aDatos = [objNuevoRegistro, objNuevoRegistro.sucursal],
                 aDatosVerificar = [objNuevoRegistro.cedula, objNuevoRegistro.sucursal];
 
@@ -25,7 +28,7 @@
 
                 if(exito){
                     let datosRepartidor = [objNuevoRegistro.cedula, objNuevoRegistro.sucursal, objNuevoRegistro.nombre];
-                    servicioRegistroRepartidor.agregarRepartidor(aDatos);
+                    servicioRepartidor.agregarRepartidor(aDatos);
                     $state.go('registrarLincencia', {datos: JSON.stringify(datosRepartidor)});
                     swal({
                         title: "Éxito",
@@ -49,7 +52,7 @@
 
         //_______funciones internas________
         function verificarRepartidor(paDatosVerificar){
-            let repartidoresLS = servicioRegistroRepartidor.retornarRepartidores(paDatosVerificar[1]),
+            let repartidoresLS = servicioRepartidor.retornarRepartidores(paDatosVerificar[1]),
             existente = false;
 
             for(let i=0; i<repartidoresLS.length; i++){

@@ -9,7 +9,7 @@
                     <label>Código de licencia: </label>
                     <input type="number" name="codigo" class="form-control" required ng-model="vm.nuevoRegistro.codigo">
 
-                    <div class="text-danger my-3" ng-messages="registrarLicencia.numero.$error">
+                    <div class="text-danger my-3" ng-messages="registrarLicencia.codigo.$error">
                         <p ng-message="required">* Campo requerido</p>
                     </div>
                 </div>
@@ -27,13 +27,13 @@
                     <label>Selecione tipo de licencia</label>
                     <select name="tipoLicencia" class="custom-select" required  ng-model="vm.nuevoRegistro.tipoLicencia">
                         <option value>Seleccione tipo</option>
-                        <option value="a1">A1 (motocicletas)</option>
-                        <option value="a2">A2 (motocicletas)</option>
-                        <option value="a3">A3 (motocicletas)</option>
-                        <option value="b1">B1 (Vehículo liviano)</option>
-                        <option value="b2">B2 (Transporte mercancías)</option>
-                        <option value="b3">B3 (Transporte mercancías)</option>
-                        <option value="b4">B4 (Transporte mercancías)</option>
+                        <option value="A1 (motocicletas)">A1 (motocicletas)</option>
+                        <option value="A2 (motocicletas)">A2 (motocicletas)</option>
+                        <option value="A3 (motocicletas)">A3 (motocicletas)</option>
+                        <option value="B1 (Vehículo liviano)">B1 (Vehículo liviano)</option>
+                        <option value="B2 (Transporte mercancías)">B2 (Transporte mercancías)</option>
+                        <option value="B3 (Transporte mercancías)">B3 (Transporte mercancías)</option>
+                        <option value="B4 (Transporte mercancías)">B4 (Transporte mercancías)</option>
                     </select>
 
                     <div class="text-danger my-3" ng-messages="registrarLicencia.tipoLicencia.$error">
