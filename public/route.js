@@ -18,16 +18,34 @@
       
       .state('registrarRapartidor', {
         url: '/registerDeliveryMan',
-        templateUrl: './components/registrarRepartidor/registrarRepartidor.view.html',
+        templateUrl: './components/repartidor/registrarRepartidor/registrarRepartidor.view.html',
         data: {
           pageTitle: 'Registrar repartidor | Correos CR'
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/registrarRepartidor/registrarRepartidor.controller.js')
+            return $ocLazyLoad.load('./components/repartidor/registrarRepartidor/registrarRepartidor.controller.js')
           }]
         },
         controller: 'controladorRegistrarRepartidor',
+        controllerAs: 'vm'
+      })
+      
+      .state('registrarLincencia', {
+        url: '/registerLicence',
+        templateUrl: './components/licencia/registrarLicencia/registrarLincencia.view.html',
+        data: {
+          pageTitle: 'Registrar licencia | Correos CR'
+        },
+        params: {
+          datos: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/licencia/registrarLicencia/registrarLincencia.controller.js')
+          }]
+        },
+        controller: 'controladorRegistrarLicencia',
         controllerAs: 'vm'
       });
 

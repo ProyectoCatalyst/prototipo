@@ -4,8 +4,8 @@
     .module('prototipo')
     .controller('controladorRegistrarRepartidor', controladorRegistrarRepartidor);
 
-    controladorRegistrarRepartidor.$inject = ['servicioRegistroRepartidor'];
-    function controladorRegistrarRepartidor(servicioRegistroRepartidor){
+    controladorRegistrarRepartidor.$inject = ['$stateParams', '$state', 'servicioRegistroRepartidor'];
+    function controladorRegistrarRepartidor($stateParams, $state, servicioRegistroRepartidor){
         let vm = this;
 
         vm.registrarRepartidor = (pnuevoRegistro) => {
@@ -24,14 +24,17 @@
                 let exito = verificarRepartidor(aDatosVerificar);
 
                 if(exito){
+                    let datosRepartidor = [objNuevoRegistro.cedula, objNuevoRegistro.sucursal, objNuevoRegistro.nombre];
                     servicioRegistroRepartidor.agregarRepartidor(aDatos);
-
+                    $state.go('registrarLincencia', {datos: JSON.stringify(datosRepartidor)});
                     swal({
                         title: "Éxito",
                         text: "Hemos registrado el repartidor",
                         icon: "success",
                         button: "Aceptar"
                     });
+
+
                 }else{
                     swal({
                         title: "Ya existe",
