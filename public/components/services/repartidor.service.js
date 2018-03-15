@@ -8,15 +8,17 @@
     servicioRepartidor.$inject = ['$q', '$http', '$log']
     function servicioRepartidor($q, $http, $log){
         let publicAPI = {
-            retornarRepartidores: _retornarRepartidores,
+            retornarRepartidoresSucursal: _retornarRepartidoresSucursal,
             agregarRepartidor: _agregarRepartidor,
             retornarTodosRepartidores: _retornarTodosRepartidores,
             retornarTodasLicencias: _retornarTodasLicencias,
-            registrarLicencia: _registrarLicencia
+            registrarLicencia: _registrarLicencia,
+            cambiarEstado: _cambiarEstado,
+            retornarLicencias: _retornarLicencias
         };
         return publicAPI
 
-        function _retornarRepartidores(psucursal){ // necesita recibir la sucursal que se ingresa en el form
+        function _retornarRepartidoresSucursal(psucursal){ // necesita recibir la sucursal que se ingresa en el form
             let repartidoresLS = JSON.parse(localStorage.getItem('repartidoresLS')),
                 repartidoresTemp = [];
 
@@ -44,7 +46,7 @@
         }
 
         function _agregarRepartidor(aDatos){
-            let repartidoresLS = _retornarRepartidores(aDatos[1]); // enviar valor del select con la sucursal a la cual se va a agregar
+            let repartidoresLS = _retornarRepartidoresSucursal(aDatos[1]); // enviar valor del select con la sucursal a la cual se va a agregar
             repartidoresLS.push(aDatos[0]);
             localStorage.setItem('repartidoresLS', JSON.stringify(repartidoresLS));
 
@@ -91,7 +93,7 @@
             let objLicenciaRegistrar = pdatosAgregar[0],
                 cedulaRepartidor = pdatosAgregar[1],
                 sucursalRepartidor = pdatosAgregar[2],
-                repartidoresLS = _retornarRepartidores(sucursalRepartidor);
+                repartidoresLS = _retornarRepartidoresSucursal(sucursalRepartidor);
 
             for(let i=0; i<repartidoresLS.length; i++){
                 if(repartidoresLS[i].getCedula() == cedulaRepartidor){
@@ -101,11 +103,53 @@
             console.log(repartidoresLS);
             actualizarLS(repartidoresLS);
         }
-        //______funciones del service_______
+
+        function _cambiarEstado(pdatos){
+            let repartidoresLS = _retornarRepartidoresSucursal(pdatos[1]),
+                licenciasRepartidor = [];
+
+            for(let i=0; i<repartidoresLS.length; i++){
+                if(repartidoresLS[i].getCedula() == pdatos[0]){
+                    licenciasRepartidor = repartidoresLS[i].getLicencias();
+                    for(let x=0; x<licenciasRepartidor.length; x++){
+                        if(licenciasRepartidor[x].getCodigo() == pdatos[2]){
+                            licenciasRepartidor[x].estado = !licenciasRepartidor[x].estado;
+                        }
+                    }
+                    repartidoresLS[i].licencia = licenciasRepartidor;
+                }
+            }
+            actualizarLS(repartidoresLS);
+        }
+
+        function _retornarLicencias(pdatos){
+            let repartidoresLS = _retornarRepartidoresSucursal(pdatos[1]),
+                licenciasDesactivadas = [],
+                licenciasActivas = [],
+                licenciasRepartidor = [],
+                licencias = [];
+
+            for(let i=0; i<repartidoresLS.length; i++){
+                if(repartidoresLS[i].getCedula() == pdatos[0]){
+                    licenciasRepartidor = repartidoresLS[i].getLicencias();
+                    for(let x=0; x<licenciasRepartidor.length; x++){
+                        if(!licenciasRepartidor[x].getEstado()){
+                            licenciasDesactivadas.push(licenciasRepartidor[x]);
+                        }else{
+                            licenciasActivas.push(licenciasRepartidor[x]);
+                        }
+                    }
+                }
+            }
+            licencias = [licenciasActivas, licenciasDesactivadas];
+            return licencias
+        }
+
+
+        //______funciones internas_________
 
         function actualizarLS(prepartidoresLS){
             localStorage.setItem('repartidoresLS', JSON.stringify(prepartidoresLS));
         }
-        //______funciones internas_________
     }
 })();

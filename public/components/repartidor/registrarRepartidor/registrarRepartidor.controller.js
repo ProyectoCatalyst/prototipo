@@ -52,7 +52,7 @@
 
         //_______funciones internas________
         function verificarRepartidor(paDatosVerificar){
-            let repartidoresLS = servicioRepartidor.retornarRepartidores(paDatosVerificar[1]),
+            let repartidoresLS = servicioRepartidor.retornarRepartidoresSucursal(paDatosVerificar[1]),
             existente = false;
 
             for(let i=0; i<repartidoresLS.length; i++){

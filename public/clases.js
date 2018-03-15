@@ -38,4 +38,7 @@ class Licencia{
   getCodigo(){
     return this.codigo
   }
+  getEstado(){
+    return this.estado
+  }
 }
