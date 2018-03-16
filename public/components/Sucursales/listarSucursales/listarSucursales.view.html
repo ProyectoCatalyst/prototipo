@@ -1,0 +1,27 @@
+<main class="container-fluid">
+    <section class="row">
+        <div class="col-md-12 mt-5">
+            <h1 class="text-center">Sucursales</h1>
+            
+            <table class="table mt-5">
+                <thead class="thead">
+                    <tr>
+                        <th ="col">Nombre</th>
+                        <th ="col">Locación</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tbody>
+                        <tr ng-repeat="sucursales in vm.ListarSucursales">
+                            <td>{{sucursales.Nombre}}</td>
+                            <td>{{sucursales.Locación}}</td>
+                            <td>
+                            </td>
+                        </tr>
+                    </tbody>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
