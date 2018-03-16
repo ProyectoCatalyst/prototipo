@@ -14,23 +14,28 @@
         data: {
           pageTitle: 'Landing Page | Inicio'
         }
-      });
+      })
 
-      // .state('', {
-      //   url: '',
-      //   templateUrl: '',
-      //   data: {
-      //     pageTitle: 'lorem | lorem'
-      //   },
-      //   resolve: {
-      //     load: ['$ocLazyLoad', ($ocLazyLoad) => {
-      //       return $ocLazyLoad.load('')
-      //     }]
-      //   },
-      //   controller: '',
-      //   controllerAs: 'vm'
-      // })
+      //.state('registrarSucursal', {
+         //url: '/registerBranchOffice',
+         //templateUrl: './components/sucursales/registrarSucursal/registrarSucursal.view.html',
+         //data: {
+           //pageTitle: 'Listar sucursales | prototipo'
+         //},
+         //resolve: {
+           //load: ['$ocLazyLoad', ($ocLazyLoad) => {
+             //return $ocLazyLoad.load//('./components/sucursales/registrarSucursal/registrarSucursal.controller.js')
+           //}]
+         //},
+         /*controller: 'controladorRegistrarSucursal',
+         controllerAs: 'vm'*/
+       //})
+       ;
+
 
     $urlRouterProvider.otherwise('/');
-  };
+  }
+  
+  
+  ;
 })();

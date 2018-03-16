@@ -1,0 +1,45 @@
+<section class="row">
+  <div class="container">
+    <form class="row" name="frmRegistroSucursal" ng-submit="vm.registrarSucursal(vm.SucursalNueva)" autocomplete="off">
+      <div class="col-4">
+        <form ng-submit="vm.registrarSucursal(vm.SucursalNueva)">
+          
+          <div class="form-group">
+            <label for="txtCodigoSucursal">Código sucursal: </label>
+            <input type="number" class="form-control" ng-model="vm.SucursalNueva.codigoSucursal" id="txtCodigoSucursal" required>
+          </div>
+
+          <div class="form-group">
+            <label for="txtNombreSucursal">Nombre sucursal: </label>
+            <input type="text" class="form-control" ng-model="vm.SucursalNueva.nombreSucursal" id="txtNombreSucursal" required>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Registrar sucursal</button>
+
+        </form>
+      </div>
+    </form><!-- fin formulario sucursal-->
+  </div>
+
+  <div class="col-9">
+    <table class="table">
+      <thead>
+          <tr>
+            <th>Código de sucursal</th>
+            <th>Nombre de sucursal</th>
+          </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="sucursal in vm.listaSucursales">
+          <td>{{sucursal.codigoSucursal}}</td>
+          <td>{{sucursal.nombreSucursal}}</td>
+
+          <td>
+            <button type="button" class="btn btn-secondary" ng-click="vm.actualizarSucursal(sucursal)">Acciones</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</section>
