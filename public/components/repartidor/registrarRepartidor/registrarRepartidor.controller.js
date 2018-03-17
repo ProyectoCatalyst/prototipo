@@ -5,10 +5,12 @@
     .controller('controladorRegistrarRepartidor', controladorRegistrarRepartidor);
 
     controladorRegistrarRepartidor.$inject = ['$stateParams', '$state', 'servicioRepartidor'];
+
     function controladorRegistrarRepartidor($stateParams, $state, servicioRepartidor){
         let vm = this;
 
         vm.registrarRepartidor = (pnuevoRegistro) => {
+
             if(!(pnuevoRegistro.contrasenna == pnuevoRegistro.confirmarContrasenna)){
                 swal({
                     title: "Las contrasenas...",
@@ -17,10 +19,15 @@
                     button: "Aceptar"
                 });
             }else{
+
                 if(!pnuevoRegistro.estado){
                     pnuevoRegistro.estado = true;
                 }
-                let objNuevoRegistro = new Repartidor(pnuevoRegistro.cedula, pnuevoRegistro.foto, pnuevoRegistro.nombre, pnuevoRegistro.segundoNombre, pnuevoRegistro.primerApellido, pnuevoRegistro.segundoApellido, pnuevoRegistro.correo, pnuevoRegistro.telefono, pnuevoRegistro.telefonoAdicional, pnuevoRegistro.sucursal, pnuevoRegistro.genero, pnuevoRegistro.fechaNacimiento, pnuevoRegistro.contrasenna, pnuevoRegistro.estado),
+                if(!pnuevoRegistro.razonDesact){
+                    pnuevoRegistro.razonDesact = ''
+                }
+
+                let objNuevoRegistro = new Repartidor(pnuevoRegistro.cedula, pnuevoRegistro.foto, pnuevoRegistro.nombre, pnuevoRegistro.segundoNombre, pnuevoRegistro.primerApellido, pnuevoRegistro.segundoApellido, pnuevoRegistro.correo, pnuevoRegistro.telefono, pnuevoRegistro.telefonoAdicional, pnuevoRegistro.sucursal, pnuevoRegistro.genero, pnuevoRegistro.fechaNacimiento, pnuevoRegistro.contrasenna, pnuevoRegistro.estado, pnuevoRegistro.razonDesact),
                 aDatos = [objNuevoRegistro, objNuevoRegistro.sucursal],
                 aDatosVerificar = [objNuevoRegistro.cedula, objNuevoRegistro.sucursal];
 
@@ -29,15 +36,13 @@
                 if(exito){
                     let datosRepartidor = [objNuevoRegistro.cedula, objNuevoRegistro.sucursal, objNuevoRegistro.nombre];
                     servicioRepartidor.agregarRepartidor(aDatos);
-                    $state.go('registrarLincencia', {datos: JSON.stringify(datosRepartidor)});
+                    $state.go('listarTodosLosRepartidores');
                     swal({
                         title: "Éxito",
                         text: "Hemos registrado el repartidor",
                         icon: "success",
                         button: "Aceptar"
                     });
-
-
                 }else{
                     swal({
                         title: "Ya existe",
@@ -52,10 +57,12 @@
 
         //_______funciones internas________
         function verificarRepartidor(paDatosVerificar){
+
             let repartidoresLS = servicioRepartidor.retornarRepartidoresSucursal(paDatosVerificar[1]),
             existente = false;
 
             for(let i=0; i<repartidoresLS.length; i++){
+
                 if(repartidoresLS[i].cedula == paDatosVerificar[0]){
                     existente = true;
                 }
@@ -63,5 +70,4 @@
             return !existente
         }
     }
-
 })();

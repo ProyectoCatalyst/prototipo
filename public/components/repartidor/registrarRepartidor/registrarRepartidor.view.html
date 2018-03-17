@@ -1,10 +1,15 @@
 <main class="container">
+
     <section class="row">
+
         <section class="col-md-12 my-5">
+
             <h1 class="text-center">Registrar repartidor</h1>
 
             <form name="registrarRepartidor" class="row" novalidate ng-submit="vm.registrarRepartidor(vm.nuevoRegistro)">
+
                 <div class="col-md-6">
+
                         <div class="form-group">
                             <label>Cedula: </label>
                             <input type="number" name="cedula" class="form-control" required ng-model="vm.nuevoRegistro.cedula">
@@ -61,6 +66,7 @@
                                     <p ng-message="required">* Campo requerido</p>
                             </div>
                         </div>
+                        
                     </div>
 
                     <div class="col-md-6">
@@ -93,12 +99,12 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Seleccione un género</label>
+                            <label>Seleccione un sexo</label>
                             <select name="genero" class="custom-select" required  ng-model="vm.nuevoRegistro.genero">
                                 <option value>Seleccione</option>
                                 <option value="masculino">Masculino</option>
                                 <option value="femenino">Femenino</option>
-                                <option value="diverso">Diverso</option>
+                                <option value="diverso">Otro</option>
                             </select>
 
                             <div class="text-danger my-3" ng-messages="registrarRepartidor.genero.$error">
@@ -132,12 +138,17 @@
                                     <p ng-message="required">* Campo requerido</p>
                             </div>
                         </div>
+
                 </div>
 
                 <div class="col-md-12">
                     <button type="submit" class="btn btn-primary" ng-disabled="registrarRepartidor.$invalid">Registrar</button>
                 </div>
+
             </form>
+
         </section>
+
     </section>
+    
 </main>

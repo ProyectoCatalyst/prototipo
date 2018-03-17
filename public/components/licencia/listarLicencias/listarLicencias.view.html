@@ -1,6 +1,9 @@
 <main class="container-fluid">
+
   <section class="row">
+
     <div class="col-md-12">
+      
       <h1 class="text-center my-5">Lista de licencias de {{vm.nombreRepartidor}}</h1>
 
       <table class="table">
@@ -10,7 +13,6 @@
             <th scope="thead">Fecha de vencimiento</th>
             <th scope="thead">Tipo de licencia</th>
             <th scope="thead">Modificar</th>
-            <th scope="thead">Desactivar</th>
           </tr>
         </thead>
         <tbody>
@@ -20,9 +22,6 @@
             <td>{{licencias.tipo}}</td>
             <td>
               <button type="button" class="btn btn-primary">Modificar</button>
-            </td>
-            <td>
-              <button type="button" class="btn btn-danger" ng-click="vm.cambiarEstado(licencias)">Desactivar</button>
             </td>
           </tr>
         </tbody>
@@ -46,11 +45,14 @@
             <td>{{licencias.fechaVencimiento | date: 'dd-MM-yyyy'}}</td>
             <td>{{licencias.tipo}}</td>
             <td>
-              <button type="button" class="btn btn-success" ng-click="vm.cambiarEstado(licencias)">Reactivar</button>
+              <button type="button" class="btn btn-success" ng-click="vm.actualizarInfo(licencias)">Actualizar informacion</button>
             </td>
           </tr>
         </tbody>
       </table>
+
     </div>
+
   </section>
+
 </main>

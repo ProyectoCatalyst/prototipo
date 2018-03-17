@@ -2,43 +2,75 @@
   'use strict'
 
   angular
-  .module('prototipo')
-  .controller('controladorListarLicencias', controladorListarLicencias);
+    .module('prototipo')
+    .controller('controladorListarLicencias', controladorListarLicencias);
 
   controladorListarLicencias.$inject = ['$stateParams', '$state', 'servicioRepartidor'];
-  function controladorListarLicencias($stateParams, $state, servicioRepartidor){
-    if(!$stateParams.datos){
-      $state.go('registrarRapartidor');
+  function controladorListarLicencias($stateParams, $state, servicioRepartidor) {
+
+    if (!$stateParams.datos) {
+      $state.go('listarTodosLosRepartidores');
     }
+
     let vm = this;
+
     let datosRepartidor = JSON.parse($stateParams.datos); // cedula, sucursal, nombre
+      // let datosRepartidor = [402350610, 'sucursal', 'Isaac']
     vm.nombreRepartidor = datosRepartidor[2];
     vm.listarLicenciasActivas = listaLicenciasActivas();
     vm.listarLicenciasDesactivadas = listarLicenciasDesactivadas();
+
     vm.agregarLicencia = () => {
-      $state.go('registrarLincencia', {datos: JSON.stringify(datosRepartidor)});
+      $state.go('registrarLincencia', { datos: JSON.stringify(datosRepartidor) });
     }
-    vm.cambiarEstado = (pdatosLicencia) => {
-      let datos = [datosRepartidor[0], datosRepartidor[1], pdatosLicencia.codigo];
-
-      servicioRepartidor.cambiarEstado(datos);
-      $state.reload();
-    }
-
 
     // ________funciones internas__________
-    function listaLicenciasActivas(){
+    function listaLicenciasActivas() {
       let datos = [datosRepartidor[0], datosRepartidor[1]],
-      // me retorna los repartidores que existen en su misma sucursal, ahora busco el repartidor cuya licencia coincide con la recibida de la vista anterior y llamo las licencias de el en el array licenciasRepartidor
-          licenciasActivas = servicioRepartidor.retornarLicencias(datos);
-      return licenciasActivas[0]
+          licenciasActivas;
+        
+      let todasLasLicencias = servicioRepartidor.retornarLicencias(datos),
+          licenciasVencidas = filtrarLicenciasVencidas(todasLasLicencias); // funcion que me retorna las licencias cuyo fecha de vencimiento es menor a la fecha actual
+
+          for(let i=0; i<licenciasVencidas.length; i++){
+            cambiarEstado(licenciasVencidas[i]); // recorro el objeto cuyas licencias estan vencidas y cambio su estado, esta funcion a su vez va a actualizar el LS
+          }
+
+          licenciasActivas = servicioRepartidor.retornarLicencias(datos); // llamar funcion que toma los datos del LS con el estado actualizado y en la linea 36 y obtiene un array con licencias activas en posicion 0 y licencias vencidas en la posicion 1
+
+      return licenciasActivas[0]; // retorno licencias activas para llenar la tabla
     }
 
-    function listarLicenciasDesactivadas(){
+    function listarLicenciasDesactivadas() {
       let datos = [datosRepartidor[0], datosRepartidor[1]],
           licenciasDesactivadas = servicioRepartidor.retornarLicencias(datos);
 
-      return licenciasDesactivadas[1]
+      return licenciasDesactivadas[1];
+    }
+
+    function filtrarLicenciasVencidas(ptodasLasLicencias){
+      let hoy = new Date(),
+      licenciasActivas = ptodasLasLicencias[0],
+      objFecha,
+      licenciasVencidas = [];
+
+      hoy.setHours(0,0,0,0);
+
+      for(let i=0; i<licenciasActivas.length; i++){
+        objFecha = new Date(licenciasActivas[i].fechaVencimiento);
+        if(hoy>=objFecha){
+          licenciasVencidas.push(licenciasActivas[i]);
+        }
+      }
+
+      return licenciasVencidas
+
+    }
+
+    function cambiarEstado(pdatosLicencia){
+      let datos = [datosRepartidor[0], datosRepartidor[1], pdatosLicencia.codigo];
+
+      servicioRepartidor.cambiarEstadoLicencia(datos);
     }
 
   }

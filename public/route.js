@@ -65,6 +65,39 @@
         },
         controller: 'controladorListarLicencias',
         controllerAs: 'vm'
+      })
+      
+      .state('listarTodosLosRepartidores', {
+        url: '/listAllDeliveryMan',
+        templateUrl: './components/repartidor/listarTodosLosRepartidores/listarTodosLosRepartidores.view.html',
+        data: {
+          pageTitle: 'Lista todos repartidores | Correos CR'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/repartidor/listarTodosLosRepartidores/listarTodosLosRepartidores.controller.js')
+          }]
+        },
+        controller: 'controladorListaTodosRepartidores',
+        controllerAs: 'vm'
+      })
+      
+      .state('perfilRepartidor', {
+        url: '/deliverManProfile',
+        templateUrl: './components/repartidor/perfilRepartidor/perfilRepartidor.view.html',
+        data: {
+          pageTitle: 'Perfil repartidor | Correos CR'
+        },
+        params: {
+          datos: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/repartidor/perfilRepartidor/perfilRepartidor.controller.js')
+          }]
+        },
+        controller: 'controladorPerfilRepartidor',
+        controllerAs: 'vm'
       });
 
       // .state('', {

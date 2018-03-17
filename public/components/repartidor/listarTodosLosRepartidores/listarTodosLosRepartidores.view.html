@@ -1,0 +1,72 @@
+<main class="container-fluid">
+
+  <section class="row">
+
+    <div class="col-md-12">
+
+      <h1 class="text-center my-5">Lista de todos los repartidores</h1>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Cédula</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Primer apellido</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Sucursal</th>
+            <th scope="col">Fecha de nacimiento</th>
+            <th scope="col">Ver perfil</th>
+            <th scope="col">Desactivar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="repartidores in vm.listarActRepartidores">
+            <td>{{repartidores.cedula}}</td>
+            <td>{{repartidores.nombre}}</td>
+            <td>{{repartidores.primerApellido}}</td>
+            <td>{{repartidores.correo}}</td>
+            <td>{{repartidores.sucursal}}</td>
+            <td>{{repartidores.nacimiento | date: 'dd-MM-yyyy'}}</td>
+            <td>
+              <button type="button" class="btn btn-primary" ng-click="vm.verPerfil(repartidores)">Ver perfil</button>
+            </td>
+            <td>
+              <button type="button" class="btn btn-danger" ng-click="vm.cambiarEstado(repartidores.cedula)">Desactivar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <button type="button" class="btn btn-success my-4" ng-click="vm.agregarRepartidor()">Agregar repartidor</button>
+
+      <h3 class="text-center my-4">Lista de repartidores desactivados</h3>
+      <table class="table">
+          <thead>
+              <tr>
+                <th scope="col">Cédula</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Primer apellido</th>
+                <th scope="col">Correo</th>
+                <th scope="col">Sucursal</th>
+                <th scope="col">Fecha de nacimiento</th>
+                <th scope="col">Razón de desactivación</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="repartidores in vm.listarDesactRepartidores">
+                <td>{{repartidores.cedula}}</td>
+                <td>{{repartidores.nombre}}</td>
+                <td>{{repartidores.primerApellido}}</td>
+                <td>{{repartidores.correo}}</td>
+                <td>{{repartidores.sucursal}}</td>
+                <td>{{repartidores.nacimiento | date: 'dd-MM-yyyy'}}</td>
+                <td>{{repartidores.razonDesact}}</td>
+              </tr>
+            </tbody>
+      </table>
+    
+    </div>
+ 
+  </section>
+
+</main>

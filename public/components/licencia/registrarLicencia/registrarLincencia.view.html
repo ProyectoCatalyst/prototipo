@@ -4,7 +4,9 @@
           <h1 class="text-center">Registrar licencia a {{vm.nombreRepartidor}}</h1>
 
           <form name="registrarLicencia" class="row" novalidate ng-submit="vm.registrarLicencia(vm.nuevoRegistro)">
+
               <div class="col-md-4">
+
                 <div class="form-group">
                     <label>Código de licencia: </label>
                     <input type="number" name="codigo" class="form-control" required ng-model="vm.nuevoRegistro.codigo">
@@ -40,12 +42,17 @@
                       <p ng-message="required">* Campo requerido</p>
                     </div>
                 </div>
+
               </div>
 
               <div class="col-md-12">
                   <button type="submit" class="btn btn-primary" ng-disabled="registrarLicencia.$invalid">Registrar</button>
               </div>
+
           </form>
+
       </section>
+
   </section>
+  
 </main>
