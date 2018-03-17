@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="col-4">
+      <form ng-submit="vm.registrarEncargadoSucursal(vm.nuevoEncargadoSucursal)">
+
+          <div class="form-group">
+              <label for="Nombre">Nombre:</label>
+              <input type="" class="form-control" id="txtNombreEncargadoSucursal" ng-model="vm.nuevoEncargadoSucursal.nombre" required>
+          </div>
+
+          <div class="form-group">
+              <label for="SegundoNombre">Segundo Nombre:</label>
+              <input type="" class="form-control" id="txtSegundoNomEncargadoSucursal" ng-model="vm.nuevoEncargadoSucursal.segundoNombre">
+          </div>
+
+          <div class="form-group">
+              <label for="PrimerApellido">Primer Apellido:</label>
+              <input type="" class="form-control" id="txtApellidoEncargadoSucursal" ng-model="vm.nuevoEncargadoSucursal.primerApellido" required>
+          </div>
+
+          <div class="form-group">
+              <label for="SegundoNombre">Segundo Apellido:</label>
+              <input type="" class="form-control" id="txtSegundoNomEncargadoSucursal" ng-model="vm.nuevoEncargadoSucursal.segundoApellido" >
+          </div>
+
+          <div class="form-group">
+              <label for="Cedula">Cédula:</label>
+              <input type="text" class="form-control" ng-model="vm.nuevoEncargadoSucursal.cedula" pattern="[0-9]+" id="txtCedula " required>
+          </div>
+
+          <div class="form-group">
+              <label for="txtFecha">Fecha de Nacimiento</label>
+              <input type="date" class="form-control" ng-model="vm.nuevoEncargadoSucursal.fecha" id="txtFecha" required>
+          </div>
+
+          <div class="form-group">
+              <label for="txtGenero">Género</label>
+            <select class="custom-select" ng-model="vm.nuevoEncargadoSucursal.genero" id="txtGenero" required>
+              <option value="Femenino">Femenino</option>
+              <option value="Masculino2">Masculino</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+              <label for="Ubicación">Úbicación exacta:</label>
+              <input type="text" class="form-control" ng-model="vm.nuevoEncargadoSucursal.direccion" id="txtDireccion" required>
+          </div>
+
+          <div class="form-group">
+            <label for="txtSucursal">Sucursal</label>
+          <select class="custom-select" ng-model="vm.nuevoEncargadoSucursal.sucursal" id="txtSucursal" required>
+            <option value="SanJose">San José</option>
+            <option value="Cartago">Cartago</option>
+            <option value="Heredia">Heredia</option>
+            <option value="Alajuela">Alajuela</option>
+            <option value="Limon">Limón</option>
+            <option value="Puntarenas">Puntarenas</option>
+          </select>
+        </div>
+      
+
+
+          <button type="submit" class="btn btn-primary">Registrar Encargado de Aduana</button>
+      </form>
+  </div>
+</div>

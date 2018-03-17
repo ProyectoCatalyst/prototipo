@@ -1,0 +1,87 @@
+<main id="registroEncargadoAduanas">
+    <div class="container">
+        <div class=" col-4">
+            <form ng-submit="vm.registrarEncargadoAduana(vm.nuevoEncargadoAduana)">
+
+                <h1 id="tituloPrincipal">Ingrese los siguientes datos</h1>
+
+                <div class="form-group">
+                    <label for="Nombre">Nombre:</label>
+                    <input type="" class="form-control" id="txtNombreEncargadoAduana" ng-model="vm.nuevoEncargadoAduana.nombre" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="SegundoNombre">Segundo Nombre:</label>
+                    <input type="" class="form-control" id="txtSegundoNomEncargadoAduana" ng-model="vm.nuevoEncargadoAduana.segundoNombre">
+                </div>
+
+                <div class="form-group">
+                    <label for="PrimerApellido">Primer Apellido:</label>
+                    <input type="" class="form-control" id="txtApellidoEncargadoAduana" ng-model="vm.nuevoEncargadoAduana.apellido" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="SegundoNombre">Segundo Apellido:</label>
+                    <input type="" class="form-control" id="txtSegundoApellidoEncargadoAduana" ng-model="vm.nuevoEncargadoAduana.segundoApellido">
+                </div>
+
+                <div class="form-group">
+                    <label for="SegundoNombre">Cédula:</label>
+                    <input type="text" class="form-control" ng-model="vm.nuevoEncargadoAduana.cedula" pattern="[0-9]+" id="txtCedula " required>
+                </div>
+
+                <div class="form-group">
+                    <label for="txtFecha">Fecha de Nacimiento</label>
+                    <input type="date" class="form-control" ng-model="vm.nuevoEncargadoAduana.fecha" id="txtFecha" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="txtGenero">Género</label>
+                    <select class="custom-select" ng-model="vm.nuevoEncargadoAduana.genero" id="txtGenero" required>
+                        <option value="">Seleccione género</option>
+                        <option value="Femenino">Femenino</option>
+                        <option value="Masculino  ">Masculino</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="txtProvincia">Provincia</label>
+                    <select id="txtProvincia" ng-options="provincia as provincia.name for provincia in vm.provincias track by provincia._id" ng-change="vm.rellenarCantones(vm.nuevoEncargadoAduana.provincia._id)"  ng-model="vm.nuevoEncargadoAduana.provincia" class="custom-select" required>
+                        <option value="">Seleccione una Provincia</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="txtCanton">Cantón</label>
+                    <select id="txtCanton" ng-options="canton as canton.name for canton in vm.cantones track by canton._id" ng-change="vm.rellenarDistritos(vm.nuevoEncargadoAduana.canton._id)"  ng-model="vm.nuevoEncargadoAduana.canton" class="custom-select" required>
+                        <option value="">Seleccione un Canton</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="txtDistrito">Distrito</label>
+                    <select id="txtDistrito" ng-options="distrito as distrito.name for distrito in vm.distritos track by distrito._id" ng-model="vm.nuevoEncargadoAduana.distrito" class="custom-select" required>
+                        <option value="">Seleccione un Distrito</option>
+                    </select>
+                
+                </div>
+
+                <div class="form-group">
+                    <label for="Ubicación">Úbicación exacta:</label>
+                    <input type="text" class="form-control" ng-model="vm.nuevoEncargadoAduana.direccion" id="txtDireccion" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="txtEmail">Correo electrónico</label>
+                    <input type="email" class="form-control" ng-model="vm.nuevoEncargadoAduana.correo" id="txtEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="txtContrasenna">Contraseña</label>
+                    <input type="password" class="form-control" ng-model="vm.nuevoEncargadoAduana.contrasenna" id="txtContrasenna" required>
+                </div>
+
+                <button type="submit" class=" btn btn-primary" id="bntRegistrar">Registrar Encargado de Aduana</button>
+            </form>
+        </div>
+    </div>
+</main>

@@ -16,36 +16,54 @@
         }
       })
 
-      .state('RegistrarEncargadoAduana', {
-       url: '/registroEncargadoAduana',
-       templateUrl:'./components/usurios/administrador/registrarEncargadoAduana/registrarEncargadoAduana.view.html', 
-      
-      resolve: {
-        load: ['$ocLazyLoad.load', ($oclazyLoad)=>{
-          return $ocLazyLoad.load('./components/usuarios/administrador/registrarEncargadoAduana/registrarEncargadoAduana.controller.js')
-        }]
-      },
-      data: {
-        pageTitle: 'Encargado Aduanas | Registrar'
-      },
-      controller: '',
-      controllerAs: 'vm'
-      })
-
-      .state('registrarEncargadoSucursal', {
-        url: '/registroEncargadoSucursal',
-        templateUrl: './components/usurios/administrador/registrarEncargadoSucursal/registrarEncargadoSucursal.view.html',
+      .state('main', {
+        url: '/main',
+        templateUrl: './components/main/main.view.html',
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/usurios/administrador/registrarEncargadoSucursal/registrarEncargadoSucursal.controller.js')
+            return $ocLazyLoad.load('./components/main/main.controller.js')
           }]
         },
-        data:{
+        data: {
+          pageTitle: 'Inicio | Correos de Costa Rica'
+        },
+        controller: '',
+        controllerAs: 'vm'
+      })
+
+      .state('main.registrarEncargadoAduana', {
+        url: '/registroEncargadoAduana',
+        templateUrl: './components/usuarios/encargadoAduanas/registrarEncargadoAduanas/registrarEncargadoAduana.view.html',
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/encargadoAduanas/registrarEncargadoAduanas/registrarEncargadoAduanas.controller.js')
+          }]
+        },
+        data: {
+          pageTitle: 'Encargado Aduanas | Registrar'
+        },
+        controller: 'controladorRegistroEncargadoAduana',
+        controllerAs: 'vm'
+      })
+
+      .state('main.registrarEncargadoSucursal', {
+        url: '/registroEncargadoSucursal',
+        templateUrl: './components/usuarios/encargadoSucursal/registrarEncargadoSucursal/registrarEncargadoSucursal.view.html',
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/encargadoSucursal/registrarEncargadoSucursal/registrarEncargadoSucursal.controller.js')
+          }]
+        },
+        data: {
           pageTitle: 'Encargado Sucursal | Regitrar'
         },
-        controller: 'controladorRegistrarUsuario',
+        controller: 'controladorRegistroEncargadoSucursal',
         controllerAs: 'vm'
-      });
+      })
+      
+      ;
+
+
 
 
 
