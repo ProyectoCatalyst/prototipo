@@ -1,0 +1,55 @@
+<div ng-include="'./components/includes/_header.html'"></div>
+<section class="row">
+  <div class="container">
+    <form class="row" name="frmRegistroConvenio" ng-submit="vm.registrarConvenio(vm.ConvenioNuevo)"  autocomplete="off">
+    <div class="col-4">
+      <form ng-submit="vm.registrarConvenio(vm.ConvenioNuevo)">
+          <div class="form-group">
+            <label for="txtCodigo">Código del convenio: </label>
+            <input type="number" class="form-control" ng-model="vm.ConvenioNuevo.codigo" id="txtCodigo" required>
+          </div>
+          <div class="form-group">
+            <label for="txtNombre">Nombre del convenio:</label>
+            <input type="text" class="form-control" ng-model="vm.ConvenioNuevo.nombre" id="txtNombre" required>
+          </div>
+          <div class="form-group">
+            <label for="txtDescripcion">Descripción:</label>
+            <input type="text" class="form-control" ng-model="vm.ConvenioNuevo.descripcion" id="txtDescripcion" required>
+          </div>
+          <div class="form-group">
+            <label for="txtInstitucion">Institución:</label>
+            <input type="text" class="form-control" ng-model="vm.ConvenioNuevo.institucion" id="txtInstitucion" required>
+          </div>
+          <div class="form-group">
+            <label for="txtCosto">Costo:</label>
+            <input type="number" class="form-control" ng-model="vm.ConvenioNuevo.costo" id="txtCosto" required>
+          </div>
+
+         
+        
+        
+          <button type="submit" class="btn btn-primary" ng-click="vm.registrarConvenio(vm.ConvenioNuevo)">Registrar Convenio</button>
+      </form>
+    </div>
+
+
+    <div class="col-9">
+      <table class="table">
+        <thead>
+            <tr>
+              <th>Código</th>
+              <th>Nombre</th>
+              <th>Descripción</th>
+              <th>Institución</th>
+              <th>Costo</th>
+            </tr>
+        </thead>
+
+      </table>
+    </div>
+
+</section>
+
+
+
+

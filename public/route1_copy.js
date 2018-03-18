@@ -15,21 +15,22 @@
           pageTitle: 'Landing Page | Inicio'
         }
       })
-
       .state('registrarConvenio', {
         url: '/registrarConvenio',
         templateUrl: './components/convenio/registrarConvenio/registrarConvenio.view.html',
-        data:{
-          pageTitle: 'Registro de Convenios | Correos de Costa Rica'
-        },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
             return $ocLazyLoad.load('./components/convenio/registrarConvenio/registrarConvenio.controller.js')
           }]
         },
+        data:{
+          pageTitle: 'Registro de Convenios | Correos de Costa Rica'
+        },
         controller: 'controladorRegistrarConvenio',
         controllerAs: 'vm'
-      });
+      })
+    
+    ;
 
 
     $urlRouterProvider.otherwise('/');
