@@ -63,7 +63,7 @@
       
       console.log(objNuevoCliente);
       
-      let registro = servicioUsuarios.agregarCliente(objNuevoCliente);
+      let registro = servicioUsuarios.agregarUsuario(objNuevoCliente);
 
       if(registro == true){
         swal({

@@ -63,7 +63,7 @@ controladorRegistroEncargadoAduana.$inject = ['$http', '$stateParams', '$state',
    
         console.log(objEncargadoAduanaTem); 
       
-        let registro = servicioUsuarios.agregarEncargadoAduana(objEncargadoAduanaTem);
+        let registro = servicioUsuarios.agregarUsuario(objEncargadoAduanaTem);
   
         if (registro == true) {
           swal({

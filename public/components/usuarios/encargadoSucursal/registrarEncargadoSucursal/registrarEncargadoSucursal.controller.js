@@ -65,7 +65,7 @@
 
       console.log(objEncargadoSucursalTem);
 
-      let registro = servicioUsuarios.agregarEncargadoSucursal(objEncargadoSucursalTem);
+      let registro = servicioUsuarios.agregarUsuario(objEncargadoSucursalTem);
 
       if (registro == true) {
         swal({
