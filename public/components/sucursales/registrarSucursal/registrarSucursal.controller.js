@@ -1,53 +1,105 @@
-(()=>{
+(() => {
   'use strict';
-  angular 
+  angular
     .module('prototipo')
     .controller('controladorRegistrarSucursal', controladorRegistrarSucursal);
 
-    controladorRegistrarSucursal.$inject = ['$stateParams','$state','$http','servicioSucursales'];
+  controladorRegistrarSucursal.$inject = ['$stateParams', '$state', '$http', 'servicioSucursales'];
 
-    function controladorRegistrarSucursal($stateParams,$state,$http,servicioSucursales){
-      let vm = this;
+  function controladorRegistrarSucursal($stateParams, $state, $http, servicioSucursales) {
+    let vm = this;
 
-      vm.SucursalNueva = {};
-      vm.listaSucursales = servicioSucursales.retornarSucursal();
+    vm.provincias = $http({
+      method: 'GET',
+      url: './provincias.json'
+    }).then(function (success) {
+      vm.provincias = success.data
+    }, function (error) {
+      console.log("Ocurrió un error provincia" + error);
+    });//provincias
 
+    vm.rellenarCantones = (pidProvincia) => {
+      vm.cantones = $http({
+        method: 'GET',
+        url: './cantones.json'
+      }).then((success) => {
+        let cantones = [];
+        for (let i = 0; i < success.data.length; i++) {
+          if (pidProvincia == success.data[i].idProvincia) {
+            cantones.push(success.data[i]);
+          }
+        }
+        vm.cantones = cantones;
+      }, (error) => {
+        console.log("Ocurrió un error canton" + error.data)
+      });
+    }//cantones
+
+    vm.rellenarDistrito = (pidCanton) => {
+      vm.distritos = $http({
+        method: 'GET',
+        url: './distritos.json'
+      }).then((success) => {
+        let distritos = [];
+        for (let i = 0; i < success.data.length; i++) {
+          if (pidCanton == success.data[i].idCanton) {
+            distritos.push(success.data[i]);
+          }
+        }
+        vm.distritos = distritos;
+      }, (error) => {
+        console.log("Ocurrió un error distrito " + error.data)
+      });
+    }//distrito
+
+
+    vm.SucursalNueva = {};
+    vm.listaSucursales = servicioSucursales.retornarSucursal();
+
+    listarSucursales();
+    vm.registrarSucursal = (psucursalNueva) => {
+      console.log(psucursalNueva);
+      let objNuevaSucursal = new Sucursal(psucursalNueva.codigoSucursal, psucursalNueva.nombreSucursal, psucursalNueva.provincia.name, psucursalNueva.canton.name, psucursalNueva.distrito.name, psucursalNueva.estadoSucursal);
+
+      console.log('objeto con sucursal');
+      console.log(objNuevaSucursal);
+
+      let codigoValidado = servicioSucursales.agregarSucursal(objNuevaSucursal);
+
+      if (codigoValidado == true) {
+        swal({
+          title: "Registro exitoso",
+          text: "Sucursal registrado correctametne",
+          icon: "success",
+          button: "Aceptar"
+        });
+      } else {
+        swal({
+          title: "Registro fallido",
+          text: "La sucursal que intenta registrar ha sido ingresada anteriormente",
+          icon: "success",
+          button: "Aceptar"
+        });
+      }//fin else
+
+      vm.SucursalNueva = null;
       listarSucursales();
-      vm.registrarSucursal = (psucursalNueva) =>{
-        console.log(psucursalNueva);
-        let objNuevaSucursal = new Sucursal(psucursalNueva.codigoSucursal, psucursalNueva.nombreSucursal);
 
-        console.log('objeto con sucursal');
-        console.log(objNuevaSucursal);
+    }// fin vm.registrarSucursal
 
-        let codigoValidado = servicioSucursales.agregarSucursal(objNuevaSucursal);
+    vm.editarSucursal = (psucursal) => {
+      $state.go('editarSucursal', { objSucursal: JSON.stringify(psucursal) });
+    }// fin Editar sucursal
 
-        if(codigoValidado == true){
-          swal({
-            title: "Registro exitoso",
-            text: "Sucursal registrado correctametne",
-            icon: "Aceptar"
-          });
-        }else{
-          swal({
-            title: "Registro fallido",
-            text: "La sucursal que intenta registrar ha sido ingresada anteriormente",
-            icon: "Aceptar"
-          });
-        }//fin else
+    vm.listarSucursales = () => {
+      $state.go('listarSucursales')
+  }
+  
+  function listarSucursales() {
+    vm.listaSucursales = servicioSucursales.retornarSucursal();
+  }// fin listar Sucursales
 
-        vm.SucursalNueva = null;
-        listarSucursales();
-        
-      }// fin vm.registrarSucursal
 
-      function listarSucursales(){
-        vm.listaSucursales = servicioSucursales.retornarSucursal();
-      }// fin listarSucursales
 
-      vm.actualizarSucursal = (psucursal) =>{
-        //$state.go('actualizarSucursal',{objSucursal:JSON.stringify(psucursal)});
-      }// fin vm.actualizarSucursal
-
-    }// fin de la función controladorRegistrarSucursal
+  }// fin de la función controladorRegistrarSucursal
 })();

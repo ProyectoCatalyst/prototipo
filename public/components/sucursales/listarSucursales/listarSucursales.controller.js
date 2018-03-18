@@ -1,0 +1,42 @@
+(() => {
+    'use strict';
+
+    angular
+        .module('prototipo')
+        .controller('controladorlistaSucursales', controladorlistaSucursales)
+
+    controladorlistaSucursales.$inject = ['$state', '$stateParams', 'servicioSucursales']
+    function controladorlistaSucursales($state, $stateParams, servicioSucursales) {
+        let vm = this;
+
+        vm.listarSucursalesAct = servicioSucursales.retornarSucursalesAct();
+        vm.listarSucursalesDesact = servicioSucursales.retornarSucursalesDesact();
+
+        vm.editarSucursales = (psucursales) => {
+            let sucursalesLS = servicioSucursales.retornarSucursal();
+
+            psucursales.estadoSucursal = true;
+            $state.go('editarSucursales', { objSucursalMod: JSON.stringify(psucursales) });
+        }
+
+        vm.desactivarSucursal = (psucursales) => {
+            let objSucursal = new Sucursal(psucursales.codigoSucursal, psucursales.nombreSucursal, psucursales.provincia, psucursales.canton, psucursales.distrito, psucursales.estadoSucursal);
+
+            servicioSucursales.cambiarEstado(objSucursal);
+
+            $state.reload();
+        }//fin desactivar sucursal
+
+        vm.activarSucursal = (psucursales) => {
+            let objSucursal = new Sucursal(psucursales.codigoSucursal, psucursales.nombreSucursal, psucursal.provincia, psucursales.canton, psucursales.distrito, psucursales.estadoSucursal);
+
+            servicioSucursales.cambiarEstado(objSucursal);
+
+            $state.reload();
+        }// fin acticar sucursal
+
+        vm.regresar = () => {
+            $state.go('registroSucursales');
+          }
+    }
+})();
