@@ -14,23 +14,61 @@
         data: {
           pageTitle: 'Landing Page | Inicio'
         }
-      });
+      })
 
-      // .state('', {
-      //   url: '',
-      //   templateUrl: '',
-      //   data: {
-      //     pageTitle: 'lorem | lorem'
-      //   },
-      //   resolve: {
-      //     load: ['$ocLazyLoad', ($ocLazyLoad) => {
-      //       return $ocLazyLoad.load('')
-      //     }]
-      //   },
-      //   controller: '',
-      //   controllerAs: 'vm'
-      // })
+      .state('inicioSesion', {
+        url: '/inicioSesion',
+        templateUrl: './components/login/login.view.html',
+        data: {
+          pageTitle: 'Inicio de Sesión | Correos CR'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/login/login.controller.js')
+          }]
+        },
+        controller: 'controladorInicioSesion',
+        controllerAs: 'vm'
+      })
 
-    $urlRouterProvider.otherwise('/');
+      .state('perfil', {
+        url: '/perfil',
+        templateUrl: './components/main/main.view.html',
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/main/main.controller.js')
+          }]
+        },
+        data: {
+          pageTitle: 'Perfil | Correos CR'
+        },
+        controller: 'controladorPerfil',
+        controllerAs: 'vm'
+      })
+
+      .state('404', {
+        url: '/404',
+        templateUrl: './404.html',
+        data: {
+          pageTitle: '404'
+        }
+      });;
+
+    // .state('', {
+    //   url: '',
+    //   templateUrl: '',
+    //   data: {
+    //     pageTitle: 'lorem | lorem'
+    //   },
+    //   resolve: {
+    //     load: ['$ocLazyLoad', ($ocLazyLoad) => {
+    //       return $ocLazyLoad.load('')
+    //     }]
+    //   },
+    //   controller: '',
+    //   controllerAs: 'vm'
+    // })
+
+    $urlRouterProvider.otherwise('/404');
   };
 })();
