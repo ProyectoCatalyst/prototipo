@@ -72,7 +72,15 @@
           icon: "success",
           button: "Aceptar"
         });
+        vm.clienteNuevo = null;
         $state.go('iniciarSesión');
+      }else{
+        swal({
+          title: "Ha ocurrido un Error",
+          text: "No sea tonto, el cliente ya se encuentra registrado",
+          icon: "error",
+          button: "Aceptar"
+        });
       }
     }
   }

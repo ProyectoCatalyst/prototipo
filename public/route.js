@@ -18,13 +18,13 @@
 
       .state('registrarCliente', {
         url: '/registerCustomers',
-        templateUrl: './components/usuarios/clientes/registrarClientes.view.html',
+        templateUrl: './components/usuarios/clientes/registrarClientes/registrarClientes.view.html',
         data: {
           pageTitle: 'Registrar Clientes | Correos CR'
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/usuarios/clientes/registrarClientes.controller.js')
+            return $ocLazyLoad.load('./components/usuarios/clientes/registrarClientes/registrarClientes.controller.js')
           }]
         },
         controller: 'controladorRegistrarCliente',

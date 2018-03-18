@@ -17,11 +17,22 @@
 
     function _agregarCliente(pNuevoCliente) {
       let listadeusuarios = _obtenerlistadeusuarios(),
-          registrovalido = false;
+          registrovalido,
+          usuariorepetido = false;
 
-      listadeusuarios.push(pNuevoCliente);
 
-      registrovalido = localStorageFactory.setItem(listaUsuarios, listadeusuarios);
+      for(let i=0; i<listadeusuarios.length; i++){
+        if(listadeusuarios[i].getCedula() == pNuevoCliente.getCedula() && listadeusuarios[i].getCorreo() == pNuevoCliente.getCorreo()){
+          usuariorepetido = true;
+        }  
+      }
+
+      if (usuariorepetido == true){
+        registrovalido = false;
+      } else{
+        listadeusuarios.push(pNuevoCliente);
+        registrovalido = localStorageFactory.setItem(listaUsuarios, listadeusuarios);
+      }
 
       return registrovalido;
     };
