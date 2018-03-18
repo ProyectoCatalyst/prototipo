@@ -16,11 +16,14 @@
       // agregarEncargadoSucursal: _agregarEncargadoSucursal,
       // retornarEncargadoSucursal: _retornarEncargadoSucursal
     };
-    return publicAPI;
+    return publicAPI; 
 
     function _agregarEncargadoAduana(pencargadoAduana){
       let ListaEncargadosAduanas = [];
       let registroExitoso = false;
+
+
+      if()
 
       ListaEncargadosAduanas.push(pencargadoAduana);
 
@@ -44,6 +47,7 @@
       return registroExitoso;
     }
       
+
   }
   
 )(); 

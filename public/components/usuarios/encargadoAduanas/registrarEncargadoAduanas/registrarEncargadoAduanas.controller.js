@@ -6,7 +6,7 @@ angular
     
 controladorRegistroEncargadoAduana.$inject = ['$http', '$stateParams', '$state', 'servicioUsuarios'];
   
-    function controladorRegistroEncargadoAduana ($http, $stateParams, $state, http, servicioUsuarios){
+    function controladorRegistroEncargadoAduana ($http, $stateParams, $state, servicioUsuarios){
       let vm = this;
 
       vm.provincias = $http({
@@ -59,7 +59,7 @@ controladorRegistroEncargadoAduana.$inject = ['$http', '$stateParams', '$state',
 
         let rol = 2;
   
-        let objEncargadoAduanaTem = new EncargadoAduanas (pnuevoEncargadoAduana.nombre, pnuevoEncargadoAduana.segundoNombre, pnuevoEncargadoAduana.apellido, pnuevoEncargadoAduana.segundoApellido, pnuevoEncargadoAduana.cedula, pnuevoEncargadoAduana.fecha, pnuevoEncargadoAduana.genero, pnuevoEncargadoAduana.ubicacion, pnuevoEncargadoAduana.provincia.name, pnuevoEncargadoAduana.canton.name, pnuevoEncargadoAduana.disfrito.name, pnuevoEncargadoAduana.direccion,pnuevoEncargadoAduana.correo, pnuevoEncargadoAduana.contrasenna, rol);
+        let objEncargadoAduanaTem = new EncargadoAduanas (pnuevoEncargadoAduana.nombre, pnuevoEncargadoAduana.segundoNombre, pnuevoEncargadoAduana.apellido, pnuevoEncargadoAduana.segundoApellido, pnuevoEncargadoAduana.cedula, pnuevoEncargadoAduana.fecha, pnuevoEncargadoAduana.genero, pnuevoEncargadoAduana.ubicacion, pnuevoEncargadoAduana.provincia.name, pnuevoEncargadoAduana.canton.name, pnuevoEncargadoAduana.distrito.name, pnuevoEncargadoAduana.direccion,pnuevoEncargadoAduana.correo, pnuevoEncargadoAduana.contrasenna, rol);
    
         console.log(objEncargadoAduanaTem); 
       
@@ -69,8 +69,10 @@ controladorRegistroEncargadoAduana.$inject = ['$http', '$stateParams', '$state',
           swal({
             title: "Registro exitoso",
             text: "Registrado correctamente.",
-            icon: "success"
-          });
+            icon: "success",
+            button: "Aceptar"
+          }); 
+          vm.nuevoEncargadoAduana = null;
         }
       }
   
