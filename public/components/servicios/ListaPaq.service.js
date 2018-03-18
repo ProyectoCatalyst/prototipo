@@ -18,12 +18,15 @@
       }
     }
     let publicAPI = {
-      agregarConvenios: _agregarConvenios,
+      agregarConvenios: _agregarConvenios, //REMOVER LUEGO
       retornarConvenio: _retornarConvenio
     }
     return publicAPI;
     
-    //Funciona
+    /***********************PARAPRUEBAS************/
+
+   
+
     function _agregarConvenio(pconvenioNuevo){
 
       let listaConvenios = retornarConvenios();
@@ -32,6 +35,10 @@
       
 localStorage.setItem('listaConveniosLS',JSON.stringify(listaConvenios));
     }
+/*************************FIND  DE PRUEBAS***************** */
+
+
+
 
     function _retornarConvenios(){
     

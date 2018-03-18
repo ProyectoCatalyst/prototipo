@@ -9,24 +9,22 @@
     function controladorRegistrarConvenio($stateParams, $state, $http, servicioConvenio) {
       let vm = this;
       
-      vm.ConvenioNuevo = {};
-      vm.listaConvenio = listarConvenios();
-
-      vm.registrarConvenio = (pconvenioNuevo) => {
-        console.log(pconvenioNuevo);
-
-        let objNuevoConvenio = new Convenio (pconvenioNuevo.codigo, pconvenioNuevo.nombre,
-        pconvenioNuevo.descripcion,
-        pconvenioNuevo.institucion,
-        pconvenioNuevo.costo,
-        );
   
-        console.log('objeto con convenio');
-        console.log(objNuevoConvenio);
-  
-        servicioConvenio.agregarConvenios(objNuevoConvenio);
-        }
 
+/****************************PRUEBAS ******* */
+function meterDatosQuemados(){
+  let convenio1 = new convenio1(,,,,);
+  servicioConvenio.agregarConvenio();
+
+  let convenio2 = new convenio1(,,,,);
+  servicioConvenio.agregarConvenio();
+
+  let convenio3 = new convenio1(,,,,);
+  servicioConvenio.agregarConvenio();
+}
+
+/********************FIN DE PRUEBAS *****************/
+  
    function listarConvenios(){
           vm.listaConvenio = servicioConvenio.retornarConvenios();
   

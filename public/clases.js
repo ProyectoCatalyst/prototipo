@@ -1,4 +1,5 @@
 class Convenio{
+
   constructor(pcodigoConvenio,pnombreConvenio,pdescripcionConvenio,pinstitucionConvenio,pcostoConvenio){
 
     this.codigoConvenio = pcodigoConvenio;
@@ -7,6 +8,8 @@ class Convenio{
     this.institucionConvenio = pinstitucionConvenio;
     this.costoConvenio = pcostoConvenio;
   }
+
+  
   getCodigo() {
     return this.codigoConvenio;
   }
