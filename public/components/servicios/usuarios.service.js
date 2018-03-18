@@ -11,7 +11,9 @@
     const listaUsuarios = 'usuariosLS';
 
     let publicAPI = {
-      agregarCliente: _agregarCliente
+      agregarCliente: _agregarCliente,
+      obtenerlistadeusuarios: _obtenerlistadeusuarios,
+      obtenerlistadeFiltrada: _obtenerListaFiltrada
     };
     return publicAPI;
 
@@ -38,7 +40,6 @@
     };
 
     function _obtenerlistadeusuarios() {
-
       let listadeusuarioslocal = localStorageFactory.getItem(listaUsuarios),
           listadeusuarios = [];
       
@@ -59,6 +60,19 @@
       }
 
       return listadeusuarios;
+    }
+
+    function _obtenerListaFiltrada(pnumrol){
+      let listadeusuarios = _obtenerlistadeusuarios(),
+          listaFiltrada = [];
+
+      for(let i = 0; i < listadeusuarios.length; i++){
+        if(listadeusuarios[i].getRol() == pnumrol){
+          listaFiltrada.push(listadeusuarios[i]);
+        }
+      }
+
+      return listaFiltrada;
     }
   }
 })();

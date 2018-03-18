@@ -22,7 +22,11 @@ class Usuario {
   }
   getCorreo(){
     return this.correo;
-  }   
+  }
+
+  getRol(){
+    return this.rol;
+  }
   
 }
 
