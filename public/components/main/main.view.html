@@ -1,5 +1,14 @@
-<navegacion-Principal></navegacion-Principal>
-<main class="mt-5">
-  <h1 class="mt-5">{{vm.usuarioActivo.nombre}}</h1>
-  <button type="button" class="btn btn-secondary" ng-click="vm.cerrarSesion()">Cerrar sesión</button>
-</main>
+
+<ul>
+  <li>
+    <a ui-sref="main.registrarEncargadoAduana" >Registro de Encargado de Aduana</a>
+  </li>
+  <li>
+    <a ui-sref="main.registrarEncargadoSucursal">Registro de Encargado de Sucursal</a>
+  </li>
+  <li>
+    <a ui-sref="main.registrarCliente">Registrar Usuarios</a>
+  </li>
+</ul>
+
+<div ui-view></div>

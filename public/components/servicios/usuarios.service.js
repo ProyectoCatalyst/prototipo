@@ -11,20 +11,19 @@
     const listaUsuarios = 'usuariosLS';
 
     let publicAPI = {
-      agregarCliente: _agregarCliente,
+      agregarUsuario: _agregarUsuario,
       obtenerlistadeusuarios: _obtenerlistadeusuarios,
       obtenerlistadeFiltrada: _obtenerListaFiltrada
     };
-    return publicAPI;
+    return publicAPI; 
 
-    function _agregarCliente(pNuevoCliente) {
+    function _agregarUsuario(pNuevoCliente) {
       let listadeusuarios = _obtenerlistadeusuarios(),
           registrovalido,
           usuariorepetido = false;
 
-
       for(let i=0; i<listadeusuarios.length; i++){
-        if(listadeusuarios[i].getCedula() == pNuevoCliente.getCedula() && listadeusuarios[i].getCorreo() == pNuevoCliente.getCorreo()){
+        if(listadeusuarios[i].getCorreo() == pNuevoCliente.getCorreo()){
           usuariorepetido = true;
         }  
       }
@@ -50,6 +49,18 @@
           let tempfecha = new Date(obj.fecha);
 
           switch(obj.rol){
+            case 2:
+              let tempEncargadoAduana = new EncargadoAduanas(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.cedula, tempfecha, obj.genero, obj.ubicacion, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol);
+
+              listadeusuarios.push(tempCliente);
+            break;
+
+            case 3:
+              let tempEncargadoSucursal = new EncargadoSucursal(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.cedula, tempfecha, obj.genero, obj.ubicacion, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol);
+
+              listadeusuarios.push(tempCliente);
+            break;
+
             case 5:
               let tempCliente = new Cliente(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.cedula, tempfecha, obj.genero, obj.ubicacion, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol, obj.telefono);
 

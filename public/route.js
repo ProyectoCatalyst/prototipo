@@ -16,6 +16,66 @@
         }
       })
 
+      .state('main', {
+        url: '/main',
+        templateUrl: './components/main/main.view.html',
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/main/main.controller.js')
+          }]
+        },
+        data: {
+          pageTitle: 'Inicio | Correos de Costa Rica'
+        },
+        controller: '',
+        controllerAs: 'vm'
+      })
+
+      .state('main.registrarEncargadoAduana', {
+        url: '/registroEncargadoAduana',
+        templateUrl: './components/usuarios/encargadoAduanas/registrarEncargadoAduanas/registrarEncargadoAduana.view.html',
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/encargadoAduanas/registrarEncargadoAduanas/registrarEncargadoAduanas.controller.js')
+          }]
+        },
+        data: {
+          pageTitle: 'Encargado Aduanas | Registrar'
+        },
+        controller: 'controladorRegistroEncargadoAduana',
+        controllerAs: 'vm'
+      })
+
+      .state('main.registrarEncargadoSucursal', {
+        url: '/registroEncargadoSucursal',
+        templateUrl: './components/usuarios/encargadoSucursal/registrarEncargadoSucursal/registrarEncargadoSucursal.view.html',
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/encargadoSucursal/registrarEncargadoSucursal/registrarEncargadoSucursal.controller.js')
+          }]
+        },
+        data: {
+          pageTitle: 'Encargado Sucursal | Regitrar'
+        },
+        controller: 'controladorRegistroEncargadoSucursal',
+        controllerAs: 'vm'
+      })
+      
+      .state('main.registrarCliente', {
+        url: '/registerCustomers',
+        templateUrl: './components/usuarios/clientes/registrarClientes/registrarClientes.view.html',
+        data: {
+          pageTitle: 'Registrar Clientes | Correos CR'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/clientes/registrarClientes/registrarClientes.controller.js')
+          }]
+        },
+        controller: 'controladorRegistrarCliente',
+        controllerAs: 'vm'
+      })
+
       .state('inicioSesion', {
         url: '/inicioSesion',
         templateUrl: './components/login/login.view.html',
@@ -31,43 +91,14 @@
         controllerAs: 'vm'
       })
 
-      .state('perfil', {
-        url: '/perfil',
-        templateUrl: './components/main/main.view.html',
-        resolve: {
-          load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/main/main.controller.js')
-          }]
-        },
-        data: {
-          pageTitle: 'Perfil | Correos CR'
-        },
-        controller: 'controladorPerfil',
-        controllerAs: 'vm'
-      })
-
       .state('404', {
         url: '/404',
         templateUrl: './404.html',
         data: {
           pageTitle: '404'
         }
-      })
-
-      .state('registrarCliente', {
-        url: '/registerCustomers',
-        templateUrl: './components/usuarios/clientes/registrarClientes/registrarClientes.view.html',
-        data: {
-          pageTitle: 'Registrar Clientes | Correos CR'
-        },
-        resolve: {
-          load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/usuarios/clientes/registrarClientes/registrarClientes.controller.js')
-          }]
-        },
-        controller: 'controladorRegistrarCliente',
-        controllerAs: 'vm'
       });
+
 
 
     // .state('', {
