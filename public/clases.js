@@ -16,8 +16,19 @@ class Usuario {
     this.contrasenna = pcontrasenna;
     this.rol = prol;
   }
-}
 
+  getCedula(){
+     return this.cedula;
+  }
+  getCorreo(){
+    return this.correo;
+  }
+
+  getRol(){
+    return this.rol;
+  }
+  
+}
 
 class EncargadoAduanas extends Usuario {
   constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol) {
@@ -31,4 +42,13 @@ class EncargadoSucursal extends Usuario {
   }
 }
 
+class Cliente extends Usuario {
+  constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, ptelefono) {
+
+    super(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol);
+    
+    this.telefono = ptelefono;
+    //this.tarjeta = ptarjeta;
+ }
+}
 
