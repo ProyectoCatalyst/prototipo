@@ -22,8 +22,8 @@
       return response
     };
 
-    function _getItem(value) {
-      let arrayData = JSON.parse(localStorage.getItem(value));
+    function _getItem(key) {
+      let arrayData = JSON.parse(localStorage.getItem(key));
 
       if (!arrayData) {
         arrayData = [];
