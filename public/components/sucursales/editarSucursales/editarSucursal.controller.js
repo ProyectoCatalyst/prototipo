@@ -10,7 +10,7 @@
     let vm = this;
 
     if (!$stateParams.objSucursal) {
-      $state.go('registroSucursales');
+      $state.go('listarSucursales');
     }
 
     let objSucursalSinFormato = JSON.parse($stateParams.objSucursal);
@@ -31,7 +31,7 @@
 
     vm.provincias = $http({
       method: 'GET',
-      url: './provincias.json'
+      url: './sources/data/provincias.json'
     }).then(function (success) {
       vm.provincias = success.data
     }, function (error) {
@@ -41,7 +41,7 @@
     vm.rellenarCantones = (pidProvincia) => {
       vm.cantones = $http({
         method: 'GET',
-        url: './cantones.json'
+        url: './sources/data/cantones.json'
       }).then((success) => {
         let cantones = [];
         for (let i = 0; i < success.data.length; i++) {
@@ -58,7 +58,7 @@
     vm.rellenarDistrito = (pidCanton) => {
       vm.distritos = $http({
         method: 'GET',
-        url: './distritos.json'
+        url: './sources/data/distritos.json'
       }).then((success) => {
         let distritos = [];
         for (let i = 0; i < success.data.length; i++) {
@@ -80,8 +80,11 @@
     listarSucursales();
 
     vm.editarSucursal = (psucursalEditar) => {
+      if(psucursalEditar.estadoSucursal==null){
+        psucursalEditar.estadoSucursal = true;
+      }
 
-      let objSucursalFormato = new Sucursal(psucursalEditar.codigoSucursal, psucursalEditar.nombreSucursal, psucursalEditar.provincia.name, psucursalEditar.canton.name, psucursalEditar.distrito.name);
+      let objSucursalFormato = new Sucursal(psucursalEditar.codigoSucursal, psucursalEditar.nombreSucursal, psucursalEditar.provincia.name, psucursalEditar.canton.name, psucursalEditar.distrito.name,psucursalEditar.estadoSucursal);
 
       let updateValido = servicioSucursales.editarSucursal(objSucursalFormato);
 
@@ -125,7 +128,7 @@
     }
 
     vm.regresar = () => {
-      $state.go('registroSucursales');
+      $state.go('listarSucursales');
     }
   }
 })();

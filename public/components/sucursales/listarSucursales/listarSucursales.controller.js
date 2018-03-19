@@ -28,14 +28,19 @@
         }//fin desactivar sucursal
 
         vm.activarSucursal = (psucursales) => {
-            let objSucursal = new Sucursal(psucursales.codigoSucursal, psucursales.nombreSucursal, psucursal.provincia, psucursales.canton, psucursales.distrito, psucursales.estadoSucursal);
+            let objSucursal = new Sucursal(psucursales.codigoSucursal, psucursales.nombreSucursal, psucursales.provincia, psucursales.canton, psucursales.distrito, psucursales.estadoSucursal);
 
             servicioSucursales.cambiarEstado(objSucursal);
 
             $state.reload();
         }// fin acticar sucursal
 
-        vm.regresar = () => {
+
+        vm.editarSucursales = (psucursal) => {
+            $state.go('editarSucursal', { objSucursal: JSON.stringify(psucursal) });
+          }// fin Editar sucursal
+
+        vm.agregarSucursales = () => {
             $state.go('registroSucursales');
           }
     }

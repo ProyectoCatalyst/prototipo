@@ -11,7 +11,7 @@
 
     vm.provincias = $http({
       method: 'GET',
-      url: './provincias.json'
+      url: './sources/data/provincias.json'
     }).then(function (success) {
       vm.provincias = success.data
     }, function (error) {
@@ -21,7 +21,7 @@
     vm.rellenarCantones = (pidProvincia) => {
       vm.cantones = $http({
         method: 'GET',
-        url: './cantones.json'
+        url: './sources/data/cantones.json'
       }).then((success) => {
         let cantones = [];
         for (let i = 0; i < success.data.length; i++) {
@@ -38,7 +38,7 @@
     vm.rellenarDistrito = (pidCanton) => {
       vm.distritos = $http({
         method: 'GET',
-        url: './distritos.json'
+        url: './sources/data/distritos.json'
       }).then((success) => {
         let distritos = [];
         for (let i = 0; i < success.data.length; i++) {
@@ -59,6 +59,9 @@
     listarSucursales();
     vm.registrarSucursal = (psucursalNueva) => {
       console.log(psucursalNueva);
+      if(psucursalNueva.estadoSucursal==null){
+        psucursalNueva.estadoSucursal = true;
+      }
       let objNuevaSucursal = new Sucursal(psucursalNueva.codigoSucursal, psucursalNueva.nombreSucursal, psucursalNueva.provincia.name, psucursalNueva.canton.name, psucursalNueva.distrito.name, psucursalNueva.estadoSucursal);
 
       console.log('objeto con sucursal');
@@ -76,8 +79,8 @@
       } else {
         swal({
           title: "Registro fallido",
-          text: "La sucursal que intenta registrar ha sido ingresada anteriormente",
-          icon: "success",
+          text: "La sucursal que intenta registrar ha sido ingresada anteriormente correspondiente al código de sucursal: "+psucursalNueva.codigoSucursal,
+          icon: "error",
           button: "Aceptar"
         });
       }//fin else
@@ -86,10 +89,6 @@
       listarSucursales();
 
     }// fin vm.registrarSucursal
-
-    vm.editarSucursal = (psucursal) => {
-      $state.go('editarSucursal', { objSucursal: JSON.stringify(psucursal) });
-    }// fin Editar sucursal
 
     vm.listarSucursales = () => {
       $state.go('listarSucursales')

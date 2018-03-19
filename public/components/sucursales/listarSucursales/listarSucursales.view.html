@@ -1,9 +1,9 @@
 <main class="container-fluid">
+
   <section class="row">
     <div class="col-md-12 mt-5">
       <h1 class="text-center">Lista de sucursales</h1>
 
-      <h2 class="text-center mt-5">sucursales activas</h2>
       <table class="table mt-5">
         <thead class="thead-dark">
           <tr>
@@ -12,20 +12,21 @@
             <th scope="col">Provincia</th>
             <th scope="col">Cantón</th>
             <th scope="col">Distrito</th>
-            <th scope="col">Estado</th>
           </tr>
         </thead>
 
         <tbody>
-          <tr ng-repeat="sucursal in vm.listaSucursales">
-            <td>{{sucursal.codigoSucursal}}</td>
-            <td>{{sucursal.nombreSucursal}}</td>
-            <td>{{sucursal.provincia}}</td>
-            <td>{{sucursal.canton}}</td>
-            <td>{{sucursal.distrito}}</td>
-            <td>{{sucursal.estadoSucursal}}</td>
+          <tr ng-repeat="sucursales in vm.listarSucursalesAct">
+            <td>{{sucursales.codigoSucursal}}</td>
+            <td>{{sucursales.nombreSucursal}}</td>
+            <td>{{sucursales.provincia}}</td>
+            <td>{{sucursales.canton}}</td>
+            <td>{{sucursales.distrito}}</td>
+            <td>{{sucursales.estadoSucursal}}</td>
             <td>
-              <button type="button" class="btn btn-secondary" ng-click="vm.editarSucursal(sucursal)">Consultar</button>
+              <button type="click" class="btn btn-warning" ng-click="vm.editarSucursales(sucursales)">
+                Editar
+              </button>
 
               <button type="click" class="btn btn-danger" ng-click="vm.desactivarSucursal(sucursales)">
                 Desactivar
@@ -36,29 +37,28 @@
       </table>
       <button type="button" class="btn btn-success" ng-click="vm.agregarSucursales ()">Agregar sucursal</button>
 
-      <h2 class="text-center mt-5">sucursales desactivadas</h2>
+      <h2 class="text-center mt-5">Sucursales desactivadas</h2>
       <table class="table mt-5">
         <thead class="thead-dark">
           <tr>
             <th scope="col">Código</th>
             <th scope="col">Nombre</th>
-            <th scope="col">Provincia</th>
-            <th scope="col">Cantón</th>
-            <th scope="col">Distrito</th>
-            <th scope="col">Estado</th>
+            <th scope="col">Costo por hora</th>
+            <th scope="col">Opciones</th>
           </tr>
         </thead>
 
         <tbody>
           <tr ng-repeat="sucursales in vm.listarSucursalesDesact">
-            <td>{{sucursal.codigoSucursal}}</td>
-            <td>{{sucursal.nombreSucursal}}</td>
-            <td>{{sucursal.provincia}}</td>
-            <td>{{sucursal.canton}}</td>
-            <td>{{sucursal.distrito}}</td>
-            <td>{{sucursal.estadoSucursal}}</td>
+              <td>{{sucursales.codigoSucursal}}</td>
+              <td>{{sucursales.nombreSucursal}}</td>
+              <td>{{sucursales.provincia}}</td>
+              <td>{{sucursales.canton}}</td>
+              <td>{{sucursales.distrito}}
+              <td>{{sucursales.estadoSucursal}}</td>
+              </td>
             <td>
-              <button type="button" class="btn btn-success" ng-click="vm.activarSucursales(sucursales)">
+              <button type="button" class="btn btn-success" ng-click="vm.activarSucursal(sucursales)">
                 Activar
               </button>
             </td>
@@ -66,8 +66,6 @@
         </tbody>
       </table>
     </div>
-
-    <button type="button" class="btn btn-secondary" ng-click="vm.regresar()">Regresar</button>
-
   </section>
+
 </main>
