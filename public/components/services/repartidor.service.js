@@ -107,9 +107,8 @@
 
                     licenciasRepartidor = repartidoresAct[i].licencia;
                     for(let j=0; j<licenciasRepartidor.length; j++){
-                        let datos = [ repartidoresAct[i].cedula, repartidoresAct[i].sucursal, licenciasRepartidor[j].codigo ];
 
-                        _cambiarEstadoLicencia(datos);
+                        licenciasRepartidor[j].estado = false;
                     }
                 }
                 repartidoresLS[1].push(repartidoresAct[i]);

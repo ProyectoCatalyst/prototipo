@@ -20,12 +20,8 @@
                 });
             }else{
 
-                if(!pnuevoRegistro.estado){
                     pnuevoRegistro.estado = true;
-                }
-                if(!pnuevoRegistro.razonDesact){
                     pnuevoRegistro.razonDesact = ''
-                }
 
                 let objNuevoRegistro = new Repartidor(pnuevoRegistro.cedula, pnuevoRegistro.foto, pnuevoRegistro.nombre, pnuevoRegistro.segundoNombre, pnuevoRegistro.primerApellido, pnuevoRegistro.segundoApellido, pnuevoRegistro.correo, pnuevoRegistro.telefono, pnuevoRegistro.telefonoAdicional, pnuevoRegistro.sucursal, pnuevoRegistro.genero, pnuevoRegistro.fechaNacimiento, pnuevoRegistro.contrasenna, pnuevoRegistro.estado, pnuevoRegistro.razonDesact),
                 aDatos = [objNuevoRegistro, objNuevoRegistro.sucursal],
