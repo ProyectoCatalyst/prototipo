@@ -97,23 +97,39 @@
           }]
         },
         controller: 'controladorPerfilRepartidor',
+        controllerAS: vm
+      })
+
+      .state('registrarCliente', {
+        url: '/registerCustomers',
+        templateUrl: './components/usuarios/clientes/registrarClientes/registrarClientes.view.html',
+        data: {
+          pageTitle: 'Registrar Clientes | Correos CR'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/clientes/registrarClientes/registrarClientes.controller.js')
+          }]
+        },
+        controller: 'controladorRegistrarCliente',
         controllerAs: 'vm'
       });
 
-      // .state('', {
-      //   url: '',
-      //   templateUrl: '',
-      //   data: {
-      //     pageTitle: 'lorem | lorem'
-      //   },
-      //   resolve: {
-      //     load: ['$ocLazyLoad', ($ocLazyLoad) => {
-      //       return $ocLazyLoad.load('')
-      //     }]
-      //   },
-      //   controller: '',
-      //   controllerAs: 'vm'
-      // })
+
+    // .state('', {
+    //   url: '',
+    //   templateUrl: '',
+    //   data: {
+    //     pageTitle: 'lorem | lorem'
+    //   },
+    //   resolve: {
+    //     load: ['$ocLazyLoad', ($ocLazyLoad) => {
+    //       return $ocLazyLoad.load('')
+    //     }]
+    //   },
+    //   controller: '',
+    //   controllerAs: 'vm'
+    // })
 
     $urlRouterProvider.otherwise('/');
   };
