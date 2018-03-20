@@ -1,26 +1,3 @@
-class Convenio{
-
-  constructor(pcodigoConvenio,pnombreConvenio,pdescripcionConvenio,pinstitucionConvenio,pcostoConvenio){
-
-    this.codigoConvenio = pcodigoConvenio;
-    this.nombreConvenio = pnombreConvenio;
-    this.descripcionConvenio = pdescripcionConvenio;
-    this.institucionConvenio = pinstitucionConvenio;
-    this.costoConvenio = pcostoConvenio;
-  }
-
-  
-  getCodigo() {
-    return this.codigoConvenio;
-  }
-  getNombre() {
-    return this.nombreConvenio;
-  }
-  getCosto() {
-    return this.costoConvenio;
-  }
-  
-}
 class Usuario {
   constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol){
     this.primerNombre = pnombre;
@@ -59,11 +36,11 @@ class EncargadoAduanas extends Usuario {
   }
 }
 
-// class   extends Usuario {
-//   constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol) {
-//     super(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol)
-//   }
-// }
+class EncargadoSucursales extends Usuario {
+  constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol) {
+    super(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol)
+  }
+}
 
 class Cliente extends Usuario {
   constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, ptelefono) {
@@ -75,3 +52,21 @@ class Cliente extends Usuario {
  }
 }
 
+class Convenio{
+  constructor(pcodigoConvenio,pnombreConvenio,pdescripcionConvenio,pinstitucionConvenio,pcostoConvenio){
+    this.codigoConvenio = pcodigoConvenio;
+    this.nombreConvenio = pnombreConvenio;
+    this.descripcionConvenio = pdescripcionConvenio;
+    this.institucionConvenio = pinstitucionConvenio;
+    this.costoConvenio = pcostoConvenio;
+  }
+  getCodigo() {
+    return this.codigoConvenio;
+  }
+  getNombre() {
+    return this.nombreConvenio;
+  }
+  getCosto() {
+    return this.costoConvenio;
+  }
+}
