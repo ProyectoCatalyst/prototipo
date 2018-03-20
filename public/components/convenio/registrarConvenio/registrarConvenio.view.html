@@ -35,7 +35,23 @@
 
 
     <div id="mostrarConvenios"></div>
+    <input type="text" ng-model="filtro">
 
+    <table>
+      <thead>
+
+      </thead>
+
+      <tbody>
+        <tr ng-repeat="convenio in vm.listaConvenio | filter: filtro">
+          <td>{{convenio.codigoConvenio}}</td>
+          <td>{{convenio.nombreConvenio}}</td>
+          <td>{{convenio.descripcionConvenio}}</td>
+          <td>{{convenio.institucionConvenio}}</td>
+          <td>{{convenio.CostoConvenio}}</td>
+        </tr>
+      </tbody>
+    </table>
 </section>
 
 

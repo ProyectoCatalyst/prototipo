@@ -13,13 +13,13 @@
 
 /****************************PRUEBAS ******* */
 function meterDatosQuemados(){
-  let convenio1 = new convenio1(,,,,);
+  let convenio1 = new convenio1();
   servicioConvenio.agregarConvenio();
 
-  let convenio2 = new convenio1(,,,,);
+  let convenio2 = new convenio1();
   servicioConvenio.agregarConvenio();
 
-  let convenio3 = new convenio1(,,,,);
+  let convenio3 = new convenio1();
   servicioConvenio.agregarConvenio();
 }
 

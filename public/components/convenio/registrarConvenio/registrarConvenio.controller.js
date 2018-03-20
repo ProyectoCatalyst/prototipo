@@ -27,25 +27,25 @@
         servicioConvenio.agregarConvenios(objNuevoConvenio);
         }
 
-   function listarConvenios(){
-          vm.listaConvenio = servicioConvenio.retornarConvenios();
+   vm.listarConvenios = () => {
+      servicioConvenio.retornarConvenios();
   
-  let str = "<table>";
-    str += "<tr><th>Codigo</th><th>Nombre</th><th>Descripcion</th><th>Institucion</th><th>Costo</th>";
+  // let str = "<table>";
+  //   str += "<tr><th>Codigo</th><th>Nombre</th><th>Descripcion</th><th>Institucion</th><th>Costo</th>";
   
-  for (var i = 0; i < vm.listaConvenio.length; i++) {
-    str += "<tr>";
-    str += "<td>"+vm.listaConvenio[i].codigoConvenio + "</td>";
-    str += "<td>"+vm.listaConvenio[i].nombreConvenio + "</td>";
-    str += "<td>"+vm.listaConvenio[i].descripcionConvenio + "</td>";
-    str += "<td>"+vm.listaConvenio[i].institucionConvenio + "</td>";
-    str += "<td>"+vm.listaConvenio[i].costoConvenio + "</td>";
-    str += "</tr>";
-  }
-    str += "</table>";
+  // for (var i = 0; i < vm.listaConvenio.length; i++) {
+  //   str += "<tr>";
+  //   str += "<td>"+vm.listaConvenio[i].codigoConvenio + "</td>";
+  //   str += "<td>"+vm.listaConvenio[i].nombreConvenio + "</td>";
+  //   str += "<td>"+vm.listaConvenio[i].descripcionConvenio + "</td>";
+  //   str += "<td>"+vm.listaConvenio[i].institucionConvenio + "</td>";
+  //   str += "<td>"+vm.listaConvenio[i].costoConvenio + "</td>";
+  //   str += "</tr>";
+  // }
+  //   str += "</table>";
   
   
-    document.querySelector('#mostrarConvenios').innerHTML = str;
+  //   document.querySelector('#mostrarConvenios').innerHTML = str;
   }   
 
     }
