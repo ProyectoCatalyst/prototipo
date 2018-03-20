@@ -60,7 +60,7 @@
         controller: 'controladorRegistroEncargadoSucursal',
         controllerAs: 'vm'
       })
-      
+
       .state('main.registrarCliente', {
         url: '/registerCustomers',
         templateUrl: './components/usuarios/clientes/registrarClientes/registrarClientes.view.html',
@@ -97,8 +97,22 @@
         data: {
           pageTitle: '404'
         }
-      });
+      })
 
+      .state('registrarConvenio', {
+        url: '/registrarConvenio',
+        templateUrl: './components/convenio/registrarConvenio/registrarConvenio.view.html',
+        data: {
+          pageTitle: 'Registro de Convenios | Correos de Costa Rica'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/convenio/registrarConvenio/registrarConvenio.controller.js')
+          }]
+        },
+        controller: 'controladorRegistrarConvenio',
+        controllerAs: 'vm'
+      });
 
 
     // .state('', {
