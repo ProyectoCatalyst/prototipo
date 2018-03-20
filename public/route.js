@@ -99,7 +99,7 @@
         }
       })
 
-      .state('registrarConvenio', {
+      .state('main.registrarConvenio', {
         url: '/registrarConvenio',
         templateUrl: './components/convenio/registrarConvenio/registrarConvenio.view.html',
         data: {
