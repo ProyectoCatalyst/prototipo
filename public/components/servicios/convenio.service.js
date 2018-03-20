@@ -4,39 +4,44 @@
     .module('prototipo')
     .service('servicioConvenio', servicioConvenio);
 
-    servicioConvenio.$inject = ['$stateParams','$state','$http','servicioConvenio']; 
+    servicioConvenio.$inject = ['$stateParams','$state','$http','localStorageFactory']; 
   
-  function servicioConvenio($stateParams, $state, $http, servicioConvenio) {
+  function servicioConvenio($stateParams, $state, $http, localStorageFactory) {
   
-    const asyncLocalStorage = {
-      setItem: function (key, value) {
-          return Promise.resolve().then(() => {
-              let response = true;
-              localStorage.setItem(key, JSON.stringify(value));
-              return response
-          });
-      }
-    }
+    const coleccionConvenio = 'listaConveniosLS';
+
     let publicAPI = {
       agregarConvenios: _agregarConvenios,
-      retornarConvenio: _retornarConvenio
+      retornarConvenio: _retornarConvenios
     }
     return publicAPI;
     
     //Funciona
-    function _agregarConvenio(pconvenioNuevo){
+    function _agregarConvenios(pconvenioNuevo){
 
-      let listaConvenios = retornarConvenios();
-      listaConvenios.push(pconvenioNuevo);
-      
-      
-localStorage.setItem('listaConveniosLS',JSON.stringify(listaConvenios));
+      let listaConvenios = _retornarConvenios(),
+          convenioRepetido = false,
+          registroExitoso;
+
+      for (let i = 0; i < listaConvenios.length; i++) {
+        if (pconvenioNuevo.getCodigo() == listaConvenios[i].getCodigo()) {
+          convenioRepetido = true;
+        }
+      }
+
+      if(convenioRepetido == true){
+        registroExitoso = false;
+      }else{
+        listaConvenios.push(pconvenioNuevo);
+        registroExitoso = localStorageFactory.setItem(coleccionConvenio, listaConvenios);
+      }
+      return registroExitoso;
     }
 
     function _retornarConvenios(){
     
       let listaConveniosTemporal = []; 
-      let listaConveniosLocalS =JSON.parse(localStorage.getItem('listaConveniosLS'));
+      let listaConveniosLocalS = localStorageFactory.getItem(coleccionConvenio);
 
       if(listaConveniosLocalS == null){
     

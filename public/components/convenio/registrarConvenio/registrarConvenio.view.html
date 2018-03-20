@@ -1,34 +1,34 @@
 <div ng-include="'./components/includes/_header.html'"></div>
 <section class="row">
   <div class="container">
-    <form class="row" name="frmRegistroConvenio" ng-submit="vm.registrarConvenio(vm.ConvenioNuevo)"  autocomplete="off">
+    <form class="row" name="frmRegistroConvenio" ng-submit="vm.registrarConvenio(vm.convenioNuevo)"  autocomplete="off">
     <div class="col-4">
-      <form ng-submit="vm.registrarConvenio(vm.ConvenioNuevo)">
+      <form ng-submit="vm.registrarConvenio(vm.convenioNuevo)">
           <div class="form-group">
             <label for="txtCodigo">Código del convenio: </label>
-            <input type="number" class="form-control" ng-model="vm.ConvenioNuevo.codigo" id="txtCodigo" required>
+            <input type="number" class="form-control" ng-model="vm.convenioNuevo.codigo" id="txtCodigo" required>
           </div>
           <div class="form-group">
             <label for="txtNombre">Nombre del convenio:</label>
-            <input type="text" class="form-control" ng-model="vm.ConvenioNuevo.nombre" id="txtNombre" required>
+            <input type="text" class="form-control" ng-model="vm.convenioNuevo.nombre" id="txtNombre" required>
           </div>
           <div class="form-group">
             <label for="txtDescripcion">Descripción:</label>
-            <input type="text" class="form-control" ng-model="vm.ConvenioNuevo.descripcion" id="txtDescripcion" required>
+            <input type="text" class="form-control" ng-model="vm.convenioNuevo.descripcion" id="txtDescripcion" required>
           </div>
           <div class="form-group">
             <label for="txtInstitucion">Institución:</label>
-            <input type="text" class="form-control" ng-model="vm.ConvenioNuevo.institucion" id="txtInstitucion" required>
+            <input type="text" class="form-control" ng-model="vm.convenioNuevo.institucion" id="txtInstitucion" required>
           </div>
           <div class="form-group">
             <label for="txtCosto">Costo:</label>
-            <input type="number" class="form-control" ng-model="vm.ConvenioNuevo.costo" id="txtCosto" required>
+            <input type="number" class="form-control" ng-model="vm.convenioNuevo.costo" id="txtCosto" required>
           </div>
 
          
         
         
-          <button type="submit" class="btn btn-primary" ng-click="vm.registrarConvenio(vm.ConvenioNuevo)">Registrar Convenio</button>
+          <button type="submit" class="btn btn-primary" ng-click="vm.registrarConvenio(vm.convenioNuevo)">Registrar Convenio</button>
       </form>
     </div>
 
