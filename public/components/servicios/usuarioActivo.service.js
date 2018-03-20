@@ -14,7 +14,7 @@
     return publicAPI;
 
     function _usuarioActivo(){
-      let listaUsuarios = servicioUsuarios.retornarUsuario();
+      let listaUsuarios = servicioUsuarios.obtenerlistadeusuarios();
       let usuarioActivo = servicioAutenticacion.getAuthUser();
       let usuario;
 

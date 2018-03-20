@@ -17,12 +17,16 @@
 
     function _logIn(credenciales) {
       
-      let todosLosUsuarios = servicioUsuarios.retornarUsuario();
+      let todosLosUsuarios = servicioUsuarios.obtenerlistadeusuarios();
       let incioExitoso = false;
 
       for(let i = 0; i<todosLosUsuarios.length; i++){
         if(todosLosUsuarios[i].getCorreo() == credenciales.correo && todosLosUsuarios[i].getContrasenna() == credenciales.contrasenna){
-          servicioSesion.create(todosLosUsuarios[i].getCorreo());
+          let data = {
+            rol: todosLosUsuarios[i].getRol(),
+            correo: todosLosUsuarios[i].getCorreo()
+          }
+          servicioSesion.create(data);
           incioExitoso = true;
         }
       }
