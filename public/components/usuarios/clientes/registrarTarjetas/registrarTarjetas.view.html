@@ -1,46 +1,32 @@
-<main id="registroClientes">
+<main id="registroTarjetas">
   <!-- class="col-md-10 my-5" -->
 
   <section>
 
     <div>
 
-      <h1 class="text-center">Registro de Clientes</h1>
+      <h1 class="text-center">Registro de Tarjetas</h1>
 
-      <form name="frmRegistroClientes" class="row mt-5" ng-submit="vm.registrarCliente(vm.clienteNuevo)">
+      <form name="frmRegistroTarjetas" class="row mt-5" ng-submit="vm.registrarTarjeta(vm.tarjetaNueva)">
 
-        <div class="container" name="frmRegistroClientes">
+        <div class="container" name="frmRegistroTarjetas">
+
+
+          <div class="row m-4">
+            <div class="form-group col-sm-12 col-md-4 col-lg-4 m-3">
+              <label for="txtNombre">Nombre como aparece en la tarjeta</label>
+              <input type="text" class="form-control" id="txtNombre" ng-model="vm.tarjetaNueva.nombre" required>
+              <small class="form-text text-danger">* Campo requerido</small>
+            </div>
+
+
+          
+
 
 
           <div class="row m-4">
             <div class="form-group col-sm-12 col-md-4 col-lg-4 m-3">
-              <label for="txtNombre">Nombre:</label>
-              <input type="text" class="form-control" id="txtNombre" ng-model="vm.clienteNuevo.nombre" required>
-              <small class="form-text text-danger">* Campo requerido</small>
-            </div>
-
-            <div class="form-group col-sm-12 col-md-4 col-lg-4 m-3">
-              <label for="txtSegundoNombre">Segundo Nombre:</label>
-              <input type="text" class="form-control" id="txtSegundoNombre" ng-model="vm.clienteNuevo.segundoNombre">
-            </div>
-          </div>
-
-          <div class="row m-4">
-            <div class="form-group col-sm-12 col-md-4 col-lg-4 m-3">
-              <label for="txtPrimerApellido">Primer apellido:</label>
-              <input type="text" class="form-control" id="txtPrimerApellido" ng-model="vm.clienteNuevo.primerApellido" required>
-              <small class="form-text text-danger">* Campo requerido</small>
-            </div>
-            <div class="form-group col-sm-12 col-md-4 col-lg-4 m-3">
-              <label for="txtSegundoApellido">Segundo apellido:</label>
-              <input type="text" class="form-control" id="txtSegundoApellido" ng-model="vm.clienteNuevo.segundoApellido" required>
-              <small class="form-text text-danger">* Campo requerido</small>
-            </div>
-          </div>
-
-          <div class="row m-4">
-            <div class="form-group col-sm-12 col-md-4 col-lg-4 m-3">
-              <label for="txtCedula">Número de cédula:</label>
+              <label for="txtCedula">Número de Tarjeta</label>
               <input type="number" class="form-control" id="txtCedula" ng-model="vm.clienteNuevo.cedula" required>
               <small class="form-text text-danger">* Campo requerido</small>
             </div>
@@ -151,6 +137,7 @@
             <small class="form-text text-danger">* Campo requerido</small>
           </div>
           
+          
           <div class="row m-5">
           <div class="col-md-12 mb-5">
             <button type="submit" class="btn btn-info">Registrar usuario</button>
@@ -161,6 +148,8 @@
     </div>
     </div>
     </form>
+
+     
     </div>
 
   </section>
