@@ -27,6 +27,10 @@ class Usuario {
   getRol(){
     return this.rol;
   }
+
+  getContrasenna(){
+    return this.contrasenna;
+  }
   
 }
 
