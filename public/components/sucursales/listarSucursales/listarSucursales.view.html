@@ -12,6 +12,8 @@
             <th scope="col">Provincia</th>
             <th scope="col">Cantón</th>
             <th scope="col">Distrito</th>
+            <th scope="col">Acciones</th>
+
           </tr>
         </thead>
 
@@ -19,10 +21,9 @@
           <tr ng-repeat="sucursales in vm.listarSucursalesAct">
             <td>{{sucursales.codigoSucursal}}</td>
             <td>{{sucursales.nombreSucursal}}</td>
-            <td>{{sucursales.provincia}}</td>
-            <td>{{sucursales.canton}}</td>
-            <td>{{sucursales.distrito}}</td>
-            <td>{{sucursales.estadoSucursal}}</td>
+            <td>{{sucursales.provincia.name}}</td>
+            <td>{{sucursales.canton.name}}</td>
+            <td>{{sucursales.distrito.name}}</td>
             <td>
               <button type="click" class="btn btn-warning" ng-click="vm.editarSucursales(sucursales)">
                 Editar
@@ -41,22 +42,22 @@
       <table class="table mt-5">
         <thead class="thead-dark">
           <tr>
-            <th scope="col">Código</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Costo por hora</th>
-            <th scope="col">Opciones</th>
+              <th scope="col">Código</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Provincia</th>
+              <th scope="col">Cantón</th>
+              <th scope="col">Distrito</th>
+              <th scope="col">Acciones</th>
           </tr>
         </thead>
 
         <tbody>
           <tr ng-repeat="sucursales in vm.listarSucursalesDesact">
-              <td>{{sucursales.codigoSucursal}}</td>
-              <td>{{sucursales.nombreSucursal}}</td>
-              <td>{{sucursales.provincia}}</td>
-              <td>{{sucursales.canton}}</td>
-              <td>{{sucursales.distrito}}
-              <td>{{sucursales.estadoSucursal}}</td>
-              </td>
+            <td>{{sucursales.codigoSucursal}}</td>
+            <td>{{sucursales.nombreSucursal}}</td>
+            <td>{{sucursales.provincia.name}}</td>
+            <td>{{sucursales.canton.name}}</td>
+            <td>{{sucursales.distrito.name}}</td>
             <td>
               <button type="button" class="btn btn-success" ng-click="vm.activarSucursal(sucursales)">
                 Activar

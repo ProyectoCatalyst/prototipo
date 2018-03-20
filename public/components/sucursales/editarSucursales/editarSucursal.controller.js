@@ -10,7 +10,7 @@
     let vm = this;
 
     if (!$stateParams.objSucursal) {
-      $state.go('listarSucursales');
+      $state.go('main.listarSucursales');
     }
 
     let objSucursalSinFormato = JSON.parse($stateParams.objSucursal);
@@ -25,6 +25,7 @@
 
     vm.SucursalMod.codigoSucursal = objSucursalTemp.codigoSucursal;
     vm.SucursalMod.nombreSucursal = objSucursalTemp.nombreSucursal;
+    
     vm.SucursalMod.provincia = objSucursalTemp.provincia;
     vm.SucursalMod.canton = objSucursalTemp.canton;
     vm.SucursalMod.distrito = objSucursalTemp.distrito;
@@ -37,7 +38,7 @@
     }, function (error) {
       console.log("Ocurrió un error provincia" + error);
     });
-
+    
     vm.rellenarCantones = (pidProvincia) => {
       vm.cantones = $http({
         method: 'GET',
@@ -54,7 +55,7 @@
         console.log("Ocurrió un error canton" + error.data)
       });
     }
-
+    
     vm.rellenarDistrito = (pidCanton) => {
       vm.distritos = $http({
         method: 'GET',
@@ -84,7 +85,7 @@
         psucursalEditar.estadoSucursal = true;
       }
 
-      let objSucursalFormato = new Sucursal(psucursalEditar.codigoSucursal, psucursalEditar.nombreSucursal, psucursalEditar.provincia.name, psucursalEditar.canton.name, psucursalEditar.distrito.name,psucursalEditar.estadoSucursal);
+      let objSucursalFormato = new Sucursal(psucursalEditar.codigoSucursal, psucursalEditar.nombreSucursal, psucursalEditar.provincia, psucursalEditar.canton, psucursalEditar.distrito,psucursalEditar.estadoSucursal);
 
       let updateValido = servicioSucursales.editarSucursal(objSucursalFormato);
 
@@ -96,7 +97,7 @@
           button: "Aceptar"
         });
 
-        $state.go('registroSucursales');
+        $state.go('main.listarSucursales');
       }
       vm.SucursalNueva = null;
       listarSucursales();
@@ -104,23 +105,37 @@
 
     vm.eliminarSucursal = (psucursalEliminar) => {
       console.log(psucursalEliminar);
+      swal({
+        title: "¿Seguro que desesa eliminar la sucursal?",
+        text: "Una vez eliminada, no será capaz de recuperar la sucursal seleccionada",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          let objSucursalFormato = new Sucursal(psucursalEliminar.codigoSucursal, psucursalEliminar.nombreSucursal);
 
-      let objSucursalFormato = new Sucursal(psucursalEliminar.codigoSucursal, psucursalEliminar.nombreSucursal);
+          let deleteValido = servicioSucursales.eliminarSucursal(objSucursalFormato);
+    
+          if (deleteValido == true) {
+            swal({
+              title: "Eliminado",
+              text: "Sucursal "+psucursalEliminar.codigoSucursal+" eliminada correctamente",
+              icon: "success",
+              button: "Aceptar"
+            });
+    
+            $state.go('main.listarSucursales');
+          }
+          vm.SucursalNueva = null;
+          listarSucursales();
+        }
+        else {
+          swal("La sucursal no se ha eliminado");
+        }
+      });
 
-      let deleteValido = servicioSucursales.eliminarSucursal(objSucursalFormato);
-
-      if (deleteValido == true) {
-        swal({
-          title: "Eliminado",
-          text: "Sucursal eliminada correctamente",
-          icon: "success",
-          button: "Aceptar"
-        });
-
-        $state.go('registroSucursales');
-      }
-      vm.SucursalNueva = null;
-      listarSucursales();
     }
 
     function listarSucursales() {
@@ -128,7 +143,7 @@
     }
 
     vm.regresar = () => {
-      $state.go('listarSucursales');
+      $state.go('main.listarSucursales');
     }
   }
 })();

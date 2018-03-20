@@ -62,9 +62,7 @@
           let objSucursalesAct = new Sucursal(obj.codigoSucursal, obj.nombreSucursal, obj.provincia, obj.canton, obj.distrito, obj.estadoSucursal);
 
           sucursalesTemp.push(objSucursalesAct);
-
-         
-        })
+        });
       }
 
       return sucursalesTemp;
@@ -81,7 +79,7 @@
           valido = true;
         }
       }
-      actualizarLocal(listaSucursales);
+      actualizarLista(listaSucursales);
       return valido;
     }// fin función actualizarSucursal
 
@@ -97,14 +95,11 @@
       actualizarLista(sucursalesLS);
     }
 
-    // retornar animadores activos, donde filtro los activos
-
     function _retornarSucursalesAct() {
-      let sucursalesLS = JSON.parse(localStorage.getItem('sucursalesLS')),
+      let sucursalesLS = JSON.parse(localStorage.getItem('listaSucursales')),
         sucursalesAct = [],
         sucursalesActLS = [];
-      // recibe del local bien.
-
+      
       if (sucursalesLS == null) {
         return sucursalesActLS;
       } else {
@@ -113,26 +108,19 @@
             sucursalesAct.push(sucursalesLS[i]);
           }
         }
-        // filtrar los estado true
-
         sucursalesAct.forEach(objTemp => {
           let objSucursalesAct = new Sucursal(objTemp.codigoSucursal, objTemp.nombreSucursal, objTemp.provincia, objTemp.canton, objTemp.distrito, objTemp.estadoSucursal);
 
           sucursalesActLS.push(objSucursalesAct);
         });
-
-        // recorro obj con true y doy formato
-        return sucursalesActLS
+        return sucursalesActLS;
       }
     }
 
-    // para animadores desactivados
-
     function _retornarSucursalesDesact() {
-      let sucursalesLS = JSON.parse(localStorage.getItem('sucursalesLS')),
+      let sucursalesLS = JSON.parse(localStorage.getItem('listaSucursales')),
         sucursalesDesact = [],
         sucursalesDesactLS = [];
-      // recibe del local bien.
 
       if (sucursalesLS == null) {
         return sucursalesDesactLS;
@@ -142,7 +130,6 @@
             sucursalesDesact.push(sucursalesLS[i]);
           }
         }
-        // modifica bien el estado
 
         sucursalesDesact.forEach(objTemp => {
           let objSucursalesDesact = new Sucursal(objTemp.codigoSucursal, objTemp.nombreSucursal, objTemp.provincia, objTemp.canton, objTemp.distrito, objTemp.estadoSucursal);
@@ -154,7 +141,7 @@
     }
 
     function _agregarSucursalDesact(psucursalesLS) {
-      localStorage.setItem('sucursalesLS', JSON.stringify(psucursalesLS));
+      localStorage.setItem('listaSucursales', JSON.stringify(psucursalesLS));
     }
 
 
@@ -168,12 +155,12 @@
           valido = true;
         }
       }
-      actualizarLocal(listaSucursales);
+      actualizarLista(listaSucursales);
       return valido;
     }//fin función eliminar sucursal
 
-    function actualizarLocal(plistaActualizada) {
-      localStorage.setItem('listaSucursalesLS', JSON.stringify(plistaActualizada));
+    function actualizarLista(psucursalesLS) {
+      localStorage.setItem('listaSucursales', JSON.stringify(psucursalesLS));
     }
 
   }// fin servicioSucursales

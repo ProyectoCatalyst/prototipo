@@ -62,7 +62,7 @@
       if(psucursalNueva.estadoSucursal==null){
         psucursalNueva.estadoSucursal = true;
       }
-      let objNuevaSucursal = new Sucursal(psucursalNueva.codigoSucursal, psucursalNueva.nombreSucursal, psucursalNueva.provincia.name, psucursalNueva.canton.name, psucursalNueva.distrito.name, psucursalNueva.estadoSucursal);
+      let objNuevaSucursal = new Sucursal(psucursalNueva.codigoSucursal, psucursalNueva.nombreSucursal, psucursalNueva.provincia, psucursalNueva.canton, psucursalNueva.distrito, psucursalNueva.estadoSucursal);
 
       console.log('objeto con sucursal');
       console.log(objNuevaSucursal);
@@ -91,7 +91,7 @@
     }// fin vm.registrarSucursal
 
     vm.listarSucursales = () => {
-      $state.go('listarSucursales')
+      $state.go('main.listarSucursales')
   }
   
   function listarSucursales() {

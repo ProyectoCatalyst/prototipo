@@ -16,7 +16,7 @@
             let sucursalesLS = servicioSucursales.retornarSucursal();
 
             psucursales.estadoSucursal = true;
-            $state.go('editarSucursales', { objSucursalMod: JSON.stringify(psucursales) });
+            $state.go('main.editarSucursales', { objSucursalMod: JSON.stringify(psucursales) });
         }
 
         vm.desactivarSucursal = (psucursales) => {
@@ -37,11 +37,11 @@
 
 
         vm.editarSucursales = (psucursal) => {
-            $state.go('editarSucursal', { objSucursal: JSON.stringify(psucursal) });
+            $state.go('main.editarSucursal', { objSucursal: JSON.stringify(psucursal) });
           }// fin Editar sucursal
 
         vm.agregarSucursales = () => {
-            $state.go('registroSucursales');
+            $state.go('main.registroSucursales');
           }
     }
 })();
