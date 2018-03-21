@@ -143,6 +143,34 @@
         controller: 'controladorListarFacturas',
         controllerAs: 'vm'
       })
+      .state('main.paquetesPrealertados', {
+        url: '/paquetesPrealertados',
+        templateUrl: './components/paquetes/consultarPaquetes/consultarPaquetes.view.html',
+        data: {
+          pageTitle: 'Paquetes Prealertados | Correos de Costa Rica'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/paquetes/consultarPaquetes/consultarPaquetes.controller.js')
+          }]
+        },
+        controller: 'controladorPaquetesPrealertados',
+        controllerAs: 'vm'
+      })
+      .state('main.consultarPaquetesNuevos', {
+        url: '/consultarPaquetesNuevos',
+        templateUrl: './components/paquetes/paquetesNuevos/consultarPaquetesNuevos.view.html',
+        data: {
+          pageTitle: 'Paquetes nuevos en Aduana | Correos de Costa Rica'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/paquetes/paquetesNuevos/consultarPaquetesNuevos.controller.js')
+          }]
+        },
+        controller: 'controladorConsultarPaquetesNuevos',
+        controllerAs: 'vm'
+      })
       ;
 
 

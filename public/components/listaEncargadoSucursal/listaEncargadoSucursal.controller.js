@@ -9,7 +9,7 @@
   function controladorListaEncargadoSucursal($stateParams, $state, $http, servicioUsuarios ){
     let vm = this;
 
-    //vm.listarEncargadosSucursal = servicioUsuarios
+    //vm.listarEncargadoSucursal = servicioUsuarios
 
     
   }
