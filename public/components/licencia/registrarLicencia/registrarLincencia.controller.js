@@ -2,7 +2,7 @@
   'use strict'
 
   angular
-  .module('prototipo', ['ngMessages'])
+  .module('prototipo')
   .controller('controladorRegistrarLicencia', controladorRegistrarLicencia)
 
   controladorRegistrarLicencia.$inject =['$stateParams', '$state', 'servicioRepartidor']

@@ -21,11 +21,16 @@
             }else{
 
                     pnuevoRegistro.estado = true;
-                    pnuevoRegistro.razonDesact = ''
+                    pnuevoRegistro.razonDesact = '';
+                    pnuevoRegistro.rol = 4;
 
-                let objNuevoRegistro = new Repartidor(pnuevoRegistro.cedula, pnuevoRegistro.foto, pnuevoRegistro.nombre, pnuevoRegistro.segundoNombre, pnuevoRegistro.primerApellido, pnuevoRegistro.segundoApellido, pnuevoRegistro.correo, pnuevoRegistro.telefono, pnuevoRegistro.telefonoAdicional, pnuevoRegistro.sucursal, pnuevoRegistro.genero, pnuevoRegistro.fechaNacimiento, pnuevoRegistro.contrasenna, pnuevoRegistro.estado, pnuevoRegistro.razonDesact),
+                    console.log(pnuevoRegistro)
+
+                let objNuevoRegistro = new Repartidor(pnuevoRegistro.nombre, pnuevoRegistro.segundoNombre, pnuevoRegistro.primerApellido, pnuevoRegistro.segundoApellido, pnuevoRegistro.cedula, pnuevoRegistro.fechaNacimiento, pnuevoRegistro.genero, pnuevoRegistro.ubicacion, pnuevoRegistro.provincia, pnuevoRegistro.canton, pnuevoRegistro.distrito, pnuevoRegistro.direccion,pnuevoRegistro.correo, pnuevoRegistro.contrasenna, pnuevoRegistro.rol, pnuevoRegistro.telefono, pnuevoRegistro.estado, pnuevoRegistro.razonDesact, pnuevoRegistro.sucursal),
                 aDatos = [objNuevoRegistro, objNuevoRegistro.sucursal],
                 aDatosVerificar = [objNuevoRegistro.cedula, objNuevoRegistro.sucursal];
+
+                console.log(objNuevoRegistro);
 
                 let exito = verificarRepartidor(aDatosVerificar);
 

@@ -5,8 +5,8 @@
     .module('prototipo')
     .service('servicioRepartidor', servicioRepartidor)
 
-    servicioRepartidor.$inject = ['$q', '$http', '$log']
-    function servicioRepartidor($q, $http, $log){
+    servicioRepartidor.$inject = ['$q', '$http', '$log', 'localStorageFactory']
+    function servicioRepartidor($q, $http, $log, localStorageFactory){
 
         let publicAPI = {
             retornarRepartidoresSucursal: _retornarRepartidoresSucursal,
@@ -33,7 +33,7 @@
                     repartidoresLS.forEach(objRepartidorTemp => {
                         if(objRepartidorTemp.sucursal == psucursal){
 
-                            let repartidores = new Repartidor(objRepartidorTemp.cedula, objRepartidorTemp.foto, objRepartidorTemp.nombre, objRepartidorTemp.segundoNombre, objRepartidorTemp.primerApellido, objRepartidorTemp.segundoApellido, objRepartidorTemp.correo, objRepartidorTemp.telefono, objRepartidorTemp.telefonoAdicional, objRepartidorTemp.sucursal, objRepartidorTemp.genero, objRepartidorTemp.nacimiento, objRepartidorTemp.contrasena, objRepartidorTemp.estado, objRepartidorTemp.razonDesact);
+                            let repartidores = new Repartidor(objRepartidorTemp.nombre, objRepartidorTemp.segundoNombre, objRepartidorTemp.primerApellido, objRepartidorTemp.segundoApellido, objRepartidorTemp.cedula, objRepartidorTemp.fecha, objRepartidorTemp.genero, objRepartidorTemp.correo, objRepartidorTemp.contrasenna, objRepartidorTemp.rol, objRepartidorTemp.telefono, objRepartidorTemp.estado, objRepartidorTemp.razonDesact);
 
                             // objRepartidorTemp.paqueteAsignado.forEach(objPaqueteAsignadoTemp => {
                             //     let objPaqueteAsignado = new Paquete(objPaqueteAsignadoTem)
@@ -72,7 +72,7 @@
                 }else{
                     repartidoresLS.forEach(objRepartidorTemp => {
 
-                        let objRepartidor = new Repartidor(objRepartidorTemp.cedula, objRepartidorTemp.foto, objRepartidorTemp.nombre, objRepartidorTemp.segundoNombre, objRepartidorTemp.primerApellido, objRepartidorTemp.segundoApellido, objRepartidorTemp.correo, objRepartidorTemp.telefono, objRepartidorTemp.telefonoAdicional, objRepartidorTemp.sucursal, objRepartidorTemp.genero, objRepartidorTemp.nacimiento, objRepartidorTemp.contrasena, objRepartidorTemp.estado, objRepartidorTemp.razonDesact);
+                        let objRepartidor = new Repartidor(objRepartidorTemp.nombre, objRepartidorTemp.segundoNombre, objRepartidorTemp.primerApellido, objRepartidorTemp.segundoApellido, objRepartidorTemp.cedula, objRepartidorTemp.fecha, objRepartidorTemp.genero, objRepartidorTemp.correo, objRepartidorTemp.contrasenna, objRepartidorTemp.rol, objRepartidorTemp.telefono, objRepartidorTemp.estado, objRepartidorTemp.razonDesact);
 
                         objRepartidorTemp.licencia.forEach(objLicenciaTemp => {
 

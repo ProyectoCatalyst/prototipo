@@ -22,11 +22,11 @@
         <tbody>
           <tr ng-repeat="repartidores in vm.listarActRepartidores">
             <td>{{repartidores.cedula}}</td>
-            <td>{{repartidores.nombre}}</td>
+            <td>{{repartidores.primerNombre}}</td>
             <td>{{repartidores.primerApellido}}</td>
             <td>{{repartidores.correo}}</td>
             <td>{{repartidores.sucursal}}</td>
-            <td>{{repartidores.nacimiento | date: 'dd-MM-yyyy'}}</td>
+            <td>{{repartidores.fecha | date: 'dd-MM-yyyy'}}</td>
             <td>
               <button type="button" class="btn btn-primary" ng-click="vm.verPerfil(repartidores)">Ver perfil</button>
             </td>
@@ -55,11 +55,11 @@
             <tbody>
               <tr ng-repeat="repartidores in vm.listarDesactRepartidores">
                 <td>{{repartidores.cedula}}</td>
-                <td>{{repartidores.nombre}}</td>
+                <td>{{repartidores.primerNombre}}</td>
                 <td>{{repartidores.primerApellido}}</td>
                 <td>{{repartidores.correo}}</td>
                 <td>{{repartidores.sucursal}}</td>
-                <td>{{repartidores.nacimiento | date: 'dd-MM-yyyy'}}</td>
+                <td>{{repartidores.fecha | date: 'dd-MM-yyyy'}}</td>
                 <td>{{repartidores.razonDesact}}</td>
               </tr>
             </tbody>

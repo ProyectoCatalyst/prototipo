@@ -97,7 +97,7 @@
           }]
         },
         controller: 'controladorPerfilRepartidor',
-        controllerAS: vm
+        controllerAS: 'vm'
       })
 
       .state('main', {
