@@ -112,7 +112,38 @@
         },
         controller: 'controladorRegistrarConvenio',
         controllerAs: 'vm'
-      });
+      })
+      
+      .state('main.listarEncargadoSucursal', {
+        url: '/listarEncargadoSucursal',
+        templateUrl: './components/listaEncargadoSucursal/listaEncargadoSucursal.view.html',
+        data: {
+          pageTitle: 'Lista encargados de sucursal | Correos de Costa Rica'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/listaEncargadoSucursal/listaEncargadoSucursal.controller.js')
+          }]
+        },
+        controller: 'controladorListaEncargadoSucursal',
+        controllerAs: 'vm'
+      })
+
+      .state('main.listarFacturas', {
+        url: '/listarFacturas',
+        templateUrl: './components/listarFacturas/listarFacturas.view.html',
+        data: {
+          pageTitle: 'Lista de facturas | Correos de Costa Rica'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/listarFacturas/listarFacturas.controller.js')
+          }]
+        },
+        controller: 'controladorListarFacturas',
+        controllerAs: 'vm'
+      })
+      ;
 
 
     // .state('', {
