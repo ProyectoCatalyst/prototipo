@@ -5,9 +5,9 @@
   .module('prototipo')
   .controller('controladorListaTodosRepartidores', controladorListaTodosRepartidores)
 
-  controladorListaTodosRepartidores.$inject = ['$stateParams', '$state', 'servicioRepartidor']
+  controladorListaTodosRepartidores.$inject = ['$stateParams', '$state', 'servicioUsuarios']
 
-  function controladorListaTodosRepartidores($stateParams, $state, servicioRepartidor){
+  function controladorListaTodosRepartidores($stateParams, $state, servicioUsuarios){
     let vm = this;
 
     vm.listarActRepartidores = listarActivos();
@@ -39,8 +39,8 @@
         
         if(desact){
           let datos = [pcedula, razon];
-          servicioRepartidor.cambiarEstadoRepartidor(datos[0]);
-          servicioRepartidor.agregarRazonDesact(datos);
+          servicioUsuarios.cambiarEstadoRepartidor(datos[0]);
+          servicioUsuarios.agregarRazonDesact(datos);
           $state.reload();
         }
       });
@@ -56,15 +56,17 @@
 
     //______funciones internas________
     function listarActivos(){
-      let todosLosRepartidores = servicioRepartidor.retornarTodosRepartidores();
+      let todosLosRepartidores = servicioUsuarios.retornarTodosRepartidores(),
+            listarRepartidoresFiltrados = servicioUsuarios.filtrarRepartidores(todosLosRepartidores);
 
-      return todosLosRepartidores[0]
+      return listarRepartidoresFiltrados[0]
     }
 
     function listarDesact(){
-      let todosLosRepartidores = servicioRepartidor.retornarTodosRepartidores();
+      let todosLosRepartidores = servicioUsuarios.retornarTodosRepartidores(),
+            listarRepartidoresFiltrados = servicioUsuarios.filtrarRepartidores(todosLosRepartidores);
 
-      return todosLosRepartidores[1]
+      return listarRepartidoresFiltrados[1]
     }
 
   }

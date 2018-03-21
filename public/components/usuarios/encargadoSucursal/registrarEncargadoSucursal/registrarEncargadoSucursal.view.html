@@ -1,91 +1,103 @@
 <div class="container">
-    <div class="col-4">
+    <div class="container" id="header">
         <form ng-submit="vm.registrarEncargadoSucursal(vm.nuevoEncargadoSucursal)">
+                <form>
+                        <h1 id="tituloPrincipal">Cree una nueva cuenta</h1>
+                        <h4>¡Es fácil y sencillo!</h4>
+                        <p>Complete los siguientes datos</p>
+                        <div class = "row m-4">
+                    <div class="form-group">
+                        <label for="Nombre">Nombre:</label>
+                        <input type="" class="form-control" id="txtNombreEncargadoSucursal" ng-model="vm.nuevoEncargadoSucursal.nombre" required>
+                    </div>
 
-            <div class="form-group">
-                <label for="Nombre">Nombre:</label>
-                <input type="" class="form-control" id="txtNombreEncargadoSucursal" ng-model="vm.nuevoEncargadoSucursal.nombre" required>
-            </div>
+                    <div class="form-group">
+                        <label for="SegundoNombre">Segundo Nombre:</label>
+                        <input type="" class="form-control" id="txtSegundoNomEncargadoSucursal" ng-model="vm.nuevoEncargadoSucursal.segundoNombre">
+                    </div>
+                      </div>
 
-            <div class="form-group">
-                <label for="SegundoNombre">Segundo Nombre:</label>
-                <input type="" class="form-control" id="txtSegundoNomEncargadoSucursal" ng-model="vm.nuevoEncargadoSucursal.segundoNombre">
-            </div>
+                      <div class = "row m-4">
+                    <div class="form-group">
+                        <label for="PrimerApellido">Primer Apellido:</label>
+                        <input type="" class="form-control" id="txtApellidoEncargadoSucursal" ng-model="vm.nuevoEncargadoSucursal.primerApellido"
+                            required>
+                    </div>
 
-            <div class="form-group">
-                <label for="PrimerApellido">Primer Apellido:</label>
-                <input type="" class="form-control" id="txtApellidoEncargadoSucursal" ng-model="vm.nuevoEncargadoSucursal.primerApellido"
-                    required>
-            </div>
+                    <div class="form-group">
+                        <label for="SegundoNombre">Segundo Apellido:</label>
+                        <input type="" class="form-control" id="txtSegundoApellidoEncargadoSucursal" ng-model="vm.nuevoEncargadoSucursal.segundoApellido">
+                    </div>
+                </div>
+                <div class = "row m-4">
+                    <div class="form-group">
+                        <label for="Cedula">Cédula:</label>
+                        <input type="text" class="form-control" ng-model="vm.nuevoEncargadoSucursal.cedula" pattern="[0-9]+" id="txtCedula " required>
+                    </div>
 
-            <div class="form-group">
-                <label for="SegundoNombre">Segundo Apellido:</label>
-                <input type="" class="form-control" id="txtSegundoApellidoEncargadoSucursal" ng-model="vm.nuevoEncargadoSucursal.segundoApellido">
-            </div>
+                    <div class="form-group">
+                        <label for="txtFecha">Fecha de Nacimiento</label>
+                        <input type="date" class="form-control" ng-model="vm.nuevoEncargadoSucursal.fecha" id="txtFecha" required>
+                    </div>
+                </div>
 
-            <div class="form-group">
-                <label for="Cedula">Cédula:</label>
-                <input type="text" class="form-control" ng-model="vm.nuevoEncargadoSucursal.cedula" pattern="[0-9]+" id="txtCedula " required>
-            </div>
+                <div class = "row m-4">
+                    <div class="form-group">
+                        <label for="txtGenero">Género</label>
+                        <select class="custom-select" ng-model="vm.nuevoEncargadoSucursal.genero" id="txtGenero" required>
+                            <option value="">Seleccione genero</option>
+                            <option value="Femenino">Femenino</option>
+                            <option value="Masculino2">Masculino</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                    
 
-            <div class="form-group">
-                <label for="txtFecha">Fecha de Nacimiento</label>
-                <input type="date" class="form-control" ng-model="vm.nuevoEncargadoSucursal.fecha" id="txtFecha" required>
-            </div>
+                    <div class="form-group">
+                        <label for="txtProvincia">Provincia</label>
+                        <select id="txtProvincia" ng-options="provincia as provincia.name for provincia in vm.provincias track by provincia._id"
+                            ng-change="vm.rellenarCantones(vm.nuevoEncargadoSucursal.provincia._id)" ng-model="vm.nuevoEncargadoSucursal.provincia"
+                            class="custom-select" required>
+                            <option value="">Seleccione una Provincia</option>
+                        </select>
+                    </div>
+                    </div>
+                    <div class = "row m-4">
+                    <div class="form-group">
+                        <label for="txtCanton">Cantón</label>
+                        <select id="txtCanton" ng-options="canton as canton.name for canton in vm.cantones track by canton._id" ng-change="vm.rellenarDistritos(vm.nuevoEncargadoSucursal.canton._id)"
+                            ng-model="vm.nuevoEncargadoSucursal.canton" class="custom-select" required>
+                            <option value="">Seleccione un Canton</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtDistrito">Distrito</label>
+                        <select id="txtDistrito" ng-options="distrito as distrito.name for distrito in vm.distritos track by distrito._id" ng-model="vm.nuevoEncargadoSucursal.distrito"
+                            class="custom-select" required>
+                            <option value="">Seleccione un Distrito</option>
+                        </select>
 
-            <div class="form-group">
-                <label for="txtGenero">Género</label>
-                <select class="custom-select" ng-model="vm.nuevoEncargadoSucursal.genero" id="txtGenero" required>
-                    <option value="">Seleccione genero</option>
-                    <option value="Femenino">Femenino</option>
-                    <option value="Masculino2">Masculino</option>
-                    <option value="Otro">Otro</option>
-                </select>
-            </div>
+                    </div>
+                     </div>
+                     <div class = "row m-4">
+                    <div class="form-group">
+                        <label for="Ubicación">Úbicación exacta:</label>
+                        <input type="text" class="form-control" ng-model="vm.nuevoEncargadoSucursal.direccion" id="txtDireccion" required>
+                    </div>
 
-
-            <div class="form-group">
-                <label for="txtProvincia">Provincia</label>
-                <select id="txtProvincia" ng-options="provincia as provincia.name for provincia in vm.provincias track by provincia._id"
-                    ng-change="vm.rellenarCantones(vm.nuevoEncargadoSucursal.provincia._id)" ng-model="vm.nuevoEncargadoSucursal.provincia"
-                    class="custom-select" required>
-                    <option value="">Seleccione una Provincia</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="txtCanton">Cantón</label>
-                <select id="txtCanton" ng-options="canton as canton.name for canton in vm.cantones track by canton._id" ng-change="vm.rellenarDistritos(vm.nuevoEncargadoSucursal.canton._id)"
-                    ng-model="vm.nuevoEncargadoSucursal.canton" class="custom-select" required>
-                    <option value="">Seleccione un Canton</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="txtDistrito">Distrito</label>
-                <select id="txtDistrito" ng-options="distrito as distrito.name for distrito in vm.distritos track by distrito._id" ng-model="vm.nuevoEncargadoSucursal.distrito"
-                    class="custom-select" required>
-                    <option value="">Seleccione un Distrito</option>
-                </select>
-
-            </div>
-
-            <div class="form-group">
-                <label for="Ubicación">Úbicación exacta:</label>
-                <input type="text" class="form-control" ng-model="vm.nuevoEncargadoSucursal.direccion" id="txtDireccion" required>
-            </div>
-
-            <div class="form-group">
-                <label for="txtEmail">Correo electrónico</label>
-                <input type="email" class="form-control" ng-model="vm.nuevoEncargadoSucursal.correo" id="txtEmail" required>
-            </div>
-            <div class="form-group">
-                <label for="txtContrasenna">Contraseña</label>
-                <input type="password" class="form-control" ng-model="vm.nuevoEncargadoSucursal.contrasenna" id="txtContrasenna" required>
-            </div>
+                    <div class="form-group">
+                        <label for="txtEmail">Correo electrónico</label>
+                        <input type="email" class="form-control" ng-model="vm.nuevoEncargadoSucursal.correo" id="txtEmail" required>
+                    </div>
+                </div>
+                
+                    <div class="form-group">
+                        <label for="txtContrasenna">Contraseña</label>
+                        <input type="password" class="form-control" ng-model="vm.nuevoEncargadoSucursal.contrasenna" id="txtContrasenna" required>
+                    </div>
 
 
-
-            <button type="submit" class="btn btn-primary">Registrar Encargado de Sucursal</button>
-        </form>
+                <button type="submit" class="btn btn-primary">Registrar Encargado de Sucursal</button>
+            </form>
     </div>
 </div>

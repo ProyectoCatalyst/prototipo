@@ -4,9 +4,9 @@
     .module('prototipo')
     .controller('controladorRegistrarRepartidor', controladorRegistrarRepartidor);
 
-    controladorRegistrarRepartidor.$inject = ['$stateParams', '$state', 'servicioRepartidor'];
+    controladorRegistrarRepartidor.$inject = ['$stateParams', '$state', 'servicioUsuarios'];
 
-    function controladorRegistrarRepartidor($stateParams, $state, servicioRepartidor){
+    function controladorRegistrarRepartidor($stateParams, $state, servicioUsuarios){
         let vm = this;
 
         vm.registrarRepartidor = (pnuevoRegistro) => {
@@ -36,7 +36,7 @@
 
                 if(exito){
                     let datosRepartidor = [objNuevoRegistro.cedula, objNuevoRegistro.sucursal, objNuevoRegistro.nombre];
-                    servicioRepartidor.agregarRepartidor(aDatos);
+                    servicioUsuarios.agregarRepartidor(aDatos);
                     $state.go('listarTodosLosRepartidores');
                     swal({
                         title: "Éxito",
@@ -59,7 +59,7 @@
         //_______funciones internas________
         function verificarRepartidor(paDatosVerificar){
 
-            let repartidoresLS = servicioRepartidor.retornarRepartidoresSucursal(paDatosVerificar[1]),
+            let repartidoresLS = servicioUsuarios.retornarRepartidoresSucursal(paDatosVerificar[1]),
             existente = false;
 
             for(let i=0; i<repartidoresLS.length; i++){

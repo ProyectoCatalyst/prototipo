@@ -5,16 +5,17 @@
   .module('prototipo')
   .controller('controladorPerfilRepartidor', controladorPerfilRepartidor)
 
-  controladorPerfilRepartidor.$inject = ['$stateParams', '$state', 'servicioRepartidor']
-  function controladorPerfilRepartidor($stateParams, $state, servicioRepartidor){
+  controladorPerfilRepartidor.$inject = ['$stateParams', '$state', 'servicioUsuarios']
+  function controladorPerfilRepartidor($stateParams, $state, servicioUsuarios){
     let vm = this;
 
     let datosRepartidor = JSON.parse($stateParams.datos);
 
-    console.log(datosRepartidor)
+    console.log(datosRepartidor);
 
-    vm.listarLicencias = () => {
+    vm.consultarLicencias = () => {
       $state.go('listarLicencias', {datos: JSON.stringify(datosRepartidor)});
-    }
+    } 
+    
   }
 })();

@@ -62,6 +62,10 @@ class Usuario {
   getRol(){
     return this.rol;
   }
+
+  getContrasenna(){
+    return this.contrasenna;
+  }
   
 }
 
@@ -71,11 +75,11 @@ class EncargadoAduanas extends Usuario {
   }
 }
 
-// class   extends Usuario {
-//   constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol) {
-//     super(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol)
-//   }
-// }
+class EncargadoSucursales extends Usuario {
+  constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol) {
+    super(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol)
+  }
+}
 
 class Cliente extends Usuario {
   constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, ptelefono) {
@@ -109,6 +113,10 @@ class Repartidor extends Usuario{
     setLicencia(pobjLicencia){
       this.licencia.push(pobjLicencia)
     }
+
+    getEstado(){
+      return this.estado
+    }
     
 }
 
@@ -126,6 +134,29 @@ class Licencia{
 
   getEstado(){
     return this.estado
+  }
+  
+}
+
+class Convenio{
+
+  constructor(pcodigoConvenio,pnombreConvenio,pdescripcionConvenio,pinstitucionConvenio,pcostoConvenio){
+
+    this.codigoConvenio = pcodigoConvenio;
+    this.nombreConvenio = pnombreConvenio;
+    this.descripcionConvenio = pdescripcionConvenio;
+    this.institucionConvenio = pinstitucionConvenio;
+    this.costoConvenio = pcostoConvenio;
+  }
+  
+  getCodigo() {
+    return this.codigoConvenio;
+  }
+  getNombre() {
+    return this.nombreConvenio;
+  }
+  getCosto() {
+    return this.costoConvenio;
   }
   
 }

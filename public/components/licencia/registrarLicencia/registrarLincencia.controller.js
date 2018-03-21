@@ -5,8 +5,8 @@
   .module('prototipo')
   .controller('controladorRegistrarLicencia', controladorRegistrarLicencia)
 
-  controladorRegistrarLicencia.$inject =['$stateParams', '$state', 'servicioRepartidor']
-  function controladorRegistrarLicencia($stateParams, $state, servicioRepartidor){
+  controladorRegistrarLicencia.$inject =['$stateParams', '$state', 'servicioUsuarios']
+  function controladorRegistrarLicencia($stateParams, $state, servicioUsuarios){
 
     if(!$stateParams.datos){
       $state.go('listarTodosLosRepartidores');
@@ -19,11 +19,9 @@
     vm.nombreRepartidor = datosRepartidor[2];
     vm.registrarLicencia = (pnuevoRegistro) => {
 
-      if(!pnuevoRegistro.estado){
-        pnuevoRegistro.estado = true;
-      }
+      pnuevoRegistro.estado = true;
       
-      let objLicencia = new Licencia(pnuevoRegistro.codigo, pnuevoRegistro.fechaVencimiento, pnuevoRegistro.tipoLicencia, pnuevoRegistro.estado),
+      let objLicencia = new Licencia(pnuevoRegistro.codigo, pnuevoRegistro.fechaVencimiento, pnuevoRegistro.tipoLicencia, pnuevoRegistro.estado, pnuevoRegistro.foto),
           existente = verificarLicencia(objLicencia),
           fechaValida = verificarFechaVencimiento(objLicencia.fechaVencimiento),
           datosAgregar = [objLicencia, datosRepartidor[0], datosRepartidor[1]];
@@ -44,7 +42,7 @@
             icon: 'success',
             button: 'Aceptar'
           });
-          servicioRepartidor.registrarLicencia(datosAgregar);
+          servicioUsuarios.registrarLicencia(datosAgregar);
 
           $state.go('listarLicencias', {datos: JSON.stringify(datosRepartidor)});
         }else{
@@ -62,11 +60,11 @@
     // __________funciones internas__________
 
     function verificarLicencia(pobjLicencia){
-      let licenciasLS = servicioRepartidor.retornarTodasLicencias(),
+      let licenciasLS = servicioUsuarios.retornarTodasLicencias(),
           existente = false;
 
       for (let i=0; i<licenciasLS.length; i++){
-        if(licenciasLS[i].codigo == pobjLicencia.codigo){
+        if(licenciasLS[i].getCodigo() == pobjLicencia.codigo){
           existente = true;
         }
       }

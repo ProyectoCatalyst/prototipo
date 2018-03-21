@@ -1,15 +1,15 @@
 (() => {
-  'use strict'
-
+  'use strict';
   angular
   .module('prototipo')
-  .directive('encabezadoPrincipal', encabezadoPrincipal);
-
-  function encabezadoPrincipal(){
+  .directive('navegacionPrincipal', navegacionPrincipal);
+  
+  function navegacionPrincipal(){
     const navegacion = {
-      templateURL: '/components/directives/header/header.view.html',
-      restirct: 'EA'
-    }; 
+      templateUrl: '/components/directives/header/header.view.html',
+      restrict: 'EA' //E = Etiqueta, A = Atributo, C = Comentario, M.
+    };
+
     return navegacion;
   }
 })();

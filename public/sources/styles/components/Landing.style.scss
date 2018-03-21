@@ -1,21 +1,24 @@
+@import "../settings";
+
 #headerLanding{
+  background-image: url('./img/landing/1.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+
   #FondoLanding{
-    margin-top: -100%;
-    padding: 0 0;
-    position: relative;
-    z-index: 1;
+   
   }
 
   #LogoLanding{
-    position: absolute;
-    top: -39%;
-    margin: 0 auto;
-    z-index: 9;
+   margin-left: 30%;
+   margin-top: 5%;
  }
 
-//  #texto{
-//    padding-left: 
-//  }
+#texto{
+  margin-top: 20%;
+  padding-top: 15%;
+}
 
  #TextoLanding{
    margin-left: 10%;
@@ -28,7 +31,8 @@
  }
 
  #footerLanding{
-   background-color: #3b3b3b;
-   padding-bottom: 20%;
+
+background-color: $rest-color;
+
  }
 }

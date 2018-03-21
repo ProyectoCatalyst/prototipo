@@ -83,7 +83,7 @@
       })
       
       .state('perfilRepartidor', {
-        url: '/deliverManProfile',
+        url: '/deliveryManProfile',
         templateUrl: './components/repartidor/perfilRepartidor/perfilRepartidor.view.html',
         data: {
           pageTitle: 'Perfil repartidor | Correos CR'
@@ -97,7 +97,7 @@
           }]
         },
         controller: 'controladorPerfilRepartidor',
-        controllerAS: 'vm'
+        controllerAs: 'vm'
       })
 
       .state('main', {
@@ -144,7 +144,7 @@
         controller: 'controladorRegistroEncargadoSucursal',
         controllerAs: 'vm'
       })
-      
+
       .state('main.registrarCliente', {
         url: '/registerCustomers',
         templateUrl: './components/usuarios/clientes/registrarClientes/registrarClientes.view.html',
@@ -157,6 +157,44 @@
           }]
         },
         controller: 'controladorRegistrarCliente',
+        controllerAs: 'vm'
+      })
+
+      .state('inicioSesion', {
+        url: '/inicioSesion',
+        templateUrl: './components/login/login.view.html',
+        data: {
+          pageTitle: 'Inicio de Sesión | Correos CR'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/login/login.controller.js')
+          }]
+        },
+        controller: 'controladorInicioSesion',
+        controllerAs: 'vm'
+      })
+
+      .state('404', {
+        url: '/404',
+        templateUrl: './404.html',
+        data: {
+          pageTitle: '404'
+        }
+      })
+
+      .state('main.registrarConvenio', {
+        url: '/registrarConvenio',
+        templateUrl: './components/convenio/registrarConvenio/registrarConvenio.view.html',
+        data: {
+          pageTitle: 'Registro de Convenios | Correos de Costa Rica'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/convenio/registrarConvenio/registrarConvenio.controller.js')
+          }]
+        },
+        controller: 'controladorRegistrarConvenio',
         controllerAs: 'vm'
       });
 

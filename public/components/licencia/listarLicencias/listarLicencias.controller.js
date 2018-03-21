@@ -5,8 +5,8 @@
     .module('prototipo')
     .controller('controladorListarLicencias', controladorListarLicencias);
 
-  controladorListarLicencias.$inject = ['$stateParams', '$state', 'servicioRepartidor'];
-  function controladorListarLicencias($stateParams, $state, servicioRepartidor) {
+  controladorListarLicencias.$inject = ['$stateParams', '$state', 'servicioUsuarios'];
+  function controladorListarLicencias($stateParams, $state, servicioUsuarios) {
 
     if (!$stateParams.datos) {
       $state.go('listarTodosLosRepartidores');
@@ -29,21 +29,21 @@
       let datos = [datosRepartidor[0], datosRepartidor[1]],
           licenciasActivas;
         
-      let todasLasLicencias = servicioRepartidor.retornarLicencias(datos),
+      let todasLasLicencias = servicioUsuarios.retornarLicencias(datos),
           licenciasVencidas = filtrarLicenciasVencidas(todasLasLicencias); // funcion que me retorna las licencias cuyo fecha de vencimiento es menor a la fecha actual
 
           for(let i=0; i<licenciasVencidas.length; i++){
             cambiarEstado(licenciasVencidas[i]); // recorro el objeto cuyas licencias estan vencidas y cambio su estado, esta funcion a su vez va a actualizar el LS
           }
 
-          licenciasActivas = servicioRepartidor.retornarLicencias(datos); // llamar funcion que toma los datos del LS con el estado actualizado y en la linea 36 y obtiene un array con licencias activas en posicion 0 y licencias vencidas en la posicion 1
+          licenciasActivas = servicioUsuarios.retornarLicencias(datos); // llamar funcion que toma los datos del LS con el estado actualizado y en la linea 36 y obtiene un array con licencias activas en posicion 0 y licencias vencidas en la posicion 1
 
       return licenciasActivas[0]; // retorno licencias activas para llenar la tabla
     }
 
     function listarLicenciasDesactivadas() {
       let datos = [datosRepartidor[0], datosRepartidor[1]],
-          licenciasDesactivadas = servicioRepartidor.retornarLicencias(datos);
+          licenciasDesactivadas = servicioUsuarios.retornarLicencias(datos);
 
       return licenciasDesactivadas[1];
     }
@@ -70,7 +70,7 @@
     function cambiarEstado(pdatosLicencia){
       let datos = [datosRepartidor[0], datosRepartidor[1], pdatosLicencia.codigo];
 
-      servicioRepartidor.cambiarEstadoLicencia(datos);
+      servicioUsuarios.cambiarEstadoLicencia(datos);
     }
 
   }
