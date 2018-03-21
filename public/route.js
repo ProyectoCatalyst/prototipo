@@ -171,6 +171,34 @@
         controller: 'controladorConsultarPaquetesNuevos',
         controllerAs: 'vm'
       })
+      .state('main.consultarRepartidorAsignado', {
+        url: '/consultarRepartidorAsignado',
+        templateUrl: './components/consultarRepartidorAsignado/consultarRepartidorAsignado.view.html',
+        data: {
+          pageTitle: 'Repartidor asignado | Correos de Costa Rica'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/consultarRepartidorAsignado/consultarRepartidorAsignado.controller.js')
+          }]
+        },
+        controller: 'controladorConsultarRepartidorAsignado',
+        controllerAs: 'vm'
+      })
+      .state('main.consultarCasillero', {
+        url: '/consultarCasillero',
+        templateUrl: './components/consultarCasillero/consultarCasillero.view.html',
+        data: {
+          pageTitle: 'Casillero Asignado | Correos de Costa Rica'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/consultarCasillero/consultarCasillero.controller.js')
+          }]
+        },
+        controller: 'controladorConsultarCasillero',
+        controllerAs: 'vm'
+      })
       ;
 
 
