@@ -99,6 +99,24 @@
         controller: 'controladorPerfilRepartidor',
         controllerAs: 'vm'
       })
+      
+      .state('editarRepartidor', {
+        url: '/modifyDeliveryMan',
+        templateUrl: './components/repartidor/editarRepartidor/editarRepartidor.view.html',
+        data: {
+          pageTitle: 'Editar repartidor | Correos CR'
+        },
+        params: {
+          datos: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/repartidor/editarRepartidor/editarRepartidor.controller.js')
+          }]
+        },
+        controller: 'controladorEditarRepartidor',
+        controllerAs: 'vm'
+      })
 
       .state('main', {
         url: '/main',

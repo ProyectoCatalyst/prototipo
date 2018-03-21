@@ -20,10 +20,12 @@
       cambiarEstadoRepartidor: _cambiarEstadoRepartidor,
       agregarRazonDesact: _agregarRazonDesact,
       filtrarRepartidores : _filtrarRepartidores,
+      editarRepartidor: _editarRepartidor,
       retornarTodasLicencias: _retornarTodasLicencias,
       registrarLicencia: _registrarLicencia,
       cambiarEstadoLicencia: _cambiarEstadoLicencia,
-      retornarLicencias: _retornarLicencias
+      retornarLicencias: _retornarLicencias,
+      retornarPaquetesAsignados: _retornarPaquetesAsignados
     };
     return publicAPI; 
 
@@ -115,7 +117,7 @@
                         // le doy formato de repartidor a ese usuario
                             if(objUsuarioTemp.sucursal == psucursal){ // filtro la sucursal
 
-                                let repartidores = new Repartidor(objUsuarioTemp.primerNombre, objUsuarioTemp.segundoNombre, objUsuarioTemp.primerApellido, objUsuarioTemp.segundoApellido, objUsuarioTemp.cedula, objUsuarioTemp.fecha, objUsuarioTemp.genero, objUsuarioTemp.ubicacion, objUsuarioTemp.provincia, objUsuarioTemp.canton, objUsuarioTemp.distrito, objUsuarioTemp.direccion,objUsuarioTemp.correo, objUsuarioTemp.contrasenna, objUsuarioTemp.rol, objUsuarioTemp.telefono, objUsuarioTemp.estado, objUsuarioTemp.razonDesact, objUsuarioTemp.sucursal);
+                                let repartidores = new Repartidor(objUsuarioTemp.primerNombre, objUsuarioTemp.segundoNombre, objUsuarioTemp.primerApellido, objUsuarioTemp.segundoApellido, objUsuarioTemp.cedula, objUsuarioTemp.fecha, objUsuarioTemp.genero, objUsuarioTemp.ubicacion, objUsuarioTemp.provincia, objUsuarioTemp.canton, objUsuarioTemp.distrito, objUsuarioTemp.direccion,objUsuarioTemp.correo, objUsuarioTemp.contrasenna, objUsuarioTemp.rol, objUsuarioTemp.telefono, objUsuarioTemp.telefonoAdicional, objUsuarioTemp.estado, objUsuarioTemp.razonDesact, objUsuarioTemp.sucursal);
         
                                 // objRepartidorTemp.paqueteAsignado.forEach(objPaqueteAsignadoTemp => {
                                 //     let objPaqueteAsignado = new Paquete(objPaqueteAsignadoTem)
@@ -135,7 +137,7 @@
                     }
                     todosUsuarios.push(objUsuarioTemp);
                 });
-                console.log(todosUsuarios);
+                // console.log(todosUsuarios);
                 return todosUsuarios
             
             }
@@ -160,7 +162,9 @@
                     if(objUsuarioTemp.rol == 4){ // filtro los usuarios con rol numero 4
                         // le doy formato de repartidor a ese usuario
 
-                        let repartidores = new Repartidor(objUsuarioTemp.primerNombre, objUsuarioTemp.segundoNombre, objUsuarioTemp.primerApellido, objUsuarioTemp.segundoApellido, objUsuarioTemp.cedula, objUsuarioTemp.fecha, objUsuarioTemp.genero, objUsuarioTemp.ubicacion, objUsuarioTemp.provincia, objUsuarioTemp.canton, objUsuarioTemp.distrito, objUsuarioTemp.direccion,objUsuarioTemp.correo, objUsuarioTemp.contrasenna, objUsuarioTemp.rol, objUsuarioTemp.telefono, objUsuarioTemp.estado, objUsuarioTemp.razonDesact, objUsuarioTemp.sucursal);
+                        let repartidores = new Repartidor(objUsuarioTemp.primerNombre, objUsuarioTemp.segundoNombre, objUsuarioTemp.primerApellido, objUsuarioTemp.segundoApellido, objUsuarioTemp.cedula, objUsuarioTemp.fecha, objUsuarioTemp.genero, objUsuarioTemp.ubicacion, objUsuarioTemp.provincia, objUsuarioTemp.canton, objUsuarioTemp.distrito, objUsuarioTemp.direccion,objUsuarioTemp.correo, objUsuarioTemp.contrasenna, objUsuarioTemp.rol, objUsuarioTemp.telefono, objUsuarioTemp.telefonoAdicional, objUsuarioTemp.estado, objUsuarioTemp.razonDesact, objUsuarioTemp.sucursal);
+
+                        // ________no cuenta para michi 420:inicio_________
 
                         // objRepartidorTemp.paqueteAsignado.forEach(objPaqueteAsignadoTemp => {
                         //     let objPaqueteAsignado = new Paquete(objPaqueteAsignadoTem)
@@ -174,6 +178,8 @@
 
                                 repartidores.setLicencia(objLicencia); // seteo la licencia en ese repartidor, nombrado como nueva varialble en linea 118
                         });
+
+                        // ________no cuenta para michi 420:fin_________
 
                         objUsuarioTemp = repartidores;   // a el usuario con rol de repartidor y con la misma sucursal donde estoy trabajando lo igualo a el repartidor final con el formato necesario 
                     }
@@ -243,6 +249,22 @@
         listaTodosRepartidores = [listaRepartidoresAct, listaRepartidoresDesact];
 
         return listaTodosRepartidores
+    }
+
+    function _editarRepartidor(pobjEditarInfo){
+        let repartidoresSucursal = _retornarRepartidoresSucursal(pobjEditarInfo.sucursal);
+
+        for(let i=0; i<repartidoresSucursal.length; i++){
+
+            if(repartidoresSucursal[i].getCedula() == pobjEditarInfo.cedula){
+                pobjEditarInfo.licencia = repartidoresSucursal[i].getLicencias();
+                pobjEditarInfo.paqueteAsignado = repartidoresSucursal[i].getPaqAsignados();
+                repartidoresSucursal[i] = pobjEditarInfo;
+            }
+
+        }
+        actualizarLS(repartidoresSucursal)
+        // console.log(repartidoresSucursal)
     }
 
     function _retornarTodasLicencias(){
@@ -333,6 +355,22 @@
         return licencias
     }
 
+    function _retornarPaquetesAsignados(pdatos){
+        let repartidoresLS = _retornarRepartidoresSucursal(pdatos[1]),
+            paquetesActuales = [],
+            paquetesAsignados = [];
+
+        for(let i=0; i<repartidoresLS.length; i++){
+            paquetesActuales = repartidoresLS[i].getPaqAsignados(); // asignar paquetes a una variable que llama a los paquetes del repartidor en cuestion
+
+            for(let j=0; j<paquetesActuales.length; j++){
+                if(repartidoresLS[i].getCedula() == pdatos[0]){
+                    paquetesAsignados.push(paquetesActuales[j]);
+                }
+            }
+        }
+        return paquetesAsignados
+    }
 
     //______funciones internas_________
 

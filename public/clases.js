@@ -1,38 +1,3 @@
-// class Repartidor{
-//   constructor(pcedula, pfoto, pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcorreo, ptelefono, ptelefonoAdicional, psucursal, pgenero, pnacimiento, pcontrasena, pestado, prazonDesact){
-//     this.cedula = pcedula;
-//     this.foto = pfoto;
-//     this.nombre = pnombre;
-//     this.segundoNombre = psegundoNombre;
-//     this.primerApellido = pprimerApellido;
-//     this.segundoApellido = psegundoApellido
-//     this.correo = pcorreo;
-//     this.telefono = ptelefono;
-//     this.telefonoAdicional = ptelefonoAdicional;
-//     this.sucursal = psucursal;
-//     this.genero = pgenero;
-//     this.nacimiento = pnacimiento;
-//     this.contrasena = pcontrasena;
-//     this.paqueteAsignado = [];
-//     this.licencia =[];
-//     this.estado = pestado;
-//     this.razonDesact = prazonDesact;
-//   }
-
-//   getLicencias(){
-//     return this.licencia
-//   }
-
-//   getCedula(){
-//     return this.cedula
-//   }
-
-//   setLicencia(pobjLicencia){
-//     this.licencia.push(pobjLicencia)
-//   }
-
-// }
-
 class Usuario {
   constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol){
     this.primerNombre = pnombre;
@@ -92,11 +57,13 @@ class Cliente extends Usuario {
 }
 
 class Repartidor extends Usuario{
-  constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, ptelefono, pestado, prazonDesact, psucursal){
-    super(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, ptelefono, pestado, prazonDesact, psucursal);
+  constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, ptelefono, ptelefonoAdicional, pestado, prazonDesact, psucursal){
+    super(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, ptelefono, ptelefonoAdicional,pestado, prazonDesact, psucursal);
 
     this.paqueteAsignado = [];
     this.licencia =[];
+    this.telefono = ptelefono;
+    this.telefonoAdicional = ptelefonoAdicional;
     this.estado = pestado;
     this.razonDesact = prazonDesact;
     this.sucursal = psucursal;
@@ -116,6 +83,10 @@ class Repartidor extends Usuario{
 
     getEstado(){
       return this.estado
+    }
+
+    getPaqAsignados(){
+      return this.paqueteAsignado;
     }
     
 }

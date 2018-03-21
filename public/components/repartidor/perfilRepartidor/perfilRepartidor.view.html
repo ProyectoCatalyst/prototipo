@@ -1,8 +1,41 @@
 <main class="container">
+
   <section class="row">
-    <div class="section-col-12">
-      <button type="button" class="btn btn-primary" ng-click="vm.consultarLicencias()">Ver licencias</button>
-      <button type="button" class="btn btn-success" ng-click="vm.editarPerfil()">Editar perfil</button>
+
+    <div class="col-md-12 text-center py-4">
+
+      <button type="button" class="btn btn-primary col-md-3 mx-3" ng-click="vm.consultarLicencias()">Ver licencias</button>
+
+      <button type="button" class="btn btn-success col-md-3 mx-3" ng-click="vm.editarPerfil()">Editar perfil</button>
+
     </div>
   </section>
+
+  <section class="row">
+
+    <h2 class="my-3">Paquetes asignados</h2>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Info del paquete</th>
+          <th>Info del paquete</th>
+          <th>Info del paquete</th>
+          <th>Info del paquete</th>
+          <th>Info del paquete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="paquetesAsignados in vm.listarPaquetesAsignados()">
+          <td>{{paquetesAsignados}}</td>
+          <td>{{paquetesAsignados}}</td>
+          <td>{{paquetesAsignados}}</td>
+          <td>{{paquetesAsignados}}</td>
+          <td>{{paquetesAsignados}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </section>
+  
 </main>
