@@ -21,7 +21,7 @@
             <td>{{licencias.fechaVencimiento | date: 'dd-MM-yyyy'}}</td>
             <td>{{licencias.tipo}}</td>
             <td>
-              <button type="button" class="btn btn-primary">Modificar</button>
+              <button type="button" class="btn btn-primary" ng-click="vm.modificarLicencia(licencias)">Modificar</button>
             </td>
           </tr>
         </tbody>
@@ -45,7 +45,7 @@
             <td>{{licencias.fechaVencimiento | date: 'dd-MM-yyyy'}}</td>
             <td>{{licencias.tipo}}</td>
             <td>
-              <button type="button" class="btn btn-success" ng-click="vm.actualizarInfo(licencias)">Actualizar informacion</button>
+              <button type="button" class="btn btn-success" ng-click="vm.modificarLicencia(licencias)">Actualizar informacion</button>
             </td>
           </tr>
         </tbody>

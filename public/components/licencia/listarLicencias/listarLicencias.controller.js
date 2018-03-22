@@ -24,6 +24,11 @@
       $state.go('registrarLincencia', { datos: JSON.stringify(datosRepartidor) });
     }
 
+    vm.modificarLicencia = (licencias) => {
+      let datos = [datosRepartidor, licencias];
+      $state.go('editarLicencia', {datos: JSON.stringify(datos)});
+    }
+
     // ________funciones internas__________
     function listaLicenciasActivas() {
       let datos = [datosRepartidor[0], datosRepartidor[1]],

@@ -29,7 +29,7 @@
       if(existente){
         swal({
           title: 'La licencia ya esta en el sistema',
-          body: 'Intenta con una que no este registrada',
+          text: 'Intenta con una que no este registrada',
           icon: 'error',
           button: 'Aceptar'
         });
@@ -38,7 +38,7 @@
           if(fechaValida){
           swal({
             title: 'Hemos agregado la licencia',
-            body: 'La licencia esta registrada en el sistema',
+            text: 'La licencia esta registrada en el sistema',
             icon: 'success',
             button: 'Aceptar'
           });

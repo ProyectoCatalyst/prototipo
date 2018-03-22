@@ -118,6 +118,24 @@
         controllerAs: 'vm'
       })
 
+      .state('editarLicencia', {
+        url: '/modifyLicense',
+        templateUrl: './components/licencia/editarLicencia/editarLicencia.view.html',
+        data: {
+          pageTitle: 'Editar licencia | Correos CR'
+        },
+        params: {
+          datos: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/licencia/editarLicencia/editarLicencia.controller.js')
+          }]
+        },
+        controller: 'controladorEditarLicencia',
+        controllerAs: 'vm'
+      })
+
       .state('main', {
         url: '/main',
         templateUrl: './components/main/main.view.html',

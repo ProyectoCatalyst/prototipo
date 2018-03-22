@@ -22,9 +22,11 @@
       filtrarRepartidores : _filtrarRepartidores,
       editarRepartidor: _editarRepartidor,
       retornarTodasLicencias: _retornarTodasLicencias,
+      retornarLicenciasRepartidor: _retornarLicenciasRepartidor,
       registrarLicencia: _registrarLicencia,
       cambiarEstadoLicencia: _cambiarEstadoLicencia,
       retornarLicencias: _retornarLicencias,
+      editarLicencias: _editarLicencias,
       retornarPaquetesAsignados: _retornarPaquetesAsignados
     };
     return publicAPI; 
@@ -291,6 +293,18 @@
 
     }
 
+    function _retornarLicenciasRepartidor(datos){ // cedula, sucursal
+        let repartidoresLS = _retornarRepartidoresSucursal(datos[1]), // sucursal
+            licenciasRepartidor = [];
+
+        for(let i=0; i<repartidoresLS.length; i++){
+            if(repartidoresLS[i].getCedula() == datos[0]){
+                licenciasRepartidor = repartidoresLS[i].getLicencias();
+            }
+        }
+        return licenciasRepartidor
+    }
+
     function _registrarLicencia(pdatosAgregar){
         let objLicenciaRegistrar = pdatosAgregar[0],
             cedulaRepartidor = pdatosAgregar[1],
@@ -355,6 +369,22 @@
         return licencias
     }
 
+    function _editarLicencias(pdatos){ // repartidor, licencia
+        let licenciasRepartidor = _retornarLicenciasRepartidor(pdatos[0]),
+            datos = [];
+
+       for(let i=0; i<licenciasRepartidor.length; i++){
+        if( licenciasRepartidor[i].getCodigo() == pdatos[1].codigo){
+            licenciasRepartidor[i] = pdatos[1];
+        }
+
+       }
+       console.log(licenciasRepartidor);
+       datos = [pdatos[0], licenciasRepartidor];
+       actualizarLicenciasRepartidor(datos);
+
+    }
+
     function _retornarPaquetesAsignados(pdatos){
         let repartidoresLS = _retornarRepartidoresSucursal(pdatos[1]),
             paquetesActuales = [],
@@ -376,6 +406,22 @@
 
     function actualizarLS(prepartidoresLS){
         localStorageFactory.setItem(listaUsuarios, prepartidoresLS);
+    }
+
+    function actualizarLicenciasRepartidor(pdatos){ // repartidor, objlicencia
+        let repartidoresSucursal = _retornarRepartidoresSucursal(pdatos[0][1]); // datosRepartidor => sucursal
+
+        for(let i=0; i<repartidoresSucursal.length; i++){
+
+            if(repartidoresSucursal[i].getCedula() == pdatos[0][0]){ // datosRepartidor => cedula
+                repartidoresSucursal[i].licencia = pdatos[1];
+            }
+        }
+
+        console.log(repartidoresSucursal) // ahora actualizar
+
+        actualizarLS(repartidoresSucursal);
+
     }
   
          
