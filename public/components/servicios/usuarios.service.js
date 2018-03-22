@@ -385,13 +385,13 @@
 
     }
 
-    function _retornarPaquetesAsignados(pdatos){
+    function _retornarPaquetesAsignados(pdatos){ // cedula y sucursal
         let repartidoresLS = _retornarRepartidoresSucursal(pdatos[1]),
             paquetesActuales = [],
             paquetesAsignados = [];
 
         for(let i=0; i<repartidoresLS.length; i++){
-            paquetesActuales = repartidoresLS[i].getPaqAsignados(); // asignar paquetes a una variable que llama a los paquetes del repartidor en cuestion
+            paquetesActuales = repartidoresLS[i].getLicencias(); // asignar paquetes a una variable que llama a los paquetes del repartidor en cuestion
 
             for(let j=0; j<paquetesActuales.length; j++){
                 if(repartidoresLS[i].getCedula() == pdatos[0]){

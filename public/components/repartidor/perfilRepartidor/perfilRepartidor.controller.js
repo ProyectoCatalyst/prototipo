@@ -16,6 +16,8 @@
 
     let datosRepartidor = JSON.parse($stateParams.datos); // cedula, sucursal
 
+    verificarPaquetesAsignados() // para verificarf si hay paquetes asignados cada que abro el perfil
+
     vm.consultarLicencias = () => {
       $state.go('listarLicencias', {datos: JSON.stringify(datosRepartidor)});
     } 
@@ -35,5 +37,19 @@
 
     }
     
+
+    // ________funciones internas________
+     function verificarPaquetesAsignados(){
+      let paquetesAsignados = servicioUsuarios.retornarPaquetesAsignados(datosRepartidor);
+
+      if(paquetesAsignados.length != 0){
+        swal({
+          title: 'Informacion del sistema',
+          text: 'Hay paquetes asignados, por favor repartalos // simulacion con licencias, realmente no hay paquetes',
+          icon: 'info',
+          button: 'Aceptar'
+        });
+      }
+    }
   }
 })();
