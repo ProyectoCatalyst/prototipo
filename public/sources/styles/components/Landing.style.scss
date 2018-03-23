@@ -1,56 +1,53 @@
-<<<<<<< HEAD
 @font-face{
-font-family: 'montserrat';
-  src: url('sources/fonts/Montserrat-Regular.ttf');
-  font-style: normal;
-  font-weight: 100;
-
-};
-
-#body{
-  font-family: montserrat, sans-serif;
-};
-=======
-@import "../settings";
->>>>>>> master
-
-#headerLanding{
-  background-image: url('./img/landing/1.png');
-  background-repeat: no-repeat;
-  background-size: 100%;};
-
-#input{
-margin-left: 9%;
-};
-  #elMejor{
-color:rgb(5, 34, 83);
+  font-family: 'montserrat';
+    src: url('sources/fonts/Montserrat-Regular.ttf');
+    font-style: normal;
+    font-weight: 100;
+  
   };
-
-  #LogoLanding{
-   margin-left: 30%;
-   margin-top: -1%;
-   margin-top: 5%;
- };
-
-#texto{
-  margin-top: 8%;
-
-};
-
- #TextoLanding{
-  font-family: montserrat;
-   margin-left: 10%;
-   
-   margin-bottom: 5%;
- };
-
- #telefonoLanding{
-   margin-top: 2%;
-  margin-left: 10%;
- };
-
- #bntIngresar{
-margin-left: 5%;
-
-border-bottom-width: 80%;
- };
+  
+  #body{
+    font-family: montserrat, sans-serif;
+  };
+  
+  #headerLanding{
+    background-image: url('./img/landing/1.png');
+    background-repeat: no-repeat;
+    background-size: 100%;};
+  
+  #input{
+  margin-left: 9%;
+  };
+    #elMejor{
+  color:rgb(5, 34, 83);
+    };
+  
+    #LogoLanding{
+     margin-left: 30%;
+     margin-top: -1%;
+     margin-top: 5%;
+   };
+  
+  #texto{
+    margin-top: 8%;
+  
+  };
+  
+   #TextoLanding{
+    font-family: montserrat;
+     margin-left: 10%;
+     
+     margin-bottom: 5%;
+   };
+  
+   #telefonoLanding{
+     margin-top: 2%;
+    margin-left: 10%;
+   };
+  
+   #bntIngresar{
+  margin-left: 5%;
+  
+  border-bottom-width: 80%;
+   };
+  

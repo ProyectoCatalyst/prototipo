@@ -10,15 +10,9 @@
 
     const userAuth = servicioInicioSesion.getAuthUser();
 
-<<<<<<< HEAD
     // if(userAuth == undefined){
     //   $state.go('inicioSesion');
     // }
-=======
-    if(userAuth == undefined){
-      $state.go('inicioSesion');
-    }
->>>>>>> master
 
     const vm = this;
 

@@ -21,6 +21,7 @@ class Usuario {
   getCedula(){
      return this.cedula;
   }
+  
   getCorreo(){
     return this.correo;
   }
@@ -35,6 +36,10 @@ class Usuario {
 
   setEstado(pestado){
     this.estado = pestado;
+  }
+  
+  getContrasenna(){
+    return this.contrasenna;
   }
   
 }
