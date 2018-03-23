@@ -1,42 +1,43 @@
+<div class = "container">
+  <div class= "row TituloDesactivar" >
+    <h2>Lista de Usuarios</h2>
+  </div>
+  <p>Adjunto encontrará el listado de todos los usuarios </p>
+  <table class="table mt-5">
+    <thead class="thead-dark">
+        <div class="Titulos m-1">      
+          <tr>
+              <th scope="col">Nombre</th>
+              <th scope="col">Apellido</th>
+              <th scope="col">Cédula</th>
+              <th scope="col">Fecha</th>
+              <th scope="col">Género</th>
+              <th scope="col">Provincia</th>
+              <th scope="col">Cantón</th>
+              <th scope="col">Distrito</th>
+              <th scope="col">Correo</th>
+              <th scope="col">Desactivar</th>
+          </tr>
+        </div> 
+      </thead>
+      <tbody>
+          <div class="Informacion m-1">
+            <tr ng-repeat="usuario in vm.listarUsuarios">
+                <td>{{usuario.primerNombre}}</td>
+                <td>{{usuario.primerApellido}}</td>
+                <td>{{usuario.cedula}}</td>
+                <td>{{usuario.fecha | date:'dd-MM-yyyy'}}</td>
+                <td>{{usuario.genero}}</td>
+                <td>{{usuario.provincia}}</td>
+                <td>{{usuario.canton}}</td>
+                <td>{{usuario.distrito}}</td>
+                <td>{{usuario.correo}}</td>
+              </div> 
 
-<di class= "TituloDesactivar" >
-  <h2>Lista de Usuarios</h2>
-</di>
-<p>Adjunto encontrará el listado de todos los usuarios </p>
-<table class="table mt-5">
-  <thead class="thead-dark">
-       <div class="Titulos m-1">      
-        <tr>
-            <th scope="col">Nombre</th>
-            <th scope="col">Apellido</th>
-            <th scope="col">Cédula</th>
-            <th scope="col">Fecha</th>
-            <th scope="col">Género</th>
-            <th scope="col">Provincia</th>
-            <th scope="col">Cantón</th>
-            <th scope="col">Distrito</th>
-            <th scope="col">Correo</th>
-            <th scope="col">Desactivar</th>
+            <td>
+                <button class="btn btn-danger " id="btnDesactiar" type="button" ng-click="vm.DesactivarUsuarios(Usuario)">Desactivar</button>
+            </td>
         </tr>
-      </div> 
-    </thead>
-    <tbody>
-        <div class="Informacion m-1">
-          <tr ng-repeat="usuario in vm.listarUsuarios">
-              <td>{{usuario.primerNombre}}</td>
-              <td>{{usuario.primerApellido}}</td>
-              <td>{{usuario.cedula}}</td>
-              <td>{{usuario.fecha | date:'dd-MM-yyyy'}}</td>
-              <td>{{usuario.genero}}</td>
-              <td>{{usuario.provincia}}</td>
-              <td>{{usuario.canton}}</td>
-              <td>{{usuario.distrito}}</td>
-              <td>{{usuario.correo}}</td>
-            </div> 
-
-          <td>
-              <button class="btn btn-danger " id="btnDesactiar" type="button" ng-click="vm.DesactivarUsuarios(Usuario)">Desactivar</button>
-          </td>
-      </tr>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>
