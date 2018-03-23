@@ -65,7 +65,5 @@
       vm.listaPaquetesPrealertados = servicioPaquetes.retornarPaquetesPrealertados();
     }
 
-
-
   }// fin de la función controladorPrealertarPaquete
 })();

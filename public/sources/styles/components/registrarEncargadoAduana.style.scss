@@ -1,6 +1,15 @@
 #registroEncargadoAduanas{
   #tituloPrincipal{
+<<<<<<< HEAD
     color: red;
+=======
+    color: $secondary-color;
+  }
+
+  #LogoMenu{
+    background-image: url('./img/registrar/headerMenu.png');
+    background-size: 100%;
+>>>>>>> master
   }
 
 }
