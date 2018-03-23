@@ -13,7 +13,8 @@
     let publicAPI = {
       agregarUsuario: _agregarUsuario,
       obtenerlistadeusuarios: _obtenerlistadeusuarios,
-      obtenerlistadeFiltrada: _obtenerListaFiltrada
+      obtenerlistadeFiltrada: _obtenerListaFiltrada,
+      desactivarCuenta: _desactivarCuenta
     };
     return publicAPI; 
 
@@ -50,19 +51,19 @@
 
           switch(obj.rol){
             case 2:
-              let tempEncargadoAduana = new EncargadoAduanas(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.cedula, tempfecha, obj.genero, obj.ubicacion, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol);
+              let tempEncargadoAduana = new EncargadoAduanas(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.cedula, tempfecha, obj.genero, obj.ubicacion, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol, obj.estadoDesactivado);
 
               listadeusuarios.push(tempEncargadoAduana);
             break;
 
             case 3:
-              let tempEncargadoSucursal = new EncargadoSucursales(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.cedula, tempfecha, obj.genero, obj.ubicacion, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol);
+              let tempEncargadoSucursal = new EncargadoSucursal(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.cedula, tempfecha, obj.genero, obj.ubicacion, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol, obj.estadoDesactivado);
 
               listadeusuarios.push(tempEncargadoSucursal);
             break;
 
             case 5:
-              let tempCliente = new Cliente(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.cedula, tempfecha, obj.genero, obj.ubicacion, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol, obj.telefono);
+              let tempCliente = new Cliente(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.cedula, tempfecha, obj.genero, obj.ubicacion, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol, obj.estadoDesactivado, obj.telefono);
 
               listadeusuarios.push(tempCliente);
             break;
@@ -84,6 +85,19 @@
       }
 
       return listaFiltrada;
+    }
+
+    function _desactivarCuenta(pcorreo) {
+      let listadeusuarios = _obtenerlistadeusuarios(),
+          desactivar = false;
+
+      for(let i = 0; i < listadeusuarios.length; i++){
+        if(listadeusuarios[i].getCorreo() == pcorreo){
+          listadeusuarios[i].setEstado(true);
+          desactivar = true;
+        }
+      }
+      return desactivar;
     }
   }
 })();
