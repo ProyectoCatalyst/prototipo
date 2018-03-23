@@ -58,8 +58,9 @@ controladorRegistroEncargadoAduana.$inject = ['$http', '$stateParams', '$state',
       vm.registrarEncargadoAduana = (pnuevoEncargadoAduana)=>{
 
         let rol = 2;
+        let estadoDesactivado = false;
   
-        let objEncargadoAduanaTem = new EncargadoAduanas (pnuevoEncargadoAduana.nombre, pnuevoEncargadoAduana.segundoNombre, pnuevoEncargadoAduana.apellido, pnuevoEncargadoAduana.segundoApellido, pnuevoEncargadoAduana.cedula, pnuevoEncargadoAduana.fecha, pnuevoEncargadoAduana.genero, pnuevoEncargadoAduana.ubicacion, pnuevoEncargadoAduana.provincia.name, pnuevoEncargadoAduana.canton.name, pnuevoEncargadoAduana.distrito.name, pnuevoEncargadoAduana.direccion,pnuevoEncargadoAduana.correo, pnuevoEncargadoAduana.contrasenna, rol);
+        let objEncargadoAduanaTem = new EncargadoAduanas (pnuevoEncargadoAduana.nombre, pnuevoEncargadoAduana.segundoNombre, pnuevoEncargadoAduana.apellido, pnuevoEncargadoAduana.segundoApellido, pnuevoEncargadoAduana.cedula, pnuevoEncargadoAduana.fecha, pnuevoEncargadoAduana.genero, pnuevoEncargadoAduana.ubicacion, pnuevoEncargadoAduana.provincia.name, pnuevoEncargadoAduana.canton.name, pnuevoEncargadoAduana.distrito.name, pnuevoEncargadoAduana.direccion,pnuevoEncargadoAduana.correo, pnuevoEncargadoAduana.contrasenna, rol, estadoDesactivado);
    
         console.log(objEncargadoAduanaTem); 
       
