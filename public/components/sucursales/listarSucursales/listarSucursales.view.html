@@ -2,6 +2,20 @@
 
   <section class="row">
     <div class="col-md-12 mt-5">
+
+      <form action="" ng-submit="vm.buscarCodigos(vm.informacionSucursal)">
+
+        <select ng-model="vm.informacionSucursal">
+          <option value>Seleccione una sucursal</option>
+
+          <option ng-repeat="datosSucursales in vm.retornarDatosSucursales" value="{{datosSucursales.codigoSucursal}}">{{datosSucursales.nombreSucursal}}</option>
+        </select>
+
+        <button type="submit">Listar</button>
+
+        <p ng-repeat="repartidores in vm.listarRepartidores()">{{repartidores}}</p> <!-- debe ser una tabla que llama a la funcion que retorna el objeto, al principo\io como el objegto no tiene datos, no muestra nada, despues de dar click me retorna los repartidores cuya sucursal sea la misma que le envie con el click -->
+      </form>
+
       <h1 class="text-center">Lista de sucursales</h1>
 
       <table class="table mt-5">

@@ -1,3 +1,26 @@
+class Paquete{
+  constructor(ptrackingPaquete, ptipoPaquete, pestadoPaquete, pcostoTotalPaquete){
+    this.trackingPaquete = ptrackingPaquete;
+    this.tipoPaquete = ptipoPaquete;
+    this.costoTotalPaquete = pcostoTotalPaquete;
+    this.estadoPaquete = pestadoPaquete;
+    
+  }//fin contructor
+
+  capturarTrackingPaquete(){
+    return this.trackingPaquete;
+  }
+  capturarTipoPaquete(){
+    return this.tipoPaquete;
+  }
+  capturarEstadoPaquete(){
+    return this.tipoPaquete;
+  }
+  capturarCostoTotalPaquete(){
+    return this.costoTotalPaquete;
+  }
+}//fin class paquete
+
 class Sucursal{
   constructor(pcodigoSucursal, pnombreSucursal, pprovincia, pcanton, pdistrito, pestadoSucursal){
     this.codigoSucursal = pcodigoSucursal;
@@ -11,6 +34,11 @@ class Sucursal{
 
   }//fin constructor clase sucursal
 
+
+
+  capturarNombreSucursal(){
+    return this.nombreSucursal;
+  }
   capturarCodigoSucursal(){
     return this.codigoSucursal;
   }
@@ -23,7 +51,6 @@ class Sucursal{
     return this.estadoSucursal;
   }
 }//fin clase sucursal
-
 
 class Usuario {
   constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol){

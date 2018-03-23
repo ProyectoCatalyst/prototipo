@@ -1,63 +1,69 @@
-<section class="row">
-  <div class="container">
-    <h1>Registro de sucursales</h1>
-    <form class="row" name="frmRegistroSucursal" ng-submit="vm.registrarSucursal(vm.SucursalNueva)" autocomplete="off">
-      <div class="col-4">
-        <form ng-submit="vm.registrarSucursal(vm.SucursalNueva)">
-          <div class="col-md-8">
-            <div class="form-group">
-              <label for="txtCodigoSucursal">Código sucursal: </label>
-              <input type="number" class="form-control" ng-model="vm.SucursalNueva.codigoSucursal" id="txtCodigoSucursal" required>
+<section class="container">
+  <form name="frmRegistroSucursal" ng-submit="vm.registrarSucursal(vm.SucursalNueva)" autocomplete="off">
+    <div class="row">
+      <div class="col-md-12 py-5">
+        <h1 class="text-center">Registro de sucursales</h1>
+        <div class="col-9 sm-col-12">
+
+            <h3 id="subtitulo">Registre una nueva sucursal</h3>
+            
+            <p>Complete los siguientes datos</p>
+          <div class="row">
+            <form ng-submit="vm.registrarSucursal(vm.SucursalNueva)">
+              <div class="col-sm-12 col-md-6 form-group">
+                <label for="txtCodigoSucursal">Código sucursal: </label>
+                <input type="number" class="form-control" ng-model="vm.SucursalNueva.codigoSucursal" id="txtCodigoSucursal" required>
+              </div>
+
+              <div class="col-sm-12 col-md-6 form-group">
+                <label for="txtNombreSucursal">Nombre sucursal: </label>
+                <input type="text" class="form-control" ng-model="vm.SucursalNueva.nombreSucursal" id="txtNombreSucursal" required>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-5 sm-col-12">
+            <div class="col-12 form-group">
+              <label for="sltProvincia">Provincia:</label>
+              <select id="sltProvincia" class="custom-select" ng-change="vm.rellenarCantones(vm.SucursalNueva.provincia._id)" ng-options="provincia as provincia.name for provincia in vm.provincias track by provincia._id"
+                ng-model="vm.SucursalNueva.provincia" required>
+                <option value="">Seleccione una provincia</option>
+              </select>
+              <small class="form-text text-danger">* Campo requerido</small>
             </div>
 
-            <div class="form-group">
-              <label for="txtNombreSucursal">Nombre sucursal: </label>
-              <input type="text" class="form-control" ng-model="vm.SucursalNueva.nombreSucursal" id="txtNombreSucursal" required>
+            <div class="col-12  form-group">
+              <label for="sltCanton">Cantón:</label>
+              <select id="sltCanton" class="custom-select" ng-change="vm.rellenarDistrito(vm.SucursalNueva.canton._id)" ng-options="canton as canton.name for canton in vm.cantones track by canton._id"
+                ng-model="vm.SucursalNueva.canton" required>
+                <option value="">Seleccione un cantón</option>
+              </select>
+              <small class="form-text text-danger">* Campo requerido</small>
+            </div>
+
+            <div class="col-12 form-group">
+              <label for="sltDistrito">Distrito:</label>
+              <select id="sltDistrito" class="custom-select" ng-options="distrito as distrito.name for distrito in vm.distritos track by distrito._id"
+                ng-model="vm.SucursalNueva.distrito" required>
+                <option value="">Seleccione un distrito</option>
+                <option value="Distrito">Distrito</option>
+              </select>
+              <small class="form-text text-danger">* Campo requerido</small>
             </div>
           </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="form-group">
-          <label for="sltProvincia">Provincia:</label>
-          <select id="sltProvincia" class="custom-select" ng-change="vm.rellenarCantones(vm.SucursalNueva.provincia._id)" ng-options="provincia as provincia.name for provincia in vm.provincias track by provincia._id"
-            ng-model="vm.SucursalNueva.provincia" required>
-            <option value="">Seleccione una provincia</option>
-
-          </select>
-          <small class="form-text text-danger">* Campo requerido</small>
         </div>
-        <div class="form-group">
-          <label for="sltCanton">Cantón:</label>
-          <select id="sltCanton" class="custom-select" ng-change="vm.rellenarDistrito(vm.SucursalNueva.canton._id)" ng-options="canton as canton.name for canton in vm.cantones track by canton._id"
-            ng-model="vm.SucursalNueva.canton" required>
-            <option value="">Seleccione un cantón</option>
-          </select>
-          <small class="form-text text-danger">* Campo requerido</small>
-        </div>
-        <div class="form-group">
-          <label for="sltDistrito">Distrito:</label>
-          <select id="sltDistrito" class="custom-select" ng-options="distrito as distrito.name for distrito in vm.distritos track by distrito._id"
-            ng-model="vm.SucursalNueva.distrito" required>
-            <option value="">Seleccione un distrito</option>
-            <option value="Distrito">Distrito</option>
-          </select>
-          <small class="form-text text-danger">* Campo requerido</small>
-        </div>
-      </div>
-      <div class="col-md-12">
-        <div class="row">
-          <div class="col-md-4">
+        <!--row-->
+        <div class="px-2 row">
+          <div class="col-sm-12 col-md-2">
             <button type="submit" class="btn btn-primary">Registrar sucursal</button>
           </div>
-          <div class="col-md-8">
-              <button type="button" class="btn btn-secondary" ng-click="vm.listarSucursales(sucursal)">Listar sucursales</button>
+          <div class="col-sm-12 col-md-auto">
+            <button type="button" class="btn btn-secondary" ng-click="vm.listarSucursales(sucursal)">Listar sucursales</button>
           </div>
         </div>
       </div>
-      </form>
-  </div>
+    </div>
   </form>
-  <!-- fin formulario sucursal-->
-  </div>
 </section>

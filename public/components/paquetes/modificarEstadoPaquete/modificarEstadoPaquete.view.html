@@ -1,6 +1,17 @@
 <section class="row">
   <div class="container">
-    <h1>Cambiar estado del paquete</h1>
+    <h1>Cambiar estado del paquete: {{vm.paqueteActivo}}</h1>
 
+    <div class="col-4">
+      <form ng-submit="vm.CambiarPaqueteMod(vm.EstadoPaqueteMod)">
+        <div class="form-group">
+          <label for="RadioEstadoPaquete">Seleccione el estado del paquete: </label>
+          <input type="radio" ng-model="vm.EstadoPaqueteMod.estadoPaquete" value="string" [name="cambiar estado" ] [ng-change="string"
+            ] ng-value="string">
+        </div>
+
+      </form>
+
+    </div>
   </div>
 </section>

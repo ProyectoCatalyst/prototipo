@@ -129,7 +129,40 @@
           controller: 'controladorlistaSucursales',
           controllerAs: 'vm'
         })
+
+        .state('main.prealertarPaquetes', {
+          url: '/prealertarPaquetes',
+          templateUrl: './components/paquetes/prealertarPaquete/prealertaPaquete.view.html',
+          data: {
+            pageTitle: 'Prealertar paquete | Inicio'
+          },
+          resolve: {
+            load: ['$ocLazyLoad', ($ocLazyLoad) => {
+              return $ocLazyLoad.load('./components/paquetes/prealertarPaquete/prealertarPaquete.controller.js')
+            }]
+          },
+          controller: 'controladorPrealertarPaquete',
+          controllerAs: 'vm'
+        })
         
+        .state('main.listarPaquetesPrealertados', {
+          url: '/listarPaquetesPrealertados',
+          templateUrl: './components/paquetes/listarPaquetesPrealertados/listarPaquetesPrealertados.view.html',
+          data: {
+            pageTitle: 'lista Paquetes prealertados | Inicio'
+          },
+          resolve: {
+            load: ['$ocLazyLoad', ($ocLazyLoad) => {
+              return $ocLazyLoad.load('./components/paquetes/listarPaquetesPrealertados/listarPaquetesPrealertados.controller.js')
+            }]
+          },
+          params:{
+            objPaqueteprealertado:''
+          },
+          controller: 'controladorlistaPaquetesPrealertados',
+          controllerAs: 'vm'
+        })
+
       ;
 
 

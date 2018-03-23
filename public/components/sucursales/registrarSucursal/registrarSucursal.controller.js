@@ -72,7 +72,7 @@
       if (codigoValidado == true) {
         swal({
           title: "Registro exitoso",
-          text: "Sucursal registrado correctametne",
+          text: "Sucursal registrado correctamente",
           icon: "success",
           button: "Aceptar"
         });

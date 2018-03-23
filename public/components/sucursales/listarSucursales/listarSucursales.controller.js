@@ -9,6 +9,8 @@
     function controladorlistaSucursales($state, $stateParams, servicioSucursales) {
         let vm = this;
 
+        let codigoSeleccionado; // ejemplo
+
         vm.listarSucursalesAct = servicioSucursales.retornarSucursalesAct();
         vm.listarSucursalesDesact = servicioSucursales.retornarSucursalesDesact();
 
@@ -43,5 +45,18 @@
         vm.agregarSucursales = () => {
             $state.go('main.registroSucursales');
           }
+
+        vm.retornarDatosSucursales = servicioSucursales.retornarNombreSucursalesLS();
+
+        vm.buscarCodigos = (pcodigoSucursal) => {
+            // repartidoresSucursal = servicioUsuarios.retonarRepartidoresSucursal(pcodigoSucursal); | aqui llamo a la funcion que me retorna los repartidores con la sucursal cuyo codigo recibo
+            codigoSeleccionado = pcodigoSucursal // le vamos a igualar o reemplazar su valor con los repartidoresSucursal, para que codigo seleccionado en este caso sea el objeto con la misma sucursal
+
+        }
+
+        vm.listarRepartidores = () => {
+            return codigoSeleccionado
+        }
+
     }
 })();

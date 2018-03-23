@@ -26,9 +26,18 @@
     vm.SucursalMod.codigoSucursal = objSucursalTemp.codigoSucursal;
     vm.SucursalMod.nombreSucursal = objSucursalTemp.nombreSucursal;
     
-    vm.SucursalMod.provincia = objSucursalTemp.provincia;
-    vm.SucursalMod.canton = objSucursalTemp.canton;
-    vm.SucursalMod.distrito = objSucursalTemp.distrito;
+    vm.SucursalMod.provinciaTexto = objSucursalTemp.provincia.name;
+    vm.SucursalMod.cantonTexto = objSucursalTemp.canton.name;
+    vm.SucursalMod.distritoTexto = objSucursalTemp.distrito.name;
+
+    
+
+
+
+
+    vm.listaSucursales = listarSucursales();
+
+    listarSucursales();
 
     vm.provincias = $http({
       method: 'GET',
@@ -73,12 +82,6 @@
       });
     }
 
-
-
-
-    vm.listaSucursales = listarSucursales();
-
-    listarSucursales();
 
     vm.editarSucursal = (psucursalEditar) => {
       if(psucursalEditar.estadoSucursal==null){
@@ -131,12 +134,8 @@
           vm.SucursalNueva = null;
           listarSucursales();
         }
-        else {
-          swal("La sucursal no se ha eliminado");
-        }
       });
-
-    }
+    }//eliminar sucursal
 
     function listarSucursales() {
       vm.listaSucursales = servicioSucursales.retornarSucursal();

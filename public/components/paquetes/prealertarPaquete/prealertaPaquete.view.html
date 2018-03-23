@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="container" id="header">
+    <form ng-submit="vm.prealertarPaquete(vm.nuevoPaquetePrealertado)">
+      <form>
+        <h1 id="tituloPrincipal">Prealerte su paquete!</h1>
+        <h4>¡Es fácil y sencillo!</h4>
+        <p>Complete los siguientes datos</p>
+        <div class="row m-8">
+          <div class="form-group">
+
+              <label>Número de tracking: </label>
+              <input type="text" class="form-control" ng-model="vm.nuevoPaquetePrealertado.trackingPaquete" ng-disabled="true"> 
+          </div>
+
+          <div class="form-group">
+              <label for="sltTipoPaquete">Tipo del paquete</label>
+              <select id="sltTipoPaquete" ng-options="tipoPaquete as tipoPaquete.name for tipoPaquete in vm.tipoPaquetes track by tipoPaquete._id"
+              ng-model="vm.nuevoPaquetePrealertado.tipoPaquete"
+                class="custom-select" required>
+                <option value="">Seleccione un tipo de paquete</option>
+              </select>
+            </div>
+
+            <div class="col-sm-12 col-md-auto">
+              <button type="button" class="btn btn-secondary" ng-click="vm.listarPaquetesPrealertados(paquetesPrealertados)">ver paquetes prealertados</button>
+            </div>
+        </div>
+
+        
+
+
+
+        <button type="submit" class="btn btn-primary">Prealertar paquete</button>
+      </form>
+  </div>
+</div>

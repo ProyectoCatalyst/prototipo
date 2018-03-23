@@ -25,7 +25,8 @@
       eliminarSucursal: _eliminarSucursal,
       cambiarEstado: _cambiarEstado,
       retornarSucursalesDesact: _retornarSucursalesDesact,
-      retornarSucursalesAct: _retornarSucursalesAct
+      retornarSucursalesAct: _retornarSucursalesAct,
+      retornarNombreSucursalesLS: _retornarNombreSucursalesLS
     }
 
     return publicAPI;
@@ -49,12 +50,12 @@
     }// fin función agregarSucursal
 
     function _retornarSucursal() {
-   
+
       let listaSucursalesLocal = JSON.parse(localStorage.getItem("listaSucursales")),
-      sucursalesTemp =[];
+        sucursalesTemp = [];
 
       if (listaSucursalesLocal == null) {
-        
+
         return sucursalesTemp;
       } else {
         listaSucursalesLocal.forEach(obj => {
@@ -99,7 +100,7 @@
       let sucursalesLS = JSON.parse(localStorage.getItem('listaSucursales')),
         sucursalesAct = [],
         sucursalesActLS = [];
-      
+
       if (sucursalesLS == null) {
         return sucursalesActLS;
       } else {
@@ -158,6 +159,19 @@
       actualizarLista(listaSucursales);
       return valido;
     }//fin función eliminar sucursal
+
+
+    function _retornarNombreSucursalesLS() {
+      let listaSucursalesActivas = _retornarSucursalesAct(),
+          datosTodasSucursales = [];
+
+      listaSucursalesActivas.forEach(objSucursalTemp => {
+        let datos = new Sucursal (objSucursalTemp.codigoSucursal, objSucursalTemp.nombreSucursal);
+
+        datosTodasSucursales.push(datos)
+      })
+      return datosTodasSucursales;
+    }// fin _retornarNombreSucursalesLS
 
     function actualizarLista(psucursalesLS) {
       localStorage.setItem('listaSucursales', JSON.stringify(psucursalesLS));
