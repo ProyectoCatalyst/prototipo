@@ -16,7 +16,7 @@
         }
       })
       
-      .state('registrarRapartidor', {
+      .state('main.registrarRapartidor', {
         url: '/registerDeliveryMan',
         templateUrl: './components/repartidor/registrarRepartidor/registrarRepartidor.view.html',
         data: {
@@ -31,7 +31,7 @@
         controllerAs: 'vm'
       })
       
-      .state('registrarLincencia', {
+      .state('main.registrarLincencia', {
         url: '/registerLicence',
         templateUrl: './components/licencia/registrarLicencia/registrarLincencia.view.html',
         data: {
@@ -49,7 +49,7 @@
         controllerAs: 'vm'
       })
       
-      .state('listarLicencias', {
+      .state('main.listarLicencias', {
         url: '/listLicenses',
         templateUrl: './components/licencia/listarLicencias/listarLicencias.view.html',
         data: {
@@ -67,7 +67,7 @@
         controllerAs: 'vm'
       })
       
-      .state('listarTodosLosRepartidores', {
+      .state('main.listarTodosLosRepartidores', {
         url: '/listAllDeliveryMan',
         templateUrl: './components/repartidor/listarTodosLosRepartidores/listarTodosLosRepartidores.view.html',
         data: {
@@ -82,7 +82,7 @@
         controllerAs: 'vm'
       })
       
-      .state('perfilRepartidor', {
+      .state('main.perfilRepartidor', {
         url: '/deliveryManProfile',
         templateUrl: './components/repartidor/perfilRepartidor/perfilRepartidor.view.html',
         data: {
@@ -100,7 +100,7 @@
         controllerAs: 'vm'
       })
       
-      .state('editarRepartidor', {
+      .state('main.editarRepartidor', {
         url: '/modifyDeliveryMan',
         templateUrl: './components/repartidor/editarRepartidor/editarRepartidor.view.html',
         data: {
@@ -118,7 +118,7 @@
         controllerAs: 'vm'
       })
 
-      .state('editarLicencia', {
+      .state('main.editarLicencia', {
         url: '/modifyLicense',
         templateUrl: './components/licencia/editarLicencia/editarLicencia.view.html',
         data: {
@@ -147,7 +147,7 @@
         data: {
           pageTitle: 'Inicio | Correos de Costa Rica'
         },
-        controller: '',
+        controller: 'controladorMain',
         controllerAs: 'vm'
       })
 

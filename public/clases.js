@@ -20,6 +20,7 @@ class Usuario {
   getCedula(){
      return this.cedula;
   }
+  
   getCorreo(){
     return this.correo;
   }
