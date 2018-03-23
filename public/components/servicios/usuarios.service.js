@@ -14,6 +14,7 @@
       agregarUsuario: _agregarUsuario,
       obtenerlistadeusuarios: _obtenerlistadeusuarios,
       obtenerlistadeFiltrada: _obtenerListaFiltrada,
+      retornarCedulaUsuarios:  _retornarCedulaUsuarios,
       retornarRepartidoresSucursal: _retornarRepartidoresSucursal,
       agregarRepartidor: _agregarRepartidor,
       retornarTodosRepartidores: _retornarTodosRepartidores,
@@ -101,7 +102,17 @@
       return listaFiltrada;
     }
 
+    function _retornarCedulaUsuarios(){
+        let usuariosLS = localStorageFactory.getItem(listaUsuarios),
+            cedulasSistema = [];
 
+        for(let i=0; i<usuariosLS.length; i++){
+            cedulasSistema.push( usuariosLS[i].cedula );
+        }
+
+        return cedulasSistema
+    }
+    
     // _____servicio repartidores_______
 
     function _retornarRepartidoresSucursal(psucursal){ // necesita recibir la sucursal que se ingresa en el form
@@ -135,9 +146,12 @@
                                 });
         
                                 objUsuarioTemp = repartidores;   // a el usuario con rol de repartidor y con la misma sucursal donde estoy trabajando le agrego el repartidor final con el formato necesario 
+
+                                todosUsuarios.push(objUsuarioTemp); // agrego ese usuario repartidor que es lo necesito en el objeto que finalmente voy a retornar
+                                
                         }
                     }
-                    todosUsuarios.push(objUsuarioTemp);
+                    // todosUsuarios.push(objUsuarioTemp); no aca para no retornar un objeto sin formato
                 });
                 // console.log(todosUsuarios);
                 return todosUsuarios
@@ -166,8 +180,6 @@
 
                         let repartidores = new Repartidor(objUsuarioTemp.primerNombre, objUsuarioTemp.segundoNombre, objUsuarioTemp.primerApellido, objUsuarioTemp.segundoApellido, objUsuarioTemp.cedula, objUsuarioTemp.fecha, objUsuarioTemp.genero, objUsuarioTemp.ubicacion, objUsuarioTemp.provincia, objUsuarioTemp.canton, objUsuarioTemp.distrito, objUsuarioTemp.direccion,objUsuarioTemp.correo, objUsuarioTemp.contrasenna, objUsuarioTemp.rol, objUsuarioTemp.telefono, objUsuarioTemp.telefonoAdicional, objUsuarioTemp.estado, objUsuarioTemp.razonDesact, objUsuarioTemp.sucursal);
 
-                        // ________no cuenta para michi 420:inicio_________
-
                         // objRepartidorTemp.paqueteAsignado.forEach(objPaqueteAsignadoTemp => {
                         //     let objPaqueteAsignado = new Paquete(objPaqueteAsignadoTem)
                         //     
@@ -181,11 +193,12 @@
                                 repartidores.setLicencia(objLicencia); // seteo la licencia en ese repartidor, nombrado como nueva varialble en linea 118
                         });
 
-                        // ________no cuenta para michi 420:fin_________
-
                         objUsuarioTemp = repartidores;   // a el usuario con rol de repartidor y con la misma sucursal donde estoy trabajando lo igualo a el repartidor final con el formato necesario 
+
+                        todosUsuarios.push(objUsuarioTemp); // solo agrego los ussuarios rol=4 con formato.
+                        
                     }
-                    todosUsuarios.push(objUsuarioTemp);
+                    // todosUsuarios.push(objUsuarioTemp);
                 });
             }
 

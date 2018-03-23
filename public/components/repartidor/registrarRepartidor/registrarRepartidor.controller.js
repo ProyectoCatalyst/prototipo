@@ -33,18 +33,28 @@
 
                 console.log(objNuevoRegistro);
 
-                let exito = verificarRepartidor(aDatosVerificar);
+                let exito = verificarUsuario(aDatosVerificar[0]),
+                    edadCorrecta = verifiarEdad(objNuevoRegistro.fecha);
 
                 if(exito){
-                    let datosRepartidor = [objNuevoRegistro.cedula, objNuevoRegistro.sucursal, objNuevoRegistro.nombre];
-                    servicioUsuarios.agregarRepartidor(aDatos);
-                    $state.go('listarTodosLosRepartidores');
-                    swal({
-                        title: "Éxito",
-                        text: "Hemos registrado el repartidor",
-                        icon: "success",
-                        button: "Aceptar"
-                    });
+                    if(edadCorrecta){
+                        let datosRepartidor = [objNuevoRegistro.cedula, objNuevoRegistro.sucursal, objNuevoRegistro.nombre];
+                        servicioUsuarios.agregarRepartidor(aDatos);
+                        $state.go('listarTodosLosRepartidores');
+                        swal({
+                            title: "Éxito",
+                            text: "Hemos registrado el repartidor",
+                            icon: "success",
+                            button: "Aceptar"
+                        });
+                    }else{
+                        swal({
+                            title: "Verifique su edad",
+                            text: "No puede ser menor de edad",
+                            icon: "error",
+                            button: "Aceptar"
+                        });    
+                    }
                 }else{
                     swal({
                         title: "Ya existe",
@@ -58,18 +68,31 @@
 
 
         //_______funciones internas________
-        function verificarRepartidor(paDatosVerificar){
+        function verificarUsuario(pcedula){
 
-            let repartidoresLS = servicioUsuarios.retornarRepartidoresSucursal(paDatosVerificar[1]),
+            let cedulasSistema = servicioUsuarios.retornarCedulaUsuarios(),
             existente = false;
 
-            for(let i=0; i<repartidoresLS.length; i++){
+            for(let i=0; i<cedulasSistema.length; i++){
 
-                if(repartidoresLS[i].cedula == paDatosVerificar[0]){
+                if(cedulasSistema[i] == pcedula){
                     existente = true;
                 }
             }
             return !existente
+        }
+
+        function verifiarEdad(pfechaNacimiento){
+            let hoy = new Date,
+                nacimiento = new Date(pfechaNacimiento),
+                edad = (hoy-nacimiento) / 31536000000, // numero de un anio en milisegundos
+                menor = false;
+              
+                if(edad < 18){
+                    menor = true
+                }
+
+                return !menor
         }
     }
 })();

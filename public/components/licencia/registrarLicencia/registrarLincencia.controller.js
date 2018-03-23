@@ -48,7 +48,7 @@
         }else{
           swal({
             title: 'La licencia está vencida',
-            body: 'No se puede registrar',
+            text: 'No se puede registrar',
             icon: 'error',
             button: 'Aceptar'
           });

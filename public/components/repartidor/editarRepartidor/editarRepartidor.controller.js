@@ -36,8 +36,10 @@
     vm.editarPerfil = (pdatosMod) => {
       // console.log(pdatosMod)
       pdatosMod.rol = 4;
-      pdatosMod.estado = true;
+      pdatosMod.estado = true,
       pdatosMod.razonDesact = '';
+      
+      let edadCorrecta = verificarEdad(pdatosMod.fechaNacimiento);
 
       if(pdatosMod.contrasenna != pdatosMod.confirmarContrasenna){
         swal({
@@ -47,19 +49,40 @@
           button: 'Aceptar'
         });
       }else{
-        let objEditarInfo = new Repartidor(pdatosMod.nombre, pdatosMod.segundoNombre, pdatosMod.primerApellido, pdatosMod.segundoApellido, pdatosMod.cedula, pdatosMod.fechaNacimiento, pdatosMod.genero, pdatosMod.ubicacion, pdatosMod.provincia, pdatosMod.canton, pdatosMod.distrito, pdatosMod.direccion,pdatosMod.correo, pdatosMod.contrasenna, pdatosMod.rol, pdatosMod.telefono, pdatosMod.telefonoAdicional, pdatosMod.estado, pdatosMod.razonDesact, pdatosMod.sucursal),
-                aDatos = [objEditarInfo, objEditarInfo.sucursal];
+        if(!edadCorrecta){
+          swal({
+            title: 'La edad es incorrecta',
+            text: 'Debe ser mayor de edad',
+            icon: 'error',
+            button: 'Aceptar'
+          });
+        }else{
+          let objEditarInfo = new Repartidor(pdatosMod.nombre, pdatosMod.segundoNombre, pdatosMod.primerApellido, pdatosMod.segundoApellido, pdatosMod.cedula, pdatosMod.fechaNacimiento, pdatosMod.genero, pdatosMod.ubicacion, pdatosMod.provincia, pdatosMod.canton, pdatosMod.distrito, pdatosMod.direccion,pdatosMod.correo, pdatosMod.contrasenna, pdatosMod.rol, pdatosMod.telefono, pdatosMod.telefonoAdicional, pdatosMod.estado, pdatosMod.razonDesact, pdatosMod.sucursal),
+                  aDatos = [objEditarInfo, objEditarInfo.sucursal];
 
-        servicioUsuarios.editarRepartidor(objEditarInfo);
-        swal({
-          title: 'Listo',
-          text: 'Informacion editada',
-          icon: 'success',
-          button: 'Aceptar'
-        });
-        $state.go('listarTodosLosRepartidores');
+          servicioUsuarios.editarRepartidor(objEditarInfo);
+
+          swal({
+            title: 'Listo',
+            text: 'Informacion editada',
+            icon: 'success',
+            button: 'Aceptar'
+          });
+          $state.go('listarTodosLosRepartidores');
+        }
       }
-      
+    }
+
+    function verificarEdad(pfechaNacimiento){
+      let hoy = new Date,
+          edad = (hoy-pfechaNacimiento) / 31536000000, // numero de un anio en milisegundos
+          menor = false;
+        
+          if(edad < 18){
+              menor = true
+          }
+
+          return !menor
     }
   }
 })();
