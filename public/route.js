@@ -27,7 +27,7 @@
         data: {
           pageTitle: 'Inicio | Correos de Costa Rica'
         },
-        controller: '',
+        controller: 'controladorMain',
         controllerAs: 'vm'
       })
 
