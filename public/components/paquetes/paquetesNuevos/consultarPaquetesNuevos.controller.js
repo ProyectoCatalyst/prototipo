@@ -4,9 +4,9 @@
     .module('prototipo')
     .controller('controladorConsultarPaquetesNuevos', controladorConsultarPaquetesNuevos);
 
-    controladorConsultarPaquetesNuevos.$inject = ['$stateParams', '$state', '$http', 'servicio'];
+    controladorConsultarPaquetesNuevos.$inject = ['$stateParams', '$state', '$http'];
 
-  function controladorConsultarPaquetesNuevos($stateParams, $state, $http, servicio ){
+  function controladorConsultarPaquetesNuevos($stateParams, $state, $http ){
     let vm = this;
 
     //vm.consultarPaquetesNuevosAduana = servicioUsuarios

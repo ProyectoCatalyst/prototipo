@@ -157,7 +157,7 @@
         controller: 'controladorPaquetesPrealertados',
         controllerAs: 'vm'
       })
-      .state('main.consultarPaquetesNuevos', {
+      .state('main./consultarPaquetesNuevos', {
         url: '/consultarPaquetesNuevos',
         templateUrl: './components/paquetes/paquetesNuevos/consultarPaquetesNuevos.view.html',
         data: {
@@ -176,6 +176,9 @@
         templateUrl: './components/consultarRepartidorAsignado/consultarRepartidorAsignado.view.html',
         data: {
           pageTitle: 'Repartidor asignado | Correos de Costa Rica'
+        },
+        params: {
+          datos: ''
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {

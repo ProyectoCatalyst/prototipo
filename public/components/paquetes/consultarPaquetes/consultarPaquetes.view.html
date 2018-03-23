@@ -1,18 +1,21 @@
-<tbody>
-  <tr ng-repeat="paquetesPrealertados in vm.paquetesPrealertados">
-    <td>{{paquetesPrealertados.}}</td>
-    <td>{{paquetesPrealertados.}}</td>
-    <td>{{paquetesPrealertados.l}}</td>
-    <td>{{paquetesPrealertados.}}</td>
-    <td>{{paquetesPrealertados.}}</td>
-    <td>{{paquetesPrealertados.}}</td>
-    <td>{{paquetesPrealertados.}}</td>
-    <td>{{paquetesPrealertados.}}</td>
-    <td>{{paquetesPrealertados.}}</td>
-    <td>{{paquetesPrealertados.}}</td>
-    <td>{{paquetesPrealertados.}}</td>
-    <td>{{paquetesPrealertados.}}</td>
-    <td>{{paquetesPrealertados.}}</td>
-    
-  </tr>
-</tbody>
+<h1>Lista de paquetes entrantes</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Tienda preoveniente</th>
+      <th>Tienda preoveniente</th>
+      <th>Tienda preoveniente</th>
+      <th>Tienda preoveniente</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <td ng-repeat="paquetes in vm.paquetesPrealertados">
+      <tr><!--{{paquetes.infoPaquete}}--></tr>
+      <tr><!--{{paquetes.infoPaquete}}--></tr>
+      <tr><!--{{paquetes.infoPaquete}}--></tr>
+      <tr><!--{{paquetes.infoPaquete}}--></tr>
+    </td>
+  </tbody>
+</table>

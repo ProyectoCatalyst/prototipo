@@ -1,7 +1,16 @@
 <div><h2>Su repartidor asignado es el siguiente:</h2></div>
-<tbody>
-  <tr ng-repeat="repartidorAsignado in vm.consultarRepartidorAsignado">
-    <td>{{repartidorAsignado.}}</td>
 
+<table class="table">
+  <tr>
+    <th>Nombre</th>
+    <th>Correo</th>
+    <th>Licencias</th>
   </tr>
-</tbody>
+  <tr>
+    <td>{{vm.repartidor.nombre}}</td>
+    <td>{{vm.repartidor.correo}}</td>
+    <td>
+      <button type="button" class="btn btn-info">Ver licencias</button>
+    </td>
+  </tr>
+</table>
