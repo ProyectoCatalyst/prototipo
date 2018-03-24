@@ -56,11 +56,13 @@
     vm.clienteNuevo = {};
     vm.tarjetaNUeva
     
-    vm.registrarCliente= (pclienteNuevo, ptarjetaNueva) => {
+    vm.registrarCliente= (pclienteNuevo) => {
 
       let rol = 5;
 
-      let objTarjeta = new Tarjeta(ptarjetaNueva.tipoTarjeta, ptarjetaNueva.nombreTarjeta, ptarjetaNueva.numeroTarjeta, ptarjetaNueva.cvvTarjeta, ptarjetaNueva.pfechaTarjeta);
+      console.log(pclienteNuevo);
+
+      let objTarjeta = new Tarjeta(pclienteNuevo.tipoTarjeta, pclienteNuevo.nombreTarjeta, pclienteNuevo.numeroTarjeta, pclienteNuevo.cvvTarjeta, pclienteNuevo.fechaTarjeta);
 
       let objNuevoCliente = new Cliente(pclienteNuevo.nombre, pclienteNuevo.segundoNombre, pclienteNuevo.primerApellido, pclienteNuevo.segundoApellido, pclienteNuevo.cedula, pclienteNuevo.fecha,  pclienteNuevo.sexo, pclienteNuevo.ubicacion, pclienteNuevo.provincia.name, pclienteNuevo.canton.name, pclienteNuevo.distrito.name, pclienteNuevo.direccion,  pclienteNuevo.correo, pclienteNuevo.contrasenna, rol, pclienteNuevo.telefono);
       
