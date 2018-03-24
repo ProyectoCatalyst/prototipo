@@ -13,7 +13,9 @@
     let publicAPI = {
       agregarUsuario: _agregarUsuario,
       obtenerlistadeusuarios: _obtenerlistadeusuarios,
-      obtenerlistadeFiltrada: _obtenerListaFiltrada
+      obtenerlistadeFiltrada: _obtenerListaFiltrada,
+      desactivarCuenta: _desactivarCuenta,
+      obtenerlistadeEncargadosSucursal: _obtenerlistadeEncargadosSucursal
     };
     return publicAPI; 
 
@@ -50,19 +52,19 @@
 
           switch(obj.rol){
             case 2:
-              let tempEncargadoAduana = new EncargadoAduanas(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.cedula, tempfecha, obj.genero, obj.ubicacion, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol);
+              let tempEncargadoAduana = new EncargadoAduanas(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.cedula, tempfecha, obj.genero, obj.ubicacion, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol, obj.estadoDesactivado);
 
               listadeusuarios.push(tempEncargadoAduana);
             break;
 
             case 3:
-              let tempEncargadoSucursal = new EncargadoSucursal(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.cedula, tempfecha, obj.genero, obj.ubicacion, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol);
+              let tempEncargadoSucursal = new EncargadoSucursal(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.cedula, tempfecha, obj.genero, obj.ubicacion, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol, obj.estadoDesactivado);
 
               listadeusuarios.push(tempEncargadoSucursal);
             break;
 
             case 5:
-              let tempCliente = new Cliente(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.cedula, tempfecha, obj.genero, obj.ubicacion, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol, obj.telefono);
+              let tempCliente = new Cliente(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.cedula, tempfecha, obj.genero, obj.ubicacion, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol, obj.estadoDesactivado, obj.telefono);
 
               listadeusuarios.push(tempCliente);
             break;
@@ -85,5 +87,34 @@
 
       return listaFiltrada;
     }
+
+    function _desactivarCuenta(pcorreo) {
+      let listadeusuarios = _obtenerlistadeusuarios(),
+          desactivar = false;
+
+      for(let i = 0; i < listadeusuarios.length; i++){
+        if(listadeusuarios[i].getCorreo() == pcorreo){
+          listadeusuarios[i].setEstado(true);
+          desactivar = true;
+        }
+      }
+      return desactivar;
+    }
+
+    function _obtenerlistadeEncargadosSucursal() {
+      let listaEncarcagadodeSucursal = [];
+      let listaEncargadodeSucursalLocal = JSON.parse(localStorage.getItem("listaEncargadoSucursalLS"));
+
+      if (listaEncargadodeSucursalLocal == null) {
+        listaEncarcagadodeSucursal = [];
+      } else {
+        listaEncargadodeSucursalLocal.forEach(obj => {
+          let objEncargadoSucursal = new EncargadoSucursales(obj.nombre, obj.primerApellidol, obj.cedula, obj.correo);
+
+          listaEncarcagadodeSucursal.push(objEncargadoSucursal)
+        });
+      }
+      return listaEncarcagadodeSucursal;
+    }//fin retornar Encargados de sucursal
   }
 })();

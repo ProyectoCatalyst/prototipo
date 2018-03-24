@@ -4,16 +4,16 @@
     .module('prototipo')
     .controller('controladorInicioSesion', controladorInicioSesion);
 
-  controladorInicioSesion.$inject = ['$stateParams', '$state', '$window', 'servicioUsuarios', 'servicioAutenticacion'];
+  controladorInicioSesion.$inject = ['$stateParams', '$state', '$window', 'servicioUsuarios', 'servicioInicioSesion'];
 
-  function controladorInicioSesion($stateParams, $state, $window, servicioUsuarios, servicioAutenticacion) {
+  function controladorInicioSesion($stateParams, $state, $window, servicioUsuarios, servicioInicioSesion) {
     let vm = this;
 
     vm.usuario = {};
 
     vm.iniciarSesion = (pusuario) => {
 
-      let inicioCorrecto = servicioAutenticacion.logIn(pusuario);
+      let inicioCorrecto = servicioInicioSesion.logIn(pusuario);
 
       if (inicioCorrecto == true){
         swal({

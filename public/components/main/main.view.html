@@ -1,3 +1,27 @@
+<main>
+  <section class="container-fluid hero">
+    <div class="row">
+      <div class="col-md-12 d-flex align-items-center">
+        <div class="col-md-6 d-flex justify-content-center mt-5" style="background-color: yellow;">
+            <div class="justify-content-center align-items-center">
+              <img src="sources/img/braulio.jpg" class="img-fluid rounded-circle" width="300px" height="300px" alt="">
+            </div>
+          </div>
+          <div class="col-md-6 d-flex justify-content-center mt-5" style="background-color: green;">
+            <div class="">
+              <h1 class="mt-5">{{vm.usuarioActivo.primerNombre}} {{vm.usuarioActivo.primerApellido}}</h1>
+              <p>Cédula: {{vm.usuarioActivo.cedula}}</p>
+              <p>Correo: {{vm.usuarioActivo.correo}}</p>
+              <p>Fecha de nacimiento: {{vm.usuarioActivo.fecha | date:'dd-MM-yyyy'}}</p>
+              <p>Sexo: {{vm.usuarioActivo.genero}}</p>
+              <p>{{vm.usuarioActivo.provincia}}, {{vm.usuarioActivo.canton}}, {{vm.usuarioActivo.distrito}}</p>
+            </div>
+          </div>
+      </div>
+      
+    </div>
+  </section>
+</main>
 
 <ul>
   <li>
@@ -30,6 +54,21 @@
   <li>
     <a ui-sref="main.consultarCasillero">Consultar casillero</a>
   </li>
-</ul>
 
-<div ui-view></div>
+    <li>
+      <a ui-sref="main.registrarEncargadoAduana" >Registro de Encargado de Aduana</a>
+    </li>
+    <!-- <li>
+      <a ui-sref="main.registrarEncargadoSucursal">Registro de Encargado de Sucursal</a>
+    </li> -->
+    <!-- <li>
+      <a ui-sref="main.registrarCliente">Registrar Usuarios</a>
+    </li> -->
+    <!-- <li>
+      <a ui-sref="main.registrarConvenio">Registrar Convenio</a>
+    </li>
+  </ul> -->
+  </ul>
+<div class="col-md-12" ui-view></div>
+
+<!-- <button type="submit" class="btn btn-danger" ng-click="vm.cerrarSesion()">Cerrar sesión</button> -->

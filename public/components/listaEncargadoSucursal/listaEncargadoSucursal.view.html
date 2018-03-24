@@ -1,18 +1,32 @@
-<tbody>
-  <tr ng-repeat="encargadoSucursal in vm.listarEncargadoSucursal">
-    <td>{{encargadoSucursal.nombre}}</td>
-    <td>{{encargadoSucursal.segundoNombre}}</td>
-    <td>{{encargadoSucursa.primerApellidol}}</td>
-    <td>{{encargadoSucursal.segundoApellido}}</td>
-    <td>{{encargadoSucursal.cedula}}</td>
-    <td>{{encargadoSucursal.fecha}}</td>
-    <td>{{encargadoSucursal.genero}}</td>
-    <td>{{encargadoSucursal.ubicacion}}</td>
-    <td>{{encargadoSucursal.provincia}}</td>
-    <td>{{encargadoSucursal.canton}}</td>
-    <td>{{encargadoSucursal.distrito}}</td>
-    <td>{{encargadoSucursal.direccion}}</td>
-    <td>{{encargadoSucursal.correo}}</td>
-    
-  </tr>
-</tbody>
+<main class="container-fluid">
+
+    <section class="row">
+      <div class="col-md-12 mt-5">
+  
+        <h1 class="text-center">Lista encargados de Sucursal</h1>
+  
+        <table class="table mt-5">
+          <thead class="thead-dark">
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Cedula</th>
+                <th scope="col">Correo</th>
+  
+            </tr>
+          </thead>
+  
+          <tbody>
+            <tr ng-repeat="encargadoSucursales in vm.listarEncargadoSucursal">
+                <td>{{encargadoSucursales.nombre}}</td>
+                <td>{{encargadoSucursales.primerApellidol}}</td>
+                <td>{{encargadoSucursales.cedula}}</td>
+                <td>{{encargadoSucursales.correo}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <button type="button" class="btn btn-success" ng-click="vm.prealertarPaquetes ()">Prealertar paquetes</button>
+      </div>
+    </section>
+  
+  </main>

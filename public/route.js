@@ -27,7 +27,7 @@
         data: {
           pageTitle: 'Inicio | Correos de Costa Rica'
         },
-        controller: '',
+        controller: 'controladorMain',
         controllerAs: 'vm'
       })
 
@@ -202,7 +202,37 @@
         controller: 'controladorConsultarCasillero',
         controllerAs: 'vm'
       })
-      ;
+      
+
+      .state('listarTodosUsuarios', {
+        url: '/ListaTodosUsuarios',
+        templateUrl: './components/usuarios/listarTodosUsuarios/listarTodosUsuarios.view.html',
+        data: {
+          pageTitle: 'Lista de Usuarios | Correos de Costa Rica'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/listarTodosUsuarios/listarTodosUsuarios.controller.js')
+          }]
+        },
+        controller: 'controladorListarTodosUsuarios',
+        controllerAs: 'vm'
+      })
+
+      .state('DesactivarUsuarios', {
+        url: '/usuariosDesactivados',
+        templateUrl: './components/usuarios/listarTodosUsuarios/listarTodosUsuarios.view.html',
+        data: {
+          pageTitle: 'Lista de Usuarios | Correos de Costa Rica'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/listarTodosUsuarios/listarTodosUsuarios.controller.js')
+          }]
+        },
+        controller: 'controladorListarTodosUsuarios',
+        controllerAs: 'vm'
+      });
 
 
     // .state('', {
@@ -220,6 +250,6 @@
     //   controllerAs: 'vm'
     // })
 
-    $urlRouterProvider.otherwise('/');
+    // $urlRouterProvider.otherwise('/');
   };
 })();

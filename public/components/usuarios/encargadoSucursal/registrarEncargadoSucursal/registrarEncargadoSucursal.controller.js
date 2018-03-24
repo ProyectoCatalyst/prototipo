@@ -61,7 +61,7 @@
 
       let rol = 3;
 
-      let objEncargadoSucursalTem = new EncargadoSucursal(pnuevoEncargadoSucursal.nombre, pnuevoEncargadoSucursal.segundoNombre, pnuevoEncargadoSucursal.apellido, pnuevoEncargadoSucursal.segundoApellido, pnuevoEncargadoSucursal.cedula, pnuevoEncargadoSucursal.fecha, pnuevoEncargadoSucursal.genero, pnuevoEncargadoSucursal.ubicacion, pnuevoEncargadoSucursal.provincia.name, pnuevoEncargadoSucursal.canton.name, pnuevoEncargadoSucursal.distrito.name, pnuevoEncargadoSucursal.direccion,pnuevoEncargadoSucursal.correo, pnuevoEncargadoSucursal.contrasenna, rol);
+      let objEncargadoSucursalTem = new EncargadoSucursales(pnuevoEncargadoSucursal.nombre, pnuevoEncargadoSucursal.segundoNombre, pnuevoEncargadoSucursal.apellido, pnuevoEncargadoSucursal.segundoApellido, pnuevoEncargadoSucursal.cedula, pnuevoEncargadoSucursal.fecha, pnuevoEncargadoSucursal.genero, pnuevoEncargadoSucursal.ubicacion, pnuevoEncargadoSucursal.provincia.name, pnuevoEncargadoSucursal.canton.name, pnuevoEncargadoSucursal.distrito.name, pnuevoEncargadoSucursal.direccion,pnuevoEncargadoSucursal.correo, pnuevoEncargadoSucursal.contrasenna, rol);
 
       console.log(objEncargadoSucursalTem);
 
