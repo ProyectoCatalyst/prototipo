@@ -14,7 +14,7 @@
       agregarUsuario: _agregarUsuario,
       obtenerlistadeusuarios: _obtenerlistadeusuarios,
       obtenerlistadeFiltrada: _obtenerListaFiltrada,
-      retornarCedulaUsuarios:  _retornarCedulaUsuarios,
+      retornarCorreosUsuarios:  _retornarCorreosUsuarios,
       retornarRepartidoresSucursal: _retornarRepartidoresSucursal,
       agregarRepartidor: _agregarRepartidor,
       retornarTodosRepartidores: _retornarTodosRepartidores,
@@ -22,13 +22,15 @@
       agregarRazonDesact: _agregarRazonDesact,
       filtrarRepartidores : _filtrarRepartidores,
       editarRepartidor: _editarRepartidor,
+      retornarInformacionRepartidor: _retornarInformacionRepartidor,
       retornarTodasLicencias: _retornarTodasLicencias,
       retornarLicenciasRepartidor: _retornarLicenciasRepartidor,
       registrarLicencia: _registrarLicencia,
       cambiarEstadoLicencia: _cambiarEstadoLicencia,
       retornarLicencias: _retornarLicencias,
       editarLicencias: _editarLicencias,
-      retornarPaquetesAsignados: _retornarPaquetesAsignados
+      retornarPaquetesAsignados: _retornarPaquetesAsignados,
+      desactivarCuenta: _desactivarCuenta
     };
     return publicAPI; 
 
@@ -66,19 +68,29 @@
 
           switch(obj.rol){
             case 2:
-              let tempEncargadoAduana = new EncargadoAduanas(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.cedula, tempfecha, obj.genero, obj.ubicacion, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol);
+              let tempEncargadoAduana = new EncargadoAduanas(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.cedula, tempfecha, obj.genero, obj.ubicacion, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol, obj.estadoDesactivado);
 
               listadeusuarios.push(tempEncargadoAduana);
             break;
 
             case 3:
-              let tempEncargadoSucursal = new EncargadoSucursales(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.cedula, tempfecha, obj.genero, obj.ubicacion, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol);
+              let tempEncargadoSucursal = new EncargadoSucursal(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.cedula, tempfecha, obj.genero, obj.ubicacion, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol, obj.estadoDesactivado);
 
               listadeusuarios.push(tempEncargadoSucursal);
             break;
 
+            case 4:
+
+                if(obj.estado == true){
+                    let repartidoresTemp = new Repartidor(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.cedula, obj.fecha, obj.genero, obj.ubicacion, obj.provincia, obj.canton, obj.distrito, obj.direccion,obj.correo, obj.contrasenna, obj.rol, obj.telefono, obj.telefonoAdicional, obj.estado, obj.razonDesact, obj.sucursal);      
+                
+                    listadeusuarios.push(repartidoresTemp);
+                }
+
+            break;
+
             case 5:
-              let tempCliente = new Cliente(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.cedula, tempfecha, obj.genero, obj.ubicacion, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol, obj.telefono);
+              let tempCliente = new Cliente(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.cedula, tempfecha, obj.genero, obj.ubicacion, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol, obj.estadoDesactivado, obj.telefono);
 
               listadeusuarios.push(tempCliente);
             break;
@@ -102,12 +114,12 @@
       return listaFiltrada;
     }
 
-    function _retornarCedulaUsuarios(){
+    function _retornarCorreosUsuarios(){
         let usuariosLS = localStorageFactory.getItem(listaUsuarios),
             cedulasSistema = [];
 
         for(let i=0; i<usuariosLS.length; i++){
-            cedulasSistema.push( usuariosLS[i].cedula );
+            cedulasSistema.push( usuariosLS[i].correo );
         }
 
         return cedulasSistema
@@ -205,14 +217,14 @@
         return todosUsuarios
     }
 
-    function _cambiarEstadoRepartidor(pcedula){
+    function _cambiarEstadoRepartidor(pcorreo){
         let repartidoresLS = _retornarTodosRepartidores(),
             todosLosRepartidores = [],
             licenciasRepartidor = [];
 
         for(let i=0; i<repartidoresLS.length; i++){
 
-            if(repartidoresLS[i].getCedula() == pcedula){
+            if(repartidoresLS[i].getCorreo() == ocirreo){
                 repartidoresLS[i].estado = !repartidoresLS[i].getEstado();
 
                 licenciasRepartidor = repartidoresLS[i].getLicencias(); // guardo todas las licencias de ese repartidor en este arreglo
@@ -228,7 +240,7 @@
         
     }
 
-    function _agregarRazonDesact(pdatos){
+    function _agregarRazonDesact(pdatos){ // correo razon
         let repartidoresLS = _retornarTodosRepartidores(), // obtengo todos los repartidores
             todosLosRepartidores = [];
 
@@ -236,7 +248,7 @@
             
             if(!repartidoresLS[i].getEstado()){ // filtro los desactivados
 
-                if(repartidoresLS[i].getCedula() == pdatos[0]){ // filtro por la cedula que del repartidor que acaba de desactivar
+                if(repartidoresLS[i].getCorreo() == pdatos[0]){ // filtro por el correo que del repartidor que acaba de desactivar
                     repartidoresLS[i].razonDesact = pdatos[1]; // agrego la razon de la desactivacion
                 }
 
@@ -271,7 +283,7 @@
 
         for(let i=0; i<repartidoresSucursal.length; i++){
 
-            if(repartidoresSucursal[i].getCedula() == pobjEditarInfo.cedula){
+            if(repartidoresSucursal[i].getCorreo() == pobjEditarInfo.correo){
                 pobjEditarInfo.licencia = repartidoresSucursal[i].getLicencias();
                 pobjEditarInfo.paqueteAsignado = repartidoresSucursal[i].getPaqAsignados();
                 repartidoresSucursal[i] = pobjEditarInfo;
@@ -280,6 +292,19 @@
         }
         actualizarLS(repartidoresSucursal)
         // console.log(repartidoresSucursal)
+    }
+
+    function _retornarInformacionRepartidor(){
+        let activo = JSON.parse(sessionStorage.getItem('session')),
+            repartidores = _retornarTodosRepartidores(),
+            datos = [];
+
+        for(let i=0; i<repartidores.length; i++){
+            if(repartidores[i].getCorreo() == activo){
+                datos = [repartidores[i].getCorreo(), repartidores[i].sucursal];
+            }
+        }
+        return datos
     }
 
     function _retornarTodasLicencias(){
@@ -306,26 +331,26 @@
 
     }
 
-    function _retornarLicenciasRepartidor(datos){ // cedula, sucursal
+    function _retornarLicenciasRepartidor(datos){ // correo, sucursal
         let repartidoresLS = _retornarRepartidoresSucursal(datos[1]), // sucursal
             licenciasRepartidor = [];
 
         for(let i=0; i<repartidoresLS.length; i++){
-            if(repartidoresLS[i].getCedula() == datos[0]){
+            if(repartidoresLS[i].getCorreo() == datos[0]){
                 licenciasRepartidor = repartidoresLS[i].getLicencias();
             }
         }
         return licenciasRepartidor
     }
 
-    function _registrarLicencia(pdatosAgregar){
+    function _registrarLicencia(pdatosAgregar){ // objLicencia, correo, sucursal
         let objLicenciaRegistrar = pdatosAgregar[0],
-            cedulaRepartidor = pdatosAgregar[1],
+            correoRepartidor = pdatosAgregar[1],
             sucursalRepartidor = pdatosAgregar[2],
             repartidoresLS = _retornarRepartidoresSucursal(sucursalRepartidor);
 
         for(let i=0; i<repartidoresLS.length; i++){
-            if(repartidoresLS[i].getCedula() == cedulaRepartidor){
+            if(repartidoresLS[i].getCorreo() == correoRepartidor){
                 repartidoresLS[i].setLicencia(objLicenciaRegistrar);
             }
         }
@@ -333,14 +358,14 @@
         actualizarLS(repartidoresLS);
     }
 
-    function _cambiarEstadoLicencia(pdatos){
+    function _cambiarEstadoLicencia(pdatos){ // correo, sucursal, codigo de licencia
 
         let repartidoresLS = _retornarRepartidoresSucursal(pdatos[1]), // sucursal
             licenciasRepartidor = [];
 
         for(let i=0; i<repartidoresLS.length; i++){
             
-            if(repartidoresLS[i].getCedula() == pdatos[0]){ // cedula
+            if(repartidoresLS[i].getCorreo() == pdatos[0]){ // correo
                 licenciasRepartidor = repartidoresLS[i].getLicencias();
                 for(let x=0; x<licenciasRepartidor.length; x++){
                     if(licenciasRepartidor[x].getCodigo() == pdatos[2]){ // codigo
@@ -356,7 +381,7 @@
 
     }
 
-    function _retornarLicencias(pdatos){
+    function _retornarLicencias(pdatos){ // correo, sucursal
 
         let repartidoresLS = _retornarRepartidoresSucursal(pdatos[1]),
             licenciasDesactivadas = [],
@@ -366,7 +391,7 @@
 
         for(let i=0; i<repartidoresLS.length; i++){
 
-            if(repartidoresLS[i].getCedula() == pdatos[0]){
+            if(repartidoresLS[i].getCorreo() == pdatos[0]){
                 licenciasRepartidor = repartidoresLS[i].getLicencias();
                 for(let x=0; x<licenciasRepartidor.length; x++){
                     if(!licenciasRepartidor[x].getEstado()){
@@ -382,8 +407,8 @@
         return licencias
     }
 
-    function _editarLicencias(pdatos){ // repartidor, licencia
-        let licenciasRepartidor = _retornarLicenciasRepartidor(pdatos[0]),
+    function _editarLicencias(pdatos){ // infoRepartidor (correo, sucursal y nombre), nuevaLicencia, licencia
+        let licenciasRepartidor = _retornarLicenciasRepartidor(pdatos[0]), // inforepartidor ( correo, sucursal y nombre), obtengo las licencias de ese repartidor
             datos = [];
 
        for(let i=0; i<licenciasRepartidor.length; i++){
@@ -393,7 +418,7 @@
 
        }
        console.log(licenciasRepartidor);
-       datos = [pdatos[0], licenciasRepartidor];
+       datos = [pdatos[0], licenciasRepartidor]; // info repartidor(correo, sucursal), todas las licencias del repartidor
        actualizarLicenciasRepartidor(datos);
 
     }
@@ -404,10 +429,10 @@
             paquetesAsignados = [];
 
         for(let i=0; i<repartidoresLS.length; i++){
-            paquetesActuales = repartidoresLS[i].getLicencias(); // asignar paquetes a una variable que llama a los paquetes del repartidor en cuestion
+            paquetesActuales = repartidoresLS[i].getPaqAsignados(); // asignar paquetes a una variable que llama a los paquetes del repartidor en cuestion
 
             for(let j=0; j<paquetesActuales.length; j++){
-                if(repartidoresLS[i].getCedula() == pdatos[0]){
+                if(repartidoresLS[i].getCorreo() == pdatos[0]){
                     paquetesAsignados.push(paquetesActuales[j]);
                 }
             }
@@ -417,17 +442,13 @@
 
     //______funciones internas_________
 
-    function actualizarLS(prepartidoresLS){
-        localStorageFactory.setItem(listaUsuarios, prepartidoresLS);
-    }
-
-    function actualizarLicenciasRepartidor(pdatos){ // repartidor, objlicencia
-        let repartidoresSucursal = _retornarRepartidoresSucursal(pdatos[0][1]); // datosRepartidor => sucursal
+    function actualizarLicenciasRepartidor(pdatos){ // repartidor(correo y sucursal), todas las licencias
+        let repartidoresSucursal = _retornarRepartidoresSucursal(pdatos[0][1]); // datosRepartidor => sucursal, obtengo los repartidores con la sucursal en común
 
         for(let i=0; i<repartidoresSucursal.length; i++){
 
-            if(repartidoresSucursal[i].getCedula() == pdatos[0][0]){ // datosRepartidor => cedula
-                repartidoresSucursal[i].licencia = pdatos[1];
+            if(repartidoresSucursal[i].getCorreo() == pdatos[0][0]){ // datosRepartidor => correo. encuentro el repartidor dentro del monton
+                repartidoresSucursal[i].licencia = pdatos[1]; // en el objegto licencia reemplazo con las nuevas licencias
             }
         }
 
@@ -437,6 +458,21 @@
 
     }
   
-         
+    function actualizarLS(prepartidoresLS){
+        localStorageFactory.setItem(listaUsuarios, prepartidoresLS);
+    }
+           
+    function _desactivarCuenta(pcorreo) {
+      let listadeusuarios = _obtenerlistadeusuarios(),
+          desactivar = false;
+
+      for(let i = 0; i < listadeusuarios.length; i++){
+        if(listadeusuarios[i].getCorreo() == pcorreo){
+          listadeusuarios[i].setEstado(true);
+          desactivar = true;
+        }
+      }
+      return desactivar;
+    }
   }
 })();

@@ -1,43 +1,46 @@
 <navegacionPrincipal></navegacionPrincipal>
 
-<main class="container">
+<main class="container" id="mainContent">
+
+    <section class="row">
+
+        <div class="col-md-12 text-right py-3">
+    
+          <a href="#" ng-click="vm.consultarLicencias()">Ver licencias</a>
+          <span> | </span>
+          <a href="#" ng-click="vm.editarPerfil()">Editar perfil</a>
+    
+        </div>
+    
+      </section>
 
   <section class="row">
 
-    <div class="col-md-12 text-center py-4">
+    <h2 id="title" class="py-3 col-md-12">Paquetes asignados</h2>
 
-      <button type="button" class="btn btn-primary col-md-3 mx-3" ng-click="vm.consultarLicencias()">Ver licencias</button>
+    <div ng-repeat="paquetesAsignados in vm.listarPaquetesAsignados" class="col-md-12 pt-5 pb-4" id="info">
 
-      <button type="button" class="btn btn-success col-md-3 mx-3" ng-click="vm.editarPerfil()">Editar perfil</button>
+      <div class="row">
+
+        <div class="col-md-4">
+          <h5 id="subtitle">Descripcion</h5>
+          <p>{{paquetesAsignados}}</p>
+        </div>
+
+        <div class="col-md-4">
+          <h5 id="subtitle">Fecha asignado</h5>
+          <p>{{paquetesAsignados}}</p>
+        </div>
+
+        <div class="col-md-4">
+            <button type="button" class="btn btn-danger">Ver entrega</button>
+          </div>
+      </div>
+
+    
 
     </div>
-  </section>
-
-  <section class="row">
-
-    <h2 class="my-3">Paquetes asignados</h2>
-
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Info del paquete</th>
-          <th>Info del paquete</th>
-          <th>Info del paquete</th>
-          <th>Info del paquete</th>
-          <th>Info del paquete</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="paquetesAsignados in vm.listarPaquetesAsignados()">
-          <td>{{paquetesAsignados}}</td>
-          <td>{{paquetesAsignados}}</td>
-          <td>{{paquetesAsignados}}</td>
-          <td>{{paquetesAsignados}}</td>
-          <td>{{paquetesAsignados}}</td>
-        </tr>
-      </tbody>
-    </table>
 
   </section>
-  
+
 </main>

@@ -2,15 +2,14 @@
 
     <section class="row">
 
-        <section class="col-md-12 my-5 mx-auto" id="mainContent">
+        <section class="col-md-12 my-5" id="mainContent">
 
-            <h1 class="my-3" id="title">Edite su perfil</h1>
-            <h4 class="my-3" id="subtitle">¡Es gratis y sencillo!</h4>
-            <p class="my-3" id="description">Complete los siguientes datos.</p>
+            <h1 class="py-2" id="title">Edite la información de su cuenta</h1>
+            <p class="py-2" id="description">Edite o desactive la informacion que desee. Recuerde que la información desactivada puede ser reactivada cuando desee</p>
 
-            <form name="registrarRepartidor" class="row" novalidate ng-submit="vm.editarPerfil(vm.datosMod)">
+            <form name="registrarRepartidor" class="row justify-content-center" novalidate ng-submit="vm.editarPerfil(vm.datosMod)">
 
-                <div class="col-md-6">
+                <div class="col-md-5">
 
                     <div class="form-group">
                         <label>Nombre *</label>
@@ -24,12 +23,12 @@
 
                     <div class="form-group">
                         <label>Identificación *</label>
-                        <input type="number" name="cedula" class="form-control" required ng-model="vm.datosMod.cedula" disabled>
+                        <input type="number" name="cedula" class="form-control" required ng-model="vm.datosMod.cedula">
                     </div>
 
                     <div class="form-group">
                         <label>Correo electrónico *</label>
-                        <input type="email" name="correo" class="form-control" required ng-model="vm.datosMod.correo">
+                        <input type="email" name="correo" class="form-control" required ng-model="vm.datosMod.correo" disabled>
                     </div>
 
                     <div class="form-group">
@@ -38,7 +37,7 @@
                     </div>
 
                     <div class="form-group">
-                            <label>Selecione sucursal en la cuál trabaja</label>
+                            <label>Selecione sucursal en la cuál trabaja *</label>
                             <select class="custom-select" ng-model="vm.datosMod.sucursal">
                                 <option value>Seleccione una sucursal</option>
 
@@ -50,15 +49,15 @@
 
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-5">
 
                         <div class="form-group">
-                            <label>Segundo nombre *</label>
+                            <label>Segundo nombre</label>
                             <input type="text" name="segundoNombre" class="form-control" ng-model="vm.datosMod.segundoNombre">
                         </div>
 
                         <div class="form-group">
-                            <label>Segundo apellido *</label>
+                            <label>Segundo apellido</label>
                             <input type="text" name="segundoApellido" class="form-control" ng-model="vm.datosMod.segundoApellido">
                         </div>
 
@@ -68,7 +67,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Telefono *</label>
+                            <label>Telefono</label>
                             <input type="number" name="numeroAdicional" class="form-control" ng-model="vm.datosMod.telefonoAdicional">
                         </div>
 
@@ -84,7 +83,7 @@
 
                 </div>
 
-                <div class="col-md-12">
+                <div class="col-md-10">
 
                     <div class="form-group">
                         
@@ -96,32 +95,44 @@
 
                 </div>
 
-                <div class="col-md-6">
-
-                    <div class="form-group">
-                        <label>Contrasena: </label>
-                        <input type="text" name="contrasena" class="form-control" required ng-model="vm.datosMod.contrasenna">
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-
-                    <div class="form-group">
-                        <label>Confirmar contrasena: </label>
-                        <input type="text" name="confirmarContrasena" class="form-control" required ng-model="vm.datosMod.confirmarContrasenna">
-                    </div>
-
-                </div>
-
-                <div class="col-md-12 mb-3">
-                    <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" required>
-                        <label class="custom-control-label">Acepto términos y ondiciones</label>
-                    </div>
-                </div>
-
                 <div class="col-md-12">
-                    <button type="submit" class="justify-content-end btn btn-danger" ng-disabled="registrarRepartidor.$invalid">Registrar</button>
+
+                    <div class="row justify-content-center">
+
+                        <div class="col-md-5">
+
+                            <div class="form-group">
+                                <label>Contrasena: *</label>
+                                <input type="password" name="contrasena" class="form-control" required ng-model="vm.datosMod.contrasenna">
+                            </div>
+                        </div>
+
+                        <div class="col-md-5">
+
+                            <div class="form-group">
+                                <label>Confirmar contrasena: *</label>
+                                <input type="password" name="confirmarContrasena" class="form-control" required ng-model="vm.datosMod.confirmarContrasenna">
+                            </div>
+
+                        </div>
+
+                    </div>
+                
+                </div>
+
+                <div class="col-md-10 mb-3">
+                    <div class="row">
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" required>
+                            <label class="custom-control-label">Acepto términos y ondiciones</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-10">
+                    <div class="row justify-content-end">
+                        <button type="submit" class="btn btn-danger col-md-5" ng-disabled="registrarRepartidor.$invalid">Registrar</button>
+                    </div>
                 </div>
 
             </form>

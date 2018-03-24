@@ -13,7 +13,7 @@
     vm.listarRepartidoresActDisponibles = listarActivosDisponibles();
     vm.listarRepartidoresOcupados = listarActivosOcupados();
     vm.listarDesactRepartidores = listarDesact();
-    vm.cambiarEstado = (pcedula) => {
+    vm.cambiarEstado = (pcorreo) => {
       let desact = false,
           razon = '';
       
@@ -39,7 +39,7 @@
         }
         
         if(desact){
-          let datos = [pcedula, razon];
+          let datos = [pcorreo, razon];
           servicioUsuarios.cambiarEstadoRepartidor(datos[0]);
           servicioUsuarios.agregarRazonDesact(datos);
           $state.reload();
@@ -47,11 +47,11 @@
       });
     }
     vm.agregarRepartidor = () => {
-      $state.go('registrarRapartidor'); // redirije a otra vista
+      $state.go('main.registrarRapartidor'); // redirije a otra vista
     }
     vm.verPerfil = (prepartidores) => {
-      let datos = [prepartidores.cedula, prepartidores.sucursal];
-      $state.go('perfilRepartidor', {datos: JSON.stringify(datos)});
+      let datos = [prepartidores.correo, prepartidores.sucursal];
+      $state.go('main.perfilRepartidor', {datos: JSON.stringify(datos)});
     }
 
 

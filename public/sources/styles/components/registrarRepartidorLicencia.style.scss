@@ -9,5 +9,15 @@
   }
   #description{
     color: $rest-color;
+    span{
+      border-bottom: 5px solid $secondary-color;
+      padding: 0 0 1em 0;
+    }
+  }
+  form{
+    input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button { 
+      -webkit-appearance: none; 
+      margin: 0; 
+    }
   }
 }

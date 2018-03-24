@@ -12,11 +12,11 @@
     let vm = this;
 
     if(!$stateParams.datos){
-      $state.go('listarTodosLosRepartidores')
+      $state.go('main.perfilRepartidor')
     }
-    let datosRepartidor = JSON.parse($stateParams.datos);
+    let datosRepartidor = JSON.parse($stateParams.datos); // cotrreo sucursal
 
-    // vm.retornarDatosSucursales = servicioSucursales.retornarNombreSucursalesLS(); | requiere el servicio de sucursales para obtener la informacion de las sucursales en el sistema
+    // vm.retornarDatosSucursales = servicioSucursales.retornarNombreSucursalesLS(); // requiere el servicio de sucursales para obtener la informacion de las sucursales en el sistema
 
     // console.log(datosRepartidor);
     vm.datosMod = {};
@@ -68,7 +68,7 @@
             icon: 'success',
             button: 'Aceptar'
           });
-          $state.go('listarTodosLosRepartidores');
+          $state.go('main.perfilRepartidor');
         }
       }
     }

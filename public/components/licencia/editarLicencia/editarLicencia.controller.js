@@ -9,12 +9,12 @@
   function controladorEditarLicencia($state, $stateParams, servicioUsuarios){
 
     if(!$stateParams.datos){
-      $state.go('listarTodosLosRepartidores');
+      $state.go('main.perfilRepartidor');
     }
 
     let vm = this;
 
-    let datos = JSON.parse($stateParams.datos); // infoRepartidor, infoLicencia
+    let datos = JSON.parse($stateParams.datos); // infoRepartidor (correo, sucursal y nombre), infoLicencia
 
     console.log(datos);
     vm.modLicencia = {};
@@ -40,9 +40,9 @@
           icon: 'success',
           button: 'Aceptar'
         });
-        datos = [datos[0], objDatosNuevos]; // repartidor, nuevaLicencia
+        datos = [datos[0], objDatosNuevos]; // infoRepartidor (correo, sucursal y nombre), nuevaLicencia
         servicioUsuarios.editarLicencias(datos);
-        $state.go('listarTodosLosRepartidores');
+        $state.go('main.perfilRepartidor');
       }
     }
 

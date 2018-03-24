@@ -9,12 +9,12 @@
   function controladorRegistrarLicencia($stateParams, $state, servicioUsuarios){
 
     if(!$stateParams.datos){
-      $state.go('listarTodosLosRepartidores');
+      $state.go('main.perfilRepartidor');
     }
     
     let vm = this;
 
-    let datosRepartidor = JSON.parse($stateParams.datos); // cedula, sucursal, nombre
+    let datosRepartidor = JSON.parse($stateParams.datos); // correo, sucursal, nombre
     
     vm.nombreRepartidor = datosRepartidor[2];
     vm.registrarLicencia = (pnuevoRegistro) => {
@@ -44,7 +44,7 @@
           });
           servicioUsuarios.registrarLicencia(datosAgregar);
 
-          $state.go('listarLicencias', {datos: JSON.stringify(datosRepartidor)});
+          $state.go('main.listarLicencias', {datos: JSON.stringify(datosRepartidor)});
         }else{
           swal({
             title: 'La licencia está vencida',

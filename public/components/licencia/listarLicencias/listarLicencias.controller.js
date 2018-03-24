@@ -9,29 +9,28 @@
   function controladorListarLicencias($stateParams, $state, servicioUsuarios) {
 
     if (!$stateParams.datos) {
-      $state.go('listarTodosLosRepartidores');
+      $state.go('main.perfilRepartidor');
     }
 
     let vm = this;
 
-    let datosRepartidor = JSON.parse($stateParams.datos); // cedula, sucursal, nombre
+    let datosRepartidor = JSON.parse($stateParams.datos); // correo, sucursal, nombre
       // let datosRepartidor = [402350610, 'sucursal', 'Isaac']
-    vm.nombreRepartidor = datosRepartidor[2];
     vm.listarLicenciasActivas = listaLicenciasActivas();
     vm.listarLicenciasDesactivadas = listarLicenciasDesactivadas();
 
     vm.agregarLicencia = () => {
-      $state.go('registrarLincencia', { datos: JSON.stringify(datosRepartidor) });
+      $state.go('main.registrarLincencia', { datos: JSON.stringify(datosRepartidor) });
     }
 
     vm.modificarLicencia = (licencias) => {
       let datos = [datosRepartidor, licencias];
-      $state.go('editarLicencia', {datos: JSON.stringify(datos)});
+      $state.go('main.editarLicencia', {datos: JSON.stringify(datos)});
     }
 
     // ________funciones internas__________
     function listaLicenciasActivas() {
-      let datos = [datosRepartidor[0], datosRepartidor[1]],
+      let datos = [datosRepartidor[0], datosRepartidor[1]], // correo, sucursal
           licenciasActivas;
         
       let todasLasLicencias = servicioUsuarios.retornarLicencias(datos),

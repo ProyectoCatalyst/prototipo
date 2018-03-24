@@ -29,7 +29,7 @@
 
                 let objNuevoRegistro = new Repartidor(pnuevoRegistro.nombre, pnuevoRegistro.segundoNombre, pnuevoRegistro.primerApellido, pnuevoRegistro.segundoApellido, pnuevoRegistro.cedula, pnuevoRegistro.fechaNacimiento, pnuevoRegistro.genero, pnuevoRegistro.ubicacion, pnuevoRegistro.provincia, pnuevoRegistro.canton, pnuevoRegistro.distrito, pnuevoRegistro.direccion,pnuevoRegistro.correo, pnuevoRegistro.contrasenna, pnuevoRegistro.rol, pnuevoRegistro.telefono, pnuevoRegistro.telefonoAdicional, pnuevoRegistro.estado, pnuevoRegistro.razonDesact, pnuevoRegistro.sucursal),
                 aDatos = [objNuevoRegistro, objNuevoRegistro.sucursal],
-                aDatosVerificar = [objNuevoRegistro.cedula, objNuevoRegistro.sucursal];
+                aDatosVerificar = [objNuevoRegistro.correo, objNuevoRegistro.sucursal];
 
                 console.log(objNuevoRegistro);
 
@@ -68,14 +68,14 @@
 
 
         //_______funciones internas________
-        function verificarUsuario(pcedula){
+        function verificarUsuario(pcorreo){
 
-            let cedulasSistema = servicioUsuarios.retornarCedulaUsuarios(),
+            let correosSistema = servicioUsuarios.retornarCorreosUsuarios(),
             existente = false;
 
-            for(let i=0; i<cedulasSistema.length; i++){
+            for(let i=0; i<correosSistema.length; i++){
 
-                if(cedulasSistema[i] == pcedula){
+                if(correosSistema[i] == pcorreo){
                     existente = true;
                 }
             }
