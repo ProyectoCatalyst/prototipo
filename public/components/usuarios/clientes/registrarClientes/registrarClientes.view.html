@@ -154,7 +154,7 @@
           <div class="form-group col-sm-12 col-md-4 col-lg-4 m-3">  
           <tr>
               <td align="right">Tipo de Tarjeta :</td>
-              <td><select payeezy-data="card_type" class= ng-repeat="vm.tarjetaNueva.tipo">
+              <td><select payeezy-data="card_type" class= ng-repeat="vm.clienteNuevo.tipo">
                   <option value="visa">Visa</option>
                   <option value="mastercard">Master Card</option>
                   <option value="American Express">American Express</option>
@@ -168,7 +168,7 @@
            <div class="form-group col-sm-12 col-md-4 col-lg-4 m-3"> 
             <tr>
               <td align="right">Nombre como aparece en la Tarjeta</td>
-              <td><input type="text" payeezy-data="cardholder_name" class= ng-model="vm.tarjetaNueva.nombreTarjeta"
+              <td><input type="text" payeezy-data="cardholder_name" class= ng-model="vm.clienteNuevo.nombreTarjeta"
                 value="" /></td>
                 <small class="form-text text-danger">* Campo requerido</small>
             </tr>
@@ -177,7 +177,7 @@
 
             <div class="form-group col-sm-12 col-md-4 col-lg-4 m-3">
               <td align="right">Numero de Tarjeta</td>
-              <td><input type="text" payeezy-data="cc_number" value="" class="vm.tarjetaNueva.numeroTarjeta" /></td>
+              <td><input type="text" payeezy-data="cc_number" value="" class="vm.clienteNuevo.numeroTarjeta" /></td>
               <small class="form-text text-danger">* Campo requerido</small>
             </tr>
           </div>
@@ -185,7 +185,7 @@
           <div class="form-group col-sm-12 col-md-4 col-lg-4 m-3">
             <tr>
               <td align="right">Codigo CVV</td>
-              <td><input type="text" payeezy-data="cvv_code" value="" class="vm.tarjetaNueva.codigocvv"/>
+              <td><input type="text" payeezy-data="cvv_code" value="" class="vm.clienteNuevo.codigocvv"/>
                 <small class="form-text text-danger">* Campo requerido</small>
               </td>
             </tr>
@@ -194,7 +194,7 @@
            <div class="form-group col-sm-12 col-md-4 col-lg-4 m-3"> 
             <tr>
               <td align="right">Fecha de Expiracion</td>
-              <td><select payeezy-data="exp_month" class="vm.tarjetaNueva.fecha">
+              <td><select payeezy-data="exp_month" class="vm.clienteNuevo.fecha">
                   <option value="01">01</option>
                   <option value="02">02</option>
                   <option value="03">03</option>

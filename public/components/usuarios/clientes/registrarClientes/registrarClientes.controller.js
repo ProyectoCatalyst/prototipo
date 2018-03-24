@@ -60,17 +60,16 @@
 
       let rol = 5;
 
-      let objTarjeta = new objTarjeta(ptarjetaNueva.tipoTarjeta, ptarjetaNueva.nombreTarjeta, ptarjetaNueva.numeroTarjeta, ptarjetaNueva.cvvTarjeta, ptarjetaNueva.pfechaTarjeta);
+      let objTarjeta = new Tarjeta(ptarjetaNueva.tipoTarjeta, ptarjetaNueva.nombreTarjeta, ptarjetaNueva.numeroTarjeta, ptarjetaNueva.cvvTarjeta, ptarjetaNueva.pfechaTarjeta);
 
+      let objNuevoCliente = new Cliente(pclienteNuevo.nombre, pclienteNuevo.segundoNombre, pclienteNuevo.primerApellido, pclienteNuevo.segundoApellido, pclienteNuevo.cedula, pclienteNuevo.fecha,  pclienteNuevo.sexo, pclienteNuevo.ubicacion, pclienteNuevo.provincia.name, pclienteNuevo.canton.name, pclienteNuevo.distrito.name, pclienteNuevo.direccion,  pclienteNuevo.correo, pclienteNuevo.contrasenna, rol, pclienteNuevo.telefono);
       
-
-      let objNuevoCliente = new Cliente(pclienteNuevo.nombre, pclienteNuevo.segundoNombre, pclienteNuevo.primerApellido, pclienteNuevo.segundoApellido, pclienteNuevo.cedula, pclienteNuevo.fecha,  pclienteNuevo.sexo, pclienteNuevo.ubicacion, pclienteNuevo.provincia.name, pclienteNuevo.canton.name, pclienteNuevo.distrito.name, pclienteNuevo.direccion,  pclienteNuevo.correo, pclienteNuevo.contrasenna, rol, pclienteNuevo.telefono); 
+      objNuevoCliente.agregarTarjetas(objTarjeta);
       
       console.log(objNuevoCliente);
       console.log(objTarjeta);
       
       let registro = servicioUsuarios.agregarUsuario(objNuevoCliente);
-      let registro = servicioUsuarios.agregarTarjeta(objTarjeta);
 
       if(registro == true){
         swal({

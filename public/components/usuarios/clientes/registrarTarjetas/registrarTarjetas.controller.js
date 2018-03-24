@@ -13,7 +13,7 @@
 
       vm.registrarTarjeta = (pptarjetaNueva, pnumeroTarjeta) => {
 
-        let objTarjeta = new Tarjeta
+        let objTarjeta = new Tarjeta ()
 
        
 

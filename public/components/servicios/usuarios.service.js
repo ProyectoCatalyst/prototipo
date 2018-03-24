@@ -14,8 +14,7 @@
       agregarUsuario: _agregarUsuario,
       obtenerlistadeusuarios: _obtenerlistadeusuarios,
       obtenerlistadeFiltrada: _obtenerListaFiltrada,
-      desactivarCuenta: _desactivarCuenta,
-      agregarTarjeta:  _agregarTarjeta
+      desactivarCuenta: _desactivarCuenta
     };
     return publicAPI; 
 
@@ -39,27 +38,6 @@
 
       return registrovalido;
     };
-
-    function _agregarTarjeta(pNuevaTarjeta){
-      let listaDeTarjetas = _obtenerListaTarjetas(),
-      registrovalido,
-      tarjetaRepetida = true;
-
-      for(let i=0; i<listaDeTarjetas.length; i++){
-    function _agregarTarjeta(pNuevaTarjeta){
-        if(listaDeTarjetas[i].getNumeroTarjeta() == pNuevaTarjeta.getNumeroTarjeta()){
-          tarjetarepetida = true;
-        } 
-      }
-      if (tarjetarepetida == true){
-        registrovalido = false;
-      } else{
-        listaDeTarjetas.push(pNuevaTarjeta);
-        registrovalido = localStorageFactory.setItem(listaDeTarjetas);
-      }
-
-      return registrovalido,
-    }
 
     function _obtenerlistadeusuarios() {
       let listadeusuarioslocal = localStorageFactory.getItem(listaUsuarios),
@@ -126,10 +104,6 @@
       }
       return desactivar;
     }
-  }
-
-
-
-
+  };
 
 })();
