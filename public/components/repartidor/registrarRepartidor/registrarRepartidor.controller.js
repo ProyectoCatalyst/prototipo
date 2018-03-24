@@ -9,7 +9,7 @@
     function controladorRegistrarRepartidor($stateParams, $state, servicioUsuarios){
         let vm = this;
     
-        // vm.retornarDatosSucursales = servicioSucursales.retornarNombreSucursalesLS(); | requiere el servicio de sucursales para obtener la informacion de las sucursales en el sistema
+        // vm.retornarDatosSucursales = servicioSucursales.retornarNombreSucursalesLS(); // requiere el servicio de sucursales para obtener la informacion de las sucursales en el sistema
         vm.registrarRepartidor = (pnuevoRegistro) => {
 
             if(!(pnuevoRegistro.contrasenna == pnuevoRegistro.confirmarContrasenna)){
@@ -40,7 +40,7 @@
                     if(edadCorrecta){
                         let datosRepartidor = [objNuevoRegistro.cedula, objNuevoRegistro.sucursal, objNuevoRegistro.nombre];
                         servicioUsuarios.agregarRepartidor(aDatos);
-                        $state.go('listarTodosLosRepartidores');
+                        $state.go('main.listarTodosLosRepartidores');
                         swal({
                             title: "Éxito",
                             text: "Hemos registrado el repartidor",
@@ -66,7 +66,9 @@
             }
         }
 
-
+        vm.listarRepartidores = () => {
+            $state.go('main.listarTodosLosRepartidores');
+        }
         //_______funciones internas________
         function verificarUsuario(pcorreo){
 

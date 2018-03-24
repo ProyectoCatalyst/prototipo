@@ -1,5 +1,3 @@
-<encabezadoPrincipal></encabezadoPrincipal>
-
 <main class="container">
 
     <section class="row">
@@ -106,7 +104,7 @@
 
                             <div class="form-group">
                                 <label>Contrasena: </label>
-                                <input type="text" name="contrasena" class="form-control" required ng-model="vm.nuevoRegistro.contrasenna">
+                                <input type="password" name="contrasena" class="form-control" required ng-model="vm.nuevoRegistro.contrasenna">
                             </div>
 
                         </div>
@@ -115,7 +113,7 @@
 
                             <div class="form-group">
                                 <label>Confirmar contrasena: </label>
-                                <input type="text" name="confirmarContrasena" class="form-control" required ng-model="vm.nuevoRegistro.confirmarContrasenna">
+                                <input type="password" name="confirmarContrasena" class="form-control" required ng-model="vm.nuevoRegistro.confirmarContrasenna">
                             </div>
 
                         </div>
@@ -136,6 +134,12 @@
                 <div class="col-md-10">
                     <div class="row justify-content-end">
                         <button type="submit" class="justify-content-end btn btn-danger col-md-5" ng-disabled="registrarRepartidor.$invalid">Crea tu cuenta</button>
+                    </div>
+                </div>
+
+                <div class="col-md-10 my-4">
+                    <div class="row justify-content-end">
+                        <button type="click" class="justify-content-end btn btn-danger col-md-5" ng-click="vm.listarRepartidores()">Mostrar todos los repartidores</button>
                     </div>
                 </div>
 

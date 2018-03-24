@@ -49,9 +49,8 @@
     vm.agregarRepartidor = () => {
       $state.go('main.registrarRapartidor'); // redirije a otra vista
     }
-    vm.verPerfil = (prepartidores) => {
-      let datos = [prepartidores.correo, prepartidores.sucursal];
-      $state.go('main.perfilRepartidor', {datos: JSON.stringify(datos)});
+    vm.verPerfil = () => {
+      $state.go('main.perfilRepartidor');
     }
 
 

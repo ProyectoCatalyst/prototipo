@@ -224,7 +224,7 @@
 
         for(let i=0; i<repartidoresLS.length; i++){
 
-            if(repartidoresLS[i].getCorreo() == ocirreo){
+            if(repartidoresLS[i].getCorreo() == pcorreo){
                 repartidoresLS[i].estado = !repartidoresLS[i].getEstado();
 
                 licenciasRepartidor = repartidoresLS[i].getLicencias(); // guardo todas las licencias de ese repartidor en este arreglo

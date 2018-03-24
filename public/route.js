@@ -13,7 +13,14 @@
         templateUrl: './components/landingPage/landingPage.view.html',
         data: {
           pageTitle: 'Landing Page | Inicio'
-        }
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/login/login.controller.js')
+          }]
+        },
+        controller: 'controladorInicioSesion',
+        controllerAs: 'vm'
       })
       
       .state('main.registrarRapartidor', {
@@ -178,7 +185,7 @@
         controllerAs: 'vm'
       })
 
-      .state('main.registrarCliente', {
+      .state('registrarCliente', {
         url: '/registerCustomers',
         templateUrl: './components/usuarios/clientes/registrarClientes/registrarClientes.view.html',
         data: {
@@ -190,21 +197,6 @@
           }]
         },
         controller: 'controladorRegistrarCliente',
-        controllerAs: 'vm'
-      })
-
-      .state('inicioSesion', {
-        url: '/inicioSesion',
-        templateUrl: './components/login/login.view.html',
-        data: {
-          pageTitle: 'Inicio de Sesión | Correos CR'
-        },
-        resolve: {
-          load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/login/login.controller.js')
-          }]
-        },
-        controller: 'controladorInicioSesion',
         controllerAs: 'vm'
       })
 
@@ -277,6 +269,6 @@
     //   controllerAs: 'vm'
     // })
 
-    // $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/');
   };
 })();
