@@ -89,3 +89,19 @@ class Convenio{
   }
   
 }
+
+class Tarjetas{
+
+   constructor(ptipoTarjeta, pnombreTarjeta, pnumeroTarjeta, pcvvTarjeta, pfechaTarjeta){
+
+     this.tipoTarjeta = ptipoTarjeta;
+     this.nombreTarjeta = pnombreTarjeta;
+     this.numeroTarjeta = pnumeroTarjeta;
+     this.cvvTarjeta = pcvvTarjeta;
+     this.fechaTarjeta = pfechaTarjeta;
+
+  getNumeroTarjeta(){
+    return this.numeroTarjeta;
+  }
+  
+}

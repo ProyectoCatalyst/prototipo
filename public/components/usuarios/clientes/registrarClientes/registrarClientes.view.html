@@ -151,6 +151,77 @@
             <small class="form-text text-danger">* Campo requerido</small>
           </div>
           
+          <div class="form-group col-sm-12 col-md-4 col-lg-4 m-3">  
+          <tr>
+              <td align="right">Tipo de Tarjeta :</td>
+              <td><select payeezy-data="card_type" class= ng-repeat="vm.tarjetaNueva.tipo">
+                  <option value="visa">Visa</option>
+                  <option value="mastercard">Master Card</option>
+                  <option value="American Express">American Express</option>
+                  <option value="discover">Discover</option>
+              </select></td>
+            </tr>
+           </div>
+           <div class= "">
+            <h1>Ingrese los datos de su tarjeta</h1>
+           </div>           
+           <div class="form-group col-sm-12 col-md-4 col-lg-4 m-3"> 
+            <tr>
+              <td align="right">Nombre como aparece en la Tarjeta</td>
+              <td><input type="text" payeezy-data="cardholder_name" class= ng-model="vm.tarjetaNueva.nombreTarjeta"
+                value="" /></td>
+                <small class="form-text text-danger">* Campo requerido</small>
+            </tr>
+            <tr>
+            </div>
+
+            <div class="form-group col-sm-12 col-md-4 col-lg-4 m-3">
+              <td align="right">Numero de Tarjeta</td>
+              <td><input type="text" payeezy-data="cc_number" value="" class="vm.tarjetaNueva.numeroTarjeta" /></td>
+              <small class="form-text text-danger">* Campo requerido</small>
+            </tr>
+          </div>
+        
+          <div class="form-group col-sm-12 col-md-4 col-lg-4 m-3">
+            <tr>
+              <td align="right">Codigo CVV</td>
+              <td><input type="text" payeezy-data="cvv_code" value="" class="vm.tarjetaNueva.codigocvv"/>
+                <small class="form-text text-danger">* Campo requerido</small>
+              </td>
+            </tr>
+           </div>
+           
+           <div class="form-group col-sm-12 col-md-4 col-lg-4 m-3"> 
+            <tr>
+              <td align="right">Fecha de Expiracion</td>
+              <td><select payeezy-data="exp_month" class="vm.tarjetaNueva.fecha">
+                  <option value="01">01</option>
+                  <option value="02">02</option>
+                  <option value="03">03</option>
+                  <option value="04">04</option>
+                  <option value="05">05</option>
+                  <option value="06">06</option>
+                  <option value="07">07</option>
+                  <option value="08">08</option>
+                  <option value="09">09</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+              </select> <select payeezy-data="exp_year">
+                  <option value="16">2016</option>
+                  <option value="17">2017</option>
+                  <option value="18">2018</option>
+                  <option value="19">2019</option>
+                  <option value="20">2020</option>
+                  <option value="21">2021</option>
+                  <option value="21">2022</option>
+                  <option value="21">2023</option>
+                  <option value="21">2024</option>
+                  <option value="21">2021</option>
+              </select></td>
+            </tr>
+
+          </div>    
           <div class="row m-5">
           <div class="col-md-12 mb-5">
             <button type="submit" class="btn btn-info">Registrar usuario</button>
