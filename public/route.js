@@ -16,7 +16,7 @@
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/login/login.controller.js')
+            return $ocLazyLoad.load('./components/landingPage/login.controller.js')
           }]
         },
         controller: 'controladorInicioSesion',
