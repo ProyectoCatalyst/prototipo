@@ -61,6 +61,9 @@
             <li class="nav-item my-2" ng-if="vm.usuarioActivo.rol==5">
               <a class="nav-link" ui-sref="main.registrarConvenio" ui-sref-active="active">Registrar convenio</a>
             </li>
+            <li class="nav-item my-2" ng-if="vm.usuarioActivo.rol==4">
+                <a class="nav-link" ui-sref="main.perfilRepartidor" ui-sref-active="active">Mi perfil</a>
+              </li>
           </ul>
         </div>
       </div>
