@@ -26,7 +26,7 @@
       }else{
         swal({
           title: "Revise los datos",
-          text: "Los datos ingresados no pertenecen a ninguna cuenta",
+          text: "Los datos ingresados son incorrectos o no pertenecen a ninguna cuenta",
           icon: "error",
           button: "Aceptar"
         });

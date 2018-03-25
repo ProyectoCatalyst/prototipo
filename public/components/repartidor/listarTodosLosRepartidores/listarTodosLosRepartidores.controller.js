@@ -40,8 +40,7 @@
         
         if(desact){
           let datos = [pcorreo, razon];
-          servicioUsuarios.cambiarEstadoRepartidor(datos[0]);
-          servicioUsuarios.agregarRazonDesact(datos);
+          servicioUsuarios.cambiarEstadoRepartidor(datos);
           $state.reload();
         }
       });

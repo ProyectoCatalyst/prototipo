@@ -6,8 +6,9 @@
 
       <h1 class="py-5" id="title">Lista de todos los repartidores</h1>
       
-      <div class="table-responsive">
-        <table class="table table-hover">
+      <div class="table-responsive row">
+
+        <table class="table table-hover col-md-12">
           <thead>
             <tr>
               <th scope="col">Estado</th>
@@ -56,11 +57,18 @@
                 </tr>
           </tbody>
         </table>
+
       </div>
 
-      <div class="row justify-content-end mx-3">
-          <button type="button" class="btn btn-danger col-md-1 mr-5" ng-click="vm.agregarRepartidor()">Registrar</button>
-      </div>
+      <div class="row">
+
+          <div class="col-md-12  justify-content-end">
+
+            <button type="button" class="btn btn-danger" ng-click="vm.agregarRepartidor()">Registrar</button>
+
+          </div>
+
+        </div>
 
     </div>
  

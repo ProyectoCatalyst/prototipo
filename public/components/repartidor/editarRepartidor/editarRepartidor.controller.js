@@ -18,7 +18,6 @@
 
     // vm.retornarDatosSucursales = servicioSucursales.retornarNombreSucursalesLS(); // requiere el servicio de sucursales para obtener la informacion de las sucursales en el sistema
 
-    // console.log(datosRepartidor);
     vm.datosMod = {};
     vm.datosMod.nombre = datosRepartidor.primerNombre;
     vm.datosMod.primerApellido = datosRepartidor.primerApellido;
@@ -34,7 +33,6 @@
     vm.datosMod.foto = datosRepartidor.foto;
 
     vm.editarPerfil = (pdatosMod) => {
-      // console.log(pdatosMod)
       pdatosMod.rol = 4;
       pdatosMod.estado = true,
       pdatosMod.razonDesact = '';

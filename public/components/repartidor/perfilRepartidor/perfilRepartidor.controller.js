@@ -12,8 +12,6 @@
 
     let datosRepartidor = servicioUsuarios.retornarInformacionRepartidor(); // correo, sucursal
 
-    console.log(datosRepartidor);
-
     verificarPaquetesAsignados() // para verificarf si hay paquetes asignados cada que abro el perfil
 
     vm.consultarLicencias = () => {
@@ -26,7 +24,6 @@
 
       for(let i=0; i<repartidoresSucursal.length; i++){
         if(repartidoresSucursal[i].getCorreo() == datosRepartidor[0]){
-          // console.log(repartidoresSucursal[i]);
 
           $state.go('main.editarRepartidor', {datos: JSON.stringify(repartidoresSucursal[i])});
         }

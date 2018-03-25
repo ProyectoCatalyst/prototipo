@@ -16,7 +16,6 @@
 
     let datos = JSON.parse($stateParams.datos); // infoRepartidor (correo, sucursal y nombre), infoLicencia
 
-    console.log(datos);
     vm.modLicencia = {};
     vm.modLicencia.tipoLicencia = datos[1].tipo;
     vm.modLicencia.codigo = datos[1].codigo;
