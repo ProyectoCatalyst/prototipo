@@ -11,10 +11,10 @@
 
     vm.listarUsuarios = servicioUsuarios.obtenerlistadeusuarios();
 
-    listarUsuarios();
+    vm.rolUsuario = ''
 
-    function listarUsuarios()  {
-      vm.listarUsuarios = servicioUsuarios.obtenerlistadeusuarios();
+    vm.filtrarRolUsuario = (pidRol) => {
+      vm.listarUsuarios = servicioUsuarios.obtenerlistadeFiltrada(pidRol);
     }
   }
 })();

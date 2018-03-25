@@ -142,6 +142,21 @@
         },
         controller: 'controladorListarTodosUsuarios',
         controllerAs: 'vm'
+      })
+
+      .state('editarEncargadoAduana', {
+        url: '/editarEncargadoAduana',
+        templateUrl: './components/usuarios/encargadoAduanas/editarEncargadoAduana/editarEncargadoAduana.view.html',
+        data: {
+          pageTitle: 'Editar Perfil | Correos de Costa Rica'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/encargadoAduanas/editarEncargadoAduana/editarEncargadoAduana.controller.js')
+          }]
+        },
+        controller: 'controladorEditarEncargadoAduana',
+        controllerAs: 'vm'
       });
 
 
