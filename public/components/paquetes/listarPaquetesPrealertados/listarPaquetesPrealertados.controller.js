@@ -5,17 +5,17 @@
     .module('prototipo')
     .controller('controladorlistaPaquetesPrealertados', controladorlistaPaquetesPrealertados)
 
-  controladorlistaPaquetesPrealertados.$inject = ['$state', '$stateParams', 'servicioPaquetes']
+  controladorlistaPaquetesPrealertados.$inject = [ '$stateParams','$state', 'servicioPaquetes']
   function controladorlistaPaquetesPrealertados($state, $stateParams, servicioPaquetes) {
     let vm = this;
 
     vm.listarPaquetesPrealertados = servicioPaquetes.retornarPaquetesPrealertados();
 
-    vm.modificarPaquetesPrealertados = (ppaquetesPrealertadosursal) => {
-      $state.go('main.modificarEstado', { objSucursal: JSON.stringify(ppaquetePrealertado) });
+    vm.PaquetesPrealeconsultarEstadoPaquetertados = (paquetesPrealertados) => {
+      $state.go('main.consultarEstadoPaquete', { objPaquetes: JSON.stringify(paquetesPrealertados) });
     }
 
-    vm.prealertarPaquetes = () => {
+    vm.agregarPaquetes = () => {
       $state.go('main.prealertarPaquetes');
     }
 

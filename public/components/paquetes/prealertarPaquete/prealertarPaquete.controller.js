@@ -29,7 +29,7 @@
 
       pnuevoPaquetePrealertado.estadoPaquete = 'Prealertado';
 
-      let objNuevoPaquetePrealertado = new Paquete(pnuevoPaquetePrealertado.trackingPaquete, pnuevoPaquetePrealertado.tipoPaquete, pnuevoPaquetePrealertado.estadoPaquete);
+      let objNuevoPaquetePrealertado = new Paquete(pnuevoPaquetePrealertado.trackingPaquete, pnuevoPaquetePrealertado.tipoPaquete,pnuevoPaquetePrealertado.pesoPaquete, pnuevoPaquetePrealertado.precioPaquete, pnuevoPaquetePrealertado.estadoPaquete);
 //pnuevoPaquetePrealertado.costoTotalPaquete
       console.log('objeto con paquete');
       console.log(objNuevoPaquetePrealertado);
@@ -43,6 +43,7 @@
           icon: "success",
           button: "Aceptar"
         });
+        $state.reload();
       } else {
         swal({
           title: "Error",
@@ -50,6 +51,7 @@
           icon: "error",
           button: "Aceptar"
         });
+        $state.reload();
       }//fin else
 
       vm.nuevoPaquetePrealertado = null;
@@ -64,6 +66,7 @@
     function listarPaquetesPrealertados() {
       vm.listaPaquetesPrealertados = servicioPaquetes.retornarPaquetesPrealertados();
     }
+
 
   }// fin de la función controladorPrealertarPaquete
 })();

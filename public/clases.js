@@ -1,8 +1,9 @@
 class Paquete{
-  constructor(ptrackingPaquete, ptipoPaquete, pestadoPaquete, pcostoTotalPaquete){
+  constructor(ptrackingPaquete, ptipoPaquete,ppesoPaquete, pprecioPaquete,pestadoPaquete){
     this.trackingPaquete = ptrackingPaquete;
     this.tipoPaquete = ptipoPaquete;
-    this.costoTotalPaquete = pcostoTotalPaquete;
+    this.pesoPaquete = ppesoPaquete;
+    this.precioPaquete = pprecioPaquete;
     this.estadoPaquete = pestadoPaquete;
     
   }//fin contructor
@@ -53,7 +54,7 @@ class Sucursal{
 }//fin clase sucursal
 
 class Usuario {
-  constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol){
+  constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestadoDesactivado){
     this.primerNombre = pnombre;
     this.segundoNombre = psegundoNombre;
     this.primerApellido = pprimerApellido;
@@ -69,11 +70,13 @@ class Usuario {
     this.correo = pcorreo;
     this.contrasenna = pcontrasenna;
     this.rol = prol;
+    this.estado = pestadoDesactivado;
   }
 
   getCedula(){
      return this.cedula;
   }
+  
   getCorreo(){
     return this.correo;
   }
@@ -82,6 +85,14 @@ class Usuario {
     return this.rol;
   }
 
+  getEstado(){
+    return this.estado;
+  }
+
+  setEstado(pestado){
+    this.estado = pestado;
+  }
+  
   getContrasenna(){
     return this.contrasenna;
   }
@@ -89,21 +100,21 @@ class Usuario {
 }
 
 class EncargadoAduanas extends Usuario {
-  constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol) {
-    super(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol)
+  constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestadoDesactivado) {
+    super(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestadoDesactivado)
   }
 }
 
 class EncargadoSucursales extends Usuario {
-  constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol) {
-    super(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol)
+  constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestadoDesactivado) {
+    super(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestadoDesactivado)
   }
 }
 
 class Cliente extends Usuario {
-  constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, ptelefono) {
+  constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestadoDesactivado, ptelefono) {
 
-    super(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol);
+    super(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestadoDesactivado);
     
     this.telefono = ptelefono;
     //this.tarjeta = ptarjeta;
@@ -112,13 +123,14 @@ class Cliente extends Usuario {
 
 class Convenio{
 
-  constructor(pcodigoConvenio,pnombreConvenio,pdescripcionConvenio,pinstitucionConvenio,pcostoConvenio){
+  constructor(pcodigoConvenio,pnombreConvenio,pdescripcionConvenio,pinstitucionConvenio,pcostoConvenio, ){
 
     this.codigoConvenio = pcodigoConvenio;
     this.nombreConvenio = pnombreConvenio;
     this.descripcionConvenio = pdescripcionConvenio;
     this.institucionConvenio = pinstitucionConvenio;
     this.costoConvenio = pcostoConvenio;
+    
   }
   
   getCodigo() {

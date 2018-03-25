@@ -7,30 +7,35 @@
         <p>Complete los siguientes datos</p>
         <div class="row m-8">
           <div class="form-group">
-
-              <label>Número de tracking: </label>
-              <input type="text" class="form-control" ng-model="vm.nuevoPaquetePrealertado.trackingPaquete" ng-disabled="true"> 
+            <label>Número de tracking: </label>
+            <input type="text" class="form-control" ng-model="vm.nuevoPaquetePrealertado.trackingPaquete" ng-disabled="true">
           </div>
 
           <div class="form-group">
-              <label for="sltTipoPaquete">Tipo del paquete</label>
-              <select id="sltTipoPaquete" ng-options="tipoPaquete as tipoPaquete.name for tipoPaquete in vm.tipoPaquetes track by tipoPaquete._id"
-              ng-model="vm.nuevoPaquetePrealertado.tipoPaquete"
-                class="custom-select" required>
-                <option value="">Seleccione un tipo de paquete</option>
-              </select>
-            </div>
+            <label for="sltTipoPaquete">Tipo del paquete</label>
+            <select id="sltTipoPaquete" ng-options="tipoPaquete as tipoPaquete.name for tipoPaquete in vm.tipoPaquetes track by tipoPaquete._id"
+              ng-model="vm.nuevoPaquetePrealertado.tipoPaquete" class="custom-select" required>
+              <option value="">Seleccione un tipo de paquete</option>
+            </select>
+          </div>
 
-            <div class="col-sm-12 col-md-auto">
-              <button type="button" class="btn btn-secondary" ng-click="vm.listarPaquetesPrealertados(paquetesPrealertados)">ver paquetes prealertados</button>
-            </div>
         </div>
-
-        
-
-
+        <div class="row m-8">
+          <div class="form-group">
+            <label>Peso: </label>
+            <input type="number" class="form-control" ng-model="vm.nuevoPaquetePrealertado.pesoPaquete">
+          </div>
+          <div class="form-group">
+            <label>Precio: </label>
+            <input type="number" class="form-control" ng-model="vm.nuevoPaquetePrealertado.precioPaquete">
+          </div>
+        </div>
 
         <button type="submit" class="btn btn-primary">Prealertar paquete</button>
       </form>
+
+      <div class="col-sm-12 col-md-auto">
+        <button type="button" class="btn btn-secondary" ng-click="vm.listarPaquetesPrealertados(paquetesPrealertados)">ver paquetes prealertados</button>
+      </div>
   </div>
 </div>

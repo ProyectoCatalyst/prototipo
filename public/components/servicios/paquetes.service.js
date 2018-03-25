@@ -39,7 +39,7 @@
         listaPaquetesPrealertados = [];
       } else {
         listaPaquetesPrealertadosLocal.forEach(obj => {
-          let objPaquetesPrealertados = new Paquete(obj.trackingPaquete, obj.tipoPaquete, obj.estadoPaquete);
+          let objPaquetesPrealertados = new Paquete(obj.trackingPaquete, obj.tipoPaquete,obj.pesoPaquete,obj.precioPaquete, obj.estadoPaquete);
 
           listaPaquetesPrealertados.push(objPaquetesPrealertados)
         });
@@ -48,8 +48,8 @@
     }//fin retornar PaquetesPrealertados
 
     function _numeroTracking() {
-      let numeroTracking = 0, numeroMin = 1, numeroMax = 99999;
-      numeroTracking = Math.round((Math.random() * 9999999) + 1);
+      let numeroTracking = 0;
+      numeroTracking = Math.round((Math.random() * 93979293));
       return numeroTracking;
     }
   }
