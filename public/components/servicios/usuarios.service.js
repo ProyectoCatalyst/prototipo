@@ -57,7 +57,7 @@
             break;
 
             case 3:
-              let tempEncargadoSucursal = new EncargadoSucursal(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.cedula, tempfecha, obj.genero, obj.ubicacion, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol, obj.estadoDesactivado);
+              let tempEncargadoSucursal = new EncargadoSucursales(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.cedula, tempfecha, obj.genero, obj.ubicacion, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol, obj.estadoDesactivado);
 
               listadeusuarios.push(tempEncargadoSucursal);
             break;
@@ -67,17 +67,19 @@
 
               listadeusuarios.push(tempCliente);
             break;
+
+            default:
+
+              let tempUsuario = new Usuario(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.cedula, tempfecha, obj.genero, obj.ubicacion, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol, obj.estadoDesactivado);
+
+              listadeusuarios.push(tempUsuario);
+            break;
           }
         });
       }
 
       return listadeusuarios;
     }
-
-
-    function _obtenerListaTarjetas (){
-
-    };
 
     function _obtenerListaFiltrada(pnumrol){
       let listadeusuarios = _obtenerlistadeusuarios(),
@@ -92,6 +94,18 @@
       return listaFiltrada;
     }
 
+    function _obtenerListaDesactivados(pestadoDesactivado) {
+      let listadeusuarios = _obtenerlistadeusuarios(),
+        listaFiltradaDesactivados = [];
+
+      for(let i = 0; i < listadeusuarios.length; i++){
+        if(listadeusuarios[i].getEstado() == pestadoDesactivado){
+          listaFiltradaDesactivados.push(listaFiltradaDesactivados[i]);
+        }
+      }
+      return desactivar;
+    }
+
     function _desactivarCuenta(pcorreo) {
       let listadeusuarios = _obtenerlistadeusuarios(),
           desactivar = false;
@@ -104,6 +118,9 @@
       }
       return desactivar;
     }
+
+
+    
   };
 
 })();
