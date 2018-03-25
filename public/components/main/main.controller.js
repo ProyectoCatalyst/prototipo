@@ -1,16 +1,16 @@
-(()=>{
+(() => {
   'use strict';
   angular
-  .module('prototipo')
-  .controller('controladorMain', controladorMain);
+    .module('prototipo')
+    .controller('controladorMain', controladorMain);
 
   controladorMain.$inject = ['$state', 'servicioInicioSesion'];
 
-  function controladorMain($state, servicioInicioSesion){
+  function controladorMain($state, servicioInicioSesion) {
 
     const userAuth = servicioInicioSesion.getAuthUser();
 
-    if(userAuth == undefined){
+    if (userAuth == undefined) {
       $state.go('inicioSesion');
     }
 
@@ -33,6 +33,7 @@
             case "cerrarSesion":
               servicioInicioSesion.logOut();
               $state.go('landingPage');
+            break;
           }
         });
     }

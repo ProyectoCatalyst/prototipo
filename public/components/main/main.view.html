@@ -9,7 +9,7 @@
   </nav>
 </header>
 <main class="hero" id="mainPrincipal">
-  <div class="container-fluid mt-5">
+  <div class="container-fluid my-5">
 
     <div class="row jumbotron">
       <div class="col-md-6 d-flex justify-content-center">
@@ -31,28 +31,43 @@
     </div>
 
     <div class="row">
-      <div class="col-md-12">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" ui-sref="main.registrarEncargadoAduana" ui-sref-active="active">Registrar encancargado de aduana</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" ui-sref="main.registrarEncargadoSucursal" ui-sref-active="active">Registrar encargado de sucursal</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" ui-sref="main.registrarConvenio" ui-sref-active="active">Registrar convenio</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
+      <div class="col-md-3">
+        <div class="navbar navbar-expand-lg navbar-light bg-light" id="navVertical">
+          <ul class="nav flex-column">
+            <li class="nav-item my-2" ng-if="vm.usuarioActivo.rol==5">
+              <a class="nav-link" ui-sref="" ui-sref-active="active">Registrar usuario</a>
+            </li>
+            <li class="nav-item my-2" ng-if="vm.usuarioActivo.rol==5||vm.usuarioActivo.rol==3">
+              <a class="nav-link" ui-sref="main.registrarEncargadoAduana" ui-sref-active="active">Registrar encancargado de aduana</a>
+            </li>
+            <li class="nav-item my-2" ng-if="vm.usuarioActivo.rol==5">
+              <a class="nav-link" ui-sref="main.registrarEncargadoSucursal" ui-sref-active="active">Registrar encargado de sucursal</a>
+            </li>
+            <li class="nav-item my-2" ng-if="vm.usuarioActivo.rol==5">
+              <a class="nav-link" ui-sref="" ui-sref-active="active">Registrar repartidor</a>
+            </li>
+            <li class="nav-item my-2" ng-if="vm.usuarioActivo.rol==5">
+              <a class="nav-link" ui-sref="" ui-sref-active="active">Cambiar estado de paquete</a>
+            </li>
+            <li class="nav-item my-2" ng-if="vm.usuarioActivo.rol==5">
+              <a class="nav-link" ui-sref="" ui-sref-active="active">Asignar paquete a repartidor</a>
+            </li>
+            <li class="nav-item my-2" ng-if="vm.usuarioActivo.rol==5">
+              <a class="nav-link" ui-sref="" ui-sref-active="active">Ingresar sucursal</a>
+            </li>
+            <li class="nav-item my-2" ng-if="vm.usuarioActivo.rol==5">
+              <a class="nav-link" ui-sref="" ui-sref-active="active">Editar información de sucursal</a>
+            </li>
+            <li class="nav-item my-2" ng-if="vm.usuarioActivo.rol==5">
+              <a class="nav-link" ui-sref="main.registrarConvenio" ui-sref-active="active">Registrar convenio</a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-9">
         <div ui-view></div>
       </div>
     </div>
+  </div>
 </main>
 <footer-Principal></footer-Principal>
