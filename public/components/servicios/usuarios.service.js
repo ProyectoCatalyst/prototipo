@@ -74,6 +74,11 @@
       return listadeusuarios;
     }
 
+
+    function _obtenerListaTarjetas (){
+
+    };
+
     function _obtenerListaFiltrada(pnumrol){
       let listadeusuarios = _obtenerlistadeusuarios(),
           listaFiltrada = [];
@@ -99,5 +104,6 @@
       }
       return desactivar;
     }
-  }
+  };
+
 })();
