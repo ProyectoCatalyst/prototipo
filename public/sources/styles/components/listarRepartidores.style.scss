@@ -4,31 +4,6 @@
   color: $secondary-color;
 }
 
-#table{
-  thead{
-    border-bottom: 1px solid $primary-color;
-    font-size: 1.3em;
-    tr{
-      th{
-        color: $tertiary-color;
-      }
-    }
-  }
-
-  tbody{
-    tr{
-      border-bottom: 1px solid $tertiary-color;
-    }
-  }
-
-  th, td{
-    border-right: 1px solid $primary-color;
-    padding: 1%;
-  }
-  th:last-child, td:last-child{
-    border-right: 0px;
-  }
-  tr:last-child{
-    border-bottom: 0px;
-  }
+th{
+  color: $tertiary-color;
 }

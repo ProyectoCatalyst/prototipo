@@ -45,13 +45,11 @@
       <div class="col-md-12 py-4" ng-repeat="licencias in vm.listarLicenciasDesactivadas" id="unactive">
 
           <div class="row">
-            <div class="col-md-4 pb-4 justify-content-end">
+            <div class="col-md-8 pb-4 justify-content-end">
               <h3 id="subtitle">Código de licenia</h3>
               <h5 class="font-weight-light">{{licencias.codigo}}</h5>
+              <p class="py-3 m-0 text-danger">* Por favor actualice la información de esta licencia</p>
             </div>
-            <div class="col-md-4">
-                <p class="py-3 text-danger">* Por favor actualice la información de esta licencia</p>
-              </div>
           </div>
   
           <div class="row">
@@ -72,7 +70,7 @@
   
             <div class="col-md-4 align-self-middle">
   
-              <button type="button" class="btn btn-danger" ng-click="vm.modificarLicencia(licencias)">Actualizar información</button>
+              <button type="button" class="btn btn-danger justify-content-center" ng-click="vm.modificarLicencia(licencias)">Actualizar información</button>
   
             </div>
   
