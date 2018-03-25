@@ -83,6 +83,22 @@
         controllerAs: 'vm'
       })
 
+      
+      .state('main.registrarCliente', {
+        url: '/registerCustomers',
+        templateUrl: './components/usuarios/clientes/registrarClientes/registrarClientes.view.html',
+        data: {
+          pageTitle: 'Registrar Clientes | Correos CR'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/clientes/registrarClientes/registrarClientes.controller.js')
+          }]
+        },
+        controller: 'controladorRegistrarCliente',
+        controllerAs: 'vm'
+      })
+
       .state('404', {
         url: '/404',
         templateUrl: './404.html',
