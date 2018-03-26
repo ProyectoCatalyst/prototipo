@@ -11,9 +11,10 @@
 
     vm.listarEncargadoSucursal = servicioUsuarios.obtenerlistadeusuarios();
 
-    // vm.prealertarPaquetes = () => {
-    //   $state.go('main.prealertarPaquetes');
-    // }
+     //   vm.listarEncargadoSucursal = () => {
+    //    let encargadosSucursal = servicio.retornarEncargadosSucursal(datosCliente), // 
+   
+    //   return encSucursal // retorna todos los paquetes que se encontraron en estado prealerta
 
     vm.obtenerlistadeusuarios = servicioUsuarios.obtenerlistadeusuarios();
 

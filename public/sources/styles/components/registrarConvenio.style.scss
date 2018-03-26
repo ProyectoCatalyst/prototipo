@@ -1,0 +1,34 @@
+@font-face{
+    font-family: 'montserrat';
+      src: url('sources/fonts/Montserrat-Regular.ttf');
+      font-style: normal;
+      font-weight: 100;
+    
+    };
+    
+    #body{
+      font-family: montserrat, sans-serif;
+    };
+  
+    .h1{
+      font-family: montserrat, sans-serif;
+    };
+  
+    #tituloTexto{
+      font-family: montserrat, sans-serif;
+    }
+  
+  
+    //#LogoMenu{
+   //   background-image: url('./img/registrar/headerMenu.png');
+     // background-repeat: no-repeat;
+    //  background-size: 100%;
+   // };
+  
+    #tituloPrincipal{
+      color:rgb(5, 34, 83);
+    };
+  
+    #fonfoHeader{
+      width: 100%;
+    };

@@ -1,8 +1,13 @@
-<main>
+<main class="body">
+  <header id="registroEncargadoAduanas">
+        <div class="container-fluid d-none d-md-block">
+            <img id="fondoHeader" class="img-responsive m-5" alt="Responsive image" src="sources/img/registrar/headerMenu.png">
+        </div>
+  </header>
   <div>
-    <h2>Cree una nueva cuenta</h2>
-    <h3>¡Es fácil y sencillo!</h3>
-    <p>Complete los siguientes datos</p>
+      <h1>Cree una nueva cuenta</h1>
+      <h4>¡Es fácil y sencillo!</h4>
+      <p>Complete los siguientes datos</p>
   </div>
 <div ng-include="'./components/includes/_header.html'"></div>
 <section class="row">
@@ -41,7 +46,7 @@
 
 
     <div id="mostrarConvenios"></div>
-    <input type="text" ng-model="filtro">
+    <!-- <input type="text" ng-model="filtro"> -->
 
     <table>
       <thead>
