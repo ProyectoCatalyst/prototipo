@@ -30,7 +30,6 @@
       retornarLicencias: _retornarLicencias,
       editarLicencias: _editarLicencias,
       retornarPaquetesAsignados: _retornarPaquetesAsignados,
-      desactivarCuenta: _desactivarCuenta,
       actualizarUsuario: _actualizarUsuario,
       obtenerListaPorEstados: _obtenerListaPorEstados
     };
