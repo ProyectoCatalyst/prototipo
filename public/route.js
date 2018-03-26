@@ -139,16 +139,16 @@
 
       .state('DesactivarUsuarios', {
         url: '/usuariosDesactivados',
-        templateUrl: './components/usuarios/listarTodosUsuarios/listarTodosUsuarios.view.html',
+        templateUrl: './components/usuarios/DesactivarUsuarios/desactivarUsuarios.view.html',
         data: {
           pageTitle: 'Lista de Usuarios | Correos de Costa Rica'
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/usuarios/listarTodosUsuarios/listarTodosUsuarios.controller.js')
+            return $ocLazyLoad.load('./components/usuarios/DesactivarUsuarios/desactivarUsuarios.controller.js')
           }]
         },
-        controller: 'controladorListarTodosUsuarios',
+        controller: 'controladorListarDesactivados',
         controllerAs: 'vm'
       })
 
