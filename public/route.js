@@ -189,7 +189,7 @@
 
       .state('registrarCliente', {
         url: '/registerCustomers',
-        templateUrl: './components/usuarios/clientes/registrarClientes/registrarClientes.view.html',
+        templateUrl: './components/usuarios/clientes/registrarClientes/registrarClientesFuera.view.html',
         data: {
           pageTitle: 'Registrar Clientes | Correos CR'
         },
@@ -362,7 +362,7 @@
         controllerAs: 'vm'
       })
 
-      .state('listarTodosUsuarios', {
+      .state('main.listarTodosUsuarios', {
         url: '/ListaTodosUsuarios',
         templateUrl: './components/usuarios/listarTodosUsuarios/listarTodosUsuarios.view.html',
         data: {
@@ -377,7 +377,7 @@
         controllerAs: 'vm'
       })
 
-      .state('DesactivarUsuarios', {
+      .state('main.DesactivarUsuarios', {
         url: '/usuariosDesactivados',
         templateUrl: './components/usuarios/DesactivarUsuarios/desactivarUsuarios.view.html',
         data: {

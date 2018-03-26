@@ -492,7 +492,6 @@
         localStorageFactory.setItem(listaUsuarios, prepartidoresLS);
     }
            
-    // function _desactivarCuenta(pcorreo) {
     function _obtenerListaPorEstados(pestado) {
       let listadeusuarios = _obtenerlistadeusuarios(),
           listaFiltrada = [];
