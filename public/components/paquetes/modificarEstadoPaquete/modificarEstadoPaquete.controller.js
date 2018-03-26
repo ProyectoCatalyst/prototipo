@@ -30,9 +30,15 @@
     }, function (error) {
     });//estadoPaquete
 
-    vm.actualizarPaquete = (pmodificarEstado) => {
+    vm.actualizarPaquete = (PaquetesPrealertadosMod) => {
+
+      PaquetesPrealertadosMod.trackingPaquete = objPaquetesModTemp.trackingPaquete;
+      PaquetesPrealertadosMod.tipoPaquete = objPaquetesModTemp.tipoPaquete;
+      PaquetesPrealertadosMod.pesoPaquete = objPaquetesModTemp.pesoPaquete;
+      PaquetesPrealertadosMod.precioPaquete = objPaquetesModTemp.precioPaquete;
+
       
-      let objPaqueteFormato = new Paquete(objPaquetesModTemp.trackingPaquete, objPaquetesModTemp.tipoPaquete, objPaquetesModTemp.pesoPaquete, objPaquetesModTemp.precioPaquete, pmodificarEstado.estadoPaquete);
+      let objPaqueteFormato = new Paquete(PaquetesPrealertadosMod.trackingPaquete, PaquetesPrealertadosMod.tipoPaquete, PaquetesPrealertadosMod.pesoPaquete, PaquetesPrealertadosMod.precioPaquete, PaquetesPrealertadosMod.estadosPaquetes.name);
 
       servicioPaquetes.modificarEstado(objPaqueteFormato); // envia todo el objeto, compara cada paquete ne el sistema con el codigo del paquete nuevo pmodificarEstado.convenio = paqueteLS[i].convenio
 

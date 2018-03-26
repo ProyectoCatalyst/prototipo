@@ -67,12 +67,12 @@
       return paqueteEncontrado;
     }
 
-    function _modificarEstado(pmodificarEstado) {
-      let listaPaquetes = _retornarPaquetesPrealertados();
+    function _modificarEstado(PaquetesPrealertadosMod) { // recibo el nueva informacion
+      let listaPaquetes = _retornarPaquetesPrealertados(); // recibo todos los paquetes del sistema
 
       for (let i = 0; i < listaPaquetes.length; i++) {
-        if (pmodificarEstado.estadoPaquete == listaPaquetes[i].capturarTrackingPaquete()) {
-          listaPaquetes[i].capturarEstadoPaquete() = pmodificarEstado.estadoPaquete;
+        if (PaquetesPrealertadosMod.trackingPaquete == listaPaquetes[i].capturarTrackingPaquete()) {
+          listaPaquetes[i] = PaquetesPrealertadosMod;
         }
       }
       actualizarListaPaquetes(listaPaquetes);
