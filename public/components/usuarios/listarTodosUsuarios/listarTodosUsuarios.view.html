@@ -7,6 +7,7 @@
   <div class="col-sm-12 col-md-4 col-lg-4">
     <label for="txtRol">Seleccione un usuario:</label>
     <select id="txtRol" ng-model="vm.rolUsuario" ng-change="vm.filtrarRolUsuario(vm.rolUsuario)" class="custom-select" required>
+      <option value="">Seleccione el tipo de usuario</option>
       <option value="1">Administrador</option>
       <option value="2">Encargado de Aduana</option>
       <option value="3">Encargado de Sucursal</option>
@@ -30,8 +31,8 @@
             <th scope="col">Cédula</th>
             <th scope="col">Fecha</th>
             <th scope="col">Género</th>
-            <th scope="col">Provincia</th>
-            <th scope="col">Cantón</th>
+            <!-- <th scope="col">Provincia</th>
+            <th scope="col">Cantón</th> -->
             <th scope="col">Distrito</th>
             <th scope="col">Correo</th>
             <th scope="col">Desactivar</th>
@@ -46,8 +47,8 @@
             <td>{{usuario.cedula}}</td>
             <td>{{usuario.fecha | date:'dd-MM-yyyy'}}</td>
             <td>{{usuario.genero}}</td>
-            <td>{{usuario.provincia}}</td>
-            <td>{{usuario.canton}}</td>
+            <!-- <td>{{usuario.provincia}}</td>
+            <td>{{usuario.canton}}</td> -->
             <td>{{usuario.distrito}}</td>
             <td>{{usuario.correo}}</td>
             

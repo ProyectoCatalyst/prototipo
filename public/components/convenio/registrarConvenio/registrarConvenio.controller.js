@@ -21,8 +21,8 @@
         pconvenioNuevo.costoConvenio
       );
 
-      console.log('objeto con convenio');
-      console.log(objNuevoConvenio);
+      // console.log('objeto con convenio');
+      // console.log(objNuevoConvenio);
 
       servicioConvenio.agregarConvenio(objNuevoConvenio);
 
