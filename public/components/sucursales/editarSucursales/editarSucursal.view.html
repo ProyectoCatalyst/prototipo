@@ -1,0 +1,70 @@
+<main>
+  <section class="container">
+    <div class="row">
+      <div class="col-md-12 py-5">
+        <h1 class="text-center">Informacion de la sucursal {{vm.sucursalActiva}}</h1>
+
+        <div class="col-9">
+          <form ng-submit="vm.editarSucursal(vm.SucursalMod)">
+            <div class="form-group">
+                <p>Puede modificar los datos completando el formulario o elminar la sucursal actual</p>
+              <label for="txtNombreSucursal">Nombre: </label>
+              <input type="text" class="form-control" ng-model="vm.SucursalMod.nombreSucursal" id="txtNombreSucursal" required>
+              <div class="row">
+                <div class="py-3 col-4">
+                  <label>Provincia: </label>
+                  <input type="text" class="text-center" ng-model="vm.SucursalMod.provinciaTexto" ng-disabled="true">
+                </div>
+
+                <div class="py-3 col-4">
+                  <label>Cantón: </label>
+                  <input type="text" class="text-center" ng-model="vm.SucursalMod.cantonTexto" ng-disabled="true">
+                </div>
+
+                <div class="py-3 col-4">
+                  <label>Distrito: </label>
+                  <input type="text" class="text-center" ng-model="vm.SucursalMod.distritoTexto" ng-disabled="true">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="sltProvincia">Provincia:</label>
+                <select id="sltProvincia" class="custom-select" ng-model="vm.SucursalMod.provincia" ng-change="vm.rellenarCantones(vm.SucursalMod.provincia._id)"
+                  ng-options="provincia as provincia.name for provincia in vm.provincias track by provincia._id" required>
+                  <option value="">Seleccione una provincia</option>
+
+                </select>
+                <small class="form-text text-danger">* Campo requerido</small>
+              </div>
+              <div class="form-group">
+                <label for="sltCanton">Cantón:</label>
+                <select id="sltCanton" class="custom-select" ng-change="vm.rellenarDistrito(vm.SucursalMod.canton._id)" ng-options="canton as canton.name for canton in vm.cantones track by canton._id"
+                  ng-model="vm.SucursalMod.canton" required>
+                  <option value="">Seleccione un cantón</option>
+                </select>
+                <small class="form-text text-danger">* Campo requerido</small>
+              </div>
+              <div class="form-group">
+                <label for="sltDistrito">Distrito:</label>
+                <select id="sltDistrito" class="custom-select" ng-options="distrito as distrito.name for distrito in vm.distritos track by distrito._id"
+                  ng-model="vm.SucursalMod.distrito" required>
+                  <option value="">Seleccione un distrito</option>
+                  <option value="Distrito">Distrito</option>
+                </select>
+                <small class="form-text text-danger">* Campo requerido</small>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Actualizar Sucursal</button>
+
+            <button type="button" class="btn btn-danger" ng-click="vm.eliminarSucursal(vm.SucursalMod) ">Eliminar sucursal</button>
+
+            <button type="button" class="btn btn-secondary" ng-click="vm.regresar()">Regresar</button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </section>
+</main>

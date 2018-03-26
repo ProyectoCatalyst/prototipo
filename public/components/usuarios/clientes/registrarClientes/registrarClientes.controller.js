@@ -16,7 +16,6 @@
       }).then( (success) => {
         vm.provincias = success.data;
       }, (error) => {
-        console.log("Ocurrió un error " + error.data);
     });
 
     vm.rellenarCantones = (pidProvincia) => {
@@ -32,7 +31,6 @@
         }
         vm.cantones = cantones;
       }, (error) => {
-        console.log("Ocurrió un error " + error.data)
       });
     }
 
@@ -49,7 +47,6 @@
         }
         vm.distritos = distritos;
       }, (error) => {
-        console.log("Ocurrió un error " + error.data)
       });
     }
 
