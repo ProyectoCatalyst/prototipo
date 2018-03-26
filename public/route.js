@@ -17,7 +17,7 @@
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/login/login.controller.js')
+            return $ocLazyLoad.load('./components/landingPage/login.controller.js')
           }]
         },
         controller: 'controladorInicioSesion',
@@ -206,6 +206,21 @@
         controller: 'controladorModificarEstadoPaquete',
         controllerAs: 'vm'
       })
+      
+      .state('main.registrarCliente', {
+        url: '/registerCustomers',
+        templateUrl: './components/usuarios/clientes/registrarClientes/registrarClientes.view.html',
+        data: {
+          pageTitle: 'Registrar Clientes | Correos CR'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/clientes/registrarClientes/registrarClientes.controller.js')
+          }]
+        },
+        controller: 'controladorRegistrarCliente',
+        controllerAs: 'vm'
+      })
 
       .state('404', {
         url: '/404',
@@ -259,6 +274,7 @@
         controller: 'controladorListarTodosUsuarios',
         controllerAs: 'vm'
       });
+
 
 
     // .state('', {
