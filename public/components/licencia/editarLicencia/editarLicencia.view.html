@@ -1,0 +1,60 @@
+<main class="container">
+  <section class="row">
+      <section class="col-md-8 my-5 mx-auto" id="mainContent">
+        <h1 class="py-2" id="title">¡Gracias por trabajar con nosotros!</h1>
+        <h4 class="py-2" id="subtitle">Estamos a pocos pasos de empezar.</h4>
+        <p class="py-2" id="description"><span>Com</span>plete los siguientes datos.</p>
+
+          <form name="editarLicencia" class="row" novalidate ng-submit="vm.editarLicencia(vm.modLicencia)">
+
+              <div class="col-md-10 mx-auto">
+
+                <div class="form-group">
+                        <label>Tipo de licencia *</label>
+                        <select name="tipoLicencia" class="custom-select" required  ng-model="vm.modLicencia.tipoLicencia">
+                            <option value>Seleccione el tipo de licencia que posee</option>
+                            <option value="A1 (motocicletas)">A1 (motocicletas)</option>
+                            <option value="A2 (motocicletas)">A2 (motocicletas)</option>
+                            <option value="A3 (motocicletas)">A3 (motocicletas)</option>
+                            <option value="B1 (Vehículo liviano)">B1 (Vehículo liviano)</option>
+                            <option value="B2 (Transporte mercancías)">B2 (Transporte mercancías)</option>
+                            <option value="B3 (Transporte mercancías)">B3 (Transporte mercancías)</option>
+                            <option value="B4 (Transporte mercancías)">B4 (Transporte mercancías)</option>
+                        </select>
+                    </div>
+
+                <div class="form-group">
+                    <label>Código de licencia *</label>
+                    <input type="number" name="codigo" class="form-control" required ng-model="vm.modLicencia.codigo" disabled>
+                </div>
+
+                <div class="form-group">
+                  <label>Fecha de vencimiento *</label>
+                  <input type="date" name="fechaVencimiento" class="form-control" required ng-model="vm.modLicencia.fechaVencimiento">
+                </div>
+
+                <div class="form-group">
+
+                    <div class="custom-file">
+
+                        <input type="file" name="foto" class="custom-file-input" ng-model="vm.modLicencia.foto" lang="es">
+                        <label class="custom-file-label">Suba una foto *</label>
+
+                    </div>
+                </div>
+
+              </div>
+
+              <div class="col-md-10">
+                    <div class="row justify-content-center">
+                        <button type="submit" class="btn btn-danger col-md-5" ng-disabled="editarLicencia.$invalid">Registrar</button>
+                    </div>
+              </div>
+
+          </form>
+
+      </section>
+
+  </section>
+  
+</main>

@@ -70,6 +70,59 @@ class Cliente extends Usuario {
   }
 }
 
+class Repartidor extends Usuario{
+  constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, ptelefono, ptelefonoAdicional, pestado, prazonDesact, psucursal){
+    super(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, ptelefono, ptelefonoAdicional,pestado, prazonDesact, psucursal);
+
+    this.paqueteAsignado = [];
+    this.licencia =[];
+    this.telefono = ptelefono;
+    this.telefonoAdicional = ptelefonoAdicional;
+    this.estado = pestado;
+    this.razonDesact = prazonDesact;
+    this.sucursal = psucursal;
+  }
+
+    getLicencias(){
+      return this.licencia
+    }
+  
+    getCorreo(){
+      return this.correo
+    }
+  
+    setLicencia(pobjLicencia){
+      this.licencia.push(pobjLicencia)
+    }
+
+    getEstado(){
+      return this.estado
+    }
+
+    getPaqAsignados(){
+      return this.paqueteAsignado;
+    }
+    
+}
+
+class Licencia{
+  constructor(pcodigo, pfechaVencimiento, ptipo, pestado){
+    this.codigo = pcodigo;
+    this.fechaVencimiento = pfechaVencimiento;
+    this.tipo = ptipo;
+    this.estado = pestado;
+  }
+
+  getCodigo(){
+    return this.codigo
+  }
+
+  getEstado(){
+    return this.estado
+  }
+  
+}
+
 class Convenio{
 
   constructor(pcodigoConvenio,pnombreConvenio,pdescripcionConvenio,pinstitucionConvenio,pcostoConvenio, ){

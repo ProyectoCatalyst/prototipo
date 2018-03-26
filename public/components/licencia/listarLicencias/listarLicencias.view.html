@@ -1,0 +1,90 @@
+
+<main class="container-fluid">
+
+  <section class="row">
+
+    <div class="col-md-12">
+      
+      <h2 id="title" class="py-5">Lista de licencias</h2>
+
+      <div class="col-md-12 py-4" ng-repeat="licencias in vm.listarLicenciasActivas" id="active">
+
+        <div class="row">
+          <div class="col-md-12 pb-4 justify-content-end">
+            <h3 id="subtitle">Código de licenia</h3>
+            <h5 class="font-weight-light">{{licencias.codigo}}</h5>
+          </div>
+        </div>
+
+        <div class="row">
+
+          <div class="col-md-4">
+
+            <h5 id="subtitle">Fecha de vencimiento</h5>
+            <p>{{licencias.fechaVencimiento | date: dd-MM-yyy}}</p>
+
+          </div>
+
+          <div class="col-md-4">
+
+            <h5 id="subtitle">Tipo de lincencia</h5>
+            <p>{{licencias.tipo}}</p>
+
+          </div>
+
+          <div class="col-md-4">
+
+            <button type="button" class="btn btn-danger" ng-click="vm.modificarLicencia(licencias)">Actualizar información</button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="col-md-12 py-4" ng-repeat="licencias in vm.listarLicenciasDesactivadas" id="unactive">
+
+          <div class="row">
+            <div class="col-md-8 pb-4 justify-content-end">
+              <h3 id="subtitle">Código de licenia</h3>
+              <h5 class="font-weight-light">{{licencias.codigo}}</h5>
+              <p class="py-3 m-0 text-danger">* Por favor actualice la información de esta licencia</p>
+            </div>
+          </div>
+  
+          <div class="row">
+  
+            <div class="col-md-4">
+  
+              <h5 id="subtitle">Fecha de vencimiento</h5>
+              <p class="text-danger">* {{licencias.fechaVencimiento | date: dd-MM-yyy}}</p>
+  
+            </div>
+  
+            <div class="col-md-4">
+  
+              <h5 id="subtitle">Tipo de lincencia</h5>
+              <p>{{licencias.tipo}}</p>
+  
+            </div>
+  
+            <div class="col-md-4 align-self-middle">
+  
+              <button type="button" class="btn btn-danger justify-content-center" ng-click="vm.modificarLicencia(licencias)">Actualizar información</button>
+  
+            </div>
+  
+          </div>
+  
+        </div>
+        <div class="col-md-12">
+          <div class="row justify-content-end">
+            <button type="button" ng-click="vm.agregarLicencia()" class="btn btn-danger my-5">Agregar licencia</button>
+          </div>
+        </div>
+
+    </div>
+
+  </section>
+
+</main>
