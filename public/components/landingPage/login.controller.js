@@ -25,8 +25,8 @@
         $state.go('main');
       }else{
         swal({
-          title: "Revise los datos",
-          text: "Los datos ingresados son incorrectos o no pertenecen a ninguna cuenta",
+          title: "Verifique su información",
+          text: "Los datos ingresados son incorrectos",
           icon: "error",
           button: "Aceptar"
         });
