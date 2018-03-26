@@ -1,0 +1,26 @@
+[
+  {
+    "name":"Convenio",
+    "_id": "0"
+  },
+  {
+    "name":"Electrónico",
+    "_id": "1"
+  },
+  {
+    "name":"Electrodoméstico",
+    "_id": "3"
+  },
+  {
+    "name":"Hogar/Decoración",
+    "_id": "4"
+  },
+  {
+    "name":"Ropa/Accesorio",
+    "_id": "5"
+  },
+  {
+    "name":"Libro/Revista",
+    "_id": "6"
+  }
+]

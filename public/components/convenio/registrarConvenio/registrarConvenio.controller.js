@@ -9,45 +9,56 @@
   function controladorRegistrarConvenio($stateParams, $state, $http, servicioConvenio) {
     let vm = this;
 
-    vm.convenioNuevo = {};
-    vm.listarConvenios = servicioConvenio.retornarConvenio();
+    vm.ConvenioNuevo = {};
+    vm.listaConvenio = servicioConvenio.retornarConvenio();
 
     vm.registrarConvenio = (pconvenioNuevo) => {
       console.log(pconvenioNuevo);
 
-      let registroExitoso;
-
-      let objNuevoConvenio = new Convenio(pconvenioNuevo.codigo, pconvenioNuevo.nombre,
-        pconvenioNuevo.descripcion,
-        pconvenioNuevo.institucion,
-        pconvenioNuevo.costo,
+      let objNuevoConvenio = new Convenio(pconvenioNuevo.codigoConvenio, pconvenioNuevo.nombreConvenio,
+        pconvenioNuevo.descripcionConvenio,
+        pconvenioNuevo.institucionConvenio,
+        pconvenioNuevo.costoConvenio
       );
 
       console.log('objeto con convenio');
       console.log(objNuevoConvenio);
 
-      registroExitoso = servicioConvenio.agregarConvenios(objNuevoConvenio);
+      servicioConvenio.agregarConvenio(objNuevoConvenio);
 
-      if(registroExitoso == true){
-        swal({
-          title: "Registro exitoso",
-          text: "El convenio ha sido registrado correctamente",
-          icon: "success",
-          button: "Aceptar"
-        });
-        vm.convenioNuevo = null;
-      }else{
-        swal({
-          title: "Ha ocurrido un error",
-          text: "Ha ocurrido un error intentelo más tarde",
-          icon: "error",
-          button: "Aceptar"
-        });
-      }
+      swal({
+        title: "Convenio registrado",
+        text: "El convenio se ha registrado exitosamente",
+        icon: "success",
+        button: "Aceptar"
+      });
+      $state.reload();
     }
 
+    vm.listarConvenios = () => {
+      servicioConvenio.retornarConvenio();
+
+      function listarConvenios(){
+        vm.listaConvenio = servicioConvenio.retornarConvenio();
+      }
+
+      // let str = "<table>";
+      //   str += "<tr><th>Codigo</th><th>Nombre</th><th>Descripcion</th><th>Institucion</th><th>Costo</th>";
+
+      // for (var i = 0; i < vm.listaConvenio.length; i++) {
+      //   str += "<tr>";
+      //   str += "<td>"+vm.listaConvenio[i].codigoConvenio + "</td>";
+      //   str += "<td>"+vm.listaConvenio[i].nombreConvenio + "</td>";
+      //   str += "<td>"+vm.listaConvenio[i].descripcionConvenio + "</td>";
+      //   str += "<td>"+vm.listaConvenio[i].institucionConvenio + "</td>";
+      //   str += "<td>"+vm.listaConvenio[i].costoConvenio + "</td>";
+      //   str += "</tr>";
+      // }
+      //   str += "</table>";
 
 
+      //   document.querySelector('#mostrarConvenios').innerHTML = str;
+    }
 
   }
 })();

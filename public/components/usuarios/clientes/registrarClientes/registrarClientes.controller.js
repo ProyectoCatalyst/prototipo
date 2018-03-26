@@ -16,7 +16,6 @@
       }).then( (success) => {
         vm.provincias = success.data;
       }, (error) => {
-        console.log("Ocurrió un error " + error.data);
     });
 
     vm.rellenarCantones = (pidProvincia) => {
@@ -32,7 +31,6 @@
         }
         vm.cantones = cantones;
       }, (error) => {
-        console.log("Ocurrió un error " + error.data)
       });
     }
 
@@ -49,19 +47,26 @@
         }
         vm.distritos = distritos;
       }, (error) => {
-        console.log("Ocurrió un error " + error.data)
       });
     }
 
     vm.clienteNuevo = {};
+    vm.tarjetaNUeva
     
     vm.registrarCliente= (pclienteNuevo) => {
 
       let rol = 5;
+
+      console.log(pclienteNuevo);
+
+      let objTarjeta = new Tarjeta(pclienteNuevo.tipoTarjeta, pclienteNuevo.nombreTarjeta, pclienteNuevo.numeroTarjeta, pclienteNuevo.cvvTarjeta, pclienteNuevo.fechaTarjeta);
+
+      let objNuevoCliente = new Cliente(pclienteNuevo.nombre, pclienteNuevo.segundoNombre, pclienteNuevo.primerApellido, pclienteNuevo.segundoApellido, pclienteNuevo.cedula, pclienteNuevo.fecha,  pclienteNuevo.sexo, pclienteNuevo.ubicacion, pclienteNuevo.provincia.name, pclienteNuevo.canton.name, pclienteNuevo.distrito.name, pclienteNuevo.direccion,  pclienteNuevo.correo, pclienteNuevo.contrasenna, rol, pclienteNuevo.telefono);
       
-      let objNuevoCliente = new Cliente(pclienteNuevo.nombre, pclienteNuevo.segundoNombre, pclienteNuevo.primerApellido, pclienteNuevo.segundoApellido, pclienteNuevo.cedula, pclienteNuevo.fecha,  pclienteNuevo.sexo, pclienteNuevo.ubicacion, pclienteNuevo.provincia.name, pclienteNuevo.canton.name, pclienteNuevo.distrito.name, pclienteNuevo.direccion,  pclienteNuevo.correo, pclienteNuevo.contrasenna, rol, pclienteNuevo.telefono); 
+      objNuevoCliente.agregarTarjetas(objTarjeta);
       
       console.log(objNuevoCliente);
+      console.log(objTarjeta);
       
       let registro = servicioUsuarios.agregarUsuario(objNuevoCliente);
 

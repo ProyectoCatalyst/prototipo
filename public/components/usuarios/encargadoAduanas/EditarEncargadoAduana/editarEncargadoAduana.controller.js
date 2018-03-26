@@ -2,20 +2,44 @@
   'use strict';
   angular
   .module('prototipo')
-  .controller('controladorRegistroEncargadoAduana', controladorRegistroEncargadoAduana);
+  .controller('controladorEditarEncargadoAduana', controladorEditarEncargadoAduana);
       
-  controladorRegistroEncargadoAduana.$inject = ['$http', '$stateParams', '$state', 'servicioUsuarios'];
+  controladorEditarEncargadoAduana.$inject = ['$http', '$stateParams', '$state', 'servicioUsuarios'];
     
-      function controladorRegistroEncargadoAduana ($http, $stateParams, $state, servicioUsuarios){
+      function controladorEditarEncargadoAduana ($http, $stateParams, $state, servicioUsuarios){
         let vm = this;
-  
+
+        if(stateParams.correo == '') {
+          $state.go ('listarTodosUsuarios');
+        }
+
+        let  encargadoAduanaModificar = servicioUsuarios.obtenerUsuarioSelecionado(stateParams.correo);
+
+        vm.encargadoAduanaModificado = {
+          nombre : encargadoAduanaModificar.nombre,
+          segundoNombre : encargadoAduanaModificar.segundoNombre,
+          apellido : encargadoAduanaModificar.apellido,
+          segundoApellido : encargadoAduanaModificar.segundoApellido,
+          cedula : encargadoAduanaModificar.cedula,
+          fecha : encargadoAduanaModificar.fecha,
+          fecha : encargadoAduanaModificar.genero,
+          fecha : encargadoAduanaModificar.ubicacion,
+          fecha : encargadoAduanaModificar.provincia.name,
+          fecha : encargadoAduanaModificar.canton.name,
+          fecha : encargadoAduanaModificar.distrito.name,
+          fecha : encargadoAduanaModificar.direccion,
+       // fecha : encargadoAduanaModificar.correo,
+          fecha : encargadoAduanaModificar.contrasenna
+      }
+
+
+
         vm.provincias = $http({
           method: 'GET',
           url: './sources/data/provincias.json'
         }).then((success) => {
           vm.provincias = success.data
         }, function (error) {
-          console.log("Ocurrió un error" + error);
         });
   
         vm.rellenarCantones = (pidprovincia) => {
@@ -31,7 +55,6 @@
             }
             vm.cantones = cantones
           }, function (error) {
-            console.log("Ocurrió un error" + error);
           });
         };
   
@@ -49,32 +72,29 @@
             }
             vm.distritos = distritos
           }, function (error) {
-            console.log("Ocurrió un error" + error);
           });
         };
         
-        vm.nuevoEncargadoAduana = {};
-        
-        // vm.registrarEncargadoAduana = (pnuevoEncargadoAduana)=>{
+         vm.modificarEncargadoAduana = (pnuevoEncargadoAduana)=>{
   
-        //   let rol = 2;
+         let rol = 2;
     
-        //   let objEncargadoAduanaTem = new EncargadoAduanas (pnuevoEncargadoAduana.nombre, pnuevoEncargadoAduana.segundoNombre, pnuevoEncargadoAduana.apellido, pnuevoEncargadoAduana.segundoApellido, pnuevoEncargadoAduana.cedula, pnuevoEncargadoAduana.fecha, pnuevoEncargadoAduana.genero, pnuevoEncargadoAduana.ubicacion, pnuevoEncargadoAduana.provincia.name, pnuevoEncargadoAduana.canton.name, pnuevoEncargadoAduana.distrito.name, pnuevoEncargadoAduana.direccion,pnuevoEncargadoAduana.correo, pnuevoEncargadoAduana.contrasenna, rol);
+         let objEncargadoAduanaTem = new EncargadoAduanas (pnuevoEncargadoAduana.nombre, pnuevoEncargadoAduana.segundoNombre, pnuevoEncargadoAduana.apellido, pnuevoEncargadoAduana.segundoApellido, pnuevoEncargadoAduana.cedula, pnuevoEncargadoAduana.fecha, pnuevoEncargadoAduana.genero, pnuevoEncargadoAduana.ubicacion, pnuevoEncargadoAduana.provincia.name, pnuevoEncargadoAduana.canton.name, pnuevoEncargadoAduana.distrito.name, pnuevoEncargadoAduana.direccion,pnuevoEncargadoAduana.correo, pnuevoEncargadoAduana.contrasenna, rol);
      
-        //   console.log(objEncargadoAduanaTem); 
+          console.log(objEncargadoAduanaTem); 
         
-        //   let registro = servicioUsuarios.actualizarUsuario(objEncargadoAduanaTem);
+          let registro = servicioUsuarios.actualizarUsuario(objEncargadoAduanaTem);
     
-        //   if (registro == true) {
-        //     swal({
-        //       title: "Registro exitoso",
-        //       text: "Registrado correctamente.",
-        //       icon: "success",
-        //       button: "Aceptar"
-        //     }); 
-        //     vm.nuevoEncargadoAduana = null;
-        //   }
-        // }
+          if (registro == true) {
+            swal({
+            title: "Cambio exitoso",
+            text: "Cambio realizado correctamente.",
+            icon: "success",
+            button: "Aceptar"
+            }); 
+            vm.nuevoEncargadoAduana = null;
+          }
+         }
     
         }
   })();

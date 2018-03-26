@@ -1,134 +1,231 @@
 <main id="registroClientes">
+  <!-- class="col-md-10 my-5" -->
 
-  <section class="row">
+  <section>
 
-    <div class="col-md-12 my-5">
+    <div>
 
       <h1 class="text-center">Registro de Clientes</h1>
 
       <form name="frmRegistroClientes" class="row mt-5" ng-submit="vm.registrarCliente(vm.clienteNuevo)">
 
-        <div class="col-md-4" name="frmRegistroClientes">
+        <div class="container" name="frmRegistroClientes">
 
-          <div class="form-group">
-            <label for="txtNombre">Nombre:</label>
-            <input type="text" class="form-control" id="txtNombre" ng-model="vm.clienteNuevo.nombre" required>
-            <small class="form-text text-danger">* Campo requerido</small>
-          </div>
-
-          <div class="form-group">
-            <label for="txtSegundoNombre">Segundo Nombre:</label>
-            <input type="text" class="form-control" id="txtSegundoNombre" ng-model="vm.clienteNuevo.segundoNombre"> 
-          </div>
-
-          <div class="form-group">
-            <label for="txtPrimerApellido">Primer apellido:</label>
-            <input type="text" class="form-control" id="txtPrimerApellido" ng-model="vm.clienteNuevo.primerApellido" required>
-            <small class="form-text text-danger">* Campo requerido</small>
-          </div>
-          <div class="form-group">
-            <label for="txtSegundoApellido">Segundo apellido:</label>
-            <input type="text" class="form-control" id="txtSegundoApellido" ng-model="vm.clienteNuevo.segundoApellido" required>
-            <small class="form-text text-danger">* Campo requerido</small>
-          </div>
-
-          <div class="form-group">
-            <label for="txtCedula">Número de cédula:</label>
-            <input type="number" class="form-control" id="txtCedula" ng-model="vm.clienteNuevo.cedula" required>
-            <small class="form-text text-danger">* Campo requerido</small>
-          </div>
-
-          <div class="form-group">
-            <label for="txtTelefono">Telefono:</label>
-            <input type="number" class="form-control" id="txtTelefono" ng-model="vm.clienteNuevo.telefono" required>
-            <small class="form-text text-danger">* Campo Requerido</small>
-          </div>
-
-          <div class="form-group">
-            <label for="txtTelefono">Segundo Telefono:</label>
-            <input type="number" class="form-control" id="txtSegundoTelefono" ng-model="vm.clienteNuevo.segundotelefono">
+          <div class="row m-4">
+            <div class="form-group col-sm-12 col-md-4 col-lg-4 m-3">
+              <label for="txtNombre">Nombre:</label>
+              <input type="text" class="form-control" id="txtNombre" ng-model="vm.clienteNuevo.nombre" required>
+              <small class="form-text text-danger">* Campo requerido</small>
             </div>
 
-            <label for="txtEmail">Correo electrónico:</label>
-            <input type="email" class="form-control" id="txtEmail" ng-model="vm.clienteNuevo.correo" required>
-            <small class="form-text text-danger">* Campo requerido</small>
-          </div>
-            
-          <div class="form-group">
-            <label for="txtFechaNacimiento">Fecha de nacimiento:</label>
-            <input type="date"class="form-control" id="txtFechaNacimiento" ng-model="vm.clienteNuevo.fecha" required>
-            <small class="form-text text-danger">* Campo requerido</small>
+            <div class="form-group col-sm-12 col-md-4 col-lg-4 m-3">
+              <label for="txtSegundoNombre">Segundo Nombre:</label>
+              <input type="text" class="form-control" id="txtSegundoNombre" ng-model="vm.clienteNuevo.segundoNombre">
+            </div>
           </div>
 
-          <div class="form-group">
-            <label for="sltSexo">Sexo</label>
-            <select id="sltSexo" class="custom-select" ng-model="vm.clienteNuevo.sexo" required>
-              <option value="">Seleccione un sexo</option>
-              <option value="Femenino">Femenino</option>
-              <option value="Masculino">Masculino</option>
-              <option value="Otro">Otro</option>
-            </select>
-            <small class="form-text text-danger">* Campo requerido</small>
-          </div>
-
-          <div class="form-group">
-            <label for="txtUbicacion">Ubicacion</label>
-            <input type="text" class="form-control" id="txtubicacion" ng-model="vm.clienteNuevo.ubicacion">
-          </div>
-
-
-          <div class="form-group">
-            <label for="sltProvincia">Provincia:</label>
-            <select id="sltProvincia" class="custom-select" ng-model="vm.clienteNuevo.provincia" ng-change="vm.rellenarCantones(vm.clienteNuevo.provincia._id)" ng-options="provincia as provincia.name for provincia in vm.provincias track by provincia._id" required>
-              <option value="">Seleccione una provincia</option>
+          <div class="row m-4">
+            <div class="form-group col-sm-12 col-md-4 col-lg-4 m-3">
+              <label for="txtPrimerApellido">Primer apellido:</label>
+              <input type="text" class="form-control" id="txtPrimerApellido" ng-model="vm.clienteNuevo.primerApellido" required>
+              <small class="form-text text-danger">* Campo requerido</small>
+            </div>
+            <div class="form-group col-sm-12 col-md-4 col-lg-4 m-3">
+              <label for="txtSegundoApellido">Segundo apellido:</label>
+              <input type="text" class="form-control" id="txtSegundoApellido" ng-model="vm.clienteNuevo.segundoApellido" >
               
-            </select>
-            <small class="form-text text-danger">* Campo requerido</small>
-          </div>
-          <div class="form-group">
-            <label for="sltCanton">Cantón:</label>
-            <select id="sltCanton" class="custom-select" ng-change="vm.rellenarDistrito(vm.clienteNuevo.canton._id)" ng-options="canton as canton.name for canton in vm.cantones track by canton._id" ng-model="vm.clienteNuevo.canton" required>
-              <option value="">Seleccione un cantón</option>
-            </select>
-            <small class="form-text text-danger">* Campo requerido</small>
-          </div>
-          <div class="form-group">
-            <label for="sltDistrito">Distrito:</label>
-            <select id="sltDistrito" class="custom-select" ng-options="distrito as distrito.name for distrito in vm.distritos track by distrito._id" ng-model="vm.clienteNuevo.distrito" required>
-              <option value="">Seleccione un distrito</option>
-              <option value="Distrito">Distrito</option>
-            </select>
-            <small class="form-text text-danger">* Campo requerido</small>
+            </div>
           </div>
 
-          <div class="form-group">
-            <label for="txtDireccion">Direccion</label>
-            <input type="text" class="form-control" id="txtdireccion" ng-model="vm.clienteNuevo.direccion">
+          <div class="row m-4">
+            <div class="form-group col-sm-12 col-md-4 col-lg-4 m-3">
+              <label for="txtCedula">Número de cédula:</label>
+              <input type="number" class="form-control" id="txtCedula" ng-model="vm.clienteNuevo.cedula" required>
+              <small class="form-text text-danger">* Campo requerido</small>
+            </div>
+
+            <div class="form-group col-sm-12 col-md-4 col-lg-4 m-3">
+              <label for="txtTelefono">Telefono:</label>
+              <input type="number" class="form-control" id="txtTelefono" ng-model="vm.clienteNuevo.telefono" required>
+              <small class="form-text text-danger">* Campo Requerido</small>
+            </div>
+          </div>
+
+          <div class="row m-4">
+            <div class="form-group col-sm-12 col-md-4 col-lg-4 m-3">
+              <label for="txtTelefono">Segundo Telefono:</label>
+              <input type="number" class="form-control" id="txtSegundoTelefono" ng-model="vm.clienteNuevo.segundotelefono">
+            </div>
+            <div class="form-group col-sm-12 col-md-4 col-lg-4 m-3">
+              <label for="txtEmail">Correo electrónico:</label>
+              <input type="email" class="form-control" id="txtEmail" ng-model="vm.clienteNuevo.correo" required>
+              <small class="form-text text-danger">* Campo requerido</small>
+            </div>
+          </div>
+
+          <div class="row m-4">
+            <div class="form-group col-sm-12 col-md-4 col-lg-4 m-3">
+              <label for="txtFechaNacimiento">Fecha de nacimiento:</label>
+              <input type="date" class="form-control" id="txtFechaNacimiento" ng-model="vm.clienteNuevo.fecha" required>
+              <small class="form-text text-danger">* Campo requerido</small>
+            </div>
+
+            <div class="form-group col-sm-12 col-md-4 col-lg-4 m-3">
+              <label for="sltSexo">Sexo</label>
+              <select id="sltSexo" class="custom-select" ng-model="vm.clienteNuevo.sexo" required>
+                <option value="">Seleccione un sexo</option>
+                <option value="Femenino">Femenino</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Otro">Otro</option>
+              </select>
+              <small class="form-text text-danger">* Campo requerido</small>
+            </div>
+          </div>
+
+          <div class="row m-4">
+            <div class="form-group col-sm-12 col-md-4 col-lg-4 m-3">
+              <label for="txtUbicacion">Ubicacion</label>
+              <input type="text" class="form-control" id="txtubicacion" ng-model="vm.clienteNuevo.ubicacion">
+            </div>
+
+            <div class="form-group col-sm-12 col-md-4 col-lg-4 m-3">
+              <label for="sltProvincia">Provincia:</label>
+              <select id="sltProvincia" class="custom-select" ng-model="vm.clienteNuevo.provincia" ng-change="vm.rellenarCantones(vm.clienteNuevo.provincia._id)"
+                ng-options="provincia as provincia.name for provincia in vm.provincias track by provincia._id" required>
+                <option value="">Seleccione una provincia</option>
+
+              </select>
+              <small class="form-text text-danger">* Campo requerido</small>
+            </div>
           </div>
 
 
 
-          <div class="form-group">
-            <label for="txtContrasenna">Contraseña:</label>
-            <input type="password" class="form-control" id="txtContrasenna" ng-model="vm.clienteNuevo.contrasenna" required>
-            <small class="form-text text-danger">* Campo requerido</small>
-          </div>
-          <div class="form-group">
-            <label for="txtConfirmarContrasenna">Confirmar contraseña:</label>
-            <input type="password" class="form-control" id="txtConfirmarContrasenna" ng-model="vm.clienteNuevo.confirmarContrasenna" required>
-            <small class="form-text text-danger">* Campo requerido</small>
+          <div class="row m-4">
+            <div class="form-group col-sm-12 col-md-4 col-lg-4 m-3">
+              <label for="sltCanton">Cantón:</label>
+              <select id="sltCanton" class="custom-select" ng-change="vm.rellenarDistrito(vm.clienteNuevo.canton._id)" ng-options="canton as canton.name for canton in vm.cantones track by canton._id"
+                ng-model="vm.clienteNuevo.canton" required>
+                <option value="">Seleccione un cantón</option>
+              </select>
+              <small class="form-text text-danger">* Campo requerido</small>
+            </div>
+
+
+            <div class="form-group col-sm-12 col-md-4 col-lg-4 m-3">
+              <label for="sltDistrito">Distrito:</label>
+              <select id="sltDistrito" class="custom-select" ng-options="distrito as distrito.name for distrito in vm.distritos track by distrito._id"
+                ng-model="vm.clienteNuevo.distrito" required>
+                <option value="">Seleccione un distrito</option>
+                <option value="Distrito">Distrito</option>
+              </select>
+              <small class="form-text text-danger">* Campo requerido</small>
+            </div>
           </div>
 
-          <div class="col-md-12 mb-5">
-            <button type="submit" class="btn btn-info">Registrar usuario</button>
-          </div>
 
+          <div class="row m-4">
+            <div class="form-group col-sm-12 col-md-8 col-lg-8 m-3">
+              <label for="txtDireccion">Direccion</label>
+              <input type="text" class="form-control" id="txtdireccion" ng-model="vm.clienteNuevo.direccion">
+            </div>
+          </div>
+          <div class="row m-4">
+
+
+            <div class="form-group col-sm-12 col-md-4 col-lg-4 m-3">
+              <label for="txtContrasenna">Contraseña:</label>
+              <input type="password" class="form-control" id="txtContrasenna" ng-model="vm.clienteNuevo.contrasenna" required>
+              <small class="form-text text-danger">* Campo requerido</small>
+            </div>
+
+
+
+            <div class="form-group col-sm-12 col-md-4 col-lg-4 m-3">
+              <label for="txtConfirmarContrasenna">Confirmar contraseña:</label>
+              <input type="password" class="form-control" id="txtConfirmarContrasenna" ng-model="vm.clienteNuevo.confirmarContrasenna"
+                required>
+              <small class="form-text text-danger">* Campo requerido</small>
+            </div>
+
+            <div class="col-sm-12 col-md-4 col-lg-4 m-3">
+              <h1>Ingrese los datos de su tarjeta</h1>
+            </div>
+
+            <div class="form-group col-sm-12 col-md-4 col-lg-4 m-3">
+              <label for="txtConfirmarContrasenna">Tipo de Tarjeta :</label>
+              <select class="form-control" ng-model="vm.clienteNuevo.tipoTarjeta">
+                <option value="visa">Visa</option>
+                <option value="mastercard">Master Card</option>
+                <option value="American Express">American Express</option>
+                <option value="discover">Discover</option>
+              </select>
+              <small class="form-text text-danger">* Campo requerido</small>
+            </div>
+
+            <div class="form-group col-sm-12 col-md-4 col-lg-4 m-3">
+                <label for="txtNombreTarjeta">Nombre como aparece en la Tarjeta</label>
+                <input type="text" ng-model="vm.clienteNuevo.nombreTarjeta" value="" />
+                <small class="form-text text-danger">* Campo requerido</small>
+            </div>
+
+            <div class="form-group col-sm-12 col-md-4 col-lg-4 m-3">
+              <label for="txrNumeroTarjeta">Numero de Tarjeta</label>
+              <input type="text" payeezy-data="cc_number" value="" ng-model="vm.clienteNuevo.numeroTarjeta" />
+              <small class="form-text text-danger">* Campo requerido</small>
+            </div>
+
+            <div class="form-group col-sm-12 col-md-4 col-lg-4 m-3">
+             <label >Codigo CVV</td>
+              <input type="text" ng-model="vm.clienteNuevo.cvvTarjeta"/>
+              <small class="form-text text-danger">* Campo requerido</small>
+            </div>
+
+            <div class="form-group col-sm-12 col-md-4 col-lg-4 m-3">
+           
+                <label for="txtFech">Fecha de Expiracion</label>
+                
+                  <select ng-model="vm.clienteNuevo.fechaTarjeta">
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                    <option value="04">04</option>
+                    <option value="05">05</option>
+                    <option value="06">06</option>
+                    <option value="07">07</option>
+                    <option value="08">08</option>
+                    <option value="09">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                  </select>
+                  <select payeezy-data="exp_year">
+                    <option value="16">2016</option>
+                    <option value="17">2017</option>
+                    <option value="18">2018</option>
+                    <option value="19">2019</option>
+                    <option value="20">2020</option>
+                    <option value="21">2021</option>
+                    <option value="21">2022</option>
+                    <option value="21">2023</option>
+                    <option value="21">2024</option>
+                    <option value="21">2021</option>
+                  </select>
+             
+
+            </div>
+            <div class="row m-5">
+              <div class="col-md-12 mb-5">
+                <button type="submit" class="btn btn-danger">Registrar usuario</button>
+              </div>
+            </div>
+          </div>
         </div>
-    
-      </form>
+    </div>
+    </div>
+    </form>
     </div>
 
   </section>
 
 </main>
-

@@ -4,57 +4,52 @@
     .module('prototipo')
     .service('servicioConvenio', servicioConvenio);
 
-    servicioConvenio.$inject = ['$stateParams','$state','$http','localStorageFactory']; 
-  
-  function servicioConvenio($stateParams, $state, $http, localStorageFactory) {
-  
-    const coleccionConvenio = 'listaConveniosLS';
+  servicioConvenio.$inject = ['$q', '$log', '$http'];
 
+  function servicioConvenio($q, $log, $http) {
+
+    const asyncLocalStorage = {
+      setItem: function (key, value) {
+        return Promise.resolve().then(() => {
+          let response = true;
+          localStorage.setItem(key, JSON.stringify(value));
+          return response
+        });
+      }
+    }
     let publicAPI = {
-      agregarConvenios: _agregarConvenios,
-      retornarConvenio: _retornarConvenios
+      agregarConvenio: _agregarConvenio,
+      retornarConvenio: _retornarConvenio
     }
     return publicAPI;
-    
+
     //Funciona
-    function _agregarConvenios(pconvenioNuevo){
+    function _agregarConvenio(pconvenioNuevo) {
 
-      let listaConvenios = _retornarConvenios(),
-          convenioRepetido = false,
-          registroExitoso;
+      let listaConvenios = _retornarConvenio();
+      listaConvenios.push(pconvenioNuevo);
 
-      for (let i = 0; i < listaConvenios.length; i++) {
-        if (pconvenioNuevo.getCodigo() == listaConvenios[i].getCodigo()) {
-          convenioRepetido = true;
-        }
-      }
 
-      if(convenioRepetido == true){
-        registroExitoso = false;
-      }else{
-        listaConvenios.push(pconvenioNuevo);
-        registroExitoso = localStorageFactory.setItem(coleccionConvenio, listaConvenios);
-      }
-      return registroExitoso;
+      localStorage.setItem('listaConveniosLS', JSON.stringify(listaConvenios));
     }
 
-    function _retornarConvenios(){
-    
-      let listaConveniosTemporal = []; 
-      let listaConveniosLocalS = localStorageFactory.getItem(coleccionConvenio);
+    function _retornarConvenio() {
 
-      if(listaConveniosLocalS == null){
-    
+      let listaConveniosTemporal = [];
+      let listaConveniosLocalS = JSON.parse(localStorage.getItem('listaConveniosLS'));
+
+      if (listaConveniosLocalS == null) {
+
         listaConveniosTemporal = [];
-      }else{
+      } else {
         listaConveniosLocalS.forEach(obj => {
-          
-          let objConvenio = new Convenio(obj.codigoConvenio,obj.nombreConvenio,obj.descripcionConvenio,obj.institucionConvenio,obj.costoConvenio);
-          listaConveniosTemporal.push(objConvenio);
-        })
+
+          let objConvenio = new Convenio(obj.codigoConvenio, obj.nombreConvenio, obj.descripcionConvenio, obj.institucionConvenio, obj.costoConvenio);
+          listaConveniosTemporal.push(objConvenio)
+        });
       }
       return listaConveniosTemporal;
     }
 
-    }
-  })();
+  }
+})();

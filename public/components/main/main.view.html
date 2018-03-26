@@ -1,74 +1,76 @@
-<main>
-  <section class="container-fluid hero">
-    <div class="row">
-      <div class="col-md-12 d-flex align-items-center">
-        <div class="col-md-6 d-flex justify-content-center mt-5" style="background-color: yellow;">
-            <div class="justify-content-center align-items-center">
-              <img src="sources/img/braulio.jpg" class="img-fluid rounded-circle" width="300px" height="300px" alt="">
-            </div>
-          </div>
-          <div class="col-md-6 d-flex justify-content-center mt-5" style="background-color: green;">
-            <div class="">
-              <h1 class="mt-5">{{vm.usuarioActivo.primerNombre}} {{vm.usuarioActivo.primerApellido}}</h1>
-              <p>Cédula: {{vm.usuarioActivo.cedula}}</p>
-              <p>Correo: {{vm.usuarioActivo.correo}}</p>
-              <p>Fecha de nacimiento: {{vm.usuarioActivo.fecha | date:'dd-MM-yyyy'}}</p>
-              <p>Sexo: {{vm.usuarioActivo.genero}}</p>
-              <p>{{vm.usuarioActivo.provincia}}, {{vm.usuarioActivo.canton}}, {{vm.usuarioActivo.distrito}}</p>
-            </div>
-          </div>
+<header>
+  <nav class="navbar navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" ui-sref="main">
+      <img src="/sources/img/landing/5.png" width="90" height="40" class="d-inline-block align-top" alt="">
+    </a>
+
+    <button class="btn btn-danger" type="button" ng-click="vm.cerrarSesion()">Cerrar sesión</button>
+
+  </nav>
+</header>
+<main class="hero" id="mainPrincipal">
+  <div class="container-fluid my-5">
+
+    <div class="row jumbotron">
+      <div class="col-md-6 d-flex justify-content-center">
+        <div class="">
+          <img src="sources/img/avatar.jpeg" class="img-fluid rounded-circle" width="200px" height="200px" alt="">
+        </div>
       </div>
-      
+      <div class="col-md-6 d-flex">
+        <div id="informacion">
+          <h1>{{vm.usuarioActivo.primerNombre}} {{vm.usuarioActivo.primerApellido}}</h1>
+          <p>Cédula: {{vm.usuarioActivo.cedula}}</p>
+          <p>Correo: {{vm.usuarioActivo.correo}}</p>
+          <p>Fecha de nacimiento: {{vm.usuarioActivo.fecha | date:'dd-MM-yyyy'}}</p>
+          <p>Sexo: {{vm.usuarioActivo.genero}}</p>
+          <p>{{vm.usuarioActivo.provincia}}, {{vm.usuarioActivo.canton}}, {{vm.usuarioActivo.distrito}}</p>
+          <button type="button" class="btn btn-danger">Modificar información</button>
+        </div>
+      </div>
     </div>
-  </section>
+
+    <div class="row">
+      <div class="col-md-3">
+        <div class="navbar navbar-expand-lg navbar-light bg-light" id="navVertical">
+          <ul class="nav flex-column">
+            <li class="nav-item my-2" ng-if="vm.usuarioActivo.rol==0||vm.usuarioActivo.rol==2||vm.usuarioActivo.rol==3">
+              <a class="nav-link" ui-sref="main.registrarCliente" ui-sref-active="active">Registrar usuario</a>
+            </li>
+            <li class="nav-item my-2" ng-if="vm.usuarioActivo.rol==0">
+              <a class="nav-link" ui-sref="main.registrarEncargadoAduana" ui-sref-active="active">Registrar encancargado de aduana</a>
+            </li>
+            <li class="nav-item my-2" ng-if="vm.usuarioActivo.rol==0">
+              <a class="nav-link" ui-sref="main.registrarEncargadoSucursal" ui-sref-active="active">Registrar encargado de sucursal</a>
+            </li>
+            <li class="nav-item my-2" ng-if="vm.usuarioActivo.rol==0||vm.usuarioActivo.rol==2">
+              <a class="nav-link" ui-sref="" ui-sref-active="active">Registrar repartidor</a>
+            </li>
+            <li class="nav-item my-2" ng-if="vm.usuarioActivo.rol==0||vm.usuarioActivo.rol==2||vm.usuarioActivo.rol==3">
+              <a class="nav-link" ui-sref="" ui-sref-active="active">Cambiar estado de paquete</a>
+            </li>
+            <li class="nav-item my-2" ng-if="vm.usuarioActivo.rol==0||vm.usuarioActivo.rol==3">
+              <a class="nav-link" ui-sref="" ui-sref-active="active">Asignar paquete a repartidor</a>
+            </li>
+            <li class="nav-item my-2" ng-if="vm.usuarioActivo.rol==0">
+              <a class="nav-link" ui-sref="" ui-sref-active="active">Ingresar sucursal</a>
+            </li>
+            <li class="nav-item my-2" ng-if="vm.usuarioActivo.rol==0">
+              <a class="nav-link" ui-sref="" ui-sref-active="active">Editar información de sucursal</a>
+            </li>
+            <li class="nav-item my-2" ng-if="vm.usuarioActivo.rol==0">
+              <a class="nav-link" ui-sref="main.registrarConvenio" ui-sref-active="active">Registrar convenio</a>
+            </li>
+            <li class="nav-item my-2" ng-if="vm.usuarioActivo.rol==0">
+              <a class="nav-link" ui-sref="" ui-sref-active="active">Listar todos los usuarios</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div ui-view></div>
+      </div>
+    </div>
+  </div>
 </main>
-
-<ul>
-  <li>
-    <a ui-sref="main.registrarEncargadoAduana" >Registro de Encargado de Aduana</a>
-  </li>
-  <li>
-    <a ui-sref="main.registrarEncargadoSucursal">Registro de Encargado de Sucursal</a>
-  </li>
-  <li>
-    <a ui-sref="main.registrarCliente">Registrar Usuarios</a>
-  </li>
-  <li>
-    <a ui-sref="main.registrarConvenio">Registrar Convenio</a>
-  </li>
-  <li>
-      <a ui-sref="main.listarEncargadoSucursal">Listar Encargado de Sucursal</a>
-  </li>
-  <li>
-    <a ui-sref="main.listarFacturas">Listar Facturas</a>
-  </li>
-  <li>
-    <a ui-sref="main.paquetesPrealertados">Paquetes prealertados</a>
-  </li>
-  <li>
-    <a ui-sref="main.consultarPaquetesNuevosAduana">Paquetes nuevos en Aduana</a>
-  </li>
-  <li>
-    <a ui-sref="main.consultarRepartidorAsignado">Repartidor asignado</a>
-  </li>
-  <li>
-    <a ui-sref="main.consultarCasillero">Consultar casillero</a>
-  </li>
-
-    <li>
-      <a ui-sref="main.registrarEncargadoAduana" >Registro de Encargado de Aduana</a>
-    </li>
-    <!-- <li>
-      <a ui-sref="main.registrarEncargadoSucursal">Registro de Encargado de Sucursal</a>
-    </li> -->
-    <!-- <li>
-      <a ui-sref="main.registrarCliente">Registrar Usuarios</a>
-    </li> -->
-    <!-- <li>
-      <a ui-sref="main.registrarConvenio">Registrar Convenio</a>
-    </li>
-  </ul> -->
-  </ul>
-<div class="col-md-12" ui-view></div>
-
-<!-- <button type="submit" class="btn btn-danger" ng-click="vm.cerrarSesion()">Cerrar sesión</button> -->
+<footer-Principal></footer-Principal>
