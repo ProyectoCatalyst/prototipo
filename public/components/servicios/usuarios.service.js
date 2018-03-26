@@ -30,7 +30,6 @@
       retornarLicencias: _retornarLicencias,
       editarLicencias: _editarLicencias,
       retornarPaquetesAsignados: _retornarPaquetesAsignados,
-      desactivarCuenta: _desactivarCuenta,
       actualizarUsuario: _actualizarUsuario,
       obtenerListaPorEstados: _obtenerListaPorEstados
     };
@@ -493,7 +492,6 @@
         localStorageFactory.setItem(listaUsuarios, prepartidoresLS);
     }
            
-    // function _desactivarCuenta(pcorreo) {
     function _obtenerListaPorEstados(pestado) {
       let listadeusuarios = _obtenerlistadeusuarios(),
           listaFiltrada = [];
