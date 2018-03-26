@@ -14,7 +14,7 @@
       <option value="5">Cliente</option>
     </select>
   </div>
-  <div class=" table">
+  <div class="table">
     <div id="lista" class="row TituloDesactiva m-1">
       <h2>Lista de Usuarios</h2>
     </div>
@@ -34,7 +34,6 @@
             <th scope="col">Cantón</th>
             <th scope="col">Distrito</th>
             <th scope="col">Correo</th>
-            <th scope="col">Rol</th>
             <th scope="col">Desactivar</th>
           </tr>
         </div>
@@ -51,11 +50,11 @@
             <td>{{usuario.canton}}</td>
             <td>{{usuario.distrito}}</td>
             <td>{{usuario.correo}}</td>
-            <td>{{usuario.rol}}</td>
+            
         </div>
 
         <td>
-          <button class="btn btn-danger " id="btnDesactiar" type="button" ng-click="vm.DesactivarUsuarios(Usuario)">Desactivar</button>
+          <button class="btn btn-danger" id="btnDesactiar" type="button" ng-click="vm.desactivar(usuario)">Desactivar</button>
         </td>
         </tr>
 </main>
