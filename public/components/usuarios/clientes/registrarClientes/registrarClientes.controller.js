@@ -57,7 +57,7 @@
 
       let rol = 5;
 
-      console.log(pclienteNuevo);
+      // console.log(pclienteNuevo);
 
       let objTarjeta = new Tarjeta(pclienteNuevo.tipoTarjeta, pclienteNuevo.nombreTarjeta, pclienteNuevo.numeroTarjeta, pclienteNuevo.cvvTarjeta, pclienteNuevo.fechaTarjeta);
 
@@ -65,8 +65,8 @@
       
       objNuevoCliente.agregarTarjetas(objTarjeta);
       
-      console.log(objNuevoCliente);
-      console.log(objTarjeta);
+      // console.log(objNuevoCliente);
+      // console.log(objTarjeta);
       
       let registro = servicioUsuarios.agregarUsuario(objNuevoCliente);
 
