@@ -156,7 +156,7 @@
       })
 
       .state('main.registrarEncargadoAduana', {
-        url: '/registroEncargadoAduana',
+        url: '/registerCustomsManager',
         templateUrl: './components/usuarios/encargadoAduanas/registrarEncargadoAduanas/registrarEncargadoAduana.view.html',
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
@@ -171,7 +171,7 @@
       })
 
       .state('main.registrarEncargadoSucursal', {
-        url: '/registroEncargadoSucursal',
+        url: '/registerBranchManager',
         templateUrl: './components/usuarios/encargadoSucursal/registrarEncargadoSucursal/registrarEncargadoSucursal.view.html',
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
@@ -256,16 +256,31 @@
 
       .state('DesactivarUsuarios', {
         url: '/usuariosDesactivados',
-        templateUrl: './components/usuarios/listarTodosUsuarios/listarTodosUsuarios.view.html',
+        templateUrl: './components/usuarios/DesactivarUsuarios/desactivarUsuarios.view.html',
         data: {
           pageTitle: 'Lista de Usuarios | Correos de Costa Rica'
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/usuarios/listarTodosUsuarios/listarTodosUsuarios.controller.js')
+            return $ocLazyLoad.load('./components/usuarios/DesactivarUsuarios/desactivarUsuarios.controller.js')
           }]
         },
-        controller: 'controladorListarTodosUsuarios',
+        controller: 'controladorListarDesactivados',
+        controllerAs: 'vm'
+      })
+
+      .state('editarEncargadoAduana', {
+        url: '/editarEncargadoAduana',
+        templateUrl: './components/usuarios/encargadoAduanas/editarEncargadoAduana/editarEncargadoAduana.view.html',
+        data: {
+          pageTitle: 'Editar Perfil | Correos de Costa Rica'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/encargadoAduanas/editarEncargadoAduana/editarEncargadoAduana.controller.js')
+          }]
+        },
+        controller: 'controladorEditarEncargadoAduana',
         controllerAs: 'vm'
       });
 
