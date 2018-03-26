@@ -15,7 +15,7 @@ class Paquete{
     return this.tipoPaquete;
   }
   capturarEstadoPaquete(){
-    return this.tipoPaquete;
+    return this.estadoPaquete;
   }
   capturarCostoTotalPaquete(){
     return this.costoTotalPaquete;
@@ -123,7 +123,7 @@ class Cliente extends Usuario {
 
 class Convenio{
 
-  constructor(pcodigoConvenio,pnombreConvenio,pdescripcionConvenio,pinstitucionConvenio,pcostoConvenio, ){
+  constructor(pcodigoConvenio,pnombreConvenio,pdescripcionConvenio,pinstitucionConvenio,pcostoConvenio){
 
     this.codigoConvenio = pcodigoConvenio;
     this.nombreConvenio = pnombreConvenio;

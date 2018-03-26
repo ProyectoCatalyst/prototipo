@@ -17,8 +17,6 @@
 
     let objSucursalTemp = new Sucursal(objSucursalSinFormato.codigoSucursal, objSucursalSinFormato.nombreSucursal, objSucursalSinFormato.provincia, objSucursalSinFormato.canton, objSucursalSinFormato.distrito);
 
-    console.log(objSucursalSinFormato);
-
     vm.sucursalActiva = objSucursalTemp.nombreSucursal;
 
     vm.SucursalMod = {};
@@ -45,7 +43,6 @@
     }).then(function (success) {
       vm.provincias = success.data
     }, function (error) {
-      console.log("Ocurrió un error provincia" + error);
     });
     
     vm.rellenarCantones = (pidProvincia) => {
@@ -61,7 +58,6 @@
         }
         vm.cantones = cantones;
       }, (error) => {
-        console.log("Ocurrió un error canton" + error.data)
       });
     }
     
@@ -78,7 +74,6 @@
         }
         vm.distritos = distritos;
       }, (error) => {
-        console.log("Ocurrió un error distrito " + error.data)
       });
     }
 
@@ -107,7 +102,6 @@
     }
 
     vm.eliminarSucursal = (psucursalEliminar) => {
-      console.log(psucursalEliminar);
       swal({
         title: "¿Seguro que desesa eliminar la sucursal?",
         text: "Una vez eliminada, no será capaz de recuperar la sucursal seleccionada",

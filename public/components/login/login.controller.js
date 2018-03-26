@@ -34,7 +34,7 @@
     }
 
     vm.registrar = () => {
-      $state.go('registroUsuarios');
+      $state.go('registrarCliente');
     }
     
   }

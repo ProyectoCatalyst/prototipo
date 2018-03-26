@@ -16,7 +16,6 @@
       }).then( (success) => {
         vm.provincias = success.data;
       }, (error) => {
-        console.log("Ocurrió un error " + error.data);
     });
 
     vm.rellenarCantones = (pidProvincia) => {
@@ -32,7 +31,6 @@
         }
         vm.cantones = cantones;
       }, (error) => {
-        console.log("Ocurrió un error " + error.data)
       });
     }
 
@@ -49,7 +47,6 @@
         }
         vm.distritos = distritos;
       }, (error) => {
-        console.log("Ocurrió un error " + error.data)
       });
     }
 
@@ -60,8 +57,6 @@
       let rol = 5;
       
       let objNuevoCliente = new Cliente(pclienteNuevo.nombre, pclienteNuevo.segundoNombre, pclienteNuevo.primerApellido, pclienteNuevo.segundoApellido, pclienteNuevo.cedula, pclienteNuevo.fecha,  pclienteNuevo.sexo, pclienteNuevo.ubicacion, pclienteNuevo.provincia.name, pclienteNuevo.canton.name, pclienteNuevo.distrito.name, pclienteNuevo.direccion,  pclienteNuevo.correo, pclienteNuevo.contrasenna, rol, pclienteNuevo.telefono); 
-      
-      console.log(objNuevoCliente);
       
       let registro = servicioUsuarios.agregarCliente(objNuevoCliente);
 

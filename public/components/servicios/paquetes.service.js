@@ -10,7 +10,9 @@
     let publicAPI = {
       prealertarPaquete: _prealertarPaquete,
       retornarPaquetesPrealertados: _retornarPaquetesPrealertados,
-      numeroTracking: _numeroTracking
+      numeroTracking: _numeroTracking,
+      encontrarEstadoActivo: _encontrarEstadoActivo,
+      modificarEstado: _modificarEstado 
     }
     return publicAPI;
 
@@ -39,7 +41,7 @@
         listaPaquetesPrealertados = [];
       } else {
         listaPaquetesPrealertadosLocal.forEach(obj => {
-          let objPaquetesPrealertados = new Paquete(obj.trackingPaquete, obj.tipoPaquete,obj.pesoPaquete,obj.precioPaquete, obj.estadoPaquete);
+          let objPaquetesPrealertados = new Paquete(obj.trackingPaquete, obj.tipoPaquete, obj.pesoPaquete, obj.precioPaquete, obj.estadoPaquete);
 
           listaPaquetesPrealertados.push(objPaquetesPrealertados)
         });
@@ -51,6 +53,34 @@
       let numeroTracking = 0;
       numeroTracking = Math.round((Math.random() * 93979293));
       return numeroTracking;
+    }
+
+    function _encontrarEstadoActivo(pobjPaqueteTemp) {
+      let paqueteEncontrado = [];
+      let listaPaquetesPrealertados = _retornarPaquetesPrealertados();
+      let tamanno = listaPaquetesPrealertados.length;
+      for (let i = 0; i < tamanno; i++) {
+        if (pobjPaqueteTemp.estadoPaquete == listaPaquetesPrealertados[i].capturarTrackingPaquete()) {
+          paqueteEncontrado = listaPaquetesPrealertados[i].capturarEstadoPaquete()
+        }
+      }
+      return paqueteEncontrado;
+    }
+
+    function _modificarEstado(pmodificarEstado) {
+      let listaPaquetes = _retornarPaquetesPrealertados();
+
+      for (let i = 0; i < listaPaquetes.length; i++) {
+        if (pmodificarEstado.estadoPaquete == listaPaquetes[i].capturarTrackingPaquete()) {
+          listaPaquetes[i].capturarEstadoPaquete() = pmodificarEstado.estadoPaquete;
+        }
+      }
+      actualizarListaPaquetes(listaPaquetes);
+    }// fin función actualizarEstado
+
+
+    function actualizarListaPaquetes(listaPaquetes) {
+      localStorage.setItem('listaPaquetesPrealertadosLS', JSON.stringify(listaPaquetes));
     }
   }
 })();

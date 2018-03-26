@@ -15,7 +15,6 @@
     }).then(function (success) {
       vm.tipoPaquetes = success.data
     }, function (error) {
-      console.log("Ocurrió un error tipoPaquete" + error);
     });//tipoPaquete
 
     vm.nuevoPaquetePrealertado = {};
@@ -25,14 +24,11 @@
 
     listarPaquetesPrealertados();
     vm.prealertarPaquete = (pnuevoPaquetePrealertado) => {
-      console.log(pnuevoPaquetePrealertado);
 
       pnuevoPaquetePrealertado.estadoPaquete = 'Prealertado';
 
       let objNuevoPaquetePrealertado = new Paquete(pnuevoPaquetePrealertado.trackingPaquete, pnuevoPaquetePrealertado.tipoPaquete,pnuevoPaquetePrealertado.pesoPaquete, pnuevoPaquetePrealertado.precioPaquete, pnuevoPaquetePrealertado.estadoPaquete);
 //pnuevoPaquetePrealertado.costoTotalPaquete
-      console.log('objeto con paquete');
-      console.log(objNuevoPaquetePrealertado);
 
       let codigoValidado = servicioPaquetes.prealertarPaquete(objNuevoPaquetePrealertado);
 

@@ -16,7 +16,6 @@
     }).then((success) => {
       vm.provincias = success.data
     }, function (error) {
-      console.log("Ocurrió un error" + error);
     });
 
     vm.rellenarCantones = (pidprovincia) => {
@@ -32,7 +31,6 @@
         }
         vm.cantones = cantones
       }, function (error) {
-        console.log("Ocurrió un error" + error);
       });
     };
 
@@ -50,7 +48,6 @@
         }
         vm.distritos = distritos
       }, function (error) {
-        console.log("Ocurrió un error" + error);
       });
     };
 
@@ -62,8 +59,6 @@
       let rol = 3;
 
       let objEncargadoSucursalTem = new EncargadoSucursales (pnuevoEncargadoSucursal.nombre, pnuevoEncargadoSucursal.segundoNombre, pnuevoEncargadoSucursal.apellido, pnuevoEncargadoSucursal.segundoApellido, pnuevoEncargadoSucursal.cedula, pnuevoEncargadoSucursal.fecha, pnuevoEncargadoSucursal.genero, pnuevoEncargadoSucursal.ubicacion, pnuevoEncargadoSucursal.provincia.name, pnuevoEncargadoSucursal.canton.name, pnuevoEncargadoSucursal.distrito.name, pnuevoEncargadoSucursal.direccion,pnuevoEncargadoSucursal.correo, pnuevoEncargadoSucursal.contrasenna, rol);
-
-      console.log(objEncargadoSucursalTem);
 
       let registro = servicioUsuarios.agregarUsuario(objEncargadoSucursalTem);
 

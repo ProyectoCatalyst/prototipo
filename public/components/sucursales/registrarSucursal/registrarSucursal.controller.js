@@ -15,7 +15,6 @@
     }).then(function (success) {
       vm.provincias = success.data
     }, function (error) {
-      console.log("Ocurrió un error provincia" + error);
     });//provincias
 
     vm.rellenarCantones = (pidProvincia) => {
@@ -31,7 +30,6 @@
         }
         vm.cantones = cantones;
       }, (error) => {
-        console.log("Ocurrió un error canton" + error.data)
       });
     }//cantones
 
@@ -48,7 +46,6 @@
         }
         vm.distritos = distritos;
       }, (error) => {
-        console.log("Ocurrió un error distrito " + error.data)
       });
     }//distrito
 
@@ -58,14 +55,10 @@
 
     listarSucursales();
     vm.registrarSucursal = (psucursalNueva) => {
-      console.log(psucursalNueva);
       if(psucursalNueva.estadoSucursal==null){
         psucursalNueva.estadoSucursal = true;
       }
       let objNuevaSucursal = new Sucursal(psucursalNueva.codigoSucursal, psucursalNueva.nombreSucursal, psucursalNueva.provincia, psucursalNueva.canton, psucursalNueva.distrito, psucursalNueva.estadoSucursal);
-
-      console.log('objeto con sucursal');
-      console.log(objNuevaSucursal);
 
       let codigoValidado = servicioSucursales.agregarSucursal(objNuevaSucursal);
 

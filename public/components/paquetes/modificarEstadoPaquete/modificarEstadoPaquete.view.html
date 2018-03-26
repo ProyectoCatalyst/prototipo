@@ -1,17 +1,20 @@
-<section class="row">
-  <div class="container">
-    <h1>Cambiar estado del paquete: {{vm.paqueteActivo}}</h1>
+<div class="container">
+  <div class="container" id="header">
+    <form ng-submit="vm.actualizarPaquete(vm.PaquetesPrealertadosMod)">
+      <form>
+        <h1>Cambiar estado del paquete: #{{vm.informacionPaquete.trackingPaquete}}</h1>
 
-    <div class="col-4">
-      <form ng-submit="vm.CambiarPaqueteMod(vm.EstadoPaqueteMod)">
+
         <div class="form-group">
-          <label for="RadioEstadoPaquete">Seleccione el estado del paquete: </label>
-          <input type="radio" ng-model="vm.EstadoPaqueteMod.estadoPaquete" value="string" [name="cambiar estado" ] [ng-change="string"
-            ] ng-value="string">
+          <label for="sltEstadosPaquetes">estado del paquete</label>
+          <select id="sltEstadosPaquetes" ng-options="estadosPaquetes as estadosPaquetes.name for estadosPaquetes in vm.estadosPaquetes track by estadosPaquetes._id"
+            ng-model="vm.modPaquete.estadosPaquetes" class="custom-select" required>
+            <option value="">Seleccione el nuevo estado del paquete</option>
+          </select>
         </div>
 
+        <button type="submit" class="btn btn-primary">Actualzar estado</button>
       </form>
 
-    </div>
   </div>
-</section>
+</div>

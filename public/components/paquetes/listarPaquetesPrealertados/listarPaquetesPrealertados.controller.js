@@ -6,17 +6,18 @@
     .controller('controladorlistaPaquetesPrealertados', controladorlistaPaquetesPrealertados)
 
   controladorlistaPaquetesPrealertados.$inject = [ '$stateParams','$state', 'servicioPaquetes']
-  function controladorlistaPaquetesPrealertados($state, $stateParams, servicioPaquetes) {
+  function controladorlistaPaquetesPrealertados( $stateParams, $state, servicioPaquetes) {
     let vm = this;
 
     vm.listarPaquetesPrealertados = servicioPaquetes.retornarPaquetesPrealertados();
 
-    vm.PaquetesPrealeconsultarEstadoPaquetertados = (paquetesPrealertados) => {
-      $state.go('main.consultarEstadoPaquete', { objPaquetes: JSON.stringify(paquetesPrealertados) });
+    vm.estadoPaquete = (ppaquetesPrealertados) => {
+      
+      $state.go('main.estadoPaquete', { objPaqueteEstado: JSON.stringify(ppaquetesPrealertados) });
     }
 
     vm.agregarPaquetes = () => {
-      $state.go('main.prealertarPaquetes');
+      $state.go('main.prealertarPaquetes')
     }
 
     vm.retornarPaquetesPrealertados = servicioPaquetes.retornarPaquetesPrealertados();

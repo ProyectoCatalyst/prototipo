@@ -1,49 +1,55 @@
-<main>
-  <section class="container-fluid hero">
-    <div class="row">
-      <div class="col-md-12 d-flex align-items-center">
-        <div class="col-md-6 d-flex justify-content-center mt-5" style="background-color: yellow;">
-            <div class="justify-content-center align-items-center">
-              <img src="sources/img/braulio.jpg" class="img-fluid rounded-circle" width="300px" height="300px" alt="">
-            </div>
-          </div>
-          <div class="col-md-6 d-flex justify-content-center mt-5" style="background-color: green;">
-            <div class="">
-              <h1 class="mt-5">{{vm.usuarioActivo.primerNombre}} {{vm.usuarioActivo.primerApellido}}</h1>
-              <p>Cédula: {{vm.usuarioActivo.cedula}}</p>
-              <p>Correo: {{vm.usuarioActivo.correo}}</p>
-              <p>Fecha de nacimiento: {{vm.usuarioActivo.fecha | date:'dd-MM-yyyy'}}</p>
-              <p>Sexo: {{vm.usuarioActivo.genero}}</p>
-              <p>{{vm.usuarioActivo.provincia}}, {{vm.usuarioActivo.canton}}, {{vm.usuarioActivo.distrito}}</p>
-            </div>
-          </div>
+<navegacion-Principal></navegacion-Principal>
+<main class="hero" id="mainPrincipal">
+  <div class="container-fluid mt-5">
+
+    <div class="row jumbotron">
+      <div class="col-md-6 d-flex justify-content-center">
+        <div class="">
+          <img src="sources/img/avatar.jpeg" class="img-fluid rounded-circle" width="200px" height="200px" alt="">
+        </div>
       </div>
-      
+      <div class="col-md-6 d-flex">
+        <div id="informacion">
+          <h1>{{vm.usuarioActivo.primerNombre}} {{vm.usuarioActivo.primerApellido}}</h1>
+          <p>Cédula: {{vm.usuarioActivo.cedula}}</p>
+          <p>Correo: {{vm.usuarioActivo.correo}}</p>
+          <p>Fecha de nacimiento: {{vm.usuarioActivo.fecha | date:'dd-MM-yyyy'}}</p>
+          <p>Sexo: {{vm.usuarioActivo.genero}}</p>
+          <p>{{vm.usuarioActivo.provincia}}, {{vm.usuarioActivo.canton}}, {{vm.usuarioActivo.distrito}}</p>
+          <button type="button" class="btn btn-danger">Modificar información</button>
+        </div>
+      </div>
     </div>
-  </section>
+
+    <div class="row">
+      <div class="col-md-12">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" ui-sref="main.registrarEncargadoAduana" ui-sref-active="active">Registrar encancargado de aduana</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" ui-sref="main.registrarEncargadoSucursal" ui-sref-active="active">Registrar encargado de sucursal</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" ui-sref="main.registrarConvenio" ui-sref-active="active">Registrar convenio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" ui-sref="main.registroSucursales" ui-sref-active="active">Registrar sucursal</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" ui-sref="main.prealertarPaquetes" ui-sref-active="active">Pre-alertar paquete</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div ui-view></div>
+      </div>
+    </div>
 </main>
-
-<ul>
-  <li>
-    <a ui-sref="main.registrarEncargadoAduana" >Registro de Encargado de Aduana</a>
-  </li>
-  <li>
-    <a ui-sref="main.registrarEncargadoSucursal">Registro de Encargado de Sucursal</a>
-  </li>
-  <li>
-    <a ui-sref="main.registrarCliente">Registrar Usuarios</a>
-  </li>
-  <li>
-    <a ui-sref="main.registroSucursales">Registrar Sucursales</a>
-  </li>
-   <li>
-    <a ui-sref="main.prealertarPaquetes">Prealertar paquetes</a>
-  </li>
-  <li>
-    <a ui-sref="main.registrarConvenio">Registrar Convenio</a>
-  </li>
-</ul>
-
-<div class="col-md-12" ui-view></div>
-
-<!-- <button type="submit" class="btn btn-danger" ng-click="vm.cerrarSesion()">Cerrar sesión</button> -->
+<footer-Principal></footer-Principal>

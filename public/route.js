@@ -14,10 +14,17 @@
         templateUrl: './components/landingPage/landingPage.view.html',
         data: {
           pageTitle: 'Landing Page | Inicio'
-        }
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/login/login.controller.js')
+          }]
+        },
+        controller: 'controladorInicioSesion',
+        controllerAs: 'vm'
       })
 
-      
+
       .state('main', {
         url: '/main',
         templateUrl: './components/main/main.view.html',
@@ -63,7 +70,7 @@
         controllerAs: 'vm'
       })
 
-      .state('main.registrarCliente', {
+      .state('registrarCliente', {
         url: '/registerCustomers',
         templateUrl: './components/usuarios/clientes/registrarClientes/registrarClientes.view.html',
         data: {
@@ -77,12 +84,12 @@
         controller: 'controladorRegistrarCliente',
         controllerAs: 'vm'
       })
-      
+
       .state('main.registroSucursales', {
         url: '/registroSucursales',
         templateUrl: './components/sucursales/registrarSucursal/registrarSucursal.view.html',
         data: {
-          pageTitle: 'Registro Sucursal | Inicio'
+          pageTitle: 'Registro Sucursal | Sucursal'
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
@@ -96,85 +103,107 @@
 
       .state('main.editarSucursal', {
         url: '/editarSucursal',
-          templateUrl: './components/sucursales/editarSucursales/editarSucursal.view.html',
-          data: {
-            pageTitle: 'Editar Sucursal | Inicio'
-          },
-          resolve: {
-            load: ['$ocLazyLoad', ($ocLazyLoad) => {
-              return $ocLazyLoad.load('./components/sucursales/editarSucursales/editarSucursal.controller.js')
-            }]
-          },
-          params:{
-            objSucursal:''
-          },
-          controller: 'controladorEditarSucursal',
-          controllerAs: 'vm'
-        })
-
-        .state('main.listarSucursales', {
-          url: '/listarSucursales',
-          templateUrl: './components/sucursales/listarSucursales/listarSucursales.view.html',
-          data: {
-            pageTitle: 'lista Sucursales | Inicio'
-          },
-          resolve: {
-            load: ['$ocLazyLoad', ($ocLazyLoad) => {
-              return $ocLazyLoad.load('./components/sucursales/listarSucursales/listarSucursales.controller.js')
-            }]
-          },
-          params:{
-            objSucursal:''
-          },
-          controller: 'controladorlistaSucursales',
-          controllerAs: 'vm'
-        })
-
-        .state('main.prealertarPaquetes', {
-          url: '/prealertarPaquetes',
-          templateUrl: './components/paquetes/prealertarPaquete/prealertaPaquete.view.html',
-          data: {
-            pageTitle: 'Prealertar paquete | Inicio'
-          },
-          resolve: {
-            load: ['$ocLazyLoad', ($ocLazyLoad) => {
-              return $ocLazyLoad.load('./components/paquetes/prealertarPaquete/prealertarPaquete.controller.js')
-            }]
-          },
-          controller: 'controladorPrealertarPaquete',
-          controllerAs: 'vm'
-        })
-        
-        .state('main.listarPaquetesPrealertados', {
-          url: '/listarPaquetesPrealertados',
-          templateUrl: './components/paquetes/listarPaquetesPrealertados/listarPaquetesPrealertados.view.html',
-          data: {
-            pageTitle: 'lista Paquetes prealertados | Inicio'
-          },
-          resolve: {
-            load: ['$ocLazyLoad', ($ocLazyLoad) => {
-              return $ocLazyLoad.load('./components/paquetes/listarPaquetesPrealertados/listarPaquetesPrealertados.controller.js')
-            }]
-          },
-          params:{
-            objPaqueteprealertado:''
-          },
-          controller: 'controladorlistaPaquetesPrealertados',
-          controllerAs: 'vm'
-        })
-
-      .state('inicioSesion', {
-        url: '/inicioSesion',
-        templateUrl: './components/login/login.view.html',
+        templateUrl: './components/sucursales/editarSucursales/editarSucursal.view.html',
         data: {
-          pageTitle: 'Inicio de Sesión | Correos CR'
+          pageTitle: 'Editar Sucursal | Sucursal'
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/login/login.controller.js')
+            return $ocLazyLoad.load('./components/sucursales/editarSucursales/editarSucursal.controller.js')
           }]
         },
-        controller: 'controladorInicioSesion',
+        params: {
+          objSucursal: ''
+        },
+        controller: 'controladorEditarSucursal',
+        controllerAs: 'vm'
+      })
+
+      .state('main.listarSucursales', {
+        url: '/listarSucursales',
+        templateUrl: './components/sucursales/listarSucursales/listarSucursales.view.html',
+        data: {
+          pageTitle: 'lista Sucursales | Sucursales'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/sucursales/listarSucursales/listarSucursales.controller.js')
+          }]
+        },
+        params: {
+          objSucursal: ''
+        },
+        controller: 'controladorlistaSucursales',
+        controllerAs: 'vm'
+      })
+
+      .state('main.prealertarPaquetes', {
+        url: '/prealertarPaquetes',
+        templateUrl: './components/paquetes/prealertarPaquete/prealertaPaquete.view.html',
+        data: {
+          pageTitle: 'Prealertar paquete | Paquete'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/paquetes/prealertarPaquete/prealertarPaquete.controller.js')
+          }]
+        },
+        controller: 'controladorPrealertarPaquete',
+        controllerAs: 'vm'
+      })
+
+      .state('main.listarPaquetesPrealertados', {
+        url: '/listarPaquetesPrealertados',
+        templateUrl: './components/paquetes/listarPaquetesPrealertados/listarPaquetesPrealertados.view.html',
+        data: {
+          pageTitle: 'lista Paquetes prealertados | Paquetes'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/paquetes/listarPaquetesPrealertados/listarPaquetesPrealertados.controller.js')
+          }]
+        },
+        params: {
+          objPaqueteprealertado: ''
+        },
+        controller: 'controladorlistaPaquetesPrealertados',
+        controllerAs: 'vm'
+      })
+
+
+      .state('main.estadoPaquete', {
+        url: '/estadoPaquete',
+        templateUrl: './components/paquetes/mostrarEstadoPaquete/mostrarEstadoPaquete.view.html',
+        data: {
+          pageTitle: 'Estado paquete | Paquetes'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/paquetes/mostrarEstadoPaquete/mostrarEstadoPaquete.controller.js')
+          }]
+        },
+        params: {
+          objPaqueteEstado: ''
+        },
+        controller: 'controladorMostrarEstadoPaquete',
+        controllerAs: 'vm'
+      })
+
+      .state('main.modificarEstadoPaquete', {
+        url: '/modificarEstadoPaquete',
+        templateUrl: './components/paquetes/modificarEstadoPaquete/modificarEstadoPaquete.view.html',
+        data: {
+          pageTitle: 'modificar estado paquete | paquete'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/paquetes/modificarEstadoPaquete/modificarEstadoPaquete.controller.js')
+          }]
+        },
+        params: {
+          objPaqueteModEstado: ''
+        },
+        controller: 'controladorModificarEstadoPaquete',
         controllerAs: 'vm'
       })
 
@@ -247,6 +276,6 @@
     //   controllerAs: 'vm'
     // })
 
-    // $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/');
   };
 })();

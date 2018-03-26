@@ -4,9 +4,9 @@
     .module('prototipo')
     .service('servicioConvenio', servicioConvenio);
 
-  servicioConvenio.$inject = ['$stateParams', '$state', '$http', 'servicioConvenio'];
+  servicioConvenio.$inject = ['$q', '$log', '$http'];
 
-  function servicioConvenio($stateParams, $state, $http, servicioConvenio) {
+  function servicioConvenio($q, $log, $http) {
 
     const asyncLocalStorage = {
       setItem: function (key, value) {
@@ -18,7 +18,7 @@
       }
     }
     let publicAPI = {
-      agregarConvenios: _agregarConvenios,
+      agregarConvenio: _agregarConvenio,
       retornarConvenio: _retornarConvenio
     }
     return publicAPI;
@@ -26,14 +26,14 @@
     //Funciona
     function _agregarConvenio(pconvenioNuevo) {
 
-      let listaConvenios = retornarConvenios();
+      let listaConvenios = _retornarConvenio();
       listaConvenios.push(pconvenioNuevo);
 
 
       localStorage.setItem('listaConveniosLS', JSON.stringify(listaConvenios));
     }
 
-    function _retornarConvenios() {
+    function _retornarConvenio() {
 
       let listaConveniosTemporal = [];
       let listaConveniosLocalS = JSON.parse(localStorage.getItem('listaConveniosLS'));
@@ -45,8 +45,8 @@
         listaConveniosLocalS.forEach(obj => {
 
           let objConvenio = new Convenio(obj.codigoConvenio, obj.nombreConvenio, obj.descripcionConvenio, obj.institucionConvenio, obj.costoConvenio);
-          listaConveniosTemporal.push(objConvenio);
-        })
+          listaConveniosTemporal.push(objConvenio)
+        });
       }
       return listaConveniosTemporal;
     }

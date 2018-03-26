@@ -1,0 +1,35 @@
+<main class="container-fluid">
+  <div class="container" id="header">
+    <section class="row">
+      <div class="col-md-12 mt-5">
+
+        <h1 class="text-center">Estado paquete #{{vm.paqueteActivo}}</h1>
+
+        <table class="table mt-5">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col-6">Tracking de paquete</th>
+              <th scope="col-6">Estado de paquete</th>
+              <th scope="col-6">Actualizar</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+  
+              <td><b>{{vm.mostrarPaquete.trackingPaquete}}<b></td>
+                <td><b>{{vm.mostrarPaquete.estadoPaquete}}<b></td>
+        
+              <td>
+                <button type="click" class="btn btn-secundary" ng-click="vm.modificarEstadoPaquete(vm.mostrarPaquete)">
+                  Modificar estado
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <button type="button" class="btn btn-secondary" ng-click="vm.listaPaquetes()">Regresar</button>
+      </div>
+    </section>
+  </div>
+</main>
