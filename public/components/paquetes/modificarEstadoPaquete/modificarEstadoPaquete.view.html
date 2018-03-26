@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="container" id="header">
+    <form ng-submit="vm.actualizarPaquete(vm.PaquetesPrealertadosMod)">
+      <form>
+        <h1>Cambiar estado del paquete: #{{vm.informacionPaquete.trackingPaquete}}</h1>
+
+
+        <div class="form-group">
+          <label for="sltEstadosPaquetes">estado del paquete</label>
+          <select id="sltEstadosPaquetes" ng-options="estadosPaquetes as estadosPaquetes.name for estadosPaquetes in vm.estadosPaquetes track by estadosPaquetes._id"
+            ng-model="vm.PaquetesPrealertadosMod.estadosPaquetes" class="custom-select" required>
+            <option value="">Seleccione el nuevo estado del paquete</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Actualzar estado</button>
+      </form>
+      <button type="button" class="btn btn-secondary" ng-click="vm.regresar()">Regresar</button>
+
+  </div>
+</div>

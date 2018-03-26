@@ -1,3 +1,58 @@
+class Paquete{
+  constructor(ptrackingPaquete, ptipoPaquete,ppesoPaquete, pprecioPaquete,pestadoPaquete){
+    this.trackingPaquete = ptrackingPaquete;
+    this.tipoPaquete = ptipoPaquete;
+    this.pesoPaquete = ppesoPaquete;
+    this.precioPaquete = pprecioPaquete;
+    this.estadoPaquete = pestadoPaquete;
+    
+  }//fin contructor
+
+  capturarTrackingPaquete(){
+    return this.trackingPaquete;
+  }
+  capturarTipoPaquete(){
+    return this.tipoPaquete;
+  }
+  capturarEstadoPaquete(){
+    return this.estadoPaquete;
+  }
+  capturarCostoTotalPaquete(){
+    return this.costoTotalPaquete;
+  }
+}//fin class paquete
+
+class Sucursal{
+  constructor(pcodigoSucursal, pnombreSucursal, pprovincia, pcanton, pdistrito, pestadoSucursal){
+    this.codigoSucursal = pcodigoSucursal;
+    this.nombreSucursal = pnombreSucursal;
+    this.provincia = pprovincia;
+    this.canton = pcanton;
+    this.distrito = pdistrito;
+    //this.encargadoSucursal = pencargadoSucursal;
+    //this.repartidoresSucursal = [];
+    this.estadoSucursal = pestadoSucursal;
+
+  }//fin constructor clase sucursal
+
+
+
+  capturarNombreSucursal(){
+    return this.nombreSucursal;
+  }
+  capturarCodigoSucursal(){
+    return this.codigoSucursal;
+  }
+
+  retornarRepartidoresSucursal(){
+    return this.repartidoresSucursal;
+  }
+
+  retornarEstadoSucursal(){
+    return this.estadoSucursal;
+  }
+}//fin clase sucursal
+
 class Usuario {
   constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado){
     this.primerNombre = pnombre;
@@ -72,7 +127,7 @@ class Cliente extends Usuario {
 
 class Convenio{
 
-  constructor(pcodigoConvenio,pnombreConvenio,pdescripcionConvenio,pinstitucionConvenio,pcostoConvenio, ){
+  constructor(pcodigoConvenio,pnombreConvenio,pdescripcionConvenio,pinstitucionConvenio,pcostoConvenio){
 
     this.codigoConvenio = pcodigoConvenio;
     this.nombreConvenio = pnombreConvenio;
