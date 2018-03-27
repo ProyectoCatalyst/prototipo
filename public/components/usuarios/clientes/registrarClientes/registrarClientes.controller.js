@@ -78,7 +78,7 @@
           button: "Aceptar"
         });
         vm.clienteNuevo = null;
-        $state.go('landingPage');
+        // $state.go('landingPage');
       }else{
         swal({
           title: "Ha ocurrido un Error",
