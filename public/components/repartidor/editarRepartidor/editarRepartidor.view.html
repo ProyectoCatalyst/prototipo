@@ -1,0 +1,144 @@
+<main class="container">
+
+    <section class="row">
+
+        <section class="col-md-12 my-5" id="mainContent">
+
+            <h1 class="py-2" id="title">Edite la información de su cuenta</h1>
+            <p class="py-2" id="description">Edite o desactive la informacion que desee. Recuerde que la información desactivada puede ser reactivada cuando desee</p>
+
+            <form name="registrarRepartidor" class="row justify-content-center" novalidate ng-submit="vm.editarPerfil(vm.datosMod)">
+
+                <div class="col-md-5">
+
+                    <div class="form-group">
+                        <label>Nombre *</label>
+                        <input type="text" name="nombre" class="form-control" required ng-model="vm.datosMod.nombre">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Apellido *</label>
+                        <input type="text" name="primerApellido" class="form-control" required ng-model="vm.datosMod.primerApellido">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Identificación *</label>
+                        <input type="number" name="cedula" class="form-control" required ng-model="vm.datosMod.cedula">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Correo electrónico *</label>
+                        <input type="email" name="correo" class="form-control" required ng-model="vm.datosMod.correo" disabled>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Fecha nacimiento *</label>
+                        <input type="date" name="nacimiento" class="form-control" required ng-model="vm.datosMod.fechaNacimiento">
+                    </div>
+
+                    <div class="form-group">
+                            <label>Selecione sucursal en la cuál trabaja *</label>
+                            <select class="custom-select" ng-model="vm.datosMod.sucursal">
+                                <option value>Seleccione una sucursal</option>
+
+                                <option value="sucursal">Sucursal</option>  <!-- sucursal por defecto -->
+                      
+                                <option ng-repeat="datosSucursales in vm.retornarDatosSucursales" value="{{datosSucursales.codigoSucursal}}">{{datosSucursales.nombreSucursal}}</option>
+                              </select>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-5">
+
+                        <div class="form-group">
+                            <label>Segundo nombre</label>
+                            <input type="text" name="segundoNombre" class="form-control" ng-model="vm.datosMod.segundoNombre">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Segundo apellido</label>
+                            <input type="text" name="segundoApellido" class="form-control" ng-model="vm.datosMod.segundoApellido">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Telefono *</label>
+                            <input type="number" name="numero" class="form-control" required ng-model="vm.datosMod.telefono">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Telefono</label>
+                            <input type="number" name="numeroAdicional" class="form-control" ng-model="vm.datosMod.telefonoAdicional">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Sexo *</label>
+                            <select name="genero" class="custom-select" required  ng-model="vm.datosMod.genero">
+                                <option value>Seleccione un sexo</option>
+                                <option value="masculino">Masculino</option>
+                                <option value="femenino">Femenino</option>
+                                <option value="diverso">Otro</option>
+                            </select>
+                        </div>
+
+                </div>
+
+                <div class="col-md-10">
+
+                    <div class="form-group">
+                        
+                        <div class="custom-file">
+                            <input type="file" name="foto" class="custom-file-input" ng-model="vm.datosMod.foto" lang="es">
+                            <label class="custom-file-label">Suba una foto</label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-12">
+
+                    <div class="row justify-content-center">
+
+                        <div class="col-md-5">
+
+                            <div class="form-group">
+                                <label>Contrasena: *</label>
+                                <input type="password" name="contrasena" class="form-control" required ng-model="vm.datosMod.contrasenna">
+                            </div>
+                        </div>
+
+                        <div class="col-md-5">
+
+                            <div class="form-group">
+                                <label>Confirmar contrasena: *</label>
+                                <input type="password" name="confirmarContrasena" class="form-control" required ng-model="vm.datosMod.confirmarContrasenna">
+                            </div>
+
+                        </div>
+
+                    </div>
+                
+                </div>
+
+                <div class="col-md-10 mb-3">
+                    <div class="row">
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" required>
+                            <label class="custom-control-label">Acepto términos y ondiciones</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-10">
+                    <div class="row justify-content-end">
+                        <button type="submit" class="btn btn-danger col-md-5" ng-disabled="registrarRepartidor.$invalid">Registrar</button>
+                    </div>
+                </div>
+
+            </form>
+
+        </section>
+
+    </section>
+    
+</main>

@@ -67,6 +67,11 @@
             <li class="nav-item my-2" ng-if="vm.usuarioActivo.rol==1||vm.usuarioActivo.rol==2||vm.usuarioActivo.rol==3||vm.usuarioActivo.rol==4||vm.usuarioActivo.rol==5">
               <a class="nav-link" ui-sref="main.registrarConvenio" ui-sref-active="active">Registrar convenio</a>
             </li>
+            <li class="nav-item my-2" ng-if="vm.usuarioActivo.rol==4">
+                <a class="nav-link" ui-sref="main.perfilRepartidor" ui-sref-active="active">Mi perfil</a>
+              </li>
+            <li class="nav-item my-2" ng-if="vm.usuarioActivo.rol==0">
+              <a class="nav-link" ui-sref="" ui-sref-active="active">Listar todos los usuarios</a>
             <li class="nav-item my-2" ng-if="vm.usuarioActivo.rol==1||vm.usuarioActivo.rol==2||vm.usuarioActivo.rol==3||vm.usuarioActivo.rol==4||vm.usuarioActivo.rol==5">
               <a class="nav-link" ui-sref="main.listarTodosUsuarios" ui-sref-active="active">Listar todos los usuarios</a>
             </li>

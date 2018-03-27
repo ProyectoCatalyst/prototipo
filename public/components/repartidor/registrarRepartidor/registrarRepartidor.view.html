@@ -1,0 +1,152 @@
+<main class="container">
+
+    <section class="row">
+
+        <section class="col-md-12 my-5 mx-auto" id="mainContent">
+
+            <h1 class="py-2" id="title">Cree una cuenta nueva</h1>
+            <h4 class="py-2" id="subtitle">¡Es gratis y sencillo!</h4>
+            <p class="py-2" id="description"><span>Com</span>plete los siguientes datos.</p>
+
+            <form name="registrarRepartidor" class="row justify-content-center" novalidate ng-submit="vm.registrarRepartidor(vm.nuevoRegistro)">
+
+                <div class="col-md-5">
+
+                    <div class="form-group">
+                        <label>Nombre *</label>
+                        <input type="text" name="nombre" class="form-control" required ng-model="vm.nuevoRegistro.nombre">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Apellido *</label>
+                        <input type="text" name="primerApellido" class="form-control" required ng-model="vm.nuevoRegistro.primerApellido">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Identificación *</label>
+                        <input type="number" name="cedula" class="form-control" required ng-model="vm.nuevoRegistro.cedula">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Correo electrónico *</label>
+                        <input type="email" name="correo" class="form-control" required ng-model="vm.nuevoRegistro.correo">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Fecha nacimiento *</label>
+                        <input type="date" name="nacimiento" class="form-control" required ng-model="vm.nuevoRegistro.fechaNacimiento">
+                    </div>
+
+                    <div class="form-group">
+                            <label>Selecione sucursal en la cuál trabaja *</label>
+                            <select ng-model="vm.nuevoRegistro.sucursal" class="custom-select">
+                                <option value>Seleccione una sucursal</option>
+
+                                <option value="sucursal">Sucursal</option>  <!-- sucursal por defecto -->
+                      
+                                <option ng-repeat="datosSucursales in vm.retornarDatosSucursales" value="{{datosSucursales.codigoSucursal}}">{{datosSucursales.nombreSucursal}}</option>
+                              </select>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-5">
+
+                        <div class="form-group">
+                            <label>Segundo nombre</label>
+                            <input type="text" name="segundoNombre" class="form-control" ng-model="vm.nuevoRegistro.segundoNombre">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Segundo apellido</label>
+                            <input type="text" name="segundoApellido" class="form-control" ng-model="vm.nuevoRegistro.segundoApellido">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Telefono *</label>
+                            <input type="number" name="numero" class="form-control" required ng-model="vm.nuevoRegistro.telefono">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Telefono</label>
+                            <input type="number" name="numeroAdicional" class="form-control" ng-model="vm.nuevoRegistro.telefonoAdicional">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Sexo *</label>
+                            <select name="genero" class="custom-select" required  ng-model="vm.nuevoRegistro.genero">
+                                <option value>Seleccione un sexo</option>
+                                <option value="masculino">Masculino</option>
+                                <option value="femenino">Femenino</option>
+                                <option value="diverso">Otro</option>
+                            </select>
+                        </div>
+
+                </div>
+
+                <div class="col-md-10">
+
+                    <div class="form-group">
+                        
+                        <div class="custom-file">
+                            <input type="file" name="foto" class="custom-file-input" ng-model="vm.nuevoRegistro.foto" lang="es">
+                            <label class="custom-file-label">Suba una foto</label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-12">
+
+                    <div class="row justify-content-center">
+
+                        <div class="col-md-5">
+
+                            <div class="form-group">
+                                <label>Contrasena: </label>
+                                <input type="password" name="contrasena" class="form-control" required ng-model="vm.nuevoRegistro.contrasenna">
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-5">
+
+                            <div class="form-group">
+                                <label>Confirmar contrasena: </label>
+                                <input type="password" name="confirmarContrasena" class="form-control" required ng-model="vm.nuevoRegistro.confirmarContrasenna">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-10 mb-3">
+                    <div class="row">
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" required>
+                            <label class="custom-control-label">Acepto términos y ondiciones</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-10">
+                    <div class="row justify-content-end">
+                        <button type="submit" class="justify-content-end btn btn-danger col-md-5" ng-disabled="registrarRepartidor.$invalid">Crea tu cuenta</button>
+                    </div>
+                </div>
+
+                <div class="col-md-10 my-4">
+                    <div class="row justify-content-end">
+                        <button type="click" class="justify-content-end btn btn-danger col-md-5" ng-click="vm.listarRepartidores()">Mostrar todos los repartidores</button>
+                    </div>
+                </div>
+
+            </form>
+
+        </section>
+
+    </section>
+    
+</main>
