@@ -1,59 +1,42 @@
-<div ng-include="'./components/includes/_header.html'"></div>
+<header class="row" id="fondoHeader">
+  <div class="container-fluid d-none d-md-block m-2" id="logoHeader">
+    <img src="sources/img/registrar/logoMenu.png" alt="" srcset="">
+  </div>
+</header>
 <section class="row">
   <div class="container">
-    <form class="row" name="frmRegistroConvenio" ng-submit="vm.registrarConvenio(vm.ConvenioNuevo)"  autocomplete="off">
-    <div class="col-4">
-      <form ng-submit="vm.registrarConvenio(vm.ConvenioNuevo)">
+    <div class="row">
+      <div class="col-md-6 mt-5 mb-3">
+        <h1 id="tituloPrincipal" class="">Registrar convenio</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <form ng-submit="vm.registrarConvenio(vm.ConvenioNuevo)">
           <div class="form-group">
             <label for="txtCodigo">Código del convenio: </label>
-            <input type="number" class="form-control" ng-model="vm.ConvenioNuevo.codigo" id="txtCodigo" required>
+            <input type="number" class="form-control" ng-model="vm.ConvenioNuevo.codigoConvenio" id="txtCodigo" required>
           </div>
           <div class="form-group">
             <label for="txtNombre">Nombre del convenio:</label>
-            <input type="text" class="form-control" ng-model="vm.ConvenioNuevo.nombre" id="txtNombre" required>
+            <input type="text" class="form-control" ng-model="vm.ConvenioNuevo.nombreConvenio" id="txtNombre" required>
           </div>
           <div class="form-group">
             <label for="txtDescripcion">Descripción:</label>
-            <input type="text" class="form-control" ng-model="vm.ConvenioNuevo.descripcion" id="txtDescripcion" required>
+            <input type="text" class="form-control" ng-model="vm.ConvenioNuevo.descripcionConvenio" id="txtDescripcion" required>
           </div>
           <div class="form-group">
             <label for="txtInstitucion">Institución:</label>
-            <input type="text" class="form-control" ng-model="vm.ConvenioNuevo.institucion" id="txtInstitucion" required>
+            <input type="text" class="form-control" ng-model="vm.ConvenioNuevo.institucionConvenio" id="txtInstitucion" required>
           </div>
           <div class="form-group">
             <label for="txtCosto">Costo:</label>
-            <input type="number" class="form-control" ng-model="vm.ConvenioNuevo.costo" id="txtCosto" required>
+            <input type="number" class="form-control" ng-model="vm.ConvenioNuevo.costoConvenio" id="txtCosto" required>
           </div>
 
-         
-        
-        
-          <button type="submit" class="btn btn-primary" ng-click="vm.registrarConvenio(vm.ConvenioNuevo)">Registrar Convenio</button>
-      </form>
+          <button type="submit" class="btn btn-danger" ng-click="vm.registrarConvenio(vm.ConvenioNuevo)">Registrar Convenio</button>
+        </form>
+      </div>
     </div>
-
-
-
-    <div id="mostrarConvenios"></div>
-    <input type="text" ng-model="filtro">
-
-    <table>
-      <thead>
-
-      </thead>
-
-      <tbody>
-        <tr ng-repeat="convenio in vm.listaConvenio | filter: filtro">
-          <td>{{convenio.codigoConvenio}}</td>
-          <td>{{convenio.nombreConvenio}}</td>
-          <td>{{convenio.descripcionConvenio}}</td>
-          <td>{{convenio.institucionConvenio}}</td>
-          <td>{{convenio.CostoConvenio}}</td>
-        </tr>
-      </tbody>
-    </table>
+  </div>
 </section>
-
-
-
-

@@ -1,0 +1,35 @@
+<header class="row" id="fondoHeader">
+  <div class="container-fluid d-none d-md-block m-2" id="logoHeader">
+    <img src="sources/img/registrar/logoMenu.png" alt="" srcset="">
+  </div>
+</header>
+<div class="container">
+  
+    <form ng-submit="vm.actualizarPaquete(vm.PaquetesPrealertadosMod)">
+
+      <div class="row">
+        <div class="col-md-8 my-5">
+            <h1 id="tituloPrincipal">Cambiar estado del paquete: # {{vm.informacionPaquete.trackingPaquete}}</h1>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="sltEstadosPaquetes">Estado del paquete</label>
+                <select id="sltEstadosPaquetes" ng-options="estadosPaquetes as estadosPaquetes.name for estadosPaquetes in vm.estadosPaquetes track by estadosPaquetes._id"
+                  ng-model="vm.PaquetesPrealertadosMod.estadosPaquetes" class="custom-select" required>
+                  <option value="">Seleccione el nuevo estado del paquete</option>
+                </select>
+              </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-6 mt-3">
+            <button type="submit" class="btn btn-danger">Actualizar estado</button>
+            <button type="button" class="btn btn-danger" ng-click="vm.regresar()">Regresar</button>
+        </div>
+      </div>
+    </form>
+</div>

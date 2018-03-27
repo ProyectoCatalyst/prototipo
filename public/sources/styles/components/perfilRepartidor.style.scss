@@ -1,0 +1,20 @@
+@import '../settings.scss';
+
+#mainContent{
+  #title{
+    color: $secondary-color;
+  }
+
+  #info{
+    border-top: 1px solid $secondary-color;
+      div{
+        #subtitle{
+          color: $secondary-color;
+          size: 2em;
+        }
+        p{
+          color: $tertiary-color;
+        }
+      }
+  }
+}

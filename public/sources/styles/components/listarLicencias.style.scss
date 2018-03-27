@@ -1,0 +1,13 @@
+  #title{
+    color: $secondary-color;
+  }
+  #active{
+    border-top: 1px solid $secondary-color;
+    #subtitle{
+      color: $secondary-color;
+    }
+  }
+  #unactive{
+    border-top: 1px solid $secondary-color;
+    background: #ecf0f1;
+  }

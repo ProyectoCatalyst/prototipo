@@ -1,0 +1,76 @@
+<header class= "row" id="fondoHeader">
+    <div class = "container-fluid d-none d-md-block m-2" id="logoHeader">
+      <img src="sources/img/registrar/logoMenu.png" alt="" srcset="">
+    </div>
+</header>
+<main class="container-fluid">
+
+  <section class="row">
+    <div class="col-md-12 mt-5">
+
+      <form action="" ng-submit="vm.buscarCodigos(vm.informacionSucursal)">
+
+      <h1 id="tituloPrincipal" class="text-center">Lista de sucursales</h1>
+
+      <table class="table mt-5">
+        <thead class="">
+          <tr>
+            <th scope="col">Código</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Provincia</th>
+            <th scope="col">Cantón</th>
+            <th scope="col">Distrito</th>
+            <th scope="col">Desactivar</th>
+
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr ng-repeat="sucursales in vm.listarSucursalesAct">
+            <td>{{sucursales.codigoSucursal}}</td>
+            <td>{{sucursales.nombreSucursal}}</td>
+            <td>{{sucursales.provincia.name}}</td>
+            <td>{{sucursales.canton.name}}</td>
+            <td>{{sucursales.distrito.name}}</td>
+            <td>
+              <button type="click" class="btn btn-danger" ng-click="vm.desactivarSucursal(sucursales)">
+                Desactivar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="button" class="btn btn-danger" ng-click="vm.agregarSucursales ()">Agregar sucursal</button>
+
+      <h2 id="tituloPrincipal" class="text-center mt-5">Sucursales desactivadas</h2>
+      <table class="table mt-5">
+        <thead class="">
+          <tr>
+              <th scope="col">Código</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Provincia</th>
+              <th scope="col">Cantón</th>
+              <th scope="col">Distrito</th>
+              <th scope="col">Activar</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr ng-repeat="sucursales in vm.listarSucursalesDesact">
+            <td>{{sucursales.codigoSucursal}}</td>
+            <td>{{sucursales.nombreSucursal}}</td>
+            <td>{{sucursales.provincia.name}}</td>
+            <td>{{sucursales.canton.name}}</td>
+            <td>{{sucursales.distrito.name}}</td>
+            <td>
+              <button type="button" class="btn btn-danger" ng-click="vm.activarSucursal(sucursales)">
+                Activar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</main>
