@@ -1,3 +1,58 @@
+class Paquete{
+  constructor(ptrackingPaquete, ptipoPaquete,ppesoPaquete, pprecioPaquete,pestadoPaquete){
+    this.trackingPaquete = ptrackingPaquete;
+    this.tipoPaquete = ptipoPaquete;
+    this.pesoPaquete = ppesoPaquete;
+    this.precioPaquete = pprecioPaquete;
+    this.estadoPaquete = pestadoPaquete;
+    
+  }//fin contructor
+
+  capturarTrackingPaquete(){
+    return this.trackingPaquete;
+  }
+  capturarTipoPaquete(){
+    return this.tipoPaquete;
+  }
+  capturarEstadoPaquete(){
+    return this.estadoPaquete;
+  }
+  capturarCostoTotalPaquete(){
+    return this.costoTotalPaquete;
+  }
+}//fin class paquete
+
+class Sucursal{
+  constructor(pcodigoSucursal, pnombreSucursal, pprovincia, pcanton, pdistrito, pestadoSucursal){
+    this.codigoSucursal = pcodigoSucursal;
+    this.nombreSucursal = pnombreSucursal;
+    this.provincia = pprovincia;
+    this.canton = pcanton;
+    this.distrito = pdistrito;
+    //this.encargadoSucursal = pencargadoSucursal;
+    //this.repartidoresSucursal = [];
+    this.estadoSucursal = pestadoSucursal;
+
+  }//fin constructor clase sucursal
+
+
+
+  capturarNombreSucursal(){
+    return this.nombreSucursal;
+  }
+  capturarCodigoSucursal(){
+    return this.codigoSucursal;
+  }
+
+  retornarRepartidoresSucursal(){
+    return this.repartidoresSucursal;
+  }
+
+  retornarEstadoSucursal(){
+    return this.estadoSucursal;
+  }
+}//fin clase sucursal
+
 class Usuario {
   constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado){
     this.primerNombre = pnombre;
@@ -70,9 +125,62 @@ class Cliente extends Usuario {
   }
 }
 
+class Repartidor extends Usuario{
+  constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, ptelefono, ptelefonoAdicional, pestado, prazonDesact, psucursal){
+    super(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, ptelefono, ptelefonoAdicional,pestado, prazonDesact, psucursal);
+
+    this.paqueteAsignado = [];
+    this.licencia =[];
+    this.telefono = ptelefono;
+    this.telefonoAdicional = ptelefonoAdicional;
+    this.estado = pestado;
+    this.razonDesact = prazonDesact;
+    this.sucursal = psucursal;
+  }
+
+    getLicencias(){
+      return this.licencia
+    }
+  
+    getCorreo(){
+      return this.correo
+    }
+  
+    setLicencia(pobjLicencia){
+      this.licencia.push(pobjLicencia)
+    }
+
+    getEstado(){
+      return this.estado
+    }
+
+    getPaqAsignados(){
+      return this.paqueteAsignado;
+    }
+    
+}
+
+class Licencia{
+  constructor(pcodigo, pfechaVencimiento, ptipo, pestado){
+    this.codigo = pcodigo;
+    this.fechaVencimiento = pfechaVencimiento;
+    this.tipo = ptipo;
+    this.estado = pestado;
+  }
+
+  getCodigo(){
+    return this.codigo
+  }
+
+  getEstado(){
+    return this.estado
+  }
+  
+}
+
 class Convenio{
 
-  constructor(pcodigoConvenio,pnombreConvenio,pdescripcionConvenio,pinstitucionConvenio,pcostoConvenio, ){
+  constructor(pcodigoConvenio,pnombreConvenio,pdescripcionConvenio,pinstitucionConvenio,pcostoConvenio){
 
     this.codigoConvenio = pcodigoConvenio;
     this.nombreConvenio = pnombreConvenio;
