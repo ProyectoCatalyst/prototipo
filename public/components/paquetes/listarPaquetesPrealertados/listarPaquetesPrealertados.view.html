@@ -1,12 +1,17 @@
+<header class="row" id="fondoHeader">
+  <div class="container-fluid d-none d-md-block m-2" id="logoHeader">
+    <img src="sources/img/registrar/logoMenu.png" alt="" srcset="">
+  </div>
+</header>
 <main class="container-fluid">
   <div class="container" id="header">
     <section class="row">
-      <div class="col-md-12 mt-4">
+      <div class="col-md-12">
 
-        <h1 class="text-center">Lista de los paquetes prealertados</h1>
+        <h1 id="tituloPrincipal" class="text-center my-5">Lista paquetes prealertados</h1>
 
         <table class="table mt-4">
-          <thead class="thead-dark">
+          <thead class="">
             <tr>
               <th scope="col">Número de tracking</th>
               <th scope="col">Tipo de paquete</th>
@@ -24,14 +29,14 @@
               <td>{{paquetesPrealertados.pesoPaquete}} Kg</td>
               <td>₡ {{paquetesPrealertados.precioPaquete}}</td>
               <td>
-                <button type="click" class="btn btn-secundary" ng-click="vm.estadoPaquete(paquetesPrealertados)">
+                <button type="click" class="btn btn-danger" ng-click="vm.estadoPaquete(paquetesPrealertados)">
                   Consultar estado
                 </button>
               </td>
             </tr>
           </tbody>
         </table>
-        <button type="button" class="btn btn-secondary" ng-click="vm.regresar()">regresar!</button>
+        <!-- <button type="button" class="btn btn-secondary" ng-click="vm.regresar()">regresar!</button> -->
       </div>
     </section>
   </div>
