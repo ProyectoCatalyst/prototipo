@@ -5,25 +5,27 @@
   .module('prototipo')
   .controller('controladorPerfilRepartidor', controladorPerfilRepartidor)
 
-  controladorPerfilRepartidor.$inject = ['$stateParams', '$state', 'servicioUsuarios']
-  function controladorPerfilRepartidor($stateParams, $state, servicioUsuarios){
+  controladorPerfilRepartidor.$inject = ['$stateParams', '$state', 'servicioUsuarios', 'servicioInicioSesion']
+  function controladorPerfilRepartidor($stateParams, $state, servicioUsuarios, servicioInicioSesion){
 
     let vm = this;
 
-    let datosRepartidor = servicioUsuarios.retornarInformacionRepartidor(); // correo, sucursal
+    let correoActivo = (servicioInicioSesion.getAuthUser()).correo;
 
-    verificarPaquetesAsignados() // para verificarf si hay paquetes asignados cada que abro el perfil
+    verificarPaquetesAsignados();
 
     vm.consultarLicencias = () => {
-      $state.go('main.listarLicencias', {datos: JSON.stringify(datosRepartidor)}); // correo sucursal
+      $state.go('main.listarLicencias', {correoActivo: JSON.stringify(correoActivo)});
     } 
-    vm.listarPaquetesAsignados = servicioUsuarios.retornarPaquetesAsignados(datosRepartidor); // envia correo y sucursal donde trabaja  
+
+    vm.listarPaquetesAsignados = servicioUsuarios.retornarPaquetesAsignados(correoActivo);
 
     vm.editarPerfil = () => {
-      let repartidoresSucursal = servicioUsuarios.retornarRepartidoresSucursal(datosRepartidor[1]);
+      let repartidoresSucursal = servicioUsuarios.obtenerlistadeFiltrada(4);
 
       for(let i=0; i<repartidoresSucursal.length; i++){
-        if(repartidoresSucursal[i].getCorreo() == datosRepartidor[0]){
+
+        if(repartidoresSucursal[i].getCorreo() == correoActivo){
 
           $state.go('main.editarRepartidor', {datos: JSON.stringify(repartidoresSucursal[i])});
         }
@@ -34,7 +36,7 @@
 
     // ________funciones internas________
      function verificarPaquetesAsignados(){
-      let paquetesAsignados = servicioUsuarios.retornarPaquetesAsignados(datosRepartidor);
+      let paquetesAsignados = servicioUsuarios.retornarPaquetesAsignados(correoActivo);
 
       if(paquetesAsignados.length != 0){
         swal({

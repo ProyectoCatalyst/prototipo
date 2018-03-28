@@ -5,14 +5,27 @@
   .module('prototipo')
   .controller('controladorListaTodosRepartidores', controladorListaTodosRepartidores)
 
-  controladorListaTodosRepartidores.$inject = ['$stateParams', '$state', 'servicioUsuarios']
+  controladorListaTodosRepartidores.$inject = ['$stateParams', '$state', 'servicioUsuarios', 'servicioSucursales']
 
-  function controladorListaTodosRepartidores($stateParams, $state, servicioUsuarios){
+  function controladorListaTodosRepartidores($stateParams, $state, servicioUsuarios, servicioSucursales){
     let vm = this;
 
+    vm.nombreSucursal = (pcodigoSucursal) => {
+      let informacionSucursal = servicioSucursales.retornarNombreSucursalesLS();
+
+      for(let i=0; i<informacionSucursal.length; i++){
+        if(informacionSucursal.codigoSucursal == pcodigoSucursal){
+          return informacionSucursal.nombreSucursal;
+        }
+      }
+    }
+
     vm.listarRepartidoresActDisponibles = listarActivosDisponibles();
+
     vm.listarRepartidoresOcupados = listarActivosOcupados();
+
     vm.listarDesactRepartidores = listarDesact();
+
     vm.cambiarEstado = (pcorreo) => {
       let desact = false,
           razon = '';
@@ -39,19 +52,19 @@
         }
         
         if(desact){
-          let datos = [pcorreo, razon];
-          servicioUsuarios.cambiarEstadoRepartidor(datos);
+          servicioUsuarios.desactivarRepartidor(pcorreo, razon);
           $state.reload();
         }
       });
     }
+
     vm.agregarRepartidor = () => {
-      $state.go('main.registrarRapartidor'); // redirije a otra vista
+      $state.go('main.registrarRapartidor');
     }
+
     vm.verPerfil = () => {
       $state.go('main.perfilRepartidor');
     }
-
 
     //______funciones internas________
 
@@ -80,14 +93,14 @@
     }
 
     function listarActivos(){
-      let todosLosRepartidores = servicioUsuarios.retornarTodosRepartidores(),
+      let todosLosRepartidores = servicioUsuarios.obtenerlistadeFiltrada(4),
             listarRepartidoresFiltrados = servicioUsuarios.filtrarRepartidores(todosLosRepartidores);
 
       return listarRepartidoresFiltrados[0]
     }
 
     function listarDesact(){
-      let todosLosRepartidores = servicioUsuarios.retornarTodosRepartidores(),
+      let todosLosRepartidores = servicioUsuarios.obtenerlistadeFiltrada(4),
             listarRepartidoresFiltrados = servicioUsuarios.filtrarRepartidores(todosLosRepartidores);
 
       return listarRepartidoresFiltrados[1]

@@ -64,7 +64,7 @@
           pageTitle: 'Listar licencias | Correos CR'
         },
         params: {
-          datos: ''
+          correoActivo: ''
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
@@ -130,7 +130,7 @@
           pageTitle: 'Editar licencia | Correos CR'
         },
         params: {
-          datos: ''
+          datosLicenciaMod: ''
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {

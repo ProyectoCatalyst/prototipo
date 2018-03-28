@@ -28,7 +28,7 @@
               <td>{{repartidores.primerNombre}}</td>
               <td>{{repartidores.primerApellido}}</td>
               <td>{{repartidores.correo}}</td>
-              <td>{{repartidores.sucursal}}</td>
+              <td>{{(repartidores.sucursal)}}</td>
               <td>{{repartidores.fecha | date: 'dd-MM-yyyy'}}</td>
               <td>
                 <button type="button" class="btn btn-danger mx-2" ng-click="vm.cambiarEstado(repartidores.correo)">Desactivar</button>

@@ -4,12 +4,13 @@
     .module('prototipo')
     .controller('controladorRegistrarRepartidor', controladorRegistrarRepartidor);
 
-    controladorRegistrarRepartidor.$inject = ['$stateParams', '$state', 'servicioUsuarios'];
+    controladorRegistrarRepartidor.$inject = ['$stateParams', '$state', 'servicioUsuarios', 'servicioSucursales'];
 
-    function controladorRegistrarRepartidor($stateParams, $state, servicioUsuarios){
+    function controladorRegistrarRepartidor($stateParams, $state, servicioUsuarios, servicioSucursales){
         let vm = this;
     
-        // vm.retornarDatosSucursales = servicioSucursales.retornarNombreSucursalesLS(); // requiere el servicio de sucursales para obtener la informacion de las sucursales en el sistema
+        vm.retornarDatosSucursales = servicioSucursales.retornarNombreSucursalesLS();
+        
         vm.registrarRepartidor = (pnuevoRegistro) => {
 
             if(!(pnuevoRegistro.contrasenna == pnuevoRegistro.confirmarContrasenna)){
@@ -29,13 +30,12 @@
                 aDatos = [objNuevoRegistro, objNuevoRegistro.sucursal],
                 aDatosVerificar = [objNuevoRegistro.correo, objNuevoRegistro.sucursal];
 
-                let exito = verificarUsuario(aDatosVerificar[0]),
+                let exito = verificarUsuario(objNuevoRegistro.correo),
                     edadCorrecta = verifiarEdad(objNuevoRegistro.fecha);
 
                 if(exito){
                     if(edadCorrecta){
-                        let datosRepartidor = [objNuevoRegistro.cedula, objNuevoRegistro.sucursal, objNuevoRegistro.nombre];
-                        servicioUsuarios.agregarRepartidor(aDatos);
+                        servicioUsuarios.agregarUsuario(objNuevoRegistro);
                         $state.go('main.listarTodosLosRepartidores');
                         swal({
                             title: "Éxito",
@@ -65,6 +65,7 @@
         vm.listarRepartidores = () => {
             $state.go('main.listarTodosLosRepartidores');
         }
+
         //_______funciones internas________
         function verificarUsuario(pcorreo){
 

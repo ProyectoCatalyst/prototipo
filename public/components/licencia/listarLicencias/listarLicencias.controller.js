@@ -5,56 +5,49 @@
     .module('prototipo')
     .controller('controladorListarLicencias', controladorListarLicencias);
 
-  controladorListarLicencias.$inject = ['$stateParams', '$state', 'servicioUsuarios'];
-  function controladorListarLicencias($stateParams, $state, servicioUsuarios) {
-
-    if (!$stateParams.datos) {
-      $state.go('main.perfilRepartidor');
-    }
+  controladorListarLicencias.$inject = ['$stateParams', '$state', 'servicioUsuarios', 'servicioInicioSesion'];
+  function controladorListarLicencias($stateParams, $state, servicioUsuarios, servicioInicioSesion) {
 
     let vm = this;
 
-    let datosRepartidor = JSON.parse($stateParams.datos); // correo, sucursal, nombre
-      // let datosRepartidor = [402350610, 'sucursal', 'Isaac']
+    let correoActivo = (servicioInicioSesion.getAuthUser()).correo; 
+
     vm.listarLicenciasActivas = listaLicenciasActivas();
+
     vm.listarLicenciasDesactivadas = listarLicenciasDesactivadas();
 
     vm.agregarLicencia = () => {
-      $state.go('main.registrarLincencia', { datos: JSON.stringify(datosRepartidor) });
+      $state.go('main.registrarLincencia', { datos: JSON.stringify(correoActivo) });
     }
 
-    vm.modificarLicencia = (licencias) => {
-      let datos = [datosRepartidor, licencias];
-      $state.go('main.editarLicencia', {datos: JSON.stringify(datos)});
+    vm.modificarLicencia = (licencia) => {
+      $state.go('main.editarLicencia', {datosLicenciaMod: JSON.stringify(licencia)});
     }
 
     // ________funciones internas__________
     function listaLicenciasActivas() {
-      let datos = [datosRepartidor[0], datosRepartidor[1]], // correo, sucursal
-          licenciasActivas;
-        
-      let todasLasLicencias = servicioUsuarios.retornarLicencias(datos),
-          licenciasVencidas = filtrarLicenciasVencidas(todasLasLicencias); // funcion que me retorna las licencias cuyo fecha de vencimiento es menor a la fecha actual
+        let licenciasActivas = [],
+            todasLasLicencias = servicioUsuarios.retornarLicenciasRepartidor(correoActivo),
+            licenciasVencidas = filtrarLicenciasVencidas(todasLasLicencias);
 
           for(let i=0; i<licenciasVencidas.length; i++){
-            cambiarEstado(licenciasVencidas[i]); // recorro el objeto cuyas licencias estan vencidas y cambio su estado, esta funcion a su vez va a actualizar el LS
+            cambiarEstado(licenciasVencidas[i]);
           }
 
-          licenciasActivas = servicioUsuarios.retornarLicencias(datos); // llamar funcion que toma los datos del LS con el estado actualizado y en la linea 36 y obtiene un array con licencias activas en posicion 0 y licencias vencidas en la posicion 1
+          licenciasActivas = servicioUsuarios.filtrarLicencias(correoActivo);
 
-      return licenciasActivas[0]; // retorno licencias activas para llenar la tabla
+      return licenciasActivas[0];
     }
 
     function listarLicenciasDesactivadas() {
-      let datos = [datosRepartidor[0], datosRepartidor[1]],
-          licenciasDesactivadas = servicioUsuarios.retornarLicencias(datos);
+      let licenciasDesactivadas = (servicioUsuarios.filtrarLicencias(correoActivo))[1];
 
-      return licenciasDesactivadas[1];
+      return licenciasDesactivadas;
     }
 
     function filtrarLicenciasVencidas(ptodasLasLicencias){
       let hoy = new Date(),
-      licenciasActivas = ptodasLasLicencias[0],
+      licenciasActivas = ptodasLasLicencias,
       objFecha,
       licenciasVencidas = [];
 
@@ -72,9 +65,7 @@
     }
 
     function cambiarEstado(pdatosLicencia){
-      let datos = [datosRepartidor[0], datosRepartidor[1], pdatosLicencia.codigo];
-
-      servicioUsuarios.cambiarEstadoLicencia(datos);
+      servicioUsuarios.cambiarEstadoLicencia(correoActivo, pdatosLicencia.codigo);
     }
 
   }

@@ -5,21 +5,22 @@
   .module('prototipo')
   .controller('controladorEditarLicencia', controladorEditarLicencia)
 
-  controladorEditarLicencia.$inject = ['$state', '$stateParams', 'servicioUsuarios']
-  function controladorEditarLicencia($state, $stateParams, servicioUsuarios){
+  controladorEditarLicencia.$inject = ['$state', '$stateParams', 'servicioUsuarios', 'servicioInicioSesion']
+  function controladorEditarLicencia($state, $stateParams, servicioUsuarios, servicioInicioSesion){
 
-    if(!$stateParams.datos){
-      $state.go('main.perfilRepartidor');
+    if(!$stateParams.datosLicenciaMod){
+      $state.go('main.listarLicencias');
     }
 
     let vm = this;
 
-    let datos = JSON.parse($stateParams.datos); // infoRepartidor (correo, sucursal y nombre), infoLicencia
+    let correoActivo = (servicioInicioSesion.getAuthUser()).correo; 
+    let datosLicenciaMod = JSON.parse($stateParams.datosLicenciaMod);
 
     vm.modLicencia = {};
-    vm.modLicencia.tipoLicencia = datos[1].tipo;
-    vm.modLicencia.codigo = datos[1].codigo;
-    vm.modLicencia.fechaVencimiento = new Date(datos[1].fechaVencimiento);
+    vm.modLicencia.tipoLicencia = datosLicenciaMod.tipo;
+    vm.modLicencia.codigo = datosLicenciaMod.codigo;
+    vm.modLicencia.fechaVencimiento = new Date(datosLicenciaMod.fechaVencimiento);
 
     vm.editarLicencia = (pdatosNuevos) => {
       let validarFecha = fechaCorrecta(pdatosNuevos.fechaVencimiento);
@@ -32,16 +33,15 @@
         })
       }else{
         pdatosNuevos.estado = true;
-        let objDatosNuevos = new Licencia(pdatosNuevos.codigo, pdatosNuevos.fechaVencimiento, pdatosNuevos.tipoLicencia, pdatosNuevos.estado);
+        let objModLicencia = new Licencia(pdatosNuevos.codigo, pdatosNuevos.fechaVencimiento, pdatosNuevos.tipoLicencia, pdatosNuevos.estado);
         swal({
           title: 'Licencia actualizada',
           text: 'Informacion actualizada con éxito',
           icon: 'success',
           button: 'Aceptar'
         });
-        datos = [datos[0], objDatosNuevos]; // infoRepartidor (correo, sucursal y nombre), nuevaLicencia
-        servicioUsuarios.editarLicencias(datos);
-        $state.go('main.perfilRepartidor');
+        servicioUsuarios.editarLicencias(objModLicencia, correoActivo);
+        $state.go('main.listarLicencias');
       }
     }
 

@@ -5,26 +5,20 @@
   .module('prototipo')
   .controller('controladorRegistrarLicencia', controladorRegistrarLicencia)
 
-  controladorRegistrarLicencia.$inject =['$stateParams', '$state', 'servicioUsuarios']
-  function controladorRegistrarLicencia($stateParams, $state, servicioUsuarios){
-
-    if(!$stateParams.datos){
-      $state.go('main.perfilRepartidor');
-    }
+  controladorRegistrarLicencia.$inject =['$stateParams', '$state', 'servicioUsuarios', 'servicioInicioSesion']
+  function controladorRegistrarLicencia($stateParams, $state, servicioUsuarios, servicioInicioSesion){
     
     let vm = this;
 
-    let datosRepartidor = JSON.parse($stateParams.datos); // correo, sucursal, nombre
+    let correoActivo = servicioInicioSesion.getAuthUser().correo;
     
-    vm.nombreRepartidor = datosRepartidor[2];
     vm.registrarLicencia = (pnuevoRegistro) => {
 
       pnuevoRegistro.estado = true;
       
       let objLicencia = new Licencia(pnuevoRegistro.codigo, pnuevoRegistro.fechaVencimiento, pnuevoRegistro.tipoLicencia, pnuevoRegistro.estado, pnuevoRegistro.foto),
-          existente = verificarLicencia(objLicencia),
-          fechaValida = verificarFechaVencimiento(objLicencia.fechaVencimiento),
-          datosAgregar = [objLicencia, datosRepartidor[0], datosRepartidor[1]];
+          existente = verificarLicencia(objLicencia.codigo),
+          fechaValida = verificarFechaVencimiento(objLicencia.fechaVencimiento);
 
       if(existente){
         swal({
@@ -42,9 +36,9 @@
             icon: 'success',
             button: 'Aceptar'
           });
-          servicioUsuarios.registrarLicencia(datosAgregar);
+          servicioUsuarios.registrarLicencia(objLicencia, correoActivo);
 
-          $state.go('main.listarLicencias', {datos: JSON.stringify(datosRepartidor)});
+          $state.go('main.listarLicencias');
         }else{
           swal({
             title: 'La licencia está vencida',

@@ -5,18 +5,18 @@
   .module('prototipo')
   .controller('controladorEditarRepartidor', controladorEditarRepartidor)
 
-  controladorEditarRepartidor.$inject = ['$state', '$stateParams', 'servicioUsuarios']
+  controladorEditarRepartidor.$inject = ['$state', '$stateParams', 'servicioUsuarios', 'servicioSucursales']
 
-  function controladorEditarRepartidor($state, $stateParams, servicioUsuarios){
+  function controladorEditarRepartidor($state, $stateParams, servicioUsuarios, servicioSucursales){
    
     let vm = this;
 
     if(!$stateParams.datos){
       $state.go('main.perfilRepartidor')
     }
-    let datosRepartidor = JSON.parse($stateParams.datos); // cotrreo sucursal
+    let datosRepartidor = JSON.parse($stateParams.datos); // recibo correo y sucursal
 
-    // vm.retornarDatosSucursales = servicioSucursales.retornarNombreSucursalesLS(); // requiere el servicio de sucursales para obtener la informacion de las sucursales en el sistema
+    vm.retornarDatosSucursales = servicioSucursales.retornarNombreSucursalesLS(); // requiere el servicio de sucursales para obtener la informacion de las sucursales en el sistema
 
     vm.datosMod = {};
     vm.datosMod.nombre = datosRepartidor.primerNombre;
@@ -58,7 +58,7 @@
           let objEditarInfo = new Repartidor(pdatosMod.nombre, pdatosMod.segundoNombre, pdatosMod.primerApellido, pdatosMod.segundoApellido, pdatosMod.cedula, pdatosMod.fechaNacimiento, pdatosMod.genero, pdatosMod.ubicacion, pdatosMod.provincia, pdatosMod.canton, pdatosMod.distrito, pdatosMod.direccion,pdatosMod.correo, pdatosMod.contrasenna, pdatosMod.rol, pdatosMod.telefono, pdatosMod.telefonoAdicional, pdatosMod.estado, pdatosMod.razonDesact, pdatosMod.sucursal),
                   aDatos = [objEditarInfo, objEditarInfo.sucursal];
 
-          servicioUsuarios.editarRepartidor(objEditarInfo);
+          servicioUsuarios.actualizarUsuario(objEditarInfo);
 
           swal({
             title: 'Listo',
