@@ -23,6 +23,123 @@
         controller: 'controladorInicioSesion',
         controllerAs: 'vm'
       })
+      
+      .state('main.registrarRapartidor', {
+        url: '/registerDeliveryMan',
+        templateUrl: './components/repartidor/registrarRepartidor/registrarRepartidor.view.html',
+        data: {
+          pageTitle: 'Registrar repartidor | Correos CR'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/repartidor/registrarRepartidor/registrarRepartidor.controller.js')
+          }]
+        },
+        controller: 'controladorRegistrarRepartidor',
+        controllerAs: 'vm'
+      })
+      
+      .state('main.registrarLincencia', {
+        url: '/registerLicence',
+        templateUrl: './components/licencia/registrarLicencia/registrarLincencia.view.html',
+        data: {
+          pageTitle: 'Registrar licencia | Correos CR'
+        },
+        params: {
+          datos: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/licencia/registrarLicencia/registrarLincencia.controller.js')
+          }]
+        },
+        controller: 'controladorRegistrarLicencia',
+        controllerAs: 'vm'
+      })
+      
+      .state('main.listarLicencias', {
+        url: '/listLicenses',
+        templateUrl: './components/licencia/listarLicencias/listarLicencias.view.html',
+        data: {
+          pageTitle: 'Listar licencias | Correos CR'
+        },
+        params: {
+          datos: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/licencia/listarLicencias/listarLicencias.controller.js')
+          }]
+        },
+        controller: 'controladorListarLicencias',
+        controllerAs: 'vm'
+      })
+      
+      .state('main.listarTodosLosRepartidores', {
+        url: '/listAllDeliveryMan',
+        templateUrl: './components/repartidor/listarTodosLosRepartidores/listarTodosLosRepartidores.view.html',
+        data: {
+          pageTitle: 'Lista todos repartidores | Correos CR'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/repartidor/listarTodosLosRepartidores/listarTodosLosRepartidores.controller.js')
+          }]
+        },
+        controller: 'controladorListaTodosRepartidores',
+        controllerAs: 'vm'
+      })
+      
+      .state('main.perfilRepartidor', {
+        url: '/deliveryManProfile',
+        templateUrl: './components/repartidor/perfilRepartidor/perfilRepartidor.view.html',
+        data: {
+          pageTitle: 'Perfil repartidor | Correos CR'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/repartidor/perfilRepartidor/perfilRepartidor.controller.js')
+          }]
+        },
+        controller: 'controladorPerfilRepartidor',
+        controllerAs: 'vm'
+      })
+      
+      .state('main.editarRepartidor', {
+        url: '/modifyDeliveryMan',
+        templateUrl: './components/repartidor/editarRepartidor/editarRepartidor.view.html',
+        data: {
+          pageTitle: 'Editar repartidor | Correos CR'
+        },
+        params: {
+          datos: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/repartidor/editarRepartidor/editarRepartidor.controller.js')
+          }]
+        },
+        controller: 'controladorEditarRepartidor',
+        controllerAs: 'vm'
+      })
+
+      .state('main.editarLicencia', {
+        url: '/modifyLicense',
+        templateUrl: './components/licencia/editarLicencia/editarLicencia.view.html',
+        data: {
+          pageTitle: 'Editar licencia | Correos CR'
+        },
+        params: {
+          datos: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/licencia/editarLicencia/editarLicencia.controller.js')
+          }]
+        },
+        controller: 'controladorEditarLicencia',
+        controllerAs: 'vm'
+      })
 
 
       .state('main', {
@@ -72,7 +189,7 @@
 
       .state('registrarCliente', {
         url: '/registerCustomers',
-        templateUrl: './components/usuarios/clientes/registrarClientes/registrarClientes.view.html',
+        templateUrl: './components/usuarios/clientes/registrarClientes/registrarClientesFuera.view.html',
         data: {
           pageTitle: 'Registrar Clientes | Correos CR'
         },
@@ -335,7 +452,7 @@
       })
       
 
-      .state('listarTodosUsuarios', {
+      .state('main.listarTodosUsuarios', {
         url: '/ListaTodosUsuarios',
         templateUrl: './components/usuarios/listarTodosUsuarios/listarTodosUsuarios.view.html',
         data: {
@@ -350,7 +467,7 @@
         controllerAs: 'vm'
       })
 
-      .state('DesactivarUsuarios', {
+      .state('main.DesactivarUsuarios', {
         url: '/usuariosDesactivados',
         templateUrl: './components/usuarios/DesactivarUsuarios/desactivarUsuarios.view.html',
         data: {

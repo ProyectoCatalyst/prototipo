@@ -1,0 +1,29 @@
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+
+
+
+@import "components/landing.style";
+@import "components/registrarEncargadoAduana.style";
+
+
+// _____estilos de repartidores____
+@import "./components/registrarRepartidorLicencia.style.scss";
+@import "./components/perfilRepartidor.style.scss";
+@import "./components/listarLicencias.style.scss";
+@import "./components/listarRepartidores.style.scss";
+
+// @import "components/registrarEncargadoAduana.style";
+@import "components/landing.style";
+// @import "components/registrarEncargadoAduana.style";
+@import "components/registroClientes.style";
+
+@import "components/registroEncargadoSucursal.style";
+@import "components/listarTodosUsuarios.style";
+@import "components/registroClientes.style";
+@import "components/registroClientes.style";
+@import "components/main.style";
+
+@import "components/registroClientes.style";
+@import "components/main.style";
+@import "components/footer.style";
+@import "components/header.style";

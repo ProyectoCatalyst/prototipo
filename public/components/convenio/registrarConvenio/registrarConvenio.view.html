@@ -1,20 +1,18 @@
-<main class="body">
-  <header id="registroEncargadoAduanas">
-        <div class="container-fluid d-none d-md-block">
-            <img id="fondoHeader" class="img-responsive m-5" alt="Responsive image" src="sources/img/registrar/headerMenu.png">
-        </div>
-  </header>
-  <div>
-      <h1>Cree una nueva cuenta</h1>
-      <h4>¡Es fácil y sencillo!</h4>
-      <p>Complete los siguientes datos</p>
+<header class="row" id="fondoHeader">
+  <div class="container-fluid d-none d-md-block m-2" id="logoHeader">
+    <img src="sources/img/registrar/logoMenu.png" alt="" srcset="">
   </div>
-<div ng-include="'./components/includes/_header.html'"></div>
+</header>
 <section class="row">
   <div class="container">
-    <form class="row" name="frmRegistroConvenio" ng-submit="vm.registrarConvenio(vm.convenioNuevo)"  autocomplete="off">
-    <div class="col-4">
-      <form ng-submit="vm.registrarConvenio(vm.convenioNuevo)">
+    <div class="row">
+      <div class="col-md-6 mt-5 mb-3">
+        <h1 id="tituloPrincipal" class="">Registrar convenio</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <form ng-submit="vm.registrarConvenio(vm.ConvenioNuevo)">
           <div class="form-group">
             <label for="txtCodigo">Código del convenio: </label>
             <input type="number" class="form-control" ng-model="vm.ConvenioNuevo.codigoConvenio" id="txtCodigo" required>
@@ -36,35 +34,9 @@
             <input type="number" class="form-control" ng-model="vm.ConvenioNuevo.costoConvenio" id="txtCosto" required>
           </div>
 
-         
-        
-        
-          <button type="submit" class="btn btn-primary" ng-click="vm.registrarConvenio(vm.convenioNuevo)">Registrar Convenio</button>
-      </form>
+          <button type="submit" class="btn btn-danger" ng-click="vm.registrarConvenio(vm.ConvenioNuevo)">Registrar Convenio</button>
+        </form>
+      </div>
     </div>
-
-
-
-    <div id="mostrarConvenios"></div>
-    <!-- <input type="text" ng-model="filtro"> -->
-
-    <table>
-      <thead>
-
-      </thead>
-
-      <tbody>
-        <tr ng-repeat="convenio in vm.listaConvenio | filter: filtro">
-          <td>{{convenio.codigoConvenio}}</td>
-          <td>{{convenio.nombreConvenio}}</td>
-          <td>{{convenio.descripcionConvenio}}</td>
-          <td>{{convenio.institucionConvenio}}</td>
-          <td>{{convenio.CostoConvenio}}</td>
-        </tr>
-      </tbody>
-    </table>
+  </div>
 </section>
-</main>
-
-
-
