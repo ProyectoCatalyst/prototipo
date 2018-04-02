@@ -11,12 +11,12 @@
    
     let vm = this;
 
-    if(!$stateParams.datos){
-      $state.go('main.perfilRepartidor')
+    if(!$stateParams.datosMod){
+      $state.go('main')
     }
-    let datosRepartidor = JSON.parse($stateParams.datos); // recibo correo y sucursal
+    let datosRepartidor = JSON.parse($stateParams.datosMod);
 
-    vm.retornarDatosSucursales = servicioSucursales.retornarNombreSucursalesLS(); // requiere el servicio de sucursales para obtener la informacion de las sucursales en el sistema
+    vm.retornarDatosSucursales = servicioSucursales.retornarNombreSucursalesLS();
 
     vm.datosMod = {};
     vm.datosMod.nombre = datosRepartidor.primerNombre;
@@ -34,8 +34,10 @@
 
     vm.editarPerfil = (pdatosMod) => {
       pdatosMod.rol = 4;
-      pdatosMod.estado = true,
-      pdatosMod.razonDesact = '';
+      pdatosMod.estado = datosRepartidor.estado,
+      pdatosMod.razonDesact = datosRepartidor.razonDesact;
+      pdatosMod.licencia = datosRepartidor.licencia;
+      pdatosMod.paqueteAsignado = datosRepartidor.paqueteAsignado;
       
       let edadCorrecta = verificarEdad(pdatosMod.fechaNacimiento);
 
@@ -55,8 +57,11 @@
             button: 'Aceptar'
           });
         }else{
-          let objEditarInfo = new Repartidor(pdatosMod.nombre, pdatosMod.segundoNombre, pdatosMod.primerApellido, pdatosMod.segundoApellido, pdatosMod.cedula, pdatosMod.fechaNacimiento, pdatosMod.genero, pdatosMod.ubicacion, pdatosMod.provincia, pdatosMod.canton, pdatosMod.distrito, pdatosMod.direccion,pdatosMod.correo, pdatosMod.contrasenna, pdatosMod.rol, pdatosMod.telefono, pdatosMod.telefonoAdicional, pdatosMod.estado, pdatosMod.razonDesact, pdatosMod.sucursal),
-                  aDatos = [objEditarInfo, objEditarInfo.sucursal];
+          let objEditarInfo = new Repartidor(pdatosMod.nombre, pdatosMod.segundoNombre, pdatosMod.primerApellido, pdatosMod.segundoApellido, pdatosMod.cedula, pdatosMod.fechaNacimiento, pdatosMod.genero, pdatosMod.ubicacion, pdatosMod.provincia, pdatosMod.canton, pdatosMod.distrito, pdatosMod.direccion,pdatosMod.correo, pdatosMod.contrasenna, pdatosMod.rol, pdatosMod.telefono, pdatosMod.telefonoAdicional, pdatosMod.estado, pdatosMod.razonDesact, pdatosMod.sucursal);
+
+          for(let i=0; i<pdatosMod.licencia.length; i++){
+            objEditarInfo.setLicencia(pdatosMod.licencia[i]);
+          }
 
           servicioUsuarios.actualizarUsuario(objEditarInfo);
 
@@ -66,7 +71,7 @@
             icon: 'success',
             button: 'Aceptar'
           });
-          $state.go('main.perfilRepartidor');
+          $state.go('main');
         }
       }
     }

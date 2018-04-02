@@ -112,7 +112,7 @@
           pageTitle: 'Editar repartidor | Correos CR'
         },
         params: {
-          datos: ''
+          datosMod: ''
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {

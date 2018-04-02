@@ -66,6 +66,10 @@
       $state.go('main.perfilRepartidor');
     }
 
+    vm.editarRepartidor = (prepartidorMod) => {
+      $state.go('main.editarRepartidor', {datosMod: JSON.stringify(prepartidorMod)});
+    }
+
     //______funciones internas________
 
     function listarActivosDisponibles(){

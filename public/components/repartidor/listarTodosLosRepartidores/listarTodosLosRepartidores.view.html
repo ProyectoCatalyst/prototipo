@@ -8,7 +8,7 @@
       
       <div class="table-responsive row">
 
-        <table class="table table-hover col-md-12">
+        <table class="table table-hover">
           <thead>
             <tr>
               <th scope="col">Estado</th>
@@ -18,7 +18,7 @@
               <th scope="col">Correo</th>
               <th scope="col">Sucursal</th>
               <th scope="col">Fecha de nacimiento</th>
-              <th scope="col">Otros</th>
+              <th scope="col" colspan="2">Otros</th>
             </tr>
           </thead>
           <tbody>
@@ -31,7 +31,10 @@
               <td>{{(repartidores.sucursal)}}</td>
               <td>{{repartidores.fecha | date: 'dd-MM-yyyy'}}</td>
               <td>
-                <button type="button" class="btn btn-danger mx-2" ng-click="vm.cambiarEstado(repartidores.correo)">Desactivar</button>
+                <button type="button" class="btn btn-danger" ng-click="vm.cambiarEstado(repartidores.correo)">Desactivar</button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-danger" ng-click="vm.editarRepartidor(repartidores)">Editar</button>
               </td>
             </tr>
 
@@ -43,6 +46,9 @@
                 <td>{{repartidores.correo}}</td>
                 <td>{{repartidores.sucursal}}</td>
                 <td colspan='2'>{{repartidores.fecha | date: 'dd-MM-yyyy'}}</td>
+                <td>
+                  <button type="button" class="btn btn-danger" ng-click="vm.editarRepartidor(repartidores)">Editar</button>
+                </td>
               </tr>
 
               <tr ng-repeat="repartidores in vm.listarDesactRepartidores">
@@ -54,6 +60,9 @@
                   <td>{{repartidores.sucursal}}</td>
                   <td>{{repartidores.fecha | date: 'dd-MM-yyyy'}}</td>
                   <td>Razón: {{repartidores.razonDesact}}</td>
+                  <td>
+                    <button type="button" class="btn btn-danger" ng-click="vm.editarRepartidor(repartidores)">Editar</button>
+                  </td>
                 </tr>
           </tbody>
         </table>
