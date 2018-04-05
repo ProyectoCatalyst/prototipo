@@ -1,0 +1,22 @@
+[
+  {
+    "name":"DHL",
+    "_id": "0"
+  },
+  {
+    "name":"FedEx",
+    "_id": "1"
+  },
+  {
+    "name":"USPS",
+    "_id": "2"
+  },
+  {
+    "name":"UPS",
+    "_id": "3"
+  },
+  {
+    "name":"Amazon",
+    "_id": "4"
+  }
+]

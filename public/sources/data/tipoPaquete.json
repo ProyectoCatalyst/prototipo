@@ -1,26 +1,56 @@
 [
   {
-    "name":"Convenio",
+    "name":"Accesorios electrónicos para el hogar 49.27%",
     "_id": "0"
   },
   {
-    "name":"Electrónico",
+    "name":"Accesorios para el hogar 29.95%",
     "_id": "1"
   },
   {
-    "name":"Electrodoméstico",
+    "name":"Celulares y sus accesorios 14.13%",
+    "_id": "2"
+  },
+  {
+    "name":"Accesorios de oficina 29.95%",
     "_id": "3"
   },
   {
-    "name":"Hogar/Decoración",
+    "name":"Instrumentos musicales 19.78%",
     "_id": "4"
   },
   {
-    "name":"Ropa/Accesorio",
+    "name":"Partes y accesorios de carro, motocicletas y bicicletas 42.78%",
     "_id": "5"
   },
   {
-    "name":"Libro/Revista",
+    "name":"Video Juegos, Juguetes y Artículos deportivos 29.95%",
     "_id": "6"
+  },
+  {
+    "name":"Muebles, tubería y grifería para hogar y oficina 29.95%",
+    "_id": "7"
+  },
+  {
+    "name":"Video Juegos, Juguetes y Artículos deportivos 29.95%",
+    "_id": "8"
+  },
+  {
+    "name":"Artículos electrónicos y computadoras 14.13%",
+    "_id": "9"
+  },
+  {
+    "name":"Equipos y accesorios de medición 14.13%",
+    "_id": "10"
+  },
+  {
+    "name":"Ropa, Calzado y accesorios 29.95%",
+    "_id": "11"
+  },
+  {
+    "name":"Herramientas eléctricas y manuales 14.13%",
+    "_id": "12"
   }
+
+  
 ]

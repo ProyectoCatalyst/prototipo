@@ -73,6 +73,9 @@
             <li class="nav-item my-2" ng-if="vm.usuarioActivo.rol==1||vm.usuarioActivo.rol==3">
                 <a class="nav-link" ui-sref="main.listarTodosLosRepartidores" ui-sref-active="active">Listar repartidor</a>
             </li>
+            <li class="nav-item my-2" ng-if="vm.usuarioActivo.rol==1||vm.usuarioActivo.rol==2||vm.usuarioActivo.rol==5">
+              <a class="nav-link" ui-sref="main.consultarPaquetesPrealertados" ui-sref-active="active">Consultar paquetes Prealertados</a>
+          </li>
           </ul>
         </div>
       </div>

@@ -393,13 +393,13 @@
       })
       .state('main.paquetesPrealertados', {
         url: '/paquetesPrealertados',
-        templateUrl: './components/paquetes/consultarPaquetes/consultarPaquetes.view.html',
+        templateUrl: './components/paquetes/consultarPaquetesPrealertados/consultarPaquetes.view.html',
         data: {
-          pageTitle: 'Paquetes Prealertados | Correos de Costa Rica'
+          pageTitle: 'Consultar paquetes Prealertados | Correos de Costa Rica'
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/paquetes/consultarPaquetes/consultarPaquetes.controller.js')
+            return $ocLazyLoad.load('./components/paquetes/consultarPaquetesPrealertados/consultarPaquetes.controller.js')
           }]
         },
         controller: 'controladorPaquetesPrealertados',

@@ -14,21 +14,31 @@
       url: './sources/data/tipoPaquete.json'
     }).then(function (success) {
       vm.tipoPaquetes = success.data
+    }, function (error) { }); //tipoPaquete
+
+    vm.tipoMensajero = $http({
+      method: 'GET',
+      url: './sources/data/tipoMensajero.json'
+    }).then(function (success) {
+      vm.tipoMensajero = success.data
     }, function (error) {
-    });//tipoPaquete
+    }); //tipoMensajero
 
     vm.nuevoPaquetePrealertado = {};
 
     vm.nuevoPaquetePrealertado.trackingPaquete = servicioPaquetes.numeroTracking();
-    vm.listaPaquetesPrealertados = servicioPaquetes.retornarPaquetesPrealertados();
+
+    vm.nuevoPaquetePrealertado.impuestoPaquete = servicioPaquetes.numeroTracking();
+
+    vm.nuevoPaquetePrealertado.costoTotalPaquete = servicioPaquetes.numeroTracking();
 
     listarPaquetesPrealertados();
     vm.prealertarPaquete = (pnuevoPaquetePrealertado) => {
 
       pnuevoPaquetePrealertado.estadoPaquete = 'Prealertado';
 
-      let objNuevoPaquetePrealertado = new Paquete(pnuevoPaquetePrealertado.trackingPaquete, pnuevoPaquetePrealertado.tipoPaquete,pnuevoPaquetePrealertado.pesoPaquete, pnuevoPaquetePrealertado.precioPaquete, pnuevoPaquetePrealertado.estadoPaquete);
-//pnuevoPaquetePrealertado.costoTotalPaquete
+      let objNuevoPaquetePrealertado = new Paquete(pnuevoPaquetePrealertado.trackingPaquete, pnuevoPaquetePrealertado.tipoPaquete, pnuevoPaquetePrealertado.pesoPaquete, pnuevoPaquetePrealertado.precioPaquete, pnuevoPaquetePrealertado.estadoPaquete, pnuevoPaquetePrealertado.impuestoPaquete, pnuevoPaquetePrealertado.costoTotalPaquete);
+
 
       let codigoValidado = servicioPaquetes.prealertarPaquete(objNuevoPaquetePrealertado);
 
@@ -48,12 +58,12 @@
           button: "Aceptar"
         });
         $state.reload();
-      }//fin else
+      } //fin else
 
       vm.nuevoPaquetePrealertado = null;
       listarPaquetesPrealertados();
 
-    }// fin vm.prealertar paquetes
+    } // fin vm.prealertar paquetes
 
     vm.listarPaquetesPrealertados = () => {
       $state.go('main.listarPaquetesPrealertados')
@@ -64,5 +74,5 @@
     }
 
 
-  }// fin de la función controladorPrealertarPaquete
+  } // fin de la función controladorPrealertarPaquete
 })();
