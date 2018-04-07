@@ -15,8 +15,7 @@
       obtenerlistadeusuarios: _obtenerlistadeusuarios,
       obtenerlistadeFiltrada: _obtenerListaFiltrada,
       retornarCorreosUsuarios:  _retornarCorreosUsuarios,
-      desactivarRepartidor: _desactivarRepartidor,
-      filtrarRepartidores : _filtrarRepartidores,
+      cambiarEstadoUsuario: _cambiarEstadoUsuario,
       retornarTodasLicencias: _retornarTodasLicencias,
       retornarLicenciasRepartidor: _retornarLicenciasRepartidor,
       registrarLicencia: _registrarLicencia,
@@ -63,13 +62,13 @@
 
           switch(obj.rol){
             case 2:
-              let tempEncargadoAduana = new EncargadoAduanas(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.cedula, tempfecha, obj.genero, obj.ubicacion, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol, obj.estado);
+              let tempEncargadoAduana = new Encargado(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.cedula, tempfecha, obj.genero, obj.ubicacion, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol, obj.estado, obj.telefono, obj.telefonoAdicional, obj.sucursal, obj.rolAduana);
 
               listadeusuarios.push(tempEncargadoAduana);
             break;
 
             case 3:
-              let tempEncargadoSucursal = new EncargadoSucursales(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.cedula, tempfecha, obj.genero, obj.ubicacion, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol, obj.estado);
+              let tempEncargadoSucursal = new Encargado(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.cedula, tempfecha, obj.genero, obj.ubicacion, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol, obj.estado, obj.telefono, obj.telefonoAdicional, obj.sucursal, obj.rolAduana);
 
               listadeusuarios.push(tempEncargadoSucursal);
             break;
@@ -150,80 +149,47 @@
 
         return cedulasSistema
     }
-    
-    // _____servicio repartidores_______
 
-    function _desactivarRepartidor(pcorreo, prazon){
-        let usuariosLS = _obtenerlistadeusuarios(),
-            licenciasRepartidor = [];
+    function _cambiarEstadoUsuario(pcorreo){
+        let usuariosLS = _obtenerlistadeusuarios();
 
         for(let i=0; i<usuariosLS.length; i++){
 
             if(usuariosLS[i].getCorreo() == pcorreo){
                 usuariosLS[i].estado = !usuariosLS[i].getEstado();
-                usuariosLS[i].razonDesact = prazon;
-
-                for(let j=0; j<usuariosLS[i].getLicencias().length; j++){
-                    usuariosLS[i].licencia().estado = false;
-                }
             }
             _actualizarUsuario(usuariosLS[i]);
         }
     }
-
-    function _filtrarRepartidores(plistaTodosRepartidores){
-        let listaRepartidoresAct = [],
-            listaRepartidoresDesact = [];
-
-        for(let i=0; i<plistaTodosRepartidores.length; i++){
-            if(plistaTodosRepartidores[i].getEstado()){
-                listaRepartidoresAct.push(plistaTodosRepartidores[i])
-            }else{
-                listaRepartidoresDesact.push(plistaTodosRepartidores[i]);
-            }
-        }
-
-        let listaTodosRepartidores = [listaRepartidoresAct, listaRepartidoresDesact];
-        return listaTodosRepartidores
-    }
+    
+    // _____servicio repartidores_______
 
     function _editarRepartidor(pobjRepartidorActualizar){
         let usuariosLS = _obtenerlistadeusuarios();
 
         for(let i=0; i<usuariosLS.length; i++){
-
             if(usuariosLS[i].getCorreo() == pobjRepartidorActualizar.correo){ 
                 pobjRepartidorActualizar.licencia = usuariosLS[i].getLicencias(); 
                 pobjRepartidorActualizar.paqueteAsignado = usuariosLS[i].getPaqAsignados(); 
             }
-
         }
         _actualizarUsuario(pobjRepartidorActualizar);
     }
 
     function _retornarTodasLicencias(){
-
         let todosLosRepartidores = _obtenerListaFiltrada(4),
-            todasLasLicencias = [],
-            licenciasActuales = [];
+            todasLasLicencias = [];
 
         for(let i=0; i<todosLosRepartidores.length; i++){
-            
-            licenciasActuales = todosLosRepartidores[i].getLicencias();
-
+            let licenciasActuales = todosLosRepartidores[i].getLicencias();
             for(let j=0; j<licenciasActuales.length; j++){
-                
-                if(licenciasActuales[j] == null ){
-                
-                }else{
+                if(licenciasActuales[j] != null ){
                     todasLasLicencias.push(licenciasActuales[j]);
                 }
-                   
             }
         }
 
         return todasLasLicencias
-
     }
 
     function _retornarLicenciasRepartidor(pcorreoActivo){
@@ -231,13 +197,9 @@
             licenciasRepartidor = [];
 
         for(let i=0; i<repartidoresLS.length; i++){
-
             if(repartidoresLS[i].getCorreo() == pcorreoActivo){
-
                 licenciasRepartidor = repartidoresLS[i].getLicencias();
-
             }
-            
         }
         return licenciasRepartidor
     }
@@ -255,76 +217,48 @@
     }
 
     function _cambiarEstadoLicencia(pcorreoActivo, pcodigoLicencia){
+        let licenciasRepartidor = _retornarLicenciasRepartidor(pcorreoActivo);
 
-        let usuariosLS = _obtenerListaFiltrada(4),
-            licenciasRepartidor = [];
+        for(let x=0; x<licenciasRepartidor.length; x++){
+            if(licenciasRepartidor[x].getCodigo() == pcodigoLicencia){
+                licenciasRepartidor[x].estado = false;
 
-        for(let i=0; i<usuariosLS.length; i++){
-            
-            if(usuariosLS[i].getCorreo() == pcorreoActivo){
-
-                licenciasRepartidor = usuariosLS[i].getLicencias();
-
-                for(let x=0; x<licenciasRepartidor.length; x++){
-
-                    if(licenciasRepartidor[x].getCodigo() == pcodigoLicencia){
-
-                        licenciasRepartidor[x].estado = !licenciasRepartidor[x].estado;
-                    }
-                }
-                usuariosLS[i].licencia = licenciasRepartidor;
-            _actualizarUsuario(usuariosLS[i]);
+                _editarLicencias(licenciasRepartidor[x], pcorreoActivo);
             }
-
         }
-
     }
 
-    function _filtrarLicencias(pcorreoActivo){
 
-        let repartidoresLS = _obtenerListaFiltrada(4),
-            licenciasDesactivadas = [],
-            licenciasActivas = [],
-            licenciasRepartidor = [],
+    function _filtrarLicencias(pcorreoActivo, pestado){
+        let licenciasRepartidor = _retornarLicenciasRepartidor(pcorreoActivo),
             licencias = [];
 
-        for(let i=0; i<repartidoresLS.length; i++){
-
-            if(repartidoresLS[i].getCorreo() == pcorreoActivo){
-                licenciasRepartidor = repartidoresLS[i].getLicencias();
-                for(let x=0; x<licenciasRepartidor.length; x++){
-                    if(!licenciasRepartidor[x].getEstado()){
-                        licenciasDesactivadas.push(licenciasRepartidor[x]);
-                    }else{
-                        licenciasActivas.push(licenciasRepartidor[x]);
-                    }
-                }
+        for(let x=0; x<licenciasRepartidor.length; x++){
+            if(licenciasRepartidor[x].getEstado() == pestado){
+                licencias.push(licenciasRepartidor[x]);
             }
-            
         }
-        licencias = [licenciasActivas, licenciasDesactivadas];
         return licencias
     }
 
+/*
+Esta funcion actualizara una licencia del repartidor
+@pobjModLicencia => la licencia que se va a actualizar
+@pcorreoActivo => el usuario activo en el sistema
+*/
     function _editarLicencias(pobjModLicencia, pcorreoActivo){
         let repartidoresLS = _obtenerListaFiltrada(4);
 
         for(let i=0; i<repartidoresLS.length; i++){
-
-            if( repartidoresLS[i].getCorreo() == pcorreoActivo){
-
+            if(repartidoresLS[i].getCorreo() == pcorreoActivo){
                 for(let j=0; j<repartidoresLS[i].getLicencias().length; j++){
-
                     if(repartidoresLS[i].licencia[j].getCodigo() == pobjModLicencia.codigo){
-
-                        repartidoresLS[i].licencia[j] = pobjModLicencia
+                    repartidoresLS[i].licencia[j] = pobjModLicencia
                     }
                 }
-                 _actualizarUsuario(repartidoresLS[i]);
+                _actualizarUsuario(repartidoresLS[i]);
             }
-
-        }       
-
+        }
     }
 
     function _retornarPaquetesAsignados(pcorreoActivo){

@@ -29,7 +29,7 @@
           swal("El usuario ha sido activado con exito", {
             icon: "success",
           });
-          console.log (pusuario);
+          $state.reload();
         } else {
           swal("El usuario continua activo dentro del sistema");
         }

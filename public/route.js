@@ -157,33 +157,18 @@
         controllerAs: 'vm'
       })
 
-      .state('main.registrarEncargadoAduana', {
-        url: '/registerCustomsManager',
-        templateUrl: './components/usuarios/encargadoAduanas/registrarEncargadoAduanas/registrarEncargadoAduana.view.html',
+      .state('main.registrarEncargado', {
+        url: '/registerManager',
+        templateUrl: './components/usuarios/encargado/registrarEncargado/registrarEncargado.view.html',
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/usuarios/encargadoAduanas/registrarEncargadoAduanas/registrarEncargadoAduanas.controller.js')
+            return $ocLazyLoad.load('./components/usuarios/encargado/registrarEncargado/registrarEncargado.controller.js')
           }]
         },
         data: {
-          pageTitle: 'Encargado Aduanas | Registrar'
+          pageTitle: 'Registrar encargado | Correos CR'
         },
-        controller: 'controladorRegistroEncargadoAduana',
-        controllerAs: 'vm'
-      })
-
-      .state('main.registrarEncargadoSucursal', {
-        url: '/registerBranchManager',
-        templateUrl: './components/usuarios/encargadoSucursal/registrarEncargadoSucursal/registrarEncargadoSucursal.view.html',
-        resolve: {
-          load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/usuarios/encargadoSucursal/registrarEncargadoSucursal/registrarEncargadoSucursal.controller.js')
-          }]
-        },
-        data: {
-          pageTitle: 'Encargado Sucursal | Regitrar'
-        },
-        controller: 'controladorRegistroEncargadoSucursal',
+        controller: 'controladorRegistroEncargado',
         controllerAs: 'vm'
       })
 
@@ -348,7 +333,7 @@
       })
 
       .state('main.registrarConvenio', {
-        url: '/registrarConvenio',
+        url: '/agreementRegistration',
         templateUrl: './components/convenio/registrarConvenio/registrarConvenio.view.html',
         data: {
           pageTitle: 'Registro de Convenios | Correos de Costa Rica'
@@ -359,6 +344,39 @@
           }]
         },
         controller: 'controladorRegistrarConvenio',
+        controllerAs: 'vm'
+      })
+
+      .state('main.listaConvenios', {
+        url: '/agreementList',
+        templateUrl: './components/convenio/listarConvenios/listarConvenios.view.html',
+        data: {
+          pageTitle: 'Lista de convenios | Correos CR'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($oclazyLoad) => {
+            return $oclazyLoad.load ('./components/convenio/listarConvenios/listarConvenios.controller.js')
+          }]
+        },
+        controller : 'controladorListarConvenios',
+        controllerAs: 'vm'
+      })
+
+      .state('main.editarConvenios', {
+        url: '/agreementModify',
+        templateUrl: './components/convenio/editarConvenios/editarConvenios.view.html',
+        data: {
+          pageTitle: 'Edición de convenios | Correos CR'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($oclazyLoad) => {
+            return $oclazyLoad.load ('./components/convenio/editarConvenios/editarConvenios.controller.js')
+          }]
+        },
+        params: {
+          convenioMod: ''
+        },
+        controller : 'controladorEditarConvenios',
         controllerAs: 'vm'
       })
 
@@ -392,18 +410,21 @@
         controllerAs: 'vm'
       })
 
-      .state('editarEncargadoAduana', {
-        url: '/editarEncargadoAduana',
-        templateUrl: './components/usuarios/encargadoAduanas/editarEncargadoAduana/editarEncargadoAduana.view.html',
+      .state('main.editarEncargado', {
+        url: '/editManager',
+        templateUrl: './components/usuarios/encargado/editarEncargado/editarEncargado.view.html',
         data: {
-          pageTitle: 'Editar Perfil | Correos de Costa Rica'
+          pageTitle: 'Editar encargado | Correos de Costa Rica'
+        },
+        params: {
+          datosMod: ''
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/usuarios/encargadoAduanas/editarEncargadoAduana/editarEncargadoAduana.controller.js')
+            return $ocLazyLoad.load('./components/usuarios/encargado/editarEncargado/editarEncargado.controller.js')
           }]
         },
-        controller: 'controladorEditarEncargadoAduana',
+        controller: 'controladorEditarEncargado',
         controllerAs: 'vm'
       });
 

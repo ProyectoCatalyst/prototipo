@@ -14,7 +14,7 @@
 
     vm.listarLicenciasActivas = listaLicenciasActivas();
 
-    vm.listarLicenciasDesactivadas = listarLicenciasDesactivadas();
+    vm.listarLicenciasDesactivadas = servicioUsuarios.filtrarLicencias(correoActivo, false);
 
     vm.agregarLicencia = () => {
       $state.go('main.registrarLincencia', { datos: JSON.stringify(correoActivo) });
@@ -26,46 +26,34 @@
 
     // ________funciones internas__________
     function listaLicenciasActivas() {
-        let licenciasActivas = [],
-            todasLasLicencias = servicioUsuarios.retornarLicenciasRepartidor(correoActivo),
-            licenciasVencidas = filtrarLicenciasVencidas(todasLasLicencias);
+        let licenciasRepartidor = servicioUsuarios.retornarLicenciasRepartidor(correoActivo),
+            licenciasVencidas = filtrarLicenciasVencidas(licenciasRepartidor),
+            listaActualizarLicencias = [];
 
           for(let i=0; i<licenciasVencidas.length; i++){
-            cambiarEstado(licenciasVencidas[i]);
+            listaActualizarLicencias.push(licenciasVencidas[i].codigo);
           }
 
-          licenciasActivas = servicioUsuarios.filtrarLicencias(correoActivo);
+          servicioUsuarios.cambiarEstadoLicencia(correoActivo, listaActualizarLicencias);
+          let licenciasActivas = servicioUsuarios.filtrarLicencias(correoActivo, true);
 
-      return licenciasActivas[0];
-    }
-
-    function listarLicenciasDesactivadas() {
-      let licenciasDesactivadas = (servicioUsuarios.filtrarLicencias(correoActivo))[1];
-
-      return licenciasDesactivadas;
+      return licenciasActivas;
     }
 
     function filtrarLicenciasVencidas(ptodasLasLicencias){
       let hoy = new Date(),
-      licenciasActivas = ptodasLasLicencias,
-      objFecha,
       licenciasVencidas = [];
 
       hoy.setHours(0,0,0,0);
 
-      for(let i=0; i<licenciasActivas.length; i++){
-        objFecha = new Date(licenciasActivas[i].fechaVencimiento);
-        if(hoy>=objFecha){
-          licenciasVencidas.push(licenciasActivas[i]);
+      for(let i=0; i<ptodasLasLicencias.length; i++){
+        if(hoy>=new Date(ptodasLasLicencias[i].fechaVencimiento) ){
+          licenciasVencidas.push(ptodasLasLicencias[i]);
         }
       }
 
       return licenciasVencidas
 
-    }
-
-    function cambiarEstado(pdatosLicencia){
-      servicioUsuarios.cambiarEstadoLicencia(correoActivo, pdatosLicencia.codigo);
     }
 
   }

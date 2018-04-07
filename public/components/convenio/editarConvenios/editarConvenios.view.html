@@ -1,0 +1,54 @@
+<main class="container">
+
+    <section class="row">
+  
+      <section  class="col-md-12 my-5 mx-auto" id="container">
+  
+          <h1 class="py-2" id="title">Edicion la información de convenios</h1>
+          <h4 class="py-2" id="subtitle">Es gratis y sencillo!</h4>
+          <p class="py-2" id="description"><span>Com</span>plete los siguientes datos.</p>
+  
+          <form name="editarConvenio" novalidate class="row justify-content-center" ng-submit="vm.editarConvenio(vm.convenioMod)">
+            
+            <div class="col-md-8">
+  
+              <div class="form-group">
+                <label for="txtCodigo">Código del convenio: </label>
+                <input type="number" class="form-control" ng-model="vm.convenioMod.codigoConvenio" id="txtCodigo" required disabled>
+              </div>
+    
+              <div class="form-group">
+                <label for="txtNombre">Nombre del convenio:</label>
+                <input type="text" class="form-control" ng-model="vm.convenioMod.nombreConvenio" id="txtNombre" required>
+              </div>
+    
+              <div class="form-group">
+                <label for="txtDescripcion">Descripción:</label>
+                <textarea  id="" cols="30" rows="5" class="form-control" ng-model="vm.convenioMod.descripcionConvenio" required></textarea>
+              </div>
+    
+              <div class="form-group">
+                <label for="txtInstitucion">Institución:</label>
+                <input type="text" class="form-control" ng-model="vm.convenioMod.institucionConvenio" id="txtInstitucion" required>
+              </div>
+    
+              <div class="form-group">
+                <label for="txtCosto">Costo:</label>
+                <input type="number" class="form-control" ng-model="vm.convenioMod.costoConvenio" id="txtCosto" required>
+              </div>
+            
+            </div>
+  
+              <div class="col-md-8 my-4">
+                  <div class="row justify-content-end">
+                      <button type="submit" class="btn btn-danger" ng-disabled="editarConvenio.$invalid">Editar trámite</button>
+                  </div>
+              </div>
+    
+            </form>
+  
+      </section>
+  
+    </section>
+  
+  </main>

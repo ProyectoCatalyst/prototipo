@@ -28,12 +28,23 @@
           swal("El usuario ha sido desactivado con exito", {
             icon: "success",
           });
-         
+          $state.reload();
         } else {
           swal("El usuario continua activo dentro del sistema");
         }
       });
-      vm.listarUsuarios = servicioUsuarios.obtenerListaPorEstados(true);
+    }
+
+    vm.editar = (pusuario) => {
+      switch (pusuario.rol){
+        case 2:
+          $state.go('main.editarEncargado', {datosMod: JSON.stringify(pusuario) });
+        break;
+
+        case 3:
+          $state.go('main.editarEncargado', {datosMod: JSON.stringify(pusuario) });
+        break;
+      }
     }
 
     vm.filtrarRolUsuario = (pidRol) => {

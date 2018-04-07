@@ -9,11 +9,7 @@
   function controladorRegistrarConvenio($stateParams, $state, $http, servicioConvenio) {
     let vm = this;
 
-    vm.ConvenioNuevo = {};
-    vm.listaConvenio = servicioConvenio.retornarConvenio();
-
     vm.registrarConvenio = (pconvenioNuevo) => {
-      console.log(pconvenioNuevo);
 
       let objNuevoConvenio = new Convenio(pconvenioNuevo.codigoConvenio, pconvenioNuevo.nombreConvenio,
         pconvenioNuevo.descripcionConvenio,
@@ -21,44 +17,25 @@
         pconvenioNuevo.costoConvenio
       );
 
-      // console.log('objeto con convenio');
-      // console.log(objNuevoConvenio);
+      let repetido = servicioConvenio.agregarConvenio(objNuevoConvenio);
 
-      servicioConvenio.agregarConvenio(objNuevoConvenio);
+      if(repetido){
+        swal({
+          title: "Convenio no registrado",
+          text: "El convenio ya existe en el sistema",
+          icon: "error",
+          button: "Aceptar"
+        });
+      }else{
+        swal({
+          title: "Convenio registrado",
+          text: "El convenio se ha registrado exitosamente",
+          icon: "success",
+          button: "Aceptar"
+        });
 
-      swal({
-        title: "Convenio registrado",
-        text: "El convenio se ha registrado exitosamente",
-        icon: "success",
-        button: "Aceptar"
-      });
-      $state.reload();
-    }
-
-    vm.listarConvenios = () => {
-      servicioConvenio.retornarConvenio();
-
-      function listarConvenios(){
-        vm.listaConvenio = servicioConvenio.retornarConvenio();
+        $state.go('main.listaConvenios')
       }
-
-      // let str = "<table>";
-      //   str += "<tr><th>Codigo</th><th>Nombre</th><th>Descripcion</th><th>Institucion</th><th>Costo</th>";
-
-      // for (var i = 0; i < vm.listaConvenio.length; i++) {
-      //   str += "<tr>";
-      //   str += "<td>"+vm.listaConvenio[i].codigoConvenio + "</td>";
-      //   str += "<td>"+vm.listaConvenio[i].nombreConvenio + "</td>";
-      //   str += "<td>"+vm.listaConvenio[i].descripcionConvenio + "</td>";
-      //   str += "<td>"+vm.listaConvenio[i].institucionConvenio + "</td>";
-      //   str += "<td>"+vm.listaConvenio[i].costoConvenio + "</td>";
-      //   str += "</tr>";
-      // }
-      //   str += "</table>";
-
-
-      //   document.querySelector('#mostrarConvenios').innerHTML = str;
     }
-
   }
 })();

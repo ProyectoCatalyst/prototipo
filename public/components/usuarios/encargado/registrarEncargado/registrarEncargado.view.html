@@ -1,0 +1,169 @@
+    <main class="container">
+
+        <section class="row">
+
+            <section  class="col-md-12 my-5 mx-auto" id="container">
+
+                <h1 class="py-2" id="title">Cree una cuenta nueva</h1>
+                <h4 class="py-2" id="subtitle">¡Es gratis y sencillo!</h4>
+                <p class="py-2" id="description"><span>Com</span>plete los siguientes datos.</p>
+
+                <form name="registrarEncargado" novalidate class="row justify-content-center" ng-submit="vm.registrarEncargado(vm.nuevoEncargado)">
+
+                    <div class="col-md-10">
+                            <div class="form-group">
+                                    <label>Encargado *</label>
+                                    <select class="custom-select" ng-model="vm.rolEncargado" ng-change="vm.definirRol(vm.rolEncargado)" required>
+                                        <option value="">Seleccione encargado a registrar</option>
+                                        <option value="2">Encargado de aduanas</option>
+                                        <option value="3">Encargado de sucursal</option>
+                                    </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5">
+
+                            <div class="form-group">
+                                <label>Nombre *</label>
+                                <input type="text" class="form-control" ng-model="vm.nuevoEncargado.nombre" required>
+                            </div>
+            
+                            <div class="form-group">
+                                <label>Segundo nombre</label>
+                                <input type="text" class="form-control" ng-model="vm.nuevoEncargado.segundoNombre">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Primer apellido *</label>
+                                <input type="text" class="form-control" ng-model="vm.nuevoEncargado.apellido" required>
+                            </div>
+            
+                            <div class="form-group">
+                                <label>Segundo apellido:</label>
+                                <input type="text" class="form-control" ng-model="vm.nuevoEncargado.segundoApellido">
+                            </div>
+            
+                            <div class="form-group">
+                                <label>Cédula *</label>
+                                <input type="number" class="form-control" ng-model="vm.nuevoEncargado.cedula"  required>
+                            </div>
+            
+                            <div class="form-group">
+                                <label>Fecha de nacimiento *</label>
+                                <input type="date" class="form-control" ng-model="vm.nuevoEncargado.fecha" required>
+                            </div>
+            
+                            <div class="form-group">
+                                <label>Sexo *</label>
+                                <select class="custom-select" ng-model="vm.nuevoEncargado.genero" required>
+                                    <option value="">Seleccione sexo</option>
+                                    <option value="Femenino">Femenino</option>
+                                    <option value="Masculino  ">Masculino</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-5">
+
+                            <!-- <div class="form-group">
+                                <label>Provincia</label>
+                                <select ng-options="provincia as provincia.name for provincia in vm.provincias track by provincia._id"
+                                    ng-change="vm.rellenarCantones(vm.nuevoEncargado.provincia._id)" ng-model="vm.nuevoEncargado.provincia"
+                                    class="custom-select" required>
+                                    <option value="">Seleccione una provincia</option>
+                                </select>
+                            </div>
+            
+                            <div class="form-group">
+                                <label>Cantón</label>
+
+                                <select ng-options="canton as canton.name for canton in vm.cantones track by canton._id" ng-change="vm.rellenarDistritos(vm.nuevoEncargado.canton._id)"
+                                    ng-model="vm.nuevoEncargado.canton" class="custom-select" required>
+                                    <option value="">Seleccione un cantón</option>
+                                </select>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label>Distrito</label>
+
+                                <select ng-options="distrito as distrito.name for distrito in vm.distritos track by distrito._id" ng-model="vm.nuevoEncargado.distrito"
+                                    class="custom-select" required>
+                                    <option value="">Seleccione un distrito</option>
+                                </select>
+
+                            </div>
+            
+                            
+                            <div class="form-group">
+                                <label>Úbicación exacta:</label>
+                                <input type="text" class="form-control" ng-model="vm.nuevoEncargado.direccion" required>
+                            </div> -->
+            
+                            <div class="form-group">
+                                <label>Correo electrónico *</label>
+                                <input type="email" class="form-control" ng-model="vm.nuevoEncargado.correo" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Telefono *</label>
+                                <input type="number" class="form-control" ng-model="vm.nuevoEncargado.telefono" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Telefono</label>
+                                <input type="number" class="form-control" ng-model="vm.nuevoEncargado.telefonoAdicional">
+                            </div>
+            
+
+                            <div class="form-group">
+                                <label>Contraseña *</label>
+                                <input type="password" class="form-control" ng-model="vm.nuevoEncargado.contrasenna" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Confirme su contraseña *</label>
+                                <input type="password" class="form-control" ng-model="vm.nuevoEncargado.confirmarContrasenna" required>
+                            </div>
+
+                            <div class="form-group" ng-if="vm.obtenerRol==2">
+                                <label>Rol de aduana *</label>
+
+                                <select class="custom-select" ng-model="vm.nuevoEncargado.rolAduana">
+                                        <option value="">Seleccione su rol dentro de aduana</option>
+                                        <option value="puesto">Aduana</option>
+                                        <option value="puesto">Aduana</option>
+                                        <option value="puesto">Aduana</option>
+                                        <option value="puesto">Aduana</option>
+                                </select>
+
+                            </div>
+
+                            <div class="form-group" ng-if="vm.obtenerRol==3">
+                                <label>Sucursal *</label>
+
+                                <select class="custom-select" ng-model="vm.nuevoEncargado.sucursal">
+                                        <option value="">Asignar sucursal</option>
+
+                                        <option ng-repeat="datosSucursales in vm.obtenerInfoSucursal" value="{{datosSucursales.codigoSucursal}}">{{datosSucursales.nombreSucursal}}</option>
+                                </select>
+                                
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-10 my-4">
+                            <div class="row justify-content-end">
+                                <button type="submit" class="btn btn-danger" ng-disabled="registrarEncargado.$invalid">Registrar encargado</button>
+                            </div>
+                        </div>
+
+                    </form>
+
+            </section>
+
+        </section>
+
+ </main>

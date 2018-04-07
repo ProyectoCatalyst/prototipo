@@ -1,0 +1,47 @@
+<main class="container">
+
+  <section class="row">
+
+    <section class="col-md-12 my-5 mx-auto" id="container">
+
+      <div class="table-responsive row">
+        <table class="table table-hover">
+
+          <thead>
+            <tr>
+              <th scope="col">Código</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Descripción</th>
+              <th scope="col">Institución</th>
+              <th scope="col">Costo</th>
+              <th scope="col" colspan="2">Acción</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr ng-repeat="convenios in vm.listarConvenios">
+              <td>{{convenios.codigoConvenio}}</td>
+              <td>{{convenios.nombreConvenio}}</td>
+              <td>{{convenios.descripcionConvenio}}</td>
+              <td>{{convenios.institucionConvenio}}</td>
+              <td>₡{{convenios.costoConvenio}}</td>
+              <td>
+                <button type="button" class="btn btn-danger" ng-click="vm.editarConvenio(convenios)">Editar</button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-danger" ng-click="vm.eliminarConvenio(convenios)">Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
+
+        <button type="button" class="btn btn-danger" ng-click="vm.agregarConvenio()">Agregar convenio</button>
+
+      </div>
+
+    </section>
+
+  </section>
+
+</main>

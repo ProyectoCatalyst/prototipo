@@ -35,7 +35,7 @@
             <th scope="col">Cantón</th> -->
             <th scope="col">Distrito</th>
             <th scope="col">Correo</th>
-            <th scope="col">Desactivar</th>
+            <th scope="col" colspan="2">Acciones</th>
           </tr>
         </div>
       </thead>
@@ -57,7 +57,11 @@
         <td>
           <button class="btn btn-danger" id="btnDesactiar" type="button" ng-click="vm.desactivar(usuario)">Desactivar</button>
         </td>
-        </tr>
+
+        <td>
+          <button class="btn btn-danger" id="btnEditar" type="button" ng-click="vm.editar(usuario)">Editar</button>
+        </td>
+      </tr>
 </main>
 </tbody>
 </table>

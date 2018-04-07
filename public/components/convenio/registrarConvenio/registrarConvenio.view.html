@@ -1,42 +1,54 @@
-<header class="row" id="fondoHeader">
-  <div class="container-fluid d-none d-md-block m-2" id="logoHeader">
-    <img src="sources/img/registrar/logoMenu.png" alt="" srcset="">
-  </div>
-</header>
-<section class="row">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 mt-5 mb-3">
-        <h1 id="tituloPrincipal" class="">Registrar convenio</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <form ng-submit="vm.registrarConvenio(vm.ConvenioNuevo)">
-          <div class="form-group">
-            <label for="txtCodigo">Código del convenio: </label>
-            <input type="number" class="form-control" ng-model="vm.ConvenioNuevo.codigoConvenio" id="txtCodigo" required>
-          </div>
-          <div class="form-group">
-            <label for="txtNombre">Nombre del convenio:</label>
-            <input type="text" class="form-control" ng-model="vm.ConvenioNuevo.nombreConvenio" id="txtNombre" required>
-          </div>
-          <div class="form-group">
-            <label for="txtDescripcion">Descripción:</label>
-            <input type="text" class="form-control" ng-model="vm.ConvenioNuevo.descripcionConvenio" id="txtDescripcion" required>
-          </div>
-          <div class="form-group">
-            <label for="txtInstitucion">Institución:</label>
-            <input type="text" class="form-control" ng-model="vm.ConvenioNuevo.institucionConvenio" id="txtInstitucion" required>
-          </div>
-          <div class="form-group">
-            <label for="txtCosto">Costo:</label>
-            <input type="number" class="form-control" ng-model="vm.ConvenioNuevo.costoConvenio" id="txtCosto" required>
+<main class="container">
+
+  <section class="row">
+
+    <section  class="col-md-12 my-5 mx-auto" id="container">
+
+        <h1 class="py-2" id="title">Registro de convenios</h1>
+        <h4 class="py-2" id="subtitle">¡Ingresa un convenio nuevo!</h4>
+        <p class="py-2" id="description"><span>Com</span>plete los siguientes datos.</p>
+
+        <form name="registrarConvenio" novalidate class="row justify-content-center" ng-submit="vm.registrarConvenio(vm.ConvenioNuevo)">
+          
+          <div class="col-md-8">
+
+            <div class="form-group">
+              <label for="txtCodigo">Código del convenio: </label>
+              <input type="number" class="form-control" ng-model="vm.ConvenioNuevo.codigoConvenio" id="txtCodigo" required>
+            </div>
+  
+            <div class="form-group">
+              <label for="txtNombre">Nombre del convenio:</label>
+              <input type="text" class="form-control" ng-model="vm.ConvenioNuevo.nombreConvenio" id="txtNombre" required>
+            </div>
+  
+            <div class="form-group">
+              <label for="txtDescripcion">Descripción:</label>
+              <textarea  id="" cols="30" rows="5" class="form-control" ng-model="vm.ConvenioNuevo.descripcionConvenio" required></textarea>
+            </div>
+  
+            <div class="form-group">
+              <label for="txtInstitucion">Institución:</label>
+              <input type="text" class="form-control" ng-model="vm.ConvenioNuevo.institucionConvenio" id="txtInstitucion" required>
+            </div>
+  
+            <div class="form-group">
+              <label for="txtCosto">Costo:</label>
+              <input type="number" class="form-control" ng-model="vm.ConvenioNuevo.costoConvenio" id="txtCosto" required>
+            </div>
+          
           </div>
 
-          <button type="submit" class="btn btn-danger" ng-click="vm.registrarConvenio(vm.ConvenioNuevo)">Registrar Convenio</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
+            <div class="col-md-8 my-4">
+                <div class="row justify-content-end">
+                    <button type="submit" class="btn btn-danger" ng-disabled="registrarConvenio.$invalid">Crear trámite</button>
+                </div>
+            </div>
+  
+          </form>
+
+    </section>
+
+  </section>
+
+</main>

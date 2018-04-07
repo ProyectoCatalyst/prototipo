@@ -21,13 +21,13 @@
     vm.listarPaquetesAsignados = servicioUsuarios.retornarPaquetesAsignados(correoActivo);
 
     vm.editarPerfil = () => {
-      let repartidoresSucursal = servicioUsuarios.obtenerlistadeFiltrada(4);
+      let repartidoresLS = servicioUsuarios.obtenerlistadeFiltrada(4);
 
-      for(let i=0; i<repartidoresSucursal.length; i++){
+      for(let i=0; i<repartidoresLS.length; i++){
 
-        if(repartidoresSucursal[i].getCorreo() == correoActivo){
+        if(repartidoresLS[i].getCorreo() == correoActivo){
 
-          $state.go('main.editarRepartidor', {datos: JSON.stringify(repartidoresSucursal[i])});
+          $state.go('main.editarRepartidor', {datosMod: JSON.stringify(repartidoresLS[i])});
         }
       }
 

@@ -38,10 +38,7 @@
               <a class="nav-link" ui-sref="main.registrarCliente" ui-sref-active="active">Registrar cliente</a>
             </li>
             <li class="nav-item my-2" ng-if="vm.usuarioActivo.rol==1">
-              <a class="nav-link" ui-sref="main.registrarEncargadoAduana" ui-sref-active="active">Registrar encancargado de aduana</a>
-            </li>
-            <li class="nav-item my-2" ng-if="vm.usuarioActivo.rol==1">
-              <a class="nav-link" ui-sref="main.registrarEncargadoSucursal" ui-sref-active="active">Registrar encargado de sucursal</a>
+              <a class="nav-link" ui-sref="main.registrarEncargado" ui-sref-active="active">Registrar encancargado</a>
             </li>
             <li class="nav-item my-2" ng-if="vm.usuarioActivo.rol==1||vm.usuarioActivo.rol==2||vm.usuarioActivo.rol==5">
               <a class="nav-link" ui-sref="main.prealertarPaquetes" ui-sref-active="active">Prealertar paquete</a>
@@ -57,6 +54,9 @@
             </li>
             <li class="nav-item my-2" ng-if="vm.usuarioActivo.rol==1">
               <a class="nav-link" ui-sref="main.registrarConvenio" ui-sref-active="active">Registrar convenio</a>
+            </li>
+            <li class="nav-item my-2" ng-if="vm.usuarioActivo.rol==1">
+              <a class="nav-link" ui-sref="main.listaConvenios" ui-sref-active="active">Listar convenios</a>
             </li>
             <li class="nav-item my-2" ng-if="vm.usuarioActivo.rol==1">
               <a class="nav-link" ui-sref="main.listarTodosUsuarios" ui-sref-active="active">Listar todos los usuarios</a>

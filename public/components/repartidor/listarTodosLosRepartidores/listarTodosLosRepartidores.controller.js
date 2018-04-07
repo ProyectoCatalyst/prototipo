@@ -24,7 +24,7 @@
 
     vm.listarRepartidoresOcupados = listarActivosOcupados();
 
-    vm.listarDesactRepartidores = listarDesact();
+    vm.listarDesactRepartidores = servicioUsuarios.obtenerListaPorEstados(false);
 
     vm.cambiarEstado = (pcorreo) => {
       let desact = false,
@@ -73,41 +73,31 @@
     //______funciones internas________
 
     function listarActivosDisponibles(){
-      let repartidoresActivos = listarActivos(),
+      let repartidoresActivos = servicioUsuarios.obtenerListaPorEstados(true),
           repartidoresDisponibles = [];
 
       for(let i=0; i<repartidoresActivos.length; i++){
-        if( (repartidoresActivos[i].getPaqAsignados()).length == 0 ){
-          repartidoresDisponibles.push(repartidoresActivos[i]);
+        if(repartidoresActivos[i].rol == 4){
+          if( (repartidoresActivos[i].getPaqAsignados()).length == 0 ){
+            repartidoresDisponibles.push(repartidoresActivos[i]);
+          }
         }
       }
       return repartidoresDisponibles
     }
 
     function listarActivosOcupados(){
-      let repartidoresActivos = listarActivos(),
+      let repartidoresActivos = servicioUsuarios.obtenerListaPorEstados(true),
           repartidoresDisponibles = [];
 
       for(let i=0; i<repartidoresActivos.length; i++){
-        if( !(repartidoresActivos[i].getPaqAsignados()).length == 0 ){
-          repartidoresDisponibles.push(repartidoresActivos[i]);
+        if(repartidoresActivos[i].rol == 4){
+          if( !(repartidoresActivos[i].getPaqAsignados()).length == 0 ){
+            repartidoresDisponibles.push(repartidoresActivos[i]);
+          }
         }
       }
       return repartidoresDisponibles
-    }
-
-    function listarActivos(){
-      let todosLosRepartidores = servicioUsuarios.obtenerlistadeFiltrada(4),
-            listarRepartidoresFiltrados = servicioUsuarios.filtrarRepartidores(todosLosRepartidores);
-
-      return listarRepartidoresFiltrados[0]
-    }
-
-    function listarDesact(){
-      let todosLosRepartidores = servicioUsuarios.obtenerlistadeFiltrada(4),
-            listarRepartidoresFiltrados = servicioUsuarios.filtrarRepartidores(todosLosRepartidores);
-
-      return listarRepartidoresFiltrados[1]
     }
 
   }

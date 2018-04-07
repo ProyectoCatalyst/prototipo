@@ -53,12 +53,12 @@
 
     // __________funciones internas__________
 
-    function verificarLicencia(pobjLicencia){
+    function verificarLicencia(pcodigo){
       let licenciasLS = servicioUsuarios.retornarTodasLicencias(),
           existente = false;
 
       for (let i=0; i<licenciasLS.length; i++){
-        if(licenciasLS[i].getCodigo() == pobjLicencia.codigo){
+        if(licenciasLS[i].getCodigo() == pcodigo){
           existente = true;
         }
       }
