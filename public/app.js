@@ -1,5 +1,5 @@
 (() => {
   'use strict';
   angular
-    .module('prototipo', ['appRoutes', 'ngMessages', 'ngPassword', 'duScroll']);
+    .module('prototipo', ['appRoutes', 'ngMessages', 'ngPassword', 'duScroll', 'ngMap']);
 })();

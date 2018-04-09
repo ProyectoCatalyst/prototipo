@@ -59,11 +59,11 @@
               <small class="form-text text-danger">* Campo requerido</small>
             </div>
 --------------------
-            <section class="col-12" width="100px" height="100px">
-              <ng-map default-style="true" center="current-location" zoom="6">
-                <info-window position="current-location"></info-window>
+
+              <ng-map center="current-location" styles="width: 50%; height: 20em;">
+                <marker position="current-location" draggable="true" on-dragend="getCurrentLocation()" coords="marker.coords" options="marker.options" ></marker>
               </ng-map>
-            </section>
+            
 --------------------
           </div>
         </div>

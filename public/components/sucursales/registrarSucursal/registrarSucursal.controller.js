@@ -92,6 +92,5 @@
   }// fin listar Sucursales
 
 
-
   }// fin de la función controladorRegistrarSucursal
 })();
